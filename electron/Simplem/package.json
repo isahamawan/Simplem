@@ -1,0 +1,22 @@
+{
+  "name": "simplem",
+  "version": "1.0.0",
+  "description": "Minimal notepad-like markdown editor. To write down your amazing ideas immediately.",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "isahamawan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:isahamawan/Simplem.git"
+  },
+  "bugs": {
+    "url": "https://github.com/isahamawan/Simplem/issues"
+  },
+  "devDependencies": {
+    "electron": "^13.1.5"
+  }
+}
