@@ -934,7 +934,8 @@
 
     .editor-preview {
         /* オリジナル padding: 10px 14px; */
-        padding: 2px 2px;
+        /* カスタム padding: 2px 2px; */
+        padding: 2px 14px;
         background: #ffffff
     }
 
