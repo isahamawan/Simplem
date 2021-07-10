@@ -3,6 +3,10 @@
 //モジュールを使えるようにする
 const fs = require('fs')
 const { app, BrowserWindow, Menu, ipcMain, dialog } = require("electron");
+const path_tool = require('path');
+const openAboutWindow = require("about-window").default;
+
+
 
 //ipc経由の機能------------------------------------------------------------------<
 //ファイルの読込
@@ -20,6 +24,11 @@ ipcMain.handle('open', async (event) => {
         fs.readFileSync(filePath, { encoding: 'utf8' })
     )
 
+    //タイトル用にファイル名を保管と、タイトルの変更
+    global.filename_for_title = path_tool.basename(filePaths[0]);
+    mainWindow.setTitle(global.filename_for_title + " - Simplem");
+
+    //上書き保存用にファイルパスを保管
     global.filePath_for_save = filePaths[0];
 
 
@@ -37,9 +46,15 @@ ipcMain.handle('save_as', async (event, text_data) => {
 
     if (canceled) return
 
+    fs.writeFileSync(filePath, text_data);
+
+    //タイトル用にファイル名を保管と、タイトルの変更
+    global.filename_for_title = path_tool.basename(filePath);
+    mainWindow.setTitle(global.filename_for_title + " - Simplem");
+
+    //上書き保存用にファイルパスを保管
     global.filePath_for_save = filePath;
 
-    fs.writeFileSync(filePath, text_data)
 });
 
 //ファイルを上書き保存
@@ -55,6 +70,9 @@ ipcMain.handle('save', async (event, text_data) => {
 
     fs.writeFileSync(filePath, text_data)
 });
+
+
+
 //ipc経由の機能------------------------------------------------------------------>
 
 
@@ -64,7 +82,7 @@ let mainWindow;
 //アプリの画面を作成
 function createWindow() {
     mainWindow = new BrowserWindow({
-        width: 800, height: 600, 'icon': __dirname + 'favicon.ico', webPreferences: {
+        width: 800, height: 600, 'icon': __dirname + 'favicon.png', webPreferences: {
             nodeIntegration: false, // falseでレンダラープロセスでのモジュール使用を制限（XSS回避のため）
             contextIsolation: false, //nodeIntegration:false状態でモジュール共有を行うために、contextIsolationをfalseにする必要あり
             preload: __dirname + '/preload.js' // nodeIntegrationとセット（モジュールの使用許可）。読み込んだモジュールをグローバルに共有→それをレンダラープロセスで使用」という形で、レンダラープロセスでのNode APIの利用を可能にできる
@@ -72,7 +90,7 @@ function createWindow() {
     });
     mainWindow.loadURL('file://' + __dirname + '/index.html');
     mainWindow.setMinimumSize(650, 300);
-    //mainWindow.setTitle('Simplem'); //メインプロセスでしか使えないので、レンダー側で使う場合はipc使う必要あり。index.html側でタイトルを設定している場合は効かない。
+    mainWindow.setTitle('Simplem'); //メインプロセスでしか使えないので、レンダー側で使う場合はipc使う必要あり。index.html側でタイトルを設定している場合は効かない。
 }
 
 
@@ -81,7 +99,16 @@ function createWindow() {
 let template = [{
     label: 'Simplem',
     submenu: [{
-        role: 'about', label: 'Simplemについて'
+        label: 'Simplemについて',
+        click: function () {
+            openAboutWindow({
+                icon_path: path_tool.join(__dirname, "../assets/s_icon.png"),
+                package_json_dir: "../",
+                description: "Minimal notepad-like markdown editor.\nTo write down your amazing ideas immediately.",
+                homepage: "https://github.com/isahamawan/Simplem",
+                copyright: 'Copyright (c) 2021 isahamawan',
+            });
+        }
     }, {
         label: 'Simplemを終了',
         accelerator: 'CmdOrCtrl+Q',
@@ -128,6 +155,14 @@ let template = [{
         { type: 'separator' },
         { role: 'selectAll', label: '全て選択' },
         { type: 'separator' },
+        //{
+        //    label: '検索',
+        //    accelerator: 'CmdOrCtrl+F',
+        //    click: function () {
+        //        let webcontents = mainWindow.webContents.getCurrentWebContents();
+        //        mainWindow.webContents.send('webdata', webcontents); //レンダラ（index.html）へ''を命令
+        //    }
+        //},
         {
             label: '読み上げ',
             submenu: [
@@ -154,7 +189,7 @@ let template = [{
     submenu: [
         { role: 'zoom', label: '最大化' },
         { role: 'minimize', label: '最小化' },
-        { role: 'windowMenu' },
+        //{ role: 'windowMenu' },
     ]
 }
 ]

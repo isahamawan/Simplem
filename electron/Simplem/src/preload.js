@@ -3,6 +3,8 @@ const electron = require('electron');
 process.once('loaded', () => {
     global.ipcRenderer = electron.ipcRenderer;
     global.app = electron.app;
+    //global.remote = electron.remote;
+    //global.searchInPage = require('electron-in-page-search').default;
 });
 
 //以下index.jsで使用

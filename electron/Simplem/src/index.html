@@ -10,7 +10,7 @@
 
     <!-- main.js側で設定する場合は、コメントアウトが必要　-->
     <!-- document.getElementsByTagName("title")[0].text = "*sample.text - Simplem" のような形でファイル名を反映させる？ -->
-    <title>Simplem</title>
+    <!--<title>Simplem</title>-->
 
     <!-- short hand, igniter, skillet, overwhelm, catalyst, gale, Simple Glint, SimpleGlint, Glint -->
 
@@ -26,12 +26,14 @@
 
 <body>
     <!--開く、保存、名前を付けて保存ボタン
-        <div>
+    <div>
         <button id="open" type="button">Open</button>
         <button id="save" type="button">Save</button>
         <button id="save_as" type="button">Save as</button>
-        </div>
+        <button id="some-button" type="button">Search</button>
+    </div>
     -->
+
 
     <!-- preview CSS -->
     <link rel="stylesheet" href="css/preview.css">
@@ -97,7 +99,11 @@
 
 <!-- 以下、electronのレンダラー用script -->
 <script>
-    //以下index.jsで使用
+
+
+
+
+    //ipc経由の機能------------------------------------------------------------------<
     //nodeIntegrationをfalseにしたことで、以下は使えなくなった
     //const {ipcRenderer, app} = require('electron');
     //
@@ -105,7 +111,7 @@
     let ipcRenderer = window.ipcRenderer;
     const app = window.app;
 
-    //ipc経由の機能------------------------------------------------------------------<
+
     //main.jsからのファイル読み込み命令を処理
     ipcRenderer.on('open_from_main.js', async () => {
         const { canceled, data } = await ipcRenderer.invoke('open') //main.jsのopenを呼び出し（data取得）
@@ -127,6 +133,14 @@
         await ipcRenderer.invoke('save_as', text_data);
     });
 
+    //main.jsからの検索窓オープンの命令を処理
+    //ipcRenderer.on('webdata', async (webcontents) => {
+    //
+    //
+    //    let inPageSearch = searchInPage(webcontents);
+    //
+    //    inPageSearch.openSearchWindow();
+    //});
 
 
 
@@ -145,6 +159,8 @@
     //    await ipcRenderer.invoke('save', text_data);
     //});
 
+    //let remote = window.remote;
+    //let searchInPage = window.searchInPage;
     //ファイルの名前を付けて保存をmain.jsから呼び出し（ボタン用）
     //document.querySelector('#save_as').addEventListener('click', async () => {
     //    const text_data = easyMDE.value();
