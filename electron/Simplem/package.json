@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "about-window": "^1.14.0",
+    "commander": "^5.1.0",
     "electron": "^13.1.6",
     "electron-builder": "^22.11.7",
     "electron-in-page-search": "^1.3.2"

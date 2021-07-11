@@ -5,6 +5,9 @@ const fs = require('fs')
 const { app, BrowserWindow, Menu, ipcMain, dialog } = require("electron");
 const path_tool = require('path');
 const openAboutWindow = require("about-window").default;
+const command_tool = require("commander");
+
+//const searchInPage = require('electron-in-page-search').default;
 
 
 
@@ -71,7 +74,21 @@ ipcMain.handle('save', async (event, text_data) => {
     fs.writeFileSync(filePath, text_data)
 });
 
+//ファイル起動時に引数として渡されたファイルパスからファイルを読み込み
+ipcMain.handle('open_init', async (event) => {
 
+    const data = fs.readFileSync(global.filePath_for_init, { encoding: 'utf8' });
+
+    //タイトル用にファイル名を保管と、タイトルの変更
+    global.filename_for_title = path_tool.basename(global.filePath_for_init);
+    mainWindow.setTitle(global.filename_for_title + " - Simplem");
+
+    //上書き保存用にファイルパスを保管
+    global.filePath_for_save = global.filePath_for_init;
+
+
+    return { data }
+});
 
 //ipc経由の機能------------------------------------------------------------------>
 
@@ -91,6 +108,7 @@ function createWindow() {
     mainWindow.loadURL('file://' + __dirname + '/index.html');
     mainWindow.setMinimumSize(650, 300);
     mainWindow.setTitle('Simplem'); //メインプロセスでしか使えないので、レンダー側で使う場合はipc使う必要あり。index.html側でタイトルを設定している場合は効かない。
+    mainWindow.hide(); //読み込み中の白い画面を表示しない（どっちがいいかUX検証要）
 }
 
 
@@ -159,8 +177,9 @@ let template = [{
         //    label: '検索',
         //    accelerator: 'CmdOrCtrl+F',
         //    click: function () {
-        //        let webcontents = mainWindow.webContents.getCurrentWebContents();
-        //        mainWindow.webContents.send('webdata', webcontents); //レンダラ（index.html）へ''を命令
+        //        let webcontents_for_search = mainWindow.webContents;
+        //        //console.log(webcontents_for_search);
+        //        mainWindow.webContents.send('webdata', webcontents_for_search); //レンダラ（index.html）へ''を命令
         //    }
         //},
         {
@@ -203,7 +222,28 @@ app.on('ready', function () {
 
     createWindow();
     //mainWindow.webContents.openDevTools(); //デベロッパーツールの起動
+
+
+    //レンダラーが読み込み完了後に実行
+    mainWindow.webContents.on('did-finish-load', () => {
+        //ビルド後の実行ファイルの引数として、ファイルパスが渡された場合はファイルを読み込み（ビルド前と後で引数の位置が変わるので注意）
+        //for (let i = 0; i < process.argv.length; ++i) {
+        //    console.log(i + ': ' + process.argv[i]);
+        //};
+        // コマンドライン引数をcommanderでパースする
+        command_tool.parse(process.argv);
+
+        if (command_tool.args[0]) {
+            // ファイルパスをprogram.args配列から取り出す
+            global.filePath_for_init = command_tool.args[0];
+            mainWindow.webContents.send('open_init_from_main.js'); //レンダラ（index.html）へ'open_init_from_main.js'を命令
+        };
+        mainWindow.show();//白い画面を表示しないように読み込み完了時に表示(UX検証要)
+    });
+
 });
+
+
 
 //アプリの画面が閉じられたら実行
 app.on('window-all-closed', () => {
@@ -222,3 +262,4 @@ app.on('activate', () => {
         createWindow()
     }
 });
+

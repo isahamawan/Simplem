@@ -133,12 +133,21 @@
         await ipcRenderer.invoke('save_as', text_data);
     });
 
+    //main.jsからの引数で渡されたファイル読み込み命令を処理
+    ipcRenderer.on('open_init_from_main.js', async () => {
+        console.log('okok');
+        const { data } = await ipcRenderer.invoke('open_init'); //main.jsのopen_initを呼び出し（data取得）
+        let file_text_data = '';
+        file_text_data = data[0] || '';
+        easyMDE.value(file_text_data);
+
+    });
+
+    //let remote = window.remote;
+    //let searchInPage = window.searchInPage;
     //main.jsからの検索窓オープンの命令を処理
-    //ipcRenderer.on('webdata', async (webcontents) => {
-    //
-    //
-    //    let inPageSearch = searchInPage(webcontents);
-    //
+    //ipcRenderer.on('webdata', async (webcontents_for_search) => {
+    //    let inPageSearch = searchInPage(webcontents_for_search);
     //    inPageSearch.openSearchWindow();
     //});
 
@@ -159,8 +168,7 @@
     //    await ipcRenderer.invoke('save', text_data);
     //});
 
-    //let remote = window.remote;
-    //let searchInPage = window.searchInPage;
+
     //ファイルの名前を付けて保存をmain.jsから呼び出し（ボタン用）
     //document.querySelector('#save_as').addEventListener('click', async () => {
     //    const text_data = easyMDE.value();

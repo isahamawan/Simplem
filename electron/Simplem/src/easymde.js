@@ -17750,7 +17750,7 @@
                 'guide': {
                     name: 'guide',
                     //action: 'https://www.markdownguide.org/basic-syntax/',
-                    action: 'md-cheat-sheet.pdf',//このpdfの著作権は右記のドメインにあります https://shirokuma-lab.com/
+                    action: '../assets/md-cheat-sheet.pdf',//このpdfの著作権は右記のドメインにあります https://shirokuma-lab.com/
                     className: 'fa fa-question-circle',
                     noDisable: true,
                     title: 'Markdown Guide',
