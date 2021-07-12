@@ -5,13 +5,12 @@ const fs = require('fs')
 const { app, BrowserWindow, Menu, ipcMain, dialog } = require("electron");
 const path_tool = require('path');
 const openAboutWindow = require("about-window").default;
-//const command_tool = require("commander");//後でアンインストールする
 const log_tool = require('electron-log');
 
 //const searchInPage = require('electron-in-page-search').default;
 
 //mac用
-let openfile_mac = null;
+//let openfile_mac = null;
 
 //mac用の起動時のファイルの読み込み処理１／２
 // mac では ready イベントより前に発火するイベント 'will-finish-launching' でしか
@@ -24,10 +23,8 @@ app.on('will-finish-launching', () => {
 
         // ready イベントより前のため、まだ webContents を呼べない
         // いったんグローバル変数に預ける
-        openfile_mac = argv;
+        global.filePath_for_init_mac = argv;
 
-        log_tool.info("openfile_mac: " + openfile_mac);
-        log_tool.info("argv_openfile: " + argv);
     });
 });
 
@@ -110,7 +107,6 @@ ipcMain.handle('open_init', async (event) => {
     // グローバル変数を初期化
     global.filePath_for_init = null;
 
-    log_tool.info("data: " + data);
     return { data }
 });
 
@@ -272,20 +268,18 @@ app.on('ready', function () {
             mainWindow.webContents.send('open_init_from_main.js'); //レンダラ（index.html）へ'open_init_from_main.js'を命令
         };
 
-        log_tool.info("gffi1: " + global.filePath_for_init);
-        log_tool.info("om: " + openfile_mac);
+
 
         // 初期読み込み用のファイルパスを取得２／２（mac用）
-        if (openfile_mac) {
+        if (global.filePath_for_init_mac) {
             // ファイルパスを取得
-            global.filePath_for_init = openfile_mac;
+            global.filePath_for_init = global.filePath_for_init_mac;
 
-            log_tool.info("gffi2: " + global.filePath_for_init);
 
             mainWindow.webContents.send('open_init_from_main.js'); //レンダラ（index.html）へ'open_init_from_main.js'を命令
 
             // グローバル変数を初期化
-            openfile_mac = null;
+            global.filePath_for_init_mac = null;
         };
 
 

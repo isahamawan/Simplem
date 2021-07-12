@@ -47,8 +47,10 @@
           {
             "CFBundleTypeName": "Text Files",
             "CFBundleTypeRole": "Editor",
-            "LSItemContentTypes": [
-              "public.text"
+            "CFBundleTypeExtensions": [
+              "markdown",
+              "md",
+              "txt"
             ],
             "LSHandlerRank": "Default"
           }
@@ -66,7 +68,6 @@
   },
   "dependencies": {
     "about-window": "^1.14.0",
-    "commander": "^5.1.0",
     "electron-in-page-search": "^1.3.2",
     "electron-log": "^4.3.5"
   }
