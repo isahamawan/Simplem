@@ -35,8 +35,25 @@
       "package-lock.json"
     ],
     "mac": {
-      "target": "dmg",
-      "icon": "assets/s_icon.png"
+      "category": "public.app-category.developer-tools",
+      "target": "dir",
+      "icon": "assets/s_icon.png",
+      "extendInfo": {
+        "CFBundleName": "Simplem",
+        "CFBundleDisplayName": "Simplem",
+        "CFBundleExecutable": "Simplem",
+        "CFBundlePackageType": "APPL",
+        "CFBundleDocumentTypes": [
+          {
+            "CFBundleTypeName": "Text Files",
+            "CFBundleTypeRole": "Editor",
+            "LSItemContentTypes": [
+              "public.text"
+            ],
+            "LSHandlerRank": "Default"
+          }
+        ]
+      }
     },
     "win": {
       "target": "dir",

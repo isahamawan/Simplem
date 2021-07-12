@@ -8,9 +8,28 @@ const openAboutWindow = require("about-window").default;
 //const command_tool = require("commander");//後でアンインストールする
 const log_tool = require('electron-log');
 
-
 //const searchInPage = require('electron-in-page-search').default;
 
+//mac用
+let openfile_mac = null;
+
+//mac用の起動時のファイルの読み込み処理１／２
+// mac では ready イベントより前に発火するイベント 'will-finish-launching' でしか
+// 起動時のファイルパスを取得できない
+app.on('will-finish-launching', () => {
+    // mac のみに存在する 'open-file' イベント
+    app.on('open-file', (e, argv) => {
+        // 必須！
+        e.preventDefault();
+
+        // ready イベントより前のため、まだ webContents を呼べない
+        // いったんグローバル変数に預ける
+        openfile_mac = argv;
+
+        log_tool.info("openfile_mac: " + openfile_mac);
+        log_tool.info("argv_openfile: " + argv);
+    });
+});
 
 
 //ipc経由の機能------------------------------------------------------------------<
@@ -88,7 +107,10 @@ ipcMain.handle('open_init', async (event) => {
     //上書き保存用にファイルパスを保管
     global.filePath_for_save = global.filePath_for_init;
 
-    console.log(data);
+    // グローバル変数を初期化
+    global.filePath_for_init = null;
+
+    log_tool.info("data: " + data);
     return { data }
 });
 
@@ -236,20 +258,50 @@ app.on('ready', function () {
         //};
 
 
-        //引数から初期読み込み用のファイルパスを取得
+        //引数から初期読み込み用のファイルパスを取得(win用)
         let args = process.argv
         args.forEach(function (arg) {
 
             //引数の最後の.以降の文字（拡張子）がtxtとmdのときに初期読み込み用のファイルパスとして保管
             if (path_tool.extname(arg) == (".txt" || ".md")) {
                 global.filePath_for_init = arg;
-                log_tool.info("ファイルパス: " + arg);
             };
         });
 
         if (global.filePath_for_init) {
             mainWindow.webContents.send('open_init_from_main.js'); //レンダラ（index.html）へ'open_init_from_main.js'を命令
         };
+
+        log_tool.info("gffi1: " + global.filePath_for_init);
+        log_tool.info("om: " + openfile_mac);
+
+        // 初期読み込み用のファイルパスを取得２／２（mac用）
+        if (openfile_mac) {
+            // ファイルパスを取得
+            global.filePath_for_init = openfile_mac;
+
+            log_tool.info("gffi2: " + global.filePath_for_init);
+
+            mainWindow.webContents.send('open_init_from_main.js'); //レンダラ（index.html）へ'open_init_from_main.js'を命令
+
+            // グローバル変数を初期化
+            openfile_mac = null;
+        };
+
+
+        // mac用  ready イベント「以後」の 'open-file' イベントを拾ってファイルを読み込み
+        app.on('open-file', (e, argv) => {
+            e.preventDefault();
+
+            // ウィンドウが最小化されていたらレストアしてフォーカスを当てる
+            if (mainWindow.isMinimized()) mainWindow.restore();
+            mainWindow.focus();
+
+            global.filePath_for_init = argv;
+
+            mainWindow.webContents.send('open_init_from_main.js'); //レンダラ（index.html）へ'open_init_from_main.js'を命令
+
+        });
 
         //mainWindow.show();//白い画面を表示しないように読み込み完了時に表示(UX検証要)
     });
@@ -281,3 +333,5 @@ process.on('uncaughtException', (err) => {
     log_tool.error(err); // ログファイルへ記録
     //app.quit();     // アプリを終了する (継続しない方が良い)
 });
+
+
