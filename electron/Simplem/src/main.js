@@ -15,9 +15,9 @@ const log_tool = require('electron-log');
 //mac用の起動時のファイルの読み込み処理１／２
 // mac では ready イベントより前に発火するイベント 'will-finish-launching' でしか
 // 起動時のファイルパスを取得できない
-app.on('will-finish-launching', () => {
+app.once('will-finish-launching', () => {
     // mac のみに存在する 'open-file' イベント
-    app.on('open-file', (e, argv) => {
+    app.once('open-file', (e, argv) => {
         // 必須！
         e.preventDefault();
 
