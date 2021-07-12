@@ -20,11 +20,8 @@
     "url": "https://github.com/isahamawan/Simplem/issues"
   },
   "devDependencies": {
-    "about-window": "^1.14.0",
-    "commander": "^5.1.0",
     "electron": "^13.1.6",
-    "electron-builder": "^22.11.7",
-    "electron-in-page-search": "^1.3.2"
+    "electron-builder": "^22.11.7"
   },
   "build": {
     "appId": "com.electron.Simplem",
@@ -49,5 +46,11 @@
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
     }
+  },
+  "dependencies": {
+    "about-window": "^1.14.0",
+    "commander": "^5.1.0",
+    "electron-in-page-search": "^1.3.2",
+    "electron-log": "^4.3.5"
   }
 }

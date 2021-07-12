@@ -5,7 +5,9 @@ const fs = require('fs')
 const { app, BrowserWindow, Menu, ipcMain, dialog } = require("electron");
 const path_tool = require('path');
 const openAboutWindow = require("about-window").default;
-const command_tool = require("commander");
+//const command_tool = require("commander");//後でアンインストールする
+const log_tool = require('electron-log');
+
 
 //const searchInPage = require('electron-in-page-search').default;
 
@@ -86,7 +88,7 @@ ipcMain.handle('open_init', async (event) => {
     //上書き保存用にファイルパスを保管
     global.filePath_for_save = global.filePath_for_init;
 
-
+    console.log(data);
     return { data }
 });
 
@@ -108,7 +110,7 @@ function createWindow() {
     mainWindow.loadURL('file://' + __dirname + '/index.html');
     mainWindow.setMinimumSize(650, 300);
     mainWindow.setTitle('Simplem'); //メインプロセスでしか使えないので、レンダー側で使う場合はipc使う必要あり。index.html側でタイトルを設定している場合は効かない。
-    mainWindow.hide(); //読み込み中の白い画面を表示しない（どっちがいいかUX検証要）
+    //mainWindow.hide(); //読み込み中の白い画面を表示しない（どっちがいいかUX検証要）
 }
 
 
@@ -216,6 +218,9 @@ let template = [{
 
 // Electronの初期化完了後に実行
 app.on('ready', function () {
+
+
+
     //メニューバー設置
     const menu = Menu.buildFromTemplate(template);
     Menu.setApplicationMenu(menu);
@@ -223,22 +228,30 @@ app.on('ready', function () {
     createWindow();
     //mainWindow.webContents.openDevTools(); //デベロッパーツールの起動
 
-
     //レンダラーが読み込み完了後に実行
     mainWindow.webContents.on('did-finish-load', () => {
         //ビルド後の実行ファイルの引数として、ファイルパスが渡された場合はファイルを読み込み（ビルド前と後で引数の位置が変わるので注意）
         //for (let i = 0; i < process.argv.length; ++i) {
         //    console.log(i + ': ' + process.argv[i]);
         //};
-        // コマンドライン引数をcommanderでパースする
-        command_tool.parse(process.argv);
 
-        if (command_tool.args[0]) {
-            // ファイルパスをprogram.args配列から取り出す
-            global.filePath_for_init = command_tool.args[0];
+
+        //引数から初期読み込み用のファイルパスを取得
+        let args = process.argv
+        args.forEach(function (arg) {
+
+            //引数の最後の.以降の文字（拡張子）がtxtとmdのときに初期読み込み用のファイルパスとして保管
+            if (path_tool.extname(arg) == (".txt" || ".md")) {
+                global.filePath_for_init = arg;
+                log_tool.info("ファイルパス: " + arg);
+            };
+        });
+
+        if (global.filePath_for_init) {
             mainWindow.webContents.send('open_init_from_main.js'); //レンダラ（index.html）へ'open_init_from_main.js'を命令
         };
-        mainWindow.show();//白い画面を表示しないように読み込み完了時に表示(UX検証要)
+
+        //mainWindow.show();//白い画面を表示しないように読み込み完了時に表示(UX検証要)
     });
 
 });
@@ -263,3 +276,8 @@ app.on('activate', () => {
     }
 });
 
+//エラーをログに記録する。ログは~/library/logs/アプリ名のあたり作成される。
+process.on('uncaughtException', (err) => {
+    log_tool.error(err); // ログファイルへ記録
+    //app.quit();     // アプリを終了する (継続しない方が良い)
+});

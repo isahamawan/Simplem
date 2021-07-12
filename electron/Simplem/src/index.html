@@ -135,10 +135,9 @@
 
     //main.jsからの引数で渡されたファイル読み込み命令を処理
     ipcRenderer.on('open_init_from_main.js', async () => {
-        console.log('okok');
         const { data } = await ipcRenderer.invoke('open_init'); //main.jsのopen_initを呼び出し（data取得）
         let file_text_data = '';
-        file_text_data = data[0] || '';
+        file_text_data = data || '';
         easyMDE.value(file_text_data);
 
     });
