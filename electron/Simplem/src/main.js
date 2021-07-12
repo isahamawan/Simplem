@@ -131,7 +131,8 @@ function createWindow() {
     //mainWindow.hide(); //読み込み中の白い画面を表示しない（どっちがいいかUX検証要）
 }
 
-
+//常に最前面表示のオンオフ用
+global.switch_t = true;
 
 //メニューバー内容
 let template = [{
@@ -221,7 +222,22 @@ let template = [{
         { type: 'separator' },
         //{ role: 'toggleSpellChecker', label: 'スペルチェッカー切替え' },
         //{ type: 'separator' },
+        {
+            label: '常に最前面に表示',
+            accelerator: 'CmdOrCtrl+T',
+            type: 'checkbox',
+            click: function () {
+                mainWindow.setAlwaysOnTop(global.switch_t);
+                if (global.switch_t == true) {
+                    global.switch_t = false;
+                } else {
+                    global.switch_t = true;
+                };
+            }
+        },
+        { type: 'separator' },
         { role: 'toggleDevTools' },
+        { role: 'forceReload' },
     ]
 }, {
     label: "ウィンドウ",
