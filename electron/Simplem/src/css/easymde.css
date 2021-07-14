@@ -883,12 +883,13 @@
         margin:0;
     }
 
+    /* 編集エリアの調整 */
     .CodeMirror-scroll {
         overflow: scroll !important;
-        margin-bottom: -45px;
+        margin-bottom: -28px;
         margin-right: -50px;
-        padding-bottom: 34px;
-        height: calc(100vh - 49px - 34px);
+        padding-bottom: 28px;
+        height: calc(100vh - 33px - 28px - 6px);
         outline: 0;
         position: relative
     }
@@ -1213,6 +1214,11 @@
         background: linear-gradient(transparent 80%,#fff070 50%);
         font-weight: 700;
         color: #000;
+    }
+
+    /* ツールバーの表示調整 */
+    .editor-toolbar {
+        padding: 1px 1px;
     }
 
 
