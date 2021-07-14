@@ -142,6 +142,13 @@
 
     });
 
+    //main.jsからのselectall命令を処理
+    ipcRenderer.on('selectall_from_main.js', async () => {
+
+        easyMDE.codemirror.execCommand('selectAll');
+
+    });
+
     //let remote = window.remote;
     //let searchInPage = window.searchInPage;
     //main.jsからの検索窓オープンの命令を処理

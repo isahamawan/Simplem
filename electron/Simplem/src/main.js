@@ -192,7 +192,15 @@ let template = [{
         { role: 'copy', label: 'コピー' },
         { role: 'paste', label: '貼り付け' },
         { type: 'separator' },
-        { role: 'selectAll', label: '全て選択' },
+        {
+            label: '全て選択',
+            accelerator: 'CmdOrCtrl+A',
+            acceleratorWorksWhenHidden: false, //mac easymde側のバインドキー押下と被らないようにmainプロセス側はキーバインディング無効化
+            registerAccelerator: false, //win,linux
+            click: function () {
+                mainWindow.webContents.send('selectall_from_main.js');
+            }
+        },
         { type: 'separator' },
         //{
         //    label: '検索',
