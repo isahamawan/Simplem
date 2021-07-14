@@ -126,7 +126,7 @@ function createWindow() {
         }
     });
     mainWindow.loadURL('file://' + __dirname + '/index.html');
-    mainWindow.setMinimumSize(650, 300);
+    //mainWindow.setMinimumSize(650, 300);
     mainWindow.setTitle('Simplem'); //メインプロセスでしか使えないので、レンダー側で使う場合はipc使う必要あり。index.html側でタイトルを設定している場合は効かない。
     //mainWindow.hide(); //読み込み中の白い画面を表示しない（どっちがいいかUX検証要）
 }

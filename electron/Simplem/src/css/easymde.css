@@ -1219,6 +1219,9 @@
     /* ツールバーの表示調整 */
     .editor-toolbar {
         padding: 1px 1px;
+        /* ツールの折り返しなし設定 */
+        white-space: nowrap;
+        overflow:hidden;
     }
 
 
