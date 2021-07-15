@@ -2,7 +2,7 @@
 
 //モジュールを使えるようにする
 const fs = require('fs')
-const { app, BrowserWindow, Menu, ipcMain, dialog } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain, dialog, webContents } = require("electron");
 const path_tool = require('path');
 const openAboutWindow = require("about-window").default;
 const log_tool = require('electron-log');
@@ -175,7 +175,20 @@ let template = [{
         click: function () {
             mainWindow.webContents.send('save_as_from_main.js');
         }
-    }, {
+    },
+    { type: 'separator' },
+    {
+        label: '印刷',
+        //accelerator: 'CmdOrCtrl+Shift+K',
+        click: function () {
+            //mainWindow.webContents.executeJavaScript("window.print()");
+            console.log(webContents.getFocusedWebContents().printToPDF());
+            //mainWindow.webContents.print();//winではこれでも動く
+            //mainWindow.webContents.printToPDF();
+        }
+    },
+    { type: 'separator' },
+    {
         label: 'Simplemを終了',
         accelerator: 'CmdOrCtrl+Q',
         click: function () {
@@ -320,6 +333,8 @@ app.on('ready', function () {
             mainWindow.webContents.send('open_init_from_main.js'); //レンダラ（index.html）へ'open_init_from_main.js'を命令
 
         });
+
+
 
         //mainWindow.show();//白い画面を表示しないように読み込み完了時に表示(UX検証要)
     });

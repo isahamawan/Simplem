@@ -144,10 +144,15 @@
 
     //main.jsからのselectall命令を処理
     ipcRenderer.on('selectall_from_main.js', async () => {
-
         easyMDE.codemirror.execCommand('selectAll');
 
     });
+
+    //main.jsからのソースコードモードへの切替え命令を処理
+    //ipcRenderer.on('toggle_sorcemode_main.js', async () => {
+    // 作成中   <link rel="stylesheet" href="css/easymde.css" />
+//
+    //});
 
     //let remote = window.remote;
     //let searchInPage = window.searchInPage;

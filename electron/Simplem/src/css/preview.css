@@ -399,7 +399,7 @@ pre tt {
     border-radius: 0px;
     margin: 1em 0px 1em;
 }
-@media print {
+/* @media print {
     nav {
         display: none;
     }
@@ -409,7 +409,7 @@ pre tt {
     #previewer {
         border: 0;
     }
-}
+}*/
 /* START_HLJS_CSS */
 /*
 
