@@ -2,7 +2,7 @@
 
 //モジュールを使えるようにする
 const fs = require('fs')
-const { app, BrowserWindow, Menu, ipcMain, dialog, webContents } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain, dialog } = require("electron");
 const path_tool = require('path');
 const openAboutWindow = require("about-window").default;
 const log_tool = require('electron-log');
@@ -81,9 +81,9 @@ ipcMain.handle('save_as', async (event, text_data) => {
 //ファイルを上書き保存
 ipcMain.handle('save', async (event, text_data) => {
 
-    //一度も保存されていなければ、レンダラ（index.html）へ'save_as_from_main.js'を命令
+    //一度も保存されていなければ、レンダラ（index.html）へ'save_as_from_main'を命令
     if (!global.filePath_for_save) {
-        mainWindow.webContents.send('save_as_from_main.js');
+        mainWindow.webContents.send('save_as_from_main');
         return
     };
 
@@ -129,6 +129,8 @@ function createWindow() {
     //mainWindow.setMinimumSize(650, 300);
     mainWindow.setTitle('Simplem'); //メインプロセスでしか使えないので、レンダー側で使う場合はipc使う必要あり。index.html側でタイトルを設定している場合は効かない。
     //mainWindow.hide(); //読み込み中の白い画面を表示しない（どっちがいいかUX検証要）
+
+
 }
 
 //常に最前面表示のオンオフ用
@@ -161,19 +163,19 @@ let template = [{
         label: 'ファイルを開く',
         accelerator: 'CmdOrCtrl+O',
         click: function () {
-            mainWindow.webContents.send('open_from_main.js'); //レンダラ（index.html）へ'open_from_main.js'を命令
+            mainWindow.webContents.send('open_from_main'); //レンダラ（index.html）へ'open_from_main'を命令
         }
     }, {
         label: '上書き保存',
         accelerator: 'CmdOrCtrl+S',
         click: function () {
-            mainWindow.webContents.send('save_from_main.js');
+            mainWindow.webContents.send('save_from_main');
         }
     }, {
         label: '名前を付けて保存',
         accelerator: 'CmdOrCtrl+Shift+S',
         click: function () {
-            mainWindow.webContents.send('save_as_from_main.js');
+            mainWindow.webContents.send('save_as_from_main');
         }
     },
     { type: 'separator' },
@@ -181,10 +183,29 @@ let template = [{
         label: '印刷',
         //accelerator: 'CmdOrCtrl+Shift+K',
         click: function () {
-            //mainWindow.webContents.executeJavaScript("window.print()");
-            console.log(webContents.getFocusedWebContents().printToPDF());
-            //mainWindow.webContents.print();//winではこれでも動く
-            //mainWindow.webContents.printToPDF();
+
+            mainWindow.webContents.executeJavaScript("window.print()");
+            //mainWindow.webContents.print();//winではこれでも動く getprinterでプリンターが無しなら動かない？
+
+        }
+    },
+    {
+        label: 'PDFで出力',
+        //accelerator: 'CmdOrCtrl+Shift+K',
+        click: async () => {
+
+            let buffer_pdf = await mainWindow.webContents.printToPDF({ landscape: false });
+
+            const { canceled, filePath } = await dialog.showSaveDialog({
+                filters: [
+                    { name: 'PDFファイル', extensions: ['pdf'] }
+                ]
+            })
+
+            if (canceled) return
+
+            await fs.promises.writeFile(filePath, buffer_pdf);
+
         }
     },
     { type: 'separator' },
@@ -211,7 +232,7 @@ let template = [{
             acceleratorWorksWhenHidden: false, //mac easymde側のバインドキー押下と被らないようにmainプロセス側はキーバインディング無効化
             registerAccelerator: false, //win,linux
             click: function () {
-                mainWindow.webContents.send('selectall_from_main.js');
+                mainWindow.webContents.send('selectall_from_main');
             }
         },
         { type: 'separator' },
@@ -302,7 +323,7 @@ app.on('ready', function () {
         });
 
         if (global.filePath_for_init) {
-            mainWindow.webContents.send('open_init_from_main.js'); //レンダラ（index.html）へ'open_init_from_main.js'を命令
+            mainWindow.webContents.send('open_init_from_main'); //レンダラ（index.html）へ'open_init_from_main'を命令
         };
 
 
@@ -313,7 +334,7 @@ app.on('ready', function () {
             global.filePath_for_init = global.filePath_for_init_mac;
 
 
-            mainWindow.webContents.send('open_init_from_main.js'); //レンダラ（index.html）へ'open_init_from_main.js'を命令
+            mainWindow.webContents.send('open_init_from_main'); //レンダラ（index.html）へ'open_init_from_main'を命令
 
             // グローバル変数を初期化
             global.filePath_for_init_mac = null;
@@ -330,7 +351,7 @@ app.on('ready', function () {
 
             global.filePath_for_init = argv;
 
-            mainWindow.webContents.send('open_init_from_main.js'); //レンダラ（index.html）へ'open_init_from_main.js'を命令
+            mainWindow.webContents.send('open_init_from_main'); //レンダラ（index.html）へ'open_init_from_main'を命令
 
         });
 

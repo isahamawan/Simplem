@@ -8,7 +8,7 @@
     <!-- CSP設定（セキュリティ対策の一部）。scriptやeval()やcss,画像の読み込みなどでエラーが出る場合はここを調整要。 -->
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
 
-    <!-- main.js側で設定する場合は、コメントアウトが必要　-->
+    <!-- main側で設定する場合は、コメントアウトが必要-->
     <!-- document.getElementsByTagName("title")[0].text = "*sample.text - Simplem" のような形でファイル名を反映させる？ -->
     <!--<title>Simplem</title>-->
 
@@ -112,51 +112,51 @@
     const app = window.app;
 
 
-    //main.jsからのファイル読み込み命令を処理
-    ipcRenderer.on('open_from_main.js', async () => {
-        const { canceled, data } = await ipcRenderer.invoke('open') //main.jsのopenを呼び出し（data取得）
+    //mainからのファイル読み込み命令を処理
+    ipcRenderer.on('open_from_main', async () => {
+        const { canceled, data } = await ipcRenderer.invoke('open') //mainのopenを呼び出し（data取得）
         if (canceled) return
         let file_text_data = '';
         file_text_data = data[0] || '';
         easyMDE.value(file_text_data);
     });
 
-    //main.jsからの上書き保存命令を処理
-    ipcRenderer.on('save_from_main.js', async () => {
+    //mainからの上書き保存命令を処理
+    ipcRenderer.on('save_from_main', async () => {
         const text_data = easyMDE.value();
-        await ipcRenderer.invoke('save', text_data); //main.jsのsaveを呼び出し(text_data受渡)
+        await ipcRenderer.invoke('save', text_data); //mainのsaveを呼び出し(text_data受渡)
     });
 
-    //main.jsからの名前を付けて保存命令を処理
-    ipcRenderer.on('save_as_from_main.js', async () => {
+    //mainからの名前を付けて保存命令を処理
+    ipcRenderer.on('save_as_from_main', async () => {
         const text_data = easyMDE.value();
         await ipcRenderer.invoke('save_as', text_data);
     });
 
-    //main.jsからの引数で渡されたファイル読み込み命令を処理
-    ipcRenderer.on('open_init_from_main.js', async () => {
-        const { data } = await ipcRenderer.invoke('open_init'); //main.jsのopen_initを呼び出し（data取得）
+    //mainからの引数で渡されたファイル読み込み命令を処理
+    ipcRenderer.on('open_init_from_main', async () => {
+        const { data } = await ipcRenderer.invoke('open_init'); //mainのopen_initを呼び出し（data取得）
         let file_text_data = '';
         file_text_data = data || '';
         easyMDE.value(file_text_data);
 
     });
 
-    //main.jsからのselectall命令を処理
-    ipcRenderer.on('selectall_from_main.js', async () => {
+    //mainからのselectall命令を処理
+    ipcRenderer.on('selectall_from_main', async () => {
         easyMDE.codemirror.execCommand('selectAll');
 
     });
 
-    //main.jsからのソースコードモードへの切替え命令を処理
-    //ipcRenderer.on('toggle_sorcemode_main.js', async () => {
+    //mainからのソースコードモードへの切替え命令を処理
+    //ipcRenderer.on('toggle_sorcemode_main', async () => {
     // 作成中   <link rel="stylesheet" href="css/easymde.css" />
 //
     //});
 
     //let remote = window.remote;
     //let searchInPage = window.searchInPage;
-    //main.jsからの検索窓オープンの命令を処理
+    //mainからの検索窓オープンの命令を処理
     //ipcRenderer.on('webdata', async (webcontents_for_search) => {
     //    let inPageSearch = searchInPage(webcontents_for_search);
     //    inPageSearch.openSearchWindow();
@@ -164,7 +164,7 @@
 
 
 
-    //ファイルの読み込みをmain.jsから呼び出し（ボタン用）
+    //ファイルの読み込みをmainから呼び出し（ボタン用）
     //document.querySelector('#open').addEventListener('click', async () => {
     //    const { canceled, data } = await ipcRenderer.invoke('open')
     //    if (canceled) return
@@ -173,14 +173,14 @@
     //    easyMDE.value(file_text_data);
     //});
 
-    //ファイルの上書き保存をmain.jsから呼び出し（ボタン用）
+    //ファイルの上書き保存をmainから呼び出し（ボタン用）
     //document.querySelector('#save').addEventListener('click', async () => {
     //    const text_data = easyMDE.value();
     //    await ipcRenderer.invoke('save', text_data);
     //});
 
 
-    //ファイルの名前を付けて保存をmain.jsから呼び出し（ボタン用）
+    //ファイルの名前を付けて保存をmainから呼び出し（ボタン用）
     //document.querySelector('#save_as').addEventListener('click', async () => {
     //    const text_data = easyMDE.value();
     //    await ipcRenderer.invoke('save_as', text_data);
