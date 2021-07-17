@@ -10885,7 +10885,8 @@
                     var hrRE = /^([*\-_])(?:\s*\1){2,}\s*$/
                         , listRE = /^(?:[*\-+]|^[0-9]+([.)]))\s+/
                         , taskListRE = /^\[(x| )\](?=\s)/i // Must follow listRE
-                        , atxHeaderRE = modeCfg.allowAtxHeaderWithoutSpace ? /^(#+)/ : /^(#+)(?: |$)/
+                        //, atxHeaderRE = modeCfg.allowAtxHeaderWithoutSpace ? /^(#+)/ : /^(#+)(?: |$)/ //オリジナル
+                        , atxHeaderRE = modeCfg.allowAtxHeaderWithoutSpace ? /^(#+)/ : /^(#+)(?: )/ //hの反映にスペース要とした
                         , setextHeaderRE = /^ {0,3}(?:\={1,}|-{2,})\s*$/
                         , textRE = /^[^#!\[\]*_\\<>` "'(~:]+/
                         , fencedCodeRE = /^(~~~+|```+)[ \t]*([\w\/+#-]*)[^\n`]*$/
