@@ -18143,6 +18143,7 @@
                     }
 
                     // Set options
+                    markedOptions.headerIds = false; //hからidを削除
                     marked.setOptions(markedOptions);
 
                     // Convert the markdown to HTML

@@ -2,7 +2,7 @@
 
 //モジュールを使えるようにする
 const fs = require('fs')
-const { app, BrowserWindow, Menu, ipcMain, dialog } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain, dialog, clipboard } = require("electron");
 const path_tool = require('path');
 const openAboutWindow = require("about-window").default;
 const log_tool = require('electron-log');
@@ -110,6 +110,14 @@ ipcMain.handle('open_init', async (event) => {
     return { data }
 });
 
+
+//clipboardへhtmlをコピー
+ipcMain.handle('html_to_clipboard', async (event, parsered_preview_html_plaintext) => {
+
+    clipboard.writeText(parsered_preview_html_plaintext, clipboard);
+
+});
+
 //ipc経由の機能------------------------------------------------------------------>
 
 
@@ -205,6 +213,15 @@ let template = [{
             if (canceled) return
 
             await fs.promises.writeFile(filePath, buffer_pdf);
+
+        }
+    },
+    {
+        label: 'htmlとしてクリップボードへコピー',
+        //accelerator: 'CmdOrCtrl+Shift+K',
+        click: function () {
+
+            mainWindow.webContents.send("html_to_clipboard_from_main");
 
         }
     },

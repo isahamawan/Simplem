@@ -148,10 +148,24 @@
 
     });
 
+    //mainからのclipboardへのhtmlコピー命令を処理
+    ipcRenderer.on('html_to_clipboard_from_main', async () => {
+
+
+        //プレビューhtmlの取得
+        //let preview_html_plaintext = easyMDE.options.parent.markdown(easyMDE.value()); //でも可（同義）
+        let preview_html_plaintext = easyMDE.options.previewRender(easyMDE.value());
+
+        let domparser = new DOMParser();
+        let preview_html_document = domparser.parseFromString(preview_html_plaintext, "text/html"); //DOM操作可能なdocumentオブジェを取得
+        let parsered_preview_html_plaintext = preview_html_document.getElementsByTagName("body")[0].innerHTML;
+        await ipcRenderer.invoke('html_to_clipboard', parsered_preview_html_plaintext);
+    });
+
     //mainからのソースコードモードへの切替え命令を処理
     //ipcRenderer.on('toggle_sorcemode_main', async () => {
     // 作成中   <link rel="stylesheet" href="css/easymde.css" />
-//
+    //
     //});
 
     //let remote = window.remote;
@@ -187,6 +201,7 @@
     //});
 
     //ipc経由の機能------------------------------------------------------------------>
+
 
 
 </script>
