@@ -17299,8 +17299,10 @@
                                 } else {
                                     text = '# ' + text;
                                 }
-                            } else if (currHeadingLevel == 6 && direction == 'smaller') {
-                                text = text.substr(7);
+                                //} else if (currHeadingLevel == 6 && direction == 'smaller') { //オリジナル
+                                //    text = text.substr(7);
+                            } else if (currHeadingLevel == 3 && direction == 'smaller') { //ショートカットのヘッディングをh3までに変更
+                                text = text.substr(4);                                    //
                             } else if (currHeadingLevel == 1 && direction == 'bigger') {
                                 text = text.substr(2);
                             } else {
