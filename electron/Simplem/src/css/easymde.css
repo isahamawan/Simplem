@@ -1224,6 +1224,12 @@
         overflow:hidden;
     }
 
+    /* 選択行の#や**を表示 */
+    .active-line {
+        font-size:14px;
+        display:inline;
+    }
+
 
     /* 見たままプレビューモード用（作成中）
     .cm-formatting-strong, .cm-s-easymde .cm-formatting-header-1 {

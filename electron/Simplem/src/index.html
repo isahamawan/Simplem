@@ -200,6 +200,39 @@
     //    await ipcRenderer.invoke('save_as', text_data);
     //});
 
+
+    //一つまえのカーソルがアクティブだった場所をグローバル保存（シャープ表示テスト用）
+    let arr_cur_pos = [{ init: null }];
+    //シャープ表示のテスト中
+    easyMDE.codemirror.on('cursorActivity', function () {
+
+        //アルゴリズム
+        //1 getstate.bold=trueならその行にactiveクラス（#や**を表示）追加。
+        //2 カーソル移動ごとに一つ前のカーソルの行のmarkをクリア。（一つ前の行が今の行と同じならばクリア無し）
+
+
+        let mark_state = easyMDE.getState();
+        console.log(mark_state);
+
+        let cur_pos = easyMDE.codemirror.getCursor();
+        console.log(cur_pos);
+
+        if (mark_state.bold) {
+            easyMDE.codemirror.markText({ line: cur_pos.line, ch: 0 }, { line: cur_pos.line + 1, ch: 0 }, { className: "active-line" });
+        }
+
+        //テキストマーク追加
+        //easyMDE.codemirror.markText({ line: 0, ch: 0 }, { line: 1, ch: 0 }, { className: "hhhhasdf" });
+
+        //テキストマーククリア
+        //easyMDE.codemirror.findMarksAt({ line: easyMDE.codemirror.getCursor().line, ch: easyMDE.codemirror.getCursor().line })[0].clear();
+
+        arr_cur_pos.unshift(cur_pos);
+        console.log(arr_cur_pos.pop());
+        //arr_curpos.pop();
+
+    });
+
     //ipc経由の機能------------------------------------------------------------------>
 
 
