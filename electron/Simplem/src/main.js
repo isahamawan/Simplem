@@ -127,7 +127,7 @@ let mainWindow;
 //アプリの画面を作成
 function createWindow() {
     mainWindow = new BrowserWindow({
-        width: 800, height: 600, 'icon': __dirname + 'favicon.png', webPreferences: {
+        width: 560, height: 600, 'icon': __dirname + 'favicon.png', webPreferences: {
             nodeIntegration: false, // falseでレンダラープロセスでのモジュール使用を制限（XSS回避のため）
             contextIsolation: false, //nodeIntegration:false状態でモジュール共有を行うために、contextIsolationをfalseにする必要あり
             preload: __dirname + '/preload.js' // nodeIntegrationとセット（モジュールの使用許可）。読み込んだモジュールをグローバルに共有→それをレンダラープロセスで使用」という形で、レンダラープロセスでのNode APIの利用を可能にできる

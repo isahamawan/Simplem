@@ -11,7 +11,6 @@
     <!-- main側で設定する場合は、コメントアウトが必要-->
     <!-- document.getElementsByTagName("title")[0].text = "*sample.text - Simplem" のような形でファイル名を反映させる？ -->
     <!--<title>Simplem</title>-->
-
     <!-- short hand, igniter, skillet, overwhelm, catalyst, gale, Simple Glint, SimpleGlint, Glint -->
 
     <!-- Bootstrap core CSS
@@ -22,7 +21,17 @@
     <!-- font awesome CSS -->
     <link rel="stylesheet" href="css/all.min.css">
 
+    <!-- preview CSS -->
+    <link rel="stylesheet" href="css/preview.css">
+
+    <!-- easymde CSS and JS -->
+    <link rel="stylesheet" href="css/easymde.css">
+
+
+
 </head>
+
+<script src="easymde.js"></script>
 
 <body>
     <!--開く、保存、名前を付けて保存ボタン
@@ -33,14 +42,6 @@
         <button id="some-button" type="button">Search</button>
     </div>
     -->
-
-
-    <!-- preview CSS -->
-    <link rel="stylesheet" href="css/preview.css">
-
-    <!-- easymde CSS and JS -->
-    <link rel="stylesheet" href="css/easymde.css">
-    <script src="easymde.js"></script>
 
     <textarea id="my-text-area"></textarea>
 
@@ -60,15 +61,15 @@
         //lineNumbers: true,
         autofocus: true,
         forceSync: true,
-        hideIcons: ["fullscreen", "heading", "italic"],
+        hideIcons: ["fullscreen", "heading", "italic", "image"],
         //initialValue: "# Hello world!",
         //parsingConfig: { allowAtxHeaderWithoutSpace: true },
         renderingConfig: {
             singleLineBreaks: true,
             //codeSyntaxHighlighting: true,
         },
-        //テーブル機能はオプションとして登録予定。
-        showIcons: ['strikethrough', 'code', 'redo', 'table', 'undo', 'heading-1', 'heading-2', 'heading-3', 'horizontal-rule'],
+        //テーブル機能はオプションとして登録予定。'table',
+        showIcons: ['strikethrough', 'code', 'redo', 'undo', 'heading-1', 'heading-2', 'heading-3', 'horizontal-rule'],
         spellChecker: false,
         status: ["lines"],
         //toolbar: false,
@@ -201,24 +202,58 @@
     //});
 
 
+    //ipc経由の機能------------------------------------------------------------------>
+
+
+    //シャープ表示のテスト中---------------------------------------------------------------------<
     //一つまえのカーソルがアクティブだった場所をグローバル保存（シャープ表示テスト用）
     let arr_cur_pos = [{ init: null }];
-    //シャープ表示のテスト中
+    let arr_mark_state = [{ init: null }];
+    //active-line状態のフラグ
+    let flg_active_line = false;
+
     easyMDE.codemirror.on('cursorActivity', function () {
 
         //アルゴリズム
         //1 getstate.bold=trueならその行にactiveクラス（#や**を表示）追加。
         //2 カーソル移動ごとに一つ前のカーソルの行のmarkをクリア。（一つ前の行が今の行と同じならばクリア無し）
 
+        //現在のカーソル位置の位置情報とマーク情報を取得
+        let cur_pos = easyMDE.codemirror.getCursor();
+        console.log(cur_pos);
 
         let mark_state = easyMDE.getState();
         console.log(mark_state);
 
-        let cur_pos = easyMDE.codemirror.getCursor();
-        console.log(cur_pos);
 
-        if (mark_state.bold) {
-            easyMDE.codemirror.markText({ line: cur_pos.line, ch: 0 }, { line: cur_pos.line + 1, ch: 0 }, { className: "active-line" });
+
+        //一つまえのカーソル位置の、位置情報とマーク情報を取得（現在のカーソル位置情報も保管。先入れ後出し）
+        arr_cur_pos.unshift(cur_pos);
+        let cur_pos_previous = arr_cur_pos.pop();
+
+        arr_mark_state.unshift(mark_state);
+        let mark_state_previous = arr_mark_state.pop();
+
+        //マークのクリア
+        if (mark_state_previous.heading || mark_state_previous.bold) {
+            //ヘッダーのマークのクリア
+            if (((!mark_state.heading) || (cur_pos.line != cur_pos_previous.line)) && (flg_active_line == true)) {
+                easyMDE.codemirror.findMarksAt({ line: cur_pos_previous.line, ch: cur_pos_previous.ch })[0].clear();
+                flg_active_line = !flg_active_line;
+            }
+
+            //ボールドのマークのクリア
+            if ((((!mark_state.heading) && (!mark_state.bold)) || (cur_pos.line != cur_pos_previous.line)) && (flg_active_line == true)) {
+                easyMDE.codemirror.findMarksAt({ line: cur_pos_previous.line, ch: cur_pos_previous.ch })[0].clear();
+                flg_active_line = !flg_active_line;
+            }
+        }
+
+        //カーソル位置がヘッダーや太字の時に、テキストマーク(active-lineクラス)追加。clearOnEnterオプションも付与
+        if ((mark_state.bold || mark_state.heading) && (flg_active_line == false)) {
+            //easyMDE.codemirror.markText({ line: cur_pos.line, ch: 0 }, { line: cur_pos.line + 1, ch: 0 }, { className: "active-line", clearOnEnter: true });//フラグ無しでやるならこっち
+            easyMDE.codemirror.markText({ line: cur_pos.line, ch: 0 }, { line: cur_pos.line + 1, ch: 0 }, { className: "active-line", inclusiveRight: true });
+            flg_active_line = !flg_active_line;
         }
 
         //テキストマーク追加
@@ -227,13 +262,9 @@
         //テキストマーククリア
         //easyMDE.codemirror.findMarksAt({ line: easyMDE.codemirror.getCursor().line, ch: easyMDE.codemirror.getCursor().line })[0].clear();
 
-        arr_cur_pos.unshift(cur_pos);
-        console.log(arr_cur_pos.pop());
-        //arr_curpos.pop();
-
     });
+    //シャープ表示のテスト中--------------------------------------------------------------------->
 
-    //ipc経由の機能------------------------------------------------------------------>
 
 
 
