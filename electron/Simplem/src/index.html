@@ -205,7 +205,7 @@
     //ipc経由の機能------------------------------------------------------------------>
 
 
-    //シャープ表示のテスト中---------------------------------------------------------------------<
+    //トークン表示のテスト中---------------------------------------------------------------------<
     //一つまえのカーソルがアクティブだった場所をグローバル保存（シャープ表示テスト用）
     let arr_cur_pos = [{ init: null }];
     let arr_mark_state = [{ init: null }];
@@ -234,23 +234,24 @@
         arr_mark_state.unshift(mark_state);
         let mark_state_previous = arr_mark_state.pop();
 
-        //マークのクリア
-        if (mark_state_previous.heading || mark_state_previous.bold) {
-            //ヘッダーのマークのクリア
-            if (((!mark_state.heading) || (cur_pos.line != cur_pos_previous.line)) && (flg_active_line == true)) {
+        //マークのクリア（直前のカーソル位置がマークの場合に実行）
+        if (mark_state_previous.heading || mark_state_previous.bold || mark_state_previous.strikethrough || mark_state_previous.code) {
+
+            //ヘッダーとボールドと取消し線のマークのクリア（現在のカーソル位置がマーク無しの場合に実行）
+            if ((((!mark_state.heading) && (!mark_state.bold) && (!mark_state.strikethrough) && (!mark_state.code)) || (cur_pos.line != cur_pos_previous.line)) && (flg_active_line == true)) {
                 easyMDE.codemirror.findMarksAt({ line: cur_pos_previous.line, ch: cur_pos_previous.ch })[0].clear();
                 flg_active_line = !flg_active_line;
             }
 
-            //ボールドのマークのクリア
-            if ((((!mark_state.heading) && (!mark_state.bold)) || (cur_pos.line != cur_pos_previous.line)) && (flg_active_line == true)) {
-                easyMDE.codemirror.findMarksAt({ line: cur_pos_previous.line, ch: cur_pos_previous.ch })[0].clear();
-                flg_active_line = !flg_active_line;
-            }
+            //ヘッダーのマークのクリア
+            //if (((!mark_state.heading) || (cur_pos.line != cur_pos_previous.line)) && (flg_active_line == true)) {
+            //    easyMDE.codemirror.findMarksAt({ line: cur_pos_previous.line, ch: cur_pos_previous.ch })[0].clear();
+            //    flg_active_line = !flg_active_line;
+            //}
         }
 
-        //カーソル位置がヘッダーや太字の時に、テキストマーク(active-lineクラス)追加。clearOnEnterオプションも付与
-        if ((mark_state.bold || mark_state.heading) && (flg_active_line == false)) {
+        //カーソル位置がヘッダーとボールドと取消し線の時に、テキストマーク(active-lineクラス)追加。
+        if ((mark_state.bold || mark_state.heading || mark_state.strikethrough || mark_state.code) && (flg_active_line == false)) {
             //easyMDE.codemirror.markText({ line: cur_pos.line, ch: 0 }, { line: cur_pos.line + 1, ch: 0 }, { className: "active-line", clearOnEnter: true });//フラグ無しでやるならこっち
             easyMDE.codemirror.markText({ line: cur_pos.line, ch: 0 }, { line: cur_pos.line + 1, ch: 0 }, { className: "active-line", inclusiveRight: true });
             flg_active_line = !flg_active_line;
@@ -263,7 +264,7 @@
         //easyMDE.codemirror.findMarksAt({ line: easyMDE.codemirror.getCursor().line, ch: easyMDE.codemirror.getCursor().line })[0].clear();
 
     });
-    //シャープ表示のテスト中--------------------------------------------------------------------->
+    //トークン表示のテスト中--------------------------------------------------------------------->
 
 
 

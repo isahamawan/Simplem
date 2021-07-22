@@ -1225,6 +1225,15 @@
         color: #000;
     }
 
+    /* ツールバーの表示調整 */
+    .editor-toolbar {
+        padding: 1px 1px;
+        /* ツールの折り返しなし設定 */
+        white-space: nowrap;
+        overflow:hidden;
+    }
+
+    /* 選択行のボールドのトークンの表示 */
     .cm-s-easymde .cm-formatting-strong {
         font-size:0;
     }
@@ -1233,12 +1242,22 @@
         font-size:inherit;
     }
 
-    /* ツールバーの表示調整 */
-    .editor-toolbar {
-        padding: 1px 1px;
-        /* ツールの折り返しなし設定 */
-        white-space: nowrap;
-        overflow:hidden;
+    /* 選択行の取消し線のトークンの表示 */
+    .cm-s-easymde .cm-formatting-strikethrough {
+        font-size:0;
+    }
+
+    .cm-s-easymde  .active-line[class~="cm-strikethrough"] {
+        font-size:inherit;
+    }
+
+    /* 選択行のcodeのトークンの表示 */
+    .cm-s-easymde .cm-formatting-code {
+        font-size:0;
+    }
+
+    .cm-s-easymde  .active-line[class~="cm-comment"] {
+        font-size:13px;
     }
 
     /* 選択行の#を表示 */
