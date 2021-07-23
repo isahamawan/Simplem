@@ -118,6 +118,31 @@ ipcMain.handle('html_to_clipboard', async (event, parsered_preview_html_plaintex
 
 });
 
+//印刷
+ipcMain.handle('print', async (event) => {
+
+    mainWindow.webContents.executeJavaScript("window.print()");
+    //mainWindow.webContents.print();//winではこれでも動く macはgetprinterでプリンターが無しなら動かない？
+
+});
+
+//PDF出力
+ipcMain.handle('print_to_pdf', async (event) => {
+
+    let buffer_pdf = await mainWindow.webContents.printToPDF({ landscape: false });
+
+    const { canceled, filePath } = await dialog.showSaveDialog({
+        filters: [
+            { name: 'PDFファイル', extensions: ['pdf'] }
+        ]
+    })
+
+    if (canceled) return
+
+    await fs.promises.writeFile(filePath, buffer_pdf);
+
+});
+
 //ipc経由の機能------------------------------------------------------------------>
 
 
@@ -192,27 +217,16 @@ let template = [{
         //accelerator: 'CmdOrCtrl+Shift+K',
         click: function () {
 
-            mainWindow.webContents.executeJavaScript("window.print()");
-            //mainWindow.webContents.print();//winではこれでも動く getprinterでプリンターが無しなら動かない？
+            mainWindow.webContents.send('print_from_main');
 
         }
     },
     {
-        label: 'PDFで出力',
+        label: 'PDFとして出力',
         //accelerator: 'CmdOrCtrl+Shift+K',
-        click: async () => {
+        click: function () {
 
-            let buffer_pdf = await mainWindow.webContents.printToPDF({ landscape: false });
-
-            const { canceled, filePath } = await dialog.showSaveDialog({
-                filters: [
-                    { name: 'PDFファイル', extensions: ['pdf'] }
-                ]
-            })
-
-            if (canceled) return
-
-            await fs.promises.writeFile(filePath, buffer_pdf);
+            mainWindow.webContents.send("print_to_pdf_from_main");
 
         }
     },

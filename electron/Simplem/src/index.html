@@ -27,6 +27,9 @@
     <!-- easymde CSS and JS -->
     <link rel="stylesheet" href="css/easymde.css">
 
+    <!-- print CSS -->
+    <link rel="stylesheet" href="css/print.css">
+
 
 
 </head>
@@ -161,6 +164,26 @@
         let preview_html_document = domparser.parseFromString(preview_html_plaintext, "text/html"); //DOM操作可能なdocumentオブジェを取得
         let parsered_preview_html_plaintext = preview_html_document.getElementsByTagName("body")[0].innerHTML;
         await ipcRenderer.invoke('html_to_clipboard', parsered_preview_html_plaintext);
+    });
+
+    //mainからの印刷命令を処理
+    ipcRenderer.on('print_from_main', async () => {
+
+        if (easyMDE.isPreviewActive() == false) {
+            await easyMDE.togglePreview();
+        }
+
+        ipcRenderer.invoke('print');
+    });
+
+    //mainからのPDF出力命令を処理
+    ipcRenderer.on('print_to_pdf_from_main', async () => {
+
+        if (easyMDE.isPreviewActive() == false) {
+            await easyMDE.togglePreview();
+        }
+
+        ipcRenderer.invoke('print_to_pdf');
     });
 
     //mainからのソースコードモードへの切替え命令を処理
