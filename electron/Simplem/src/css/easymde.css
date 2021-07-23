@@ -1194,24 +1194,6 @@
         background: #d9d9d9;
     }
 
-    @font-face {
-      font-family: "GenShinML";
-      src: url("../webfonts/GenShinGothic-Monospace-Light.ttf") format("truetype");
-      font-display: block;
-    }
-
-    @font-face {
-      font-family: "InconsolataR";
-      src: url("../webfonts/Inconsolata-Regular.ttf") format("truetype");
-      font-display: block;
-    }
-
-    body,
-    title {
-      font-family: "InconsolataR","GenShinML";
-      /*font-weight: 500;*/
-    }
-
     /* はみ出した全体下線をhidden */
     .CodeMirror-sizer {
         overflow:hidden;

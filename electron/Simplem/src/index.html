@@ -30,6 +30,8 @@
     <!-- print CSS -->
     <link rel="stylesheet" href="css/print.css">
 
+    <!-- font CSS -->
+    <link rel="stylesheet" href="css/font/font_simplem.css">
 
 
 </head>
@@ -54,7 +56,7 @@
     let easyMDE = new EasyMDE({
         element: document.getElementById('my-text-area'),
         autoDownloadFontAwesome: false,
-        minHeight: "1px",
+        minHeight: "unset",
         //autosave: {
         //    enabled: true,
         //    delay: 1000,
@@ -243,10 +245,10 @@
 
         //現在のカーソル位置の位置情報とマーク情報を取得
         let cur_pos = easyMDE.codemirror.getCursor();
-        console.log(cur_pos);
+        //console.log(cur_pos);//開発用 カーソル位置検出
 
         let mark_state = easyMDE.getState();
-        console.log(mark_state);
+        //console.log(mark_state);//開発用 カーソル位置のマーク検出
 
 
 
