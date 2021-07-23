@@ -1,0 +1,11 @@
+    @font-face {
+      font-family: "Beautiful_pixel";
+      src: url("../../webfonts/MaruMonica.ttf") format("truetype");
+      font-display: block;
+    }
+
+    body,
+    title {
+      font-family: "Beautiful_pixel";
+      /*font-weight: 500;*/
+    }

@@ -1,0 +1,11 @@
+    @font-face {
+      font-family: "Myricam";
+      src: url("../../webfonts/myricam.ttf") format("truetype");
+      font-display: block;
+    }
+
+    body,
+    title {
+      font-family: "Myricam";
+      /*font-weight: 500;*/
+    }

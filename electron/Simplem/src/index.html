@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="css/print.css">
 
     <!-- font CSS -->
-    <link rel="stylesheet" href="css/font/font_simplem.css">
+    <link id="font_css" rel="stylesheet" href="css/font/font_modern_os.css">
 
 
 </head>
@@ -56,7 +56,7 @@
     let easyMDE = new EasyMDE({
         element: document.getElementById('my-text-area'),
         autoDownloadFontAwesome: false,
-        minHeight: "unset",
+        minHeight: "1px",
         //autosave: {
         //    enabled: true,
         //    delay: 1000,
@@ -186,6 +186,29 @@
         }
 
         ipcRenderer.invoke('print_to_pdf');
+    });
+
+    //mainからのfont変更命令の処理
+    ipcRenderer.on('change_font_from_main', async (event, font_kind) => {
+
+        // id属性からHTML要素を取得
+        let font_css_link = document.getElementById("font_css");
+
+        //fontリンクのhref書き換え
+        if (font_kind == "modern_os") {
+            font_css_link.href = "css/font/font_modern_os.css";
+        } else if (font_kind == "simplem") {
+            font_css_link.href = "css/font/font_simplem.css";
+        } else if (font_kind == "myricam") {
+            font_css_link.href = "css/font/font_myricam.css";
+        } else if (font_kind == "retro_rpg") {
+            font_css_link.href = "css/font/font_retro_rpg.css";
+        } else if (font_kind == "beautiful_pixel") {
+            font_css_link.href = "css/font/font_pixel.css";
+        } else if (font_kind == "beautiful_mincho") {
+            font_css_link.href = "css/font/font_beautiful_mincho.css";
+        }
+
     });
 
     //mainからのソースコードモードへの切替え命令を処理

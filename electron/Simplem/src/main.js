@@ -319,6 +319,71 @@ let template = [{
         { role: 'minimize', label: '最小化' },
         //{ role: 'windowMenu' },
     ]
+}, {
+    label: "フォント",
+    submenu: [
+        {
+            label: 'モダンOS',
+            type: 'radio',
+            checked: true,
+            //accelerator: 'CmdOrCtrl+Shift+K',
+            click: function () {
+
+                mainWindow.webContents.send("change_font_from_main", "modern_os");
+
+            }
+        },
+        {
+            label: 'Simplem',
+            type: 'radio',
+            //accelerator: 'CmdOrCtrl+Shift+K',
+            click: function () {
+
+                mainWindow.webContents.send("change_font_from_main", "simplem");
+
+            }
+        },
+        {
+            label: 'Myricam',
+            type: 'radio',
+            //accelerator: 'CmdOrCtrl+Shift+K',
+            click: function () {
+
+                mainWindow.webContents.send("change_font_from_main", "myricam");
+
+            }
+        },
+        {
+            label: 'レトロ8ビットRPG',
+            type: 'radio',
+            //accelerator: 'CmdOrCtrl+Shift+K',
+            click: function () {
+
+                mainWindow.webContents.send("change_font_from_main", "retro_rpg");
+
+            }
+        },
+        {
+            label: 'ビューティフルピクセル',
+            type: 'radio',
+            //accelerator: 'CmdOrCtrl+Shift+K',
+            click: function () {
+
+                mainWindow.webContents.send("change_font_from_main", "beautiful_pixel");
+
+            }
+        },
+        {
+            label: '美しい明朝体',
+            type: 'radio',
+            //accelerator: 'CmdOrCtrl+Shift+K',
+            click: function () {
+
+                mainWindow.webContents.send("change_font_from_main", "beautiful_mincho");
+
+            }
+        },
+    ]
 }
 ]
 
