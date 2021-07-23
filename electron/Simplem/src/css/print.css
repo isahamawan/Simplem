@@ -29,7 +29,4 @@
     .editor-toolbar, .editor-statusbar, .CodeMirror-code, .CodeMirror-scroll, .CodeMirror-sizer {
         display: none !important;
     }
-    /*#previewer {
-        border: 0;
-    }    CodeMirror cm-s-easymde CodeMirror-wrap*/
 }
