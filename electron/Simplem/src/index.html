@@ -27,6 +27,9 @@
     <!-- easymde CSS and JS -->
     <link rel="stylesheet" href="css/easymde.css">
 
+    <!-- editor view mode CSS -->
+    <link id="editor_view_mode_css" rel="stylesheet" href="css/editor_view_mode/evm_normal.css">
+
     <!-- print CSS -->
     <link rel="stylesheet" href="css/print.css">
 
@@ -208,6 +211,21 @@
             font_css_link.href = "css/font/font_pixel.css";
         } else if (font_kind == "beautiful_mincho") {
             font_css_link.href = "css/font/font_beautiful_mincho.css";
+        }
+
+    });
+
+    //mainからのtoggle source code mode命令の処理
+    ipcRenderer.on('toggle_source_code_mode_from_main', async (event, flg_source_code_mode) => {
+
+        // id属性からHTML要素（リンク要素）を取得
+        let editor_view_mode_css_link = document.getElementById("editor_view_mode_css");
+
+        //リンク要素のhref書き換え
+        if (flg_source_code_mode == true) {
+            editor_view_mode_css_link.href = "css/editor_view_mode/evm_source_code_mode.css";
+        } else {
+            editor_view_mode_css_link.href = "css/editor_view_mode/evm_normal.css";
         }
 
     });

@@ -168,7 +168,8 @@ function createWindow() {
 
 //常に最前面表示のオンオフ用
 global.switch_t = true;
-
+//ソースコードモードのオンオフ用
+global.flg_source_code_mode = false;
 //メニューバー内容
 let template = [{
     label: 'Simplem',
@@ -306,6 +307,18 @@ let template = [{
                 } else {
                     global.switch_t = true;
                 };
+            }
+        },
+        { type: 'separator' },
+        {
+            label: 'ソースコードモード',
+            //accelerator: 'CmdOrCtrl+T',
+            type: 'checkbox',
+            click: function () {
+
+                flg_source_code_mode = !flg_source_code_mode;
+                mainWindow.webContents.send("toggle_source_code_mode_from_main", flg_source_code_mode);
+
             }
         },
         { type: 'separator' },
