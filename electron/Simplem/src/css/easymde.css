@@ -877,10 +877,19 @@
 
 
 
-/* 以下、上書きcss。オリジナルはそのまま上方に残置。 ================================================================== */
+/* 以下、上書きcssの各モード共通部分。 オリジナルはそのまま上方に残置。 ================================================================== */
 
     body {
         margin:0;
+    }
+
+    /* サイドプレビューエリアの調整 */
+    .EasyMDEContainer.sided--no-fullscreen .editor-preview-active-side {
+        flex: 1 1 auto;
+        height: calc(100vh - 33px - 28px - 6px + 3px);
+        /*margin-bottom: -28px;
+        padding-bottom: -3px;*/
+        position: static
     }
 
     /* 編集エリアの調整 */
@@ -889,10 +898,12 @@
         margin-bottom: -28px;
         margin-right: -50px;
         padding-bottom: 28px;
-        height: calc(100vh - 33px - 28px - 6px);
+        height: calc(100vh - 33px - 28px - 6px - 3px);
         outline: 0;
         position: relative
     }
+
+
 
     .editor-toolbar {
         position: relative;
@@ -939,6 +950,23 @@
         padding: 2px 14px;
         background: #ffffff
     }
+
+    /* ツールバーの表示調整 */
+    .editor-toolbar {
+        padding: 1px 1px;
+        /* ツールの折り返しなし設定 */
+        white-space: nowrap;
+        overflow:hidden;
+    }
+
+    /* 選択範囲の色 */
+    .cm-s-easymde span.CodeMirror-selectedtext {
+        background: #d9d9d9;
+    }
+
+
+
+    /* 以下編集画面のマーク設定 */
 
     .cm-formatting-list-ul {
         margin-left:1em;
@@ -1092,7 +1120,6 @@
         color:gray;
         border-bottom: 1px dashed #999;
         /*margin-right:-1em;*/
-        /*display:none;*/
         font-size:0;
         position:relative;
         z-index:-2;
@@ -1189,11 +1216,6 @@
     }
 
 
-    /* 選択範囲の色 */
-    .cm-s-easymde span.CodeMirror-selectedtext {
-        background: #d9d9d9;
-    }
-
     /* はみ出した全体下線をhidden */
     .CodeMirror-sizer {
         overflow:hidden;
@@ -1205,14 +1227,6 @@
         background: linear-gradient(transparent 80%,#fff070 50%) !important;/* importantで印刷時の背景表示 */
         font-weight: 700;
         color: #000;
-    }
-
-    /* ツールバーの表示調整 */
-    .editor-toolbar {
-        padding: 1px 1px;
-        /* ツールの折り返しなし設定 */
-        white-space: nowrap;
-        overflow:hidden;
     }
 
     /* 選択行のボールドのトークンの表示 */
@@ -1272,18 +1286,3 @@
         /*display:inline;*/
         font-size:14px;
     }
-
-    /* 見たままプレビューモード用（作成中）
-    .cm-formatting-strong, .cm-s-easymde .cm-formatting-header-1 {
-        display:none;
-    }
-
-    .cm-s-easymde .cm-formatting-header-1 + .cm-header-1 {
-        display:block;
-
-    }
-
-    .CodeMirror-composing {
-        display:block;
-    }
-    */

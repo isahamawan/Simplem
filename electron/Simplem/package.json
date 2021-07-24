@@ -1,5 +1,5 @@
 {
-  "name": "simplem",
+  "name": "Simplem",
   "version": "1.0.0",
   "description": "Minimal notepad-like markdown editor. To write down your amazing ideas immediately.",
   "main": "src/main.js",
