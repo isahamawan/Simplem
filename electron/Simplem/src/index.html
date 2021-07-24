@@ -36,6 +36,11 @@
     <!-- font CSS -->
     <link id="font_css" rel="stylesheet" href="css/font/font_modern_os.css">
 
+    <!-- highlight.js -->
+    <script src="highlight.min.js"></script>
+    <link rel="stylesheet" href="css/hljs_simplem.min.css">
+    <!--script>hljs.initHighlightingOnLoad();</script-->
+
 
 </head>
 
@@ -74,7 +79,7 @@
         //parsingConfig: { allowAtxHeaderWithoutSpace: true },
         renderingConfig: {
             singleLineBreaks: true,
-            //codeSyntaxHighlighting: true,
+            codeSyntaxHighlighting: true,
         },
         //テーブル機能はオプションとして登録予定。'table',
         showIcons: ['strikethrough', 'code', 'redo', 'undo', 'heading-1', 'heading-2', 'heading-3', 'horizontal-rule'],
