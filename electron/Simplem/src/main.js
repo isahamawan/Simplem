@@ -169,7 +169,11 @@ function createWindow() {
 //常に最前面表示のオンオフ用
 global.switch_t = true;
 //ソースコードモードのオンオフ用
-global.flg_source_code_mode = false;
+global.flg_source_code_mode = 'on_hl_on';
+//コードハイライトモードのオンオフ用
+global.flg_code_hl_mode = 'on_code_hl_modern';
+//マイナー言語サポートのオンオフ用
+global.flg_minor_languages_support = false;
 //メニューバー内容
 let template = [{
     label: 'Simplem',
@@ -319,7 +323,7 @@ let template = [{
                     type: 'radio',
                     click: function () {
 
-                        flg_source_code_mode = true;
+                        flg_source_code_mode = 'on_hl_on';
                         mainWindow.webContents.send("toggle_source_code_mode_from_main", flg_source_code_mode);
 
                     }
@@ -330,8 +334,8 @@ let template = [{
                     type: 'radio',
                     click: function () {
 
-                        //flg_source_code_mode = !flg_source_code_mode;
-                        //mainWindow.webContents.send("toggle_source_code_mode_from_main", flg_source_code_mode);
+                        flg_source_code_mode = 'on_hl_off';
+                        mainWindow.webContents.send("toggle_source_code_mode_from_main", flg_source_code_mode);
 
                     }
                 },
@@ -342,7 +346,7 @@ let template = [{
                     checked: true,
                     click: function () {
 
-                        flg_source_code_mode = false;
+                        flg_source_code_mode = 'off_hl';
                         mainWindow.webContents.send("toggle_source_code_mode_from_main", flg_source_code_mode);
 
                     }
@@ -359,18 +363,30 @@ let template = [{
                     checked: true,
                     click: function () {
 
-                        //flg_source_code_mode = true;
-                        //mainWindow.webContents.send("toggle_source_code_mode_from_main", flg_source_code_mode);
+                        flg_code_hl_mode = 'on_code_hl_modern';
+                        mainWindow.webContents.send("toggle_code_hl_mode_from_main", flg_code_hl_mode);
 
                     }
                 },
                 {
                     label: 'クラシック',
                     type: 'radio',
+                    click: function () {
+
+                        flg_code_hl_mode = 'on_code_hl_classic';
+                        mainWindow.webContents.send("toggle_code_hl_mode_from_main", flg_code_hl_mode);
+
+                    }
                 },
                 {
                     label: 'OFF',
                     type: 'radio',
+                    click: function () {
+
+                        flg_code_hl_mode = 'off_code_hl';
+                        mainWindow.webContents.send("toggle_code_hl_mode_from_main", flg_code_hl_mode);
+
+                    }
                 },
                 { type: 'separator' },
                 {
@@ -378,8 +394,8 @@ let template = [{
                     type: 'checkbox',
                     click: function () {
 
-                        //flg_source_code_mode = true;
-                        //mainWindow.webContents.send("toggle_source_code_mode_from_main", flg_source_code_mode);
+                        flg_minor_languages_support = !flg_minor_languages_support;
+                        mainWindow.webContents.send("toggle_minor_languages_support_from_main", flg_minor_languages_support);
 
                     }
                 },

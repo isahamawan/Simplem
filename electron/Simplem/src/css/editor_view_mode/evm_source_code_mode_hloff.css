@@ -1,0 +1,92 @@
+    /* 以下編集画面のソースコード風なマーク設定 */
+
+    .cm-s-easymde .cm-link {
+        color: black;
+        text-decoration:none;
+
+    }
+
+    .cm-s-easymde .cm-url {
+        color: black;
+    }
+
+    /* ヘッダー設定 */
+
+    .cm-s-easymde .cm-header-1, .cm-s-easymde .cm-header-2, .cm-s-easymde .cm-header-3,
+    .cm-s-easymde .cm-header-4, .cm-s-easymde .cm-header-5, .cm-s-easymde .cm-header-6 {
+        font-size: 16px;
+        line-height:normal;
+        display:inline; /* inline-blockにすることでマージンは効くが、折り返し時に#と分離してしまう。 */
+        position: relative;
+        font-weight: inherit;
+        /*-webkit-font-smoothing: antialiased;*/
+        color: black;
+    }
+
+    .cm-s-easymde .cm-formatting-header-1, .cm-s-easymde .cm-formatting-header-2,
+    .cm-s-easymde .cm-formatting-header-3, .cm-s-easymde .cm-formatting-header-4 ,
+    .cm-s-easymde .cm-formatting-header-5, .cm-s-easymde .cm-formatting-header-6 {
+        color:black;
+        /*border-bottom: 1px dashed #999;*/
+        font-size:16px;
+        position:relative;
+    }
+
+    /* codeの設定 */
+    .cm-s-easymde .cm-comment {
+        font-size: 16px;
+        /*white-space: nowrap;*//* これを入れると行末の半角スペースが表示されなくなる */
+        white-space: unset;
+        border:none;
+        background-color:transparent;
+        color:black;
+    }
+
+
+    /* hrの設定 */
+    .cm-hr {
+        color:black;
+    }
+
+
+    /* ストロングの設定 */
+    .cm-strong {
+        font-weight: normal;
+        color:black;
+    }
+
+    /* 取消し線の設定 */
+    .cm-strikethrough {
+        text-decoration: none;
+        color:black;
+    }
+
+    .cm-s-easymde .cm-quote {
+        color:black;
+        font-style:normal;
+    }
+
+    .cm-s-easymde .cm-formatting-quote {
+        color:black;
+        /*border-bottom: 1px dashed #999;*/
+        font-style:normal;
+    }
+
+    .cm-s-easymde .cm-em {
+        color:black;
+        font-style:normal;
+    }
+
+    .cm-s-easymde .cm-variable-2 {
+        color:black
+    }
+
+    .cm-s-easymde .cm-variable-3 {
+        color:black
+    }
+
+    .cm-s-easymde .cm-formatting-list {
+        color:black;
+        /*border-bottom: 1px dashed #999;*/
+        font-style:normal;
+    }

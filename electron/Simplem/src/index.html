@@ -37,8 +37,8 @@
     <link id="font_css" rel="stylesheet" href="css/font/font_modern_os.css">
 
     <!-- highlight.js -->
-    <script src="js/highlight/highlight.min.js"></script>
-    <link rel="stylesheet" href="css/highlight_code/hljs_modern.min.css">
+    <script id="hl_js" src="js/highlight/highlight.min.js"></script>
+    <link id="code_hl_mode_css" rel="stylesheet" href="css/highlight_code/hljs_modern.min.css">
     <!--script>hljs.initHighlightingOnLoad();</script-->
 
 
@@ -227,8 +227,10 @@
         let editor_view_mode_css_link = document.getElementById("editor_view_mode_css");
 
         //リンク要素のhref書き換え
-        if (flg_source_code_mode == true) {
+        if (flg_source_code_mode == "on_hl_on") {
             editor_view_mode_css_link.href = "css/editor_view_mode/evm_source_code_mode.css";
+        } else if (flg_source_code_mode == "on_hl_off") {
+            editor_view_mode_css_link.href = "css/editor_view_mode/evm_source_code_mode_hloff.css";
         } else {
             editor_view_mode_css_link.href = "css/editor_view_mode/evm_normal.css";
         }
@@ -237,6 +239,49 @@
         easyMDE.codemirror.setCursor({ line: 0, ch: 0 });
         document.activeElement.blur();
         //easyMDE.codemirror.execCommand("goDocStart");
+
+    });
+
+    //mainからのtoggle code hl mode命令の処理
+    ipcRenderer.on('toggle_code_hl_mode_from_main', async (event, flg_code_hl_mode) => {
+
+        // id属性からHTML要素（リンク要素）を取得
+        let code_hl_mode_css_link = document.getElementById("code_hl_mode_css");
+
+        //リンク要素のhref書き換え
+        if (flg_code_hl_mode == "on_code_hl_modern") {
+            code_hl_mode_css_link.href = "css/highlight_code/hljs_modern.min.css";
+        } else if (flg_code_hl_mode == "on_code_hl_classic") {
+            code_hl_mode_css_link.href = "css/highlight_code/hljs_classic.min.css";
+        } else {
+            code_hl_mode_css_link.href = "css/highlight_code/hljs_off.min.css";
+        }
+
+    });
+
+    //mainからのマイナー言語サポート命令の処理
+    ipcRenderer.on('toggle_minor_languages_support_from_main', async (event, flg_minor_languages_support) => {
+
+        //スクリプト要素の置換（srcの書き換えではjsが再読み込みされないため、置換を行う）
+        if (flg_minor_languages_support == true) {
+            function load_hl_all_js() {
+                let hl_js_script_tag = document.getElementById("hl_js");
+                let temp_script_tag = document.createElement("script");
+                temp_script_tag.id = "hl_js"
+                temp_script_tag.src = "js/highlight/highlight_all.min.js";
+                hl_js_script_tag.replaceWith(temp_script_tag);
+            }
+            load_hl_all_js();
+        } else {
+            function load_hl_js() {
+                let hl_js_script_tag = document.getElementById("hl_js");
+                let temp_script_tag = document.createElement("script");
+                temp_script_tag.id = "hl_js"
+                temp_script_tag.src = "js/highlight/highlight.min.js";
+                hl_js_script_tag.replaceWith(temp_script_tag);
+            }
+            load_hl_js();
+        }
 
     });
 
