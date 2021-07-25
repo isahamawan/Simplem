@@ -312,14 +312,78 @@ let template = [{
         { type: 'separator' },
         {
             label: 'ソースコードモード',
-            //accelerator: 'CmdOrCtrl+T',
-            type: 'checkbox',
-            click: function () {
+            submenu: [
+                {
+                    label: 'ハイライト有り',
+                    //accelerator: 'CmdOrCtrl+T',
+                    type: 'radio',
+                    click: function () {
 
-                flg_source_code_mode = !flg_source_code_mode;
-                mainWindow.webContents.send("toggle_source_code_mode_from_main", flg_source_code_mode);
+                        flg_source_code_mode = true;
+                        mainWindow.webContents.send("toggle_source_code_mode_from_main", flg_source_code_mode);
 
-            }
+                    }
+                },
+                {
+                    label: 'ハイライト無し',
+                    //accelerator: 'CmdOrCtrl+T',
+                    type: 'radio',
+                    click: function () {
+
+                        //flg_source_code_mode = !flg_source_code_mode;
+                        //mainWindow.webContents.send("toggle_source_code_mode_from_main", flg_source_code_mode);
+
+                    }
+                },
+                {
+                    label: 'OFF',
+                    //accelerator: 'CmdOrCtrl+T',
+                    type: 'radio',
+                    checked: true,
+                    click: function () {
+
+                        flg_source_code_mode = false;
+                        mainWindow.webContents.send("toggle_source_code_mode_from_main", flg_source_code_mode);
+
+                    }
+                },
+            ]
+        },
+        { type: 'separator' },
+        {
+            label: 'コードハイライト',
+            submenu: [
+                {
+                    label: 'モダン',
+                    type: 'radio',
+                    checked: true,
+                    click: function () {
+
+                        //flg_source_code_mode = true;
+                        //mainWindow.webContents.send("toggle_source_code_mode_from_main", flg_source_code_mode);
+
+                    }
+                },
+                {
+                    label: 'クラシック',
+                    type: 'radio',
+                },
+                {
+                    label: 'OFF',
+                    type: 'radio',
+                },
+                { type: 'separator' },
+                {
+                    label: 'マイナー言語のサポート',
+                    type: 'checkbox',
+                    click: function () {
+
+                        //flg_source_code_mode = true;
+                        //mainWindow.webContents.send("toggle_source_code_mode_from_main", flg_source_code_mode);
+
+                    }
+                },
+            ]
         },
         { type: 'separator' },
         { role: 'toggleDevTools' },

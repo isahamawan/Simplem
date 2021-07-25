@@ -1,0 +1,9 @@
+# support languages
+
+## Common
+
+Bash C C# C++ CSS Diff Go HTML, XML JSON Java JavaScript Kotlin Less Lua Makefile Markdown Objective-C PHP PHP Template Perl Plain text Python Python REPL R Ruby Rust SCSS SQL Shell Session Swift TOML, also INI TypeScript Visual Basic .NET YAML Django Dockerfile Nginx config
+
+## Other
+
+.properties 1C:Enterprise ARM Assembly AVR Assembly ActionScript Ada AngelScript Apache Access Log Apache config AppleScript ArcGIS Arcade Arduino AsciiDoc AspectJ Augmented Backus-Naur Form AutoHotkey AutoIt Awk BASIC Backus–Naur Form Batch file (DOS) Brainfuck C/AL CMake CSP Caché Object Script Cap’n Proto Ceylon Clean Clojure Clojure REPL CoffeeScript Coq Crystal D DNS Zone Dart Delphi Device Tree Dust ERB (Embedded Ruby) Elixir Elm Erlang Erlang REPL Excel formulae Extended Backus-Naur Form F# FIX Flix Fortran G-code (ISO 6983) GAMS GAUSS GLSL GML Gherkin Golo Gradle Groovy HAML HSP HTTP Handlebars Haskell Haxe Hy IRPF90 ISBL Inform 7 Intel x86 Assembly JBoss CLI Julia Julia REPL LDIF LLVM IR LSL (Linden Scripting Language) LaTeX Lasso Leaf Lisp LiveCode LiveScript MEL MIPS Assembly Matlab Maxima Mercury Microsoft X++ Microtik RouterOS script Mizar Mojolicious Monkey MoonScript N1QL NSIS NestedText Nim Nix Node REPL OCaml OpenSCAD Oracle Rules Language Oxygene Packet Filter config Parser3 Pony PostgreSQL and PL/pgSQL PowerShell Processing Prolog Protocol Buffers Puppet PureBASIC Python profiler Q QML ReasonML RenderMan RIB RenderMan RSL Roboconf SAS SML (Standard ML) SQF STEP Part 21 Scala Scheme Scilab Smali Smalltalk Stan Stata Stylus SubUnit TP Tagger Script Tcl Test Anything Protocol Thrift Twig VBScript VBScript in HTML VHDL Vala Verilog Vim Script WebAssembly Wolfram Language Wren XL XQuery Zephir crmsh dsconfig
