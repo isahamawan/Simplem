@@ -964,5 +964,10 @@
         background: #d9d9d9;
     }
 
+    /*code-blockの行末の半角スペースが表示されないバグの修正*/
+        .cm-s-easymde .cm-comment {
+        /*white-space: nowrap;*//* これを入れると行末の半角スペースが表示されなくなる */
+        white-space: unset;
+    }
 
 

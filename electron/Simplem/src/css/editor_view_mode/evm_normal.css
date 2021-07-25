@@ -120,7 +120,8 @@
 
     .cm-s-easymde .cm-comment {
         font-size: 13px;
-        white-space: nowrap;
+        /*white-space: nowrap;*//* これを入れると行末の半角スペースが表示されなくなる */
+        white-space: unset;
         border: 1px solid #eaeaea;
         background-color: #f8f8f8;
         border-radius: 3px;

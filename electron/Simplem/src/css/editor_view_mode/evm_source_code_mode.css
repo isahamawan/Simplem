@@ -18,7 +18,7 @@
     .cm-s-easymde .cm-formatting-header-3, .cm-s-easymde .cm-formatting-header-4 ,
     .cm-s-easymde .cm-formatting-header-5, .cm-s-easymde .cm-formatting-header-6 {
         color:gray;
-        border-bottom: 1px dashed #999;
+        /*border-bottom: 1px dashed #999;*/
         font-size:16px;
         position:relative;
     }
@@ -26,7 +26,8 @@
     /* codeの設定 */
     .cm-s-easymde .cm-comment {
         font-size: 16px;
-        white-space: initial;
+        /*white-space: nowrap;*//* これを入れると行末の半角スペースが表示されなくなる */
+        white-space: unset;
         border:none;
         background-color:transparent;
         color:dodgerblue;
@@ -58,7 +59,7 @@
 
     .cm-s-easymde .cm-formatting-quote {
         color:gray;
-        border-bottom: 1px dashed #999;
+        /*border-bottom: 1px dashed #999;*/
         font-style:normal;
     }
 
@@ -77,6 +78,6 @@
 
     .cm-s-easymde .cm-formatting-list {
         color:gray;
-        border-bottom: 1px dashed #999;
+        /*border-bottom: 1px dashed #999;*/
         font-style:normal;
     }
