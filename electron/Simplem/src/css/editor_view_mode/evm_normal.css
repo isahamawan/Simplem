@@ -45,7 +45,7 @@
 
     .cm-s-easymde .cm-header-1 {
         font-size: 28px;
-        line-height:42px;
+        /*line-height:42px;*/
         margin: 20px 0 10px;
         display:inline; /* inline-blockにすることでマージンは効くが、折り返し時に#と分離してしまう。 */
         position: relative;
@@ -58,7 +58,7 @@
 
     .cm-s-easymde  .cm-header-2 {
         font-size: 24px;
-        line-height:36px;
+        /*line-height:36px;*/
         margin: 20px 0 10px;
         display:inline;
         position: relative;
@@ -71,7 +71,7 @@
 
     .cm-s-easymde  .cm-header-3 {
         font-size: 18px;
-        line-height:27px;
+        /*line-height:27px;*/
         margin: 20px 0 10px;
         display:inline;
         position: relative;
@@ -83,7 +83,7 @@
 
     .cm-s-easymde  .cm-header-4 {
         font-size: 16px;
-        line-height:24px;
+        /*line-height:24px;*/
         margin: 20px 0 10px;
         display:inline;
         position: relative;
@@ -95,7 +95,7 @@
 
     .cm-s-easymde  .cm-header-5 {
         font-size: 16px;
-        line-height:24px;
+        /*line-height:24px;*/
         margin: 20px 0 10px;
         display:inline;
         position: relative;
@@ -108,7 +108,7 @@
     .cm-s-easymde .cm-header-6 {
         color: #777777;
         font-size: 16px;
-        line-height:24px;
+        /*line-height:24px;*/
         margin: 20px 0 10px;
         display:inline;
         position: relative;
@@ -329,4 +329,8 @@
     .cm-s-easymde  .active-line[class~="cm-header-6"] {
         /*display:inline;*/
         font-size:16px;
+    }
+
+    .cm-s-easymde  .cm-memo {
+        color:red;
     }

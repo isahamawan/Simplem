@@ -5,7 +5,8 @@
     }
 
     body,
-    title {
+    title,
+    code {
       font-family: "Beautiful_mincho";
       /*font-weight: 500;*/
     }

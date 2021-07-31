@@ -49,12 +49,22 @@ ipcMain.handle('open', async (event) => {
     global.filename_for_title = path_tool.basename(filePaths[0]);
     mainWindow.setTitle(global.filename_for_title + " - Simplem");
 
+    //ファイル名の頭の*を削除するためのスクリプトタグ追加命令
+    mainWindow.webContents.send('add_asterisk_script_from_main');
+
     //上書き保存用にファイルパスを保管
     global.filePath_for_save = filePaths[0];
 
 
     return { canceled, data }
 });
+
+//ファイルの読込時の、ファイル名の頭のアスタリスクの削除
+ipcMain.handle('open_asterisk_del', async (event) => {
+    //ファイル名の頭の*の削除
+    mainWindow.setTitle(global.filename_for_title + " - Simplem");
+});
+
 
 //ファイルの名前を付けて保存
 ipcMain.handle('save_as', async (event, text_data) => {
@@ -76,6 +86,9 @@ ipcMain.handle('save_as', async (event, text_data) => {
     //上書き保存用にファイルパスを保管
     global.filePath_for_save = filePath;
 
+    //ファイル名の頭の*を追加するためのスクリプトタグ追加命令
+    mainWindow.webContents.send('add_asterisk_script_from_main');
+
 });
 
 //ファイルを上書き保存
@@ -90,6 +103,12 @@ ipcMain.handle('save', async (event, text_data) => {
     let filePath = global.filePath_for_save
 
     fs.writeFileSync(filePath, text_data)
+
+    //ファイル名の頭の*の削除
+    mainWindow.setTitle(global.filename_for_title + " - Simplem");
+
+    //ファイル名の頭の*を追加するためのスクリプトタグ追加命令
+    mainWindow.webContents.send('add_asterisk_script_from_main');
 });
 
 //ファイル起動時に引数として渡されたファイルパスからファイルを読み込み
@@ -100,6 +119,9 @@ ipcMain.handle('open_init', async (event) => {
     //タイトル用にファイル名を保管と、タイトルの変更
     global.filename_for_title = path_tool.basename(global.filePath_for_init);
     mainWindow.setTitle(global.filename_for_title + " - Simplem");
+
+    //ファイル名の頭の*を追加するためのスクリプトタグ追加命令
+    mainWindow.webContents.send('add_asterisk_script_from_main');
 
     //上書き保存用にファイルパスを保管
     global.filePath_for_save = global.filePath_for_init;
@@ -143,6 +165,13 @@ ipcMain.handle('print_to_pdf', async (event) => {
 
 });
 
+//ファイル名の頭に*を追加
+ipcMain.handle('add_asterisk_to_filename', async (event) => {
+
+    mainWindow.setTitle("*" + global.filename_for_title + " - Simplem");
+
+});
+
 //ipc経由の機能------------------------------------------------------------------>
 
 
@@ -152,7 +181,7 @@ let mainWindow;
 //アプリの画面を作成
 function createWindow() {
     mainWindow = new BrowserWindow({
-        width: 560, height: 600, 'icon': __dirname + 'favicon.png', webPreferences: {
+        width: 600, height: 600, 'icon': __dirname + 'favicon.png', webPreferences: {
             nodeIntegration: false, // falseでレンダラープロセスでのモジュール使用を制限（XSS回避のため）
             contextIsolation: false, //nodeIntegration:false状態でモジュール共有を行うために、contextIsolationをfalseにする必要あり
             preload: __dirname + '/preload.js' // nodeIntegrationとセット（モジュールの使用許可）。読み込んだモジュールをグローバルに共有→それをレンダラープロセスで使用」という形で、レンダラープロセスでのNode APIの利用を可能にできる
@@ -174,6 +203,8 @@ global.flg_source_code_mode = 'on_hl_on';
 global.flg_code_hl_mode = 'on_code_hl_modern';
 //マイナー言語サポートのオンオフ用
 global.flg_minor_languages_support = false;
+//半透明モードのオンオフ用
+global.flg_half_opacity_mode = false;
 //メニューバー内容
 let template = [{
     label: 'Simplem',
@@ -355,6 +386,21 @@ let template = [{
         },
         { type: 'separator' },
         {
+            label: '半透明モード',
+            //accelerator: 'CmdOrCtrl+T',
+            type: 'checkbox',
+            click: function () {
+                global.flg_half_opacity_mode = !global.flg_half_opacity_mode
+
+                if (global.flg_half_opacity_mode == true) {
+                    mainWindow.setOpacity(0.7);
+                } else {
+                    mainWindow.setOpacity(1);
+                }
+            }
+        },
+        { type: 'separator' },
+        {
             label: 'コードハイライト',
             submenu: [
                 {
@@ -447,7 +493,7 @@ let template = [{
             }
         },
         {
-            label: 'レトロ8ビットRPG',
+            label: 'ビューティフルドット',//'レトロ8ビットRPG',
             type: 'radio',
             //accelerator: 'CmdOrCtrl+Shift+K',
             click: function () {
@@ -456,16 +502,16 @@ let template = [{
 
             }
         },
-        {
-            label: 'ビューティフルピクセル',
-            type: 'radio',
-            //accelerator: 'CmdOrCtrl+Shift+K',
-            click: function () {
+        //{
+        //    label: 'ビューティフルピクセル',
+        //    type: 'radio',
+        //accelerator: 'CmdOrCtrl+Shift+K',
+        //    click: function () {
 
-                mainWindow.webContents.send("change_font_from_main", "beautiful_pixel");
+        //        mainWindow.webContents.send("change_font_from_main", "beautiful_pixel");
 
-            }
-        },
+        //    }
+        //},
         {
             label: '美しい明朝体',
             type: 'radio',
@@ -544,8 +590,6 @@ app.on('ready', function () {
 
         });
 
-
-
         //mainWindow.show();//白い画面を表示しないように読み込み完了時に表示(UX検証要)
     });
 
@@ -574,7 +618,10 @@ app.on('activate', () => {
 //エラーをログに記録する。ログは~/library/logs/アプリ名のあたり作成される。
 process.on('uncaughtException', (err) => {
     log_tool.error(err); // ログファイルへ記録
+
+    //メインのエラーをレンダラーのdevツールに表示
+    mainWindow.webContents.send('error_from_main', err);
+
     //app.quit();     // アプリを終了する (継続しない方が良い)
 });
-
 

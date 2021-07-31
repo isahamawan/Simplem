@@ -5,7 +5,8 @@
     }
 
     body,
-    title {
+    title,
+    code {
       font-family: "Myricam";
       /*font-weight: 500;*/
     }

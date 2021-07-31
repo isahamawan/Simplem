@@ -55,7 +55,6 @@
         <button id="some-button" type="button">Search</button>
     </div>
     -->
-
     <textarea id="my-text-area"></textarea>
 
 </body>
@@ -134,6 +133,9 @@
         let file_text_data = '';
         file_text_data = data[0] || '';
         easyMDE.value(file_text_data);
+
+        //ファイル名の頭のアスタリスクを削除
+        ipcRenderer.invoke('open_asterisk_del');
     });
 
     //mainからの上書き保存命令を処理
@@ -154,6 +156,9 @@
         let file_text_data = '';
         file_text_data = data || '';
         easyMDE.value(file_text_data);
+
+        //ファイル名の頭のアスタリスクを削除
+        ipcRenderer.invoke('open_asterisk_del');
 
     });
 
@@ -201,7 +206,7 @@
     ipcRenderer.on('change_font_from_main', async (event, font_kind) => {
 
         // id属性からHTML要素を取得
-        let font_css_link = document.getElementById("font_css");
+        let font_css_link = await document.getElementById("font_css");
 
         //fontリンクのhref書き換え
         if (font_kind == "modern_os") {
@@ -218,13 +223,18 @@
             font_css_link.href = "css/font/font_beautiful_mincho.css";
         }
 
+        //カーソルのサイズをリセット
+        await easyMDE.codemirror.execCommand('selectAll');
+        //await document.activeElement.blur();
+        //await easyMDE.codemirror.setCursor({ line: 0, ch: 0 });
+
     });
 
     //mainからのtoggle source code mode命令の処理
     ipcRenderer.on('toggle_source_code_mode_from_main', async (event, flg_source_code_mode) => {
 
         // id属性からHTML要素（リンク要素）を取得
-        let editor_view_mode_css_link = document.getElementById("editor_view_mode_css");
+        let editor_view_mode_css_link = await document.getElementById("editor_view_mode_css");
 
         //リンク要素のhref書き換え
         if (flg_source_code_mode == "on_hl_on") {
@@ -235,9 +245,10 @@
             editor_view_mode_css_link.href = "css/editor_view_mode/evm_normal.css";
         }
 
-        //カーソルのサイズをソースコードモード用へ更新
-        easyMDE.codemirror.setCursor({ line: 0, ch: 0 });
-        document.activeElement.blur();
+        //カーソルのサイズをソースコードモード用にリセット
+        await easyMDE.codemirror.execCommand('selectAll');
+        //easyMDE.codemirror.setCursor({ line: 0, ch: 0 });
+        //document.activeElement.blur();
         //easyMDE.codemirror.execCommand("goDocStart");
 
     });
@@ -285,11 +296,44 @@
 
     });
 
-    //mainからのソースコードモードへの切替え命令を処理
-    //ipcRenderer.on('toggle_sorcemode_main', async () => {
-    // 作成中   <link rel="stylesheet" href="css/easymde.css" />
-    //
-    //});
+
+    let flg_ast_added = false;
+    let flg_ast_add_script_added = false;
+    //mainからのファイル名頭アスタリスク追加用スクリプト追加命令の処理
+    ipcRenderer.on('add_asterisk_script_from_main', async (event) => {
+
+        //要素の作成
+        let add_asterisk_script = document.createElement('script');
+        add_asterisk_script.id = "add_asterisk_js"
+
+        flg_ast_added = true;
+        add_asterisk_script.textContent = "if (flg_ast_added == true) {easyMDE.codemirror.on('change', function () { ipcRenderer.invoke('add_asterisk_to_filename'); flg_ast_added = false; });};";
+
+        let html_tag = document.getElementsByTagName("html");
+
+        if (flg_ast_add_script_added == false) {
+            //最後の子要素として追加
+            html_tag[0].appendChild(add_asterisk_script);
+            flg_ast_add_script_added = true;
+        }
+
+
+        //アスタリスク削除と、実行後の自要素削除。
+        //easyMDE.codemirror.on("change", function () {
+        //ipcRenderer.invoke('add_asterisk_to_filename');
+        //let remove_elem = document.getElementById('add_asterisk_js');
+        //remove_elem.remove();
+        //});
+
+
+    });
+
+
+    //mainからのエラー表示命令を処理
+    ipcRenderer.on('error_from_main', async (event, err) => {
+
+        console.log('!!error in main.js!!: ' + err);
+    });
 
     //let remote = window.remote;
     //let searchInPage = window.searchInPage;

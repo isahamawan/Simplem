@@ -11,7 +11,8 @@
     }
 
     body,
-    title {
+    title,
+    code {
       font-family: "InconsolataR","GenShinML";
       /*font-weight: 500;*/
     }
