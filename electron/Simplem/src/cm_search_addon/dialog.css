@@ -1,5 +1,6 @@
 .CodeMirror-dialog {
-  position: absolute;
+  /* position: absolute; */
+  position:fixed;
   left: 0; right: 0;
   background: inherit;
   z-index: 15;

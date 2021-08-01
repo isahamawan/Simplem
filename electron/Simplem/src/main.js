@@ -483,7 +483,7 @@ let template = [{
             }
         },
         {
-            label: 'Myricam',
+            label: 'ビューティフルコード',
             type: 'radio',
             //accelerator: 'CmdOrCtrl+Shift+K',
             click: function () {
