@@ -1202,7 +1202,8 @@
           });
         }
 
-        CodeMirror.commands.find = function (cm) { clearSearch(cm); doSearch(cm); };
+        //CodeMirror.commands.find = function (cm) { clearSearch(cm); doSearch(cm); }; //オリジナル
+        CodeMirror.commands.find = function (cm) { clearSearch(cm); doSearch(cm, false, true); }; //simplem 検索窓が閉じないように変更
         CodeMirror.commands.findPersistent = function (cm) { clearSearch(cm); doSearch(cm, false, true); };
         CodeMirror.commands.findPersistentNext = function (cm) { doSearch(cm, false, true, true); };
         CodeMirror.commands.findPersistentPrev = function (cm) { doSearch(cm, true, true, true); };
