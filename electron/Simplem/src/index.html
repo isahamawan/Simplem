@@ -173,6 +173,18 @@
 
     });
 
+    //mainからのfind命令を処理
+    ipcRenderer.on('find_from_main', async () => {
+        easyMDE.codemirror.execCommand('find');
+
+    });
+
+    //mainからのreplace命令を処理
+    ipcRenderer.on('replace_from_main', async () => {
+        easyMDE.codemirror.execCommand('replace');
+
+    });
+
     //mainからのclipboardへのhtmlコピー命令を処理
     ipcRenderer.on('html_to_clipboard_from_main', async () => {
 

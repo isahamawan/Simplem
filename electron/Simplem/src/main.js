@@ -303,6 +303,25 @@ let template = [{
             }
         },
         { type: 'separator' },
+        {
+            label: '検索',
+            accelerator: 'CmdOrCtrl+F',
+            acceleratorWorksWhenHidden: false, //mac easymde側のバインドキー押下と被らないようにmainプロセス側はキーバインディング無効化
+            registerAccelerator: false, //win,linux
+            click: function () {
+                mainWindow.webContents.send('find_from_main');
+            }
+        },
+        {
+            label: '置換',
+            accelerator: 'CmdOrCtrl+Alt+F',
+            acceleratorWorksWhenHidden: false, //mac easymde側のバインドキー押下と被らないようにmainプロセス側はキーバインディング無効化
+            registerAccelerator: false, //win,linux
+            click: function () {
+                mainWindow.webContents.send('replace_from_main');
+            }
+        },
+        { type: 'separator' },
         //{
         //    label: '検索',
         //    accelerator: 'CmdOrCtrl+F',
