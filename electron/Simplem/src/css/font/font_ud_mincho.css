@@ -1,0 +1,12 @@
+    @font-face {
+      font-family: "UdMinchoMed";
+      src: url("../../webfonts/UDMinchoM.ttc") format("truetype");
+      font-display: block;
+    }
+
+    body,
+    title,
+    code {
+      font-family: "UdMinchoMed";
+      /*font-weight: 500;*/
+    }

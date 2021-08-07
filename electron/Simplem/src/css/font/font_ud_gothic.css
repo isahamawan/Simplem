@@ -1,0 +1,12 @@
+    @font-face {
+      font-family: "UdGothicR";
+      src: url("../../webfonts/UDGothicR.ttc") format("truetype");
+      font-display: block;
+    }
+
+    body,
+    title,
+    code {
+      font-family: "UdGothicR";
+      /*font-weight: 500;*/
+    }

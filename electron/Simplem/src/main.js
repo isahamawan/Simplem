@@ -522,6 +522,26 @@ let template = [{
 
             }
         },
+        {
+            label: 'UDゴシック',
+            type: 'radio',
+            //accelerator: 'CmdOrCtrl+Shift+K',
+            click: function () {
+
+                mainWindow.webContents.send("change_font_from_main", "ud_gothic");
+
+            }
+        },
+        {
+            label: 'UD明朝',
+            type: 'radio',
+            //accelerator: 'CmdOrCtrl+Shift+K',
+            click: function () {
+
+                mainWindow.webContents.send("change_font_from_main", "ud_mincho");
+
+            }
+        },
     ]
 }
 ]

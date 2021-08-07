@@ -1141,16 +1141,20 @@
 
 
         function getQueryDialog(cm) {
-          return '<span class="CodeMirror-search-label">' + cm.phrase("Search:") + '</span> <input type="text" style="width: 10em" class="CodeMirror-search-field"/> <span style="color: #888" class="CodeMirror-search-hint">' + cm.phrase("(Use /re/ syntax for regexp search)") + '</span>';
+          //simplem return '<span class="CodeMirror-search-label">' + cm.phrase("Search:") + '</span> <input type="text" style="width: 10em" class="CodeMirror-search-field"/> <span style="color: #888" class="CodeMirror-search-hint">' + cm.phrase("(Use /re/ syntax for regexp search)") + '</span>';
+          return '<input type="text" style="width: 10em" class="CodeMirror-search-field" placeholder="検索"/> <span style="color: #888" class="CodeMirror-search-hint">' + cm.phrase("(Use /re/ syntax for regexp search)") + '</span>';
         }
         function getReplaceQueryDialog(cm) {
-          return ' <input type="text" style="width: 10em" class="CodeMirror-search-field"/> <span style="color: #888" class="CodeMirror-search-hint">' + cm.phrase("(Use /re/ syntax for regexp search)") + '</span>';
+          //simplem return ' <input type="text" style="width: 10em" class="CodeMirror-search-field"/> <span style="color: #888" class="CodeMirror-search-hint">' + cm.phrase("(Use /re/ syntax for regexp search)") + '</span>';
+          return ' <input type="text" style="width: 10em" class="CodeMirror-search-field" placeholder="置換対象の文字列"/> <span style="color: #888" class="CodeMirror-search-hint">' + cm.phrase("(Use /re/ syntax for regexp search)") + '</span>';
         }
         function getReplacementQueryDialog(cm) {
-          return '<span class="CodeMirror-search-label">' + cm.phrase("With:") + '</span> <input type="text" style="width: 10em" class="CodeMirror-search-field"/>';
+          //simplem return '<span class="CodeMirror-search-label">' + cm.phrase("With:") + '</span> <input type="text" style="width: 10em" class="CodeMirror-search-field"/>';
+          return '<input type="text" style="width: 10em" class="CodeMirror-search-field" placeholder="置換後の文字列"/>';
         }
         function getDoReplaceConfirm(cm) {
-          return '<span class="CodeMirror-search-label">' + cm.phrase("Replace?") + '</span> <button>' + cm.phrase("Yes") + '</button> <button>' + cm.phrase("No") + '</button> <button>' + cm.phrase("All") + '</button> <button>' + cm.phrase("Stop") + '</button> ';
+          //simplem return '<span class="CodeMirror-search-label">' + cm.phrase("Replace?") + '</span> <button>' + cm.phrase("Yes") + '</button> <button>' + cm.phrase("No") + '</button> <button>' + cm.phrase("All") + '</button> <button>' + cm.phrase("Stop") + '</button> ';
+          return '<span class="CodeMirror-search-label">' + cm.phrase("置換しますか？") + '</span> <button>' + cm.phrase("Yes") + '</button> <button>' + cm.phrase("No") + '</button> <button>' + cm.phrase("All") + '</button> <button>' + cm.phrase("Cancel") + '</button> ';
         }
 
         function replaceAll(cm, query, text) {
@@ -1167,7 +1171,8 @@
         function replace(cm, all) {
           if (cm.getOption("readOnly")) return;
           var query = cm.getSelection() || getSearchState(cm).lastQuery;
-          var dialogText = '<span class="CodeMirror-search-label">' + (all ? cm.phrase("Replace all:") : cm.phrase("Replace:")) + '</span>';
+          //simplem var dialogText = '<span class="CodeMirror-search-label">' + (all ? cm.phrase("Replace all:") : cm.phrase("Replace:")) + '</span>';
+          var dialogText = '<span class="CodeMirror-search-label">' + (all ? cm.phrase("Replace all:") : "") + '</span>';
           dialog(cm, dialogText + getReplaceQueryDialog(cm), dialogText, query, function (query) {
             if (!query) return;
             query = parseQuery(query);

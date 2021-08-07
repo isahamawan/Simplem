@@ -960,10 +960,6 @@
 
     }
 
-    /* 選択範囲の色 */
-    .cm-s-easymde span.CodeMirror-selectedtext {
-        background: #d9d9d9;
-    }
 
     /*code-blockの行末の半角スペースが表示されないバグの修正*/
         .cm-s-easymde .cm-comment {
@@ -1010,3 +1006,31 @@
         border-left: 2px solid #000;
     }
 
+    /* 検索結果 */
+    .cm-s-easymde span .cm-searching {
+        background-color: yellow;
+        /*background-color: rgba(255, 255, 0, .4)*/
+    }
+
+    /* 選択範囲の色 */
+    .cm-s-easymde span .cm-searching[class~="CodeMirror-selectedtext"] {
+        /*display:inline;*/
+        color: #fff;
+        background-color:black;
+    }
+
+    .EasyMDEContainer .CodeMirror-focused .CodeMirror-selected {
+        color: #fff;
+        background-color:black;
+    }
+
+    .cm-s-easymde .CodeMirror-line span .CodeMirror-selectedtext {
+        color: #fff;
+        background-color:black;
+        background:black;
+    }
+
+    .cm-s-easymde div .CodeMirror-selected{
+        color: #fff;
+        background-color:black;
+    }

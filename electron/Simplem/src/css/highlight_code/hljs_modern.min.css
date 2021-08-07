@@ -25,12 +25,37 @@ Author: (c) Taufik Nurrohman <hi@taufik-nurrohman.com>
          color: #fff
       }*/
 
-
+      /* ブロックコードの設定 */
       .editor-preview pre {
          background: #364549;
          color: #fff;
          border: 1px solid #364549;
          border-radius: 3px;
+      }
+
+      /* インラインコードの設定 */
+      .editor-preview code {
+         background: #364549;
+         color: #fff;
+         border:none;
+         border-radius: 3px;
+         font-size:13px;
+         padding-top:0px;
+         padding-bottom:0.5px;
+      }
+
+      /* エディタ側のインラインコードの設定 */
+      .cm-s-easymde .cm-comment {
+                  background: #364549;
+         color: #fff;
+         border:none;
+         padding-left: 2px;
+         padding-right: 2px;
+         border-radius: 3px;
+      }
+
+      .cm-s-easymde .cm-comment[class~=cm-formatting-code] {
+         padding:0;
       }
 
 

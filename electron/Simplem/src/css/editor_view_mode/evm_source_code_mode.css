@@ -28,11 +28,18 @@
         font-size: 16px;
         /*white-space: nowrap;*//* これを入れると行末の半角スペースが表示されなくなる */
         white-space: unset;
-        border:none;
         background-color:transparent;
-        color:dodgerblue;
     }
 
+    /* codeの設定 追加 ハイライトモードの打ち消し設定 */
+    .cm-s-easymde span .cm-comment {
+        background: none;
+        color: dodgerblue;
+        border:none;
+        padding-left: 0;
+        padding-right: 0;
+        border-radius: 0;
+    }
 
     /* hrの設定 */
     .cm-hr {

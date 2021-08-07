@@ -257,9 +257,9 @@
     }
 
     /* ストロングの背景黄色設定 */
-    .cm-strong {
+    .cm-s-easymde  .cm-strong {
         /*font-weight: 700;*/
-        background: linear-gradient(transparent 80%,#fff070 50%) !important;/* importantで印刷時の背景表示 */
+        background: linear-gradient(transparent 80%,#fff070 50%);/* importantで印刷時の背景表示 */
         font-weight: 700;
         color: #000;
     }
