@@ -42,6 +42,7 @@ Author: (c) Taufik Nurrohman <hi@taufik-nurrohman.com>
          font-size:13px;
          padding-top:0px;
          padding-bottom:0.5px;
+         white-space:pre-wrap;
       }
 
       /* エディタ側のインラインコードの設定 */

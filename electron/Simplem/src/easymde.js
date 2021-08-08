@@ -15061,6 +15061,18 @@
           };
 
           _proto.codespan = function codespan(text) {
+
+            //simplem hljs追加
+            if (this.options.highlight) {
+              var out = this.options.highlight(text);
+
+              if (out != null && out !== text) {
+                //escaped = true;
+                text = out;
+              }
+            }
+            //simplem hljs追加ここまで
+
             return '<code>' + text + '</code>';
           };
 
