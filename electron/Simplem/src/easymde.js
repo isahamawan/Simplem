@@ -18848,7 +18848,8 @@
       /**
        * Default markdown render.
        */
-      EasyMDE.prototype.markdown = function (text) {
+      //simplem EasyMDE.prototype.markdown = function (text) {
+      EasyMDE.prototype.markdown = function (text, op_headerid) {
         if (marked) {
           // Initialize
           var markedOptions;
@@ -18882,8 +18883,11 @@
             }
           }
 
-          // Set options
-          markedOptions.headerIds = false; //simplem hからidを削除
+          //Set options
+          //simplem markdown()の第２引数をfalseでhからidを削除
+          if (op_headerid == false) {
+            markedOptions.headerIds = op_headerid;
+          }
           marked.setOptions(markedOptions);
 
           // Convert the markdown to HTML

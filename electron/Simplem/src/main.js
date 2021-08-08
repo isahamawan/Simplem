@@ -569,8 +569,6 @@ let template = [{
 // Electronの初期化完了後に実行
 app.on('ready', function () {
 
-
-
     //メニューバー設置
     const menu = Menu.buildFromTemplate(template);
     Menu.setApplicationMenu(menu);
