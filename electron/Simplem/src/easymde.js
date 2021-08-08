@@ -17738,10 +17738,10 @@
         var stat = getState(cm);
         var options = editor.options;
         //simplem var url = 'https://';
-        var url = 'https:// もしくはファイルのパスを入力';
+        var url = 'https://';
         if (options.promptURLs) {
           //simplem url = prompt(options.promptTexts.link, 'https://');
-          url = prompt(options.promptTexts.link, 'https:// もしくはファイルのパスを入力');
+          url = prompt(options.promptTexts.link, 'https://');
           if (!url) {
             return false;
           }
@@ -17757,10 +17757,10 @@
         var stat = getState(cm);
         var options = editor.options;
         //simplem var url = 'https://';
-        var url = 'https:// もしくはファイルのパスを入力';
+        var url = 'https:// もしくはファイルの相対パスを入力';
         if (options.promptURLs) {
           //simplem url = prompt(options.promptTexts.image, 'https://');
-          url = prompt(options.promptTexts.image, 'https:// もしくはファイルのパスを入力');
+          url = prompt(options.promptTexts.image, 'https:// もしくはファイルの相対パスを入力');
           if (!url) {
             return false;
           }
@@ -18656,9 +18656,17 @@
 
         // Add default preview rendering function
         if (!options.previewRender) {
+          //simplem options.previewRender = function (plainText) {
           options.previewRender = function (plainText) {
             // Note: "this" refers to the options object
-            return this.parent.markdown(plainText);
+            //simplem return this.parent.markdown(plainText);
+            let op_baseurl = undefined;
+            if (window.fileDirPath) {
+              op_baseurl = window.fileDirPath;
+            } else {
+              op_baseurl = undefined;
+            }
+            return this.parent.markdown(plainText, true, op_baseurl); //simplem第２引数trueはheaderid添加オプション有効の意
           };
         }
 
@@ -18849,7 +18857,7 @@
        * Default markdown render.
        */
       //simplem EasyMDE.prototype.markdown = function (text) {
-      EasyMDE.prototype.markdown = function (text, op_headerid) {
+      EasyMDE.prototype.markdown = function (text, op_headerid, op_baseurl) {
         if (marked) {
           // Initialize
           var markedOptions;
@@ -18886,8 +18894,19 @@
           //Set options
           //simplem markdown()の第２引数をfalseでhからidを削除
           if (op_headerid == false) {
-            markedOptions.headerIds = op_headerid;
+            markedOptions.headerIds = false;
+          } else {
+            markedOptions.headerIds = true;
           }
+
+          //simplem markdown()の第３引数からベースurlを設定
+          if (op_baseurl) {
+            markedOptions.baseUrl = op_baseurl;
+          } else {
+            markedOptions.baseUrl = undefined;
+          }
+
+
           marked.setOptions(markedOptions);
 
           // Convert the markdown to HTML

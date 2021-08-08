@@ -34,7 +34,7 @@ app.once('will-finish-launching', () => {
 ipcMain.handle('open', async (event) => {
     const { canceled, filePaths } = await dialog.showOpenDialog({
         filters: [
-            { name: 'テキストファイル, マークダウンファイル', extensions: ['txt', 'md'] }
+            { name: 'テキストファイル, マークダウンファイル, htmlファイル', extensions: ['txt', 'md', 'html'] }
         ]
     })
 
@@ -55,8 +55,11 @@ ipcMain.handle('open', async (event) => {
     //上書き保存用にファイルパスを保管
     global.filePath_for_save = filePaths[0];
 
+    //画像表示などのベースurlとして保存（レンダラーへ受け渡し要）
+    global.fileDirPath = "file://" + path_tool.dirname(global.filePath_for_save) + "/";
 
-    return { canceled, data }
+
+    return { canceled, data, fileDirPath }
 });
 
 //ファイルの読込時の、ファイル名の頭のアスタリスクの削除
@@ -72,6 +75,7 @@ ipcMain.handle('save_as', async (event, text_data) => {
         filters: [
             { name: 'テキストファイル', extensions: ['txt'] },
             { name: 'マークダウンファイル', extensions: ['md'] },
+            { name: 'htmlファイル', extensions: ['html'] },
         ]
     })
 
@@ -86,8 +90,15 @@ ipcMain.handle('save_as', async (event, text_data) => {
     //上書き保存用にファイルパスを保管
     global.filePath_for_save = filePath;
 
+
+    //画像表示などのベースurlとして保存（レンダラーへ受け渡し要）
+    global.fileDirPath = "file://" + path_tool.dirname(global.filePath_for_save) + "/";
+
+
     //ファイル名の頭の*を追加するためのスクリプトタグ追加命令
     mainWindow.webContents.send('add_asterisk_script_from_main');
+
+    return { fileDirPath }
 
 });
 
@@ -126,10 +137,13 @@ ipcMain.handle('open_init', async (event) => {
     //上書き保存用にファイルパスを保管
     global.filePath_for_save = global.filePath_for_init;
 
-    // グローバル変数を初期化
+    //画像表示などのベースurlとして保存（レンダラーへ受け渡し要）
+    global.fileDirPath = "file://" + path_tool.dirname(global.filePath_for_save) + "/";
+
+    // 初期読み込み用グローバル変数を初期化
     global.filePath_for_init = null;
 
-    return { data }
+    return { data, fileDirPath }
 });
 
 
@@ -589,7 +603,7 @@ app.on('ready', function () {
         args.forEach(function (arg) {
 
             //引数の最後の.以降の文字（拡張子）がtxtとmdのときに初期読み込み用のファイルパスとして保管
-            if (path_tool.extname(arg) == (".txt" || ".md")) {
+            if (path_tool.extname(arg) == (".txt" || ".md" || ".html")) {
                 global.filePath_for_init = arg;
             };
         });

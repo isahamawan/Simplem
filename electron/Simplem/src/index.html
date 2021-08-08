@@ -133,11 +133,14 @@
 
     //mainからのファイル読み込み命令を処理
     ipcRenderer.on('open_from_main', async () => {
-        const { canceled, data } = await ipcRenderer.invoke('open') //mainのopenを呼び出し（data取得）
+        const { canceled, data, fileDirPath } = await ipcRenderer.invoke('open') //mainのopenを呼び出し（data取得）
         if (canceled) return
         let file_text_data = '';
         file_text_data = data[0] || '';
         easyMDE.value(file_text_data);
+
+        //画像表示などのベースurlとして保存
+        window.fileDirPath = fileDirPath;
 
         //ファイル名の頭のアスタリスクを削除
         ipcRenderer.invoke('open_asterisk_del');
@@ -152,15 +155,22 @@
     //mainからの名前を付けて保存命令を処理
     ipcRenderer.on('save_as_from_main', async () => {
         const text_data = easyMDE.value();
-        await ipcRenderer.invoke('save_as', text_data);
+
+        const { fileDirPath } = await ipcRenderer.invoke('save_as', text_data);
+
+        //画像表示などのベースurlとして保存
+        window.fileDirPath = fileDirPath;
     });
 
     //mainからの引数で渡されたファイル読み込み命令を処理
     ipcRenderer.on('open_init_from_main', async () => {
-        const { data } = await ipcRenderer.invoke('open_init'); //mainのopen_initを呼び出し（data取得）
+        const { data, fileDirPath } = await ipcRenderer.invoke('open_init'); //mainのopen_initを呼び出し（data取得）
         let file_text_data = '';
         file_text_data = data || '';
         easyMDE.value(file_text_data);
+
+        //画像表示などのベースurlとして保存
+        window.fileDirPath = fileDirPath;
 
         //ファイル名の頭のアスタリスクを削除
         ipcRenderer.invoke('open_asterisk_del');

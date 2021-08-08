@@ -50,6 +50,10 @@
         border-radius: 0;
       }
 
+    .cm-s-easymde span .cm-formatting-code[class~=active-line]{
+        border:none;
+    }
+
     /* hrの設定 */
     .cm-hr {
         color:black;
