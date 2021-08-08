@@ -50,7 +50,8 @@
             "CFBundleTypeExtensions": [
               "markdown",
               "md",
-              "txt"
+              "txt",
+              "html"
             ],
             "LSHandlerRank": "Default"
           }
