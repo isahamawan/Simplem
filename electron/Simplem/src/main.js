@@ -49,9 +49,6 @@ ipcMain.handle('open', async (event) => {
     global.filename_for_title = path_tool.basename(filePaths[0]);
     mainWindow.setTitle(global.filename_for_title + " - Simplem");
 
-    //ファイル名の頭の*を削除するためのスクリプトタグ追加命令
-    mainWindow.webContents.send('add_asterisk_script_from_main');
-
     //上書き保存用にファイルパスを保管
     global.filePath_for_save = filePaths[0];
 
@@ -60,6 +57,11 @@ ipcMain.handle('open', async (event) => {
 
 
     return { canceled, data, fileDirPath }
+});
+
+//ファイルの読込時の*追加スクリプトの追加用
+ipcMain.handle('open_asterisk_script_add', async (event) => {
+    await mainWindow.webContents.send('add_asterisk_script_from_main');
 });
 
 //ファイルの読込時の、ファイル名の頭のアスタリスクの削除
@@ -130,9 +132,6 @@ ipcMain.handle('open_init', async (event) => {
     //タイトル用にファイル名を保管と、タイトルの変更
     global.filename_for_title = path_tool.basename(global.filePath_for_init);
     mainWindow.setTitle(global.filename_for_title + " - Simplem");
-
-    //ファイル名の頭の*を追加するためのスクリプトタグ追加命令
-    mainWindow.webContents.send('add_asterisk_script_from_main');
 
     //上書き保存用にファイルパスを保管
     global.filePath_for_save = global.filePath_for_init;

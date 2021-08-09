@@ -137,13 +137,17 @@
         if (canceled) return
         let file_text_data = '';
         file_text_data = data[0] || '';
-        easyMDE.value(file_text_data);
+        await easyMDE.value(file_text_data);
 
         //画像表示などのベースurlとして保存
         window.fileDirPath = fileDirPath;
 
         //ファイル名の頭のアスタリスクを削除
-        ipcRenderer.invoke('open_asterisk_del');
+        await ipcRenderer.invoke('open_asterisk_del');
+
+        //ファイルの読込時の*追加スクリプトの追加
+        await ipcRenderer.invoke('open_asterisk_script_add')
+
     });
 
     //mainからの上書き保存命令を処理
@@ -167,13 +171,16 @@
         const { data, fileDirPath } = await ipcRenderer.invoke('open_init'); //mainのopen_initを呼び出し（data取得）
         let file_text_data = '';
         file_text_data = data || '';
-        easyMDE.value(file_text_data);
+        await easyMDE.value(file_text_data);
 
         //画像表示などのベースurlとして保存
         window.fileDirPath = fileDirPath;
 
         //ファイル名の頭のアスタリスクを削除
-        ipcRenderer.invoke('open_asterisk_del');
+        await ipcRenderer.invoke('open_asterisk_del');
+
+        //ファイルの読込時の*追加スクリプトの追加
+        await ipcRenderer.invoke('open_asterisk_script_add')
 
     });
 
@@ -331,34 +338,22 @@
     });
 
 
-    let flg_ast_added = false;
-    let flg_ast_add_script_added = false;
+
     //mainからのファイル名頭アスタリスク追加用スクリプト追加命令の処理
     ipcRenderer.on('add_asterisk_script_from_main', async (event) => {
 
         //要素の作成
-        let add_asterisk_script = document.createElement('script');
+        let add_asterisk_script = await document.createElement('script');
         add_asterisk_script.id = "add_asterisk_js"
 
-        flg_ast_added = true;
-        add_asterisk_script.textContent = "if (flg_ast_added == true) {easyMDE.codemirror.on('change', function () { ipcRenderer.invoke('add_asterisk_to_filename'); flg_ast_added = false; });};";
 
-        let html_tag = document.getElementsByTagName("html");
+        //add_asterisk_script.textContent = "if (flg_ast_added == true) {easyMDE.codemirror.on('change', function () { ipcRenderer.invoke('add_asterisk_to_filename'); flg_ast_added = false; });};";
+        add_asterisk_script.textContent = "easyMDE.codemirror.on('change', function testa() { ipcRenderer.invoke('add_asterisk_to_filename'); let remove_elem = document.getElementById('add_asterisk_js').remove();easyMDE.codemirror.off('change', testa); });";
 
-        if (flg_ast_add_script_added == false) {
-            //最後の子要素として追加
-            html_tag[0].appendChild(add_asterisk_script);
-            flg_ast_add_script_added = true;
-        }
+        let html_tag = await document.getElementsByTagName("html");
 
-
-        //アスタリスク削除と、実行後の自要素削除。
-        //easyMDE.codemirror.on("change", function () {
-        //ipcRenderer.invoke('add_asterisk_to_filename');
-        //let remove_elem = document.getElementById('add_asterisk_js');
-        //remove_elem.remove();
-        //});
-
+        //最後の子要素として追加
+        await html_tag[0].appendChild(add_asterisk_script);
 
     });
 
@@ -369,13 +364,7 @@
         console.log('!!error in main.js!!: ' + err);
     });
 
-    //let remote = window.remote;
-    //let searchInPage = window.searchInPage;
-    //mainからの検索窓オープンの命令を処理
-    //ipcRenderer.on('webdata', async (webcontents_for_search) => {
-    //    let inPageSearch = searchInPage(webcontents_for_search);
-    //    inPageSearch.openSearchWindow();
-    //});
+
 
 
 
