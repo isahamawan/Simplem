@@ -1009,6 +1009,7 @@
     /* 検索結果 */
     .cm-s-easymde span .cm-searching {
         background-color: yellow;
+        color:black;
         /*background-color: rgba(255, 255, 0, .4)*/
     }
 

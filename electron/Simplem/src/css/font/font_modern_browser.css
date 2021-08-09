@@ -1,0 +1,12 @@
+    @font-face {
+      font-family: "ModernBrowserR";
+      src: url("../../webfonts/modernBR.ttf") format("truetype");
+      font-display: block;
+    }
+
+    body,
+    title,
+    code {
+      font-family: "ModernBrowserR";
+      /*font-weight: 500;*/
+    }

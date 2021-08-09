@@ -506,6 +506,16 @@ let template = [{
             }
         },
         {
+            label: 'モダンBrowser',
+            type: 'radio',
+            //accelerator: 'CmdOrCtrl+Shift+K',
+            click: function () {
+
+                mainWindow.webContents.send("change_font_from_main", "modern_browser");
+
+            }
+        },
+        {
             label: 'Simplem',
             type: 'radio',
             //accelerator: 'CmdOrCtrl+Shift+K',
