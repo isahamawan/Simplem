@@ -1035,3 +1035,38 @@
         color: #fff;
         background-color:black;
     }
+
+
+
+    /* 以下、darkmode.jsの設定*/
+
+    .darkmode--activated .EasyMDEContainer .CodeMirror-wrap {
+        mix-blend-mode: difference;
+    }
+
+    body .darkmode-toggle {
+        transition:none;
+        width: 26px;
+        height: 26px;
+    }
+
+
+    /* darkmode.jsのボタン背景無効化 */
+    body .darkmode-layer--button {
+        width: unset;
+        height: unset;
+        border-radius: unset;
+        right: unset;
+        bottom: unset;
+        left: unset;
+        display:none;
+    }
+
+    body .darkmode-layer {
+        position: fixed;
+        pointer-events: unset;
+        background: unset;
+        transition: none;
+        mix-blend-mode: unset;
+        display:none;
+    }

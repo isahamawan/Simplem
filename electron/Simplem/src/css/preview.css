@@ -570,3 +570,10 @@ hr {
 }*/
 
 
+    /* 以下、darkmode.jsの設定 */
+    .darkmode--activated strong {
+        /*font-weight: 700;*/
+        background: linear-gradient(transparent 80%,#ff5b32 50%);/* importantで印刷時の背景表示 */
+        font-weight: 700;
+        color: #000;
+    }
