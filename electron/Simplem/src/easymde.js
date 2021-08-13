@@ -13191,6 +13191,26 @@
           '"': '&quot;',
           "'": '&#39;'
         };
+        //simplem unescape　インラインコードのハイライト用
+        var unescapeReplacements = {
+          '&amp;': '&',
+          '&lt;': '<',
+          '&gt;': '>',
+          '&quot;': '"',
+          '&#39;': "'"
+        };
+
+
+        var getUnEscapeReplacement = function getUnEscapeReplacement(ch) {
+          return unescapeReplacements[ch];
+        };
+
+        var unescape2Replace = /(&amp;|&lt;|&gt;|&quot;|&#39;)/g;
+
+        function unescape$2(html) {
+          return html.replace(unescape2Replace, getUnEscapeReplacement);
+        }
+        //simplemここまで
 
         var getEscapeReplacement = function getEscapeReplacement(ch) {
           return escapeReplacements[ch];
@@ -13554,7 +13574,6 @@
 
           _proto.code = function code(src) {
             var cap = this.rules.block.code.exec(src);
-
             if (cap) {
               var text = cap[0].replace(/^ {1,4}/gm, '');
               return {
@@ -15071,9 +15090,12 @@
                 text = out;
               }
             }
+
+
+            //
             //simplem hljs追加ここまで
 
-            return '<code>' + text + '</code>';
+            return '<code>' + unescape$2(text) + '</code>';
           };
 
           _proto.br = function br() {

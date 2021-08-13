@@ -1044,10 +1044,20 @@
         mix-blend-mode: difference;
     }
 
+    .darkmode--activated .EasyMDEContainer .editor-preview-side {
+        mix-blend-mode: difference;
+        z-index: -1;
+    }
+
     body .darkmode-toggle {
         transition:none;
         width: 26px;
         height: 26px;
+    }
+
+    .darkmode--activated .EasyMDEContainer img {
+        isolation:isolate;
+        mix-blend-mode:difference;
     }
 
 
