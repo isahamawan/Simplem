@@ -15087,7 +15087,7 @@
 
               if (out != null && out !== text) {
                 //escaped = true;
-                text = out;
+                text = unescape$2(out);
               }
             }
 
@@ -15095,7 +15095,7 @@
             //
             //simplem hljs追加ここまで
 
-            return '<code>' + unescape$2(text) + '</code>';
+            return '<code>' + text + '</code>';
           };
 
           _proto.br = function br() {
