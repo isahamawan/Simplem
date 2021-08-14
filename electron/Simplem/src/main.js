@@ -208,6 +208,8 @@ function createWindow() {
 
 }
 
+//macかどうかの判定用
+const isMac = process.platform === 'darwin';
 //常に最前面表示のオンオフ用
 global.switch_t = true;
 //ソースコードモードのオンオフ用
@@ -334,23 +336,25 @@ let template = [{
                 mainWindow.webContents.send('replace_from_main');
             }
         },
-        { type: 'separator' },
-        //{
-        //    label: '検索',
-        //    accelerator: 'CmdOrCtrl+F',
-        //    click: function () {
-        //        let webcontents_for_search = mainWindow.webContents;
-        //        //console.log(webcontents_for_search);
-        //        mainWindow.webContents.send('webdata', webcontents_for_search); //レンダラ（index.html）へ''を命令
-        //    }
-        //},
-        {
-            label: '読み上げ',
-            submenu: [
-                { role: 'startSpeaking', label: '開始' },
-                { role: 'stopSpeaking', label: '終了' }
-            ]
-        },
+        ...(isMac ? [
+            { type: 'separator' },
+            //{
+            //    label: '検索',
+            //    accelerator: 'CmdOrCtrl+F',
+            //    click: function () {
+            //        let webcontents_for_search = mainWindow.webContents;
+            //        //console.log(webcontents_for_search);
+            //        mainWindow.webContents.send('webdata', webcontents_for_search); //レンダラ（index.html）へ''を命令
+            //    }
+            //},
+            {
+                label: '読み上げ',
+                submenu: [
+                    { role: 'startSpeaking', label: '開始' },
+                    { role: 'stopSpeaking', label: '終了' }
+                ]
+            }
+        ] : []),
     ]
 }, {
     label: "表示",
