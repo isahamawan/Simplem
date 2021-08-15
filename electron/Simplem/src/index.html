@@ -46,13 +46,14 @@
     <link rel="stylesheet" href="cm_search_addon/dialog.css">
     <link rel="stylesheet" href="cm_search_addon/matchesonscrollbar.css">
 
-
-
 </head>
 
 
 
 <body>
+    <div id="toc" style="display:none;">
+        <div class="toc_title">目次</div>
+    </div>
     <!--開く、保存、名前を付けて保存ボタン
     <div>
         <button id="open" type="button">Open</button>
@@ -138,6 +139,10 @@
     //});
 
 </script>
+
+<!-- toc js -->
+<script src="js/toc.js"></script>
+<link rel="stylesheet" href="css/toc.css">
 
 
 <!-- 以下、electronのレンダラー用script -->
