@@ -20,7 +20,7 @@ function init_toc(cm) {
             newTOC += '<div data-line="' + lineNo + '" class="toc-item" style="padding-left:' + level + 'em">' + title + '</div>'
         })
         if (newTOC == lastTOC) return
-        $toc.innerHTML = lastTOC = "<div class='toc_title'>目次</div>" + newTOC
+        $toc.innerHTML = lastTOC = newTOC
     }
 
     cm.on('changes', update)
@@ -62,10 +62,10 @@ document.getElementById("toc_button").addEventListener('click', function (e) {
 
     if (flg_toc_on == true) {
 
-        document.getElementById("toc").setAttribute("style", "display:block;");
+        document.getElementById("toc_wrapper").setAttribute("style", "display:block;");
     } else {
 
-        document.getElementById("toc").setAttribute("style", "display:none;");
+        document.getElementById("toc_wrapper").setAttribute("style", "display:none;");
     }
 
     flg_toc_on = !flg_toc_on;

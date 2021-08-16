@@ -1,11 +1,17 @@
+#toc_wrapper {
+    float: left;
+    min-width: 300px;
+}
+
 #toc {
     float: left;
     /*margin-right: 10px;*/
     padding-right: 10px;
-    min-width: 300px;
-    width: 25%;
+    /*min-width: 300px;
+    width: 25%;*/
+    width:300px;
     overflow-y: scroll;
-    height: 100vh;
+    height: calc(100vh - 34px);
 }
 
 #toc .toc-item {
@@ -29,6 +35,9 @@
     border-bottom: 1px solid #ddd;
     margin-right: -10px;
 }
+
+
+
 /*
 @media (max-width: 800px) {
     #toc {
