@@ -297,6 +297,9 @@
 
         //カーソルのサイズをリセット
         await easyMDE.codemirror.execCommand('selectAll');
+        await setTimeout(function () {
+            easyMDE.codemirror.setCursor({ line: 0, ch: 0 });
+        }, 10);
         //await document.activeElement.blur();
         //await easyMDE.codemirror.setCursor({ line: 0, ch: 0 });
 
@@ -319,6 +322,9 @@
 
         //カーソルのサイズをソースコードモード用にリセット
         await easyMDE.codemirror.execCommand('selectAll');
+        await setTimeout(function () {
+            easyMDE.codemirror.setCursor({ line: 0, ch: 0 });
+        }, 10);
         //easyMDE.codemirror.setCursor({ line: 0, ch: 0 });
         //document.activeElement.blur();
         //easyMDE.codemirror.execCommand("goDocStart");
