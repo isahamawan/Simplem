@@ -41,7 +41,7 @@ init_toc(easyMDE.codemirror);
 
 //tocボタン要素の作成
 let toc_button_ele = document.createElement("button");
-toc_button_ele.setAttribute("class", "bold");
+toc_button_ele.setAttribute("class", "outline");
 toc_button_ele.setAttribute("type", "button");
 toc_button_ele.setAttribute("title", "Outline");
 toc_button_ele.setAttribute("tabindex", "-1");
