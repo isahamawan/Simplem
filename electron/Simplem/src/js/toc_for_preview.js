@@ -1,8 +1,78 @@
 function init_toc_for_preview(cm) {
+
+
+    /**
+     * Slugger generates header id
+     */
+    var Slugger_1 = /*#__PURE__*/function () {
+        function Slugger() {
+            this.seen = {};
+        }
+
+        var _proto = Slugger.prototype;
+
+        _proto.serialize = function serialize(value) {
+            return value.toLowerCase().trim() // remove html tags
+                .replace(/<[!\/a-z].*?>/ig, '') // remove unwanted chars
+                .replace(/[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,./:;<=>?@[\]^`{|}~]/g, '').replace(/\s/g, '-');
+        }
+            /**
+             * Finds the next safe (unique) slug to use
+             */
+            ;
+
+        _proto.getNextSafeSlug = function getNextSafeSlug(originalSlug, isDryRun) {
+            var slug = originalSlug;
+            var occurenceAccumulator = 0;
+
+            if (this.seen.hasOwnProperty(slug)) {
+                occurenceAccumulator = this.seen[originalSlug];
+
+                do {
+                    occurenceAccumulator++;
+                    slug = originalSlug + '-' + occurenceAccumulator;
+                } while (this.seen.hasOwnProperty(slug));
+            }
+
+            if (!isDryRun) {
+                this.seen[originalSlug] = occurenceAccumulator;
+                this.seen[slug] = 0;
+            }
+
+            return slug;
+        }
+            /**
+             * Convert string to unique id
+             * @param {object} options
+             * @param {boolean} options.dryrun Generates the next unique slug without updating the internal accumulator.
+             */
+            ;
+
+        _proto.slug = function slug(value, options) {
+            if (options === void 0) {
+                options = {};
+            }
+
+            var slug = this.serialize(value);
+            return this.getNextSafeSlug(slug, options.dryrun);
+        };
+
+        return Slugger;
+    }();
+
+    let slugger_for_toc = new Slugger_1();
+
+
+
+
+
+
+
+
     var $toc = document.getElementById('toc')
     var lastTOC = ""
 
-    //var update = function () {
+    //var update = function ()
     var newTOC = ""
     cm.eachLine(function (line) {
         var tmp = /^(#+)\s+(.+)(?:\s+\1)?$/.exec(line.text);
@@ -18,89 +88,18 @@ function init_toc_for_preview(cm) {
         title = title.replace(/&/g, '&amp;')
         title = title.replace(/</g, '&lt;')
 
-        let title_id = slugger_for_toc.prototype.slug(title);
+        let title_id = slugger_for_toc.slug(title);
         newTOC += '<a href="#' + title_id + '" class="toc-item" style="padding-left:' + level + 'em">' + title + '</a>'
     })
     if (newTOC == lastTOC) return
     $toc.innerHTML = lastTOC = newTOC
-    //}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //
 
 
 }
 
 
 
-/**
-     * Slugger generates header id
-     */
-let slugger_for_toc = /*#__PURE__*/function () {
-    function Slugger() {
-    }
-    var seen = {};
-    var _proto = Slugger.prototype;
-
-    _proto.serialize = function serialize(value) {
-        return value.toLowerCase().trim() // remove html tags
-            .replace(/<[!\/a-z].*?>/ig, '') // remove unwanted chars
-            .replace(/[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,./:;<=>?@[\]^`{|}~]/g, '').replace(/\s/g, '-');
-    }
-        /**
-         * Finds the next safe (unique) slug to use
-         */
-        ;
-
-    _proto.getNextSafeSlug = function getNextSafeSlug(originalSlug, isDryRun) {
-        var slug = originalSlug;
-        var occurenceAccumulator = 0;
-
-        if (seen.hasOwnProperty(slug)) {
-            occurenceAccumulator = seen[originalSlug];
-
-            do {
-                occurenceAccumulator++;
-                slug = originalSlug + '-' + occurenceAccumulator;
-            } while (seen.hasOwnProperty(slug));
-        }
-
-        if (!isDryRun) {
-            seen[originalSlug] = occurenceAccumulator;
-            seen[slug] = 0;
-        }
-
-        return slug;
-    }
-        /**
-         * Convert string to unique id
-         * @param {object} options
-         * @param {boolean} options.dryrun Generates the next unique slug without updating the internal accumulator.
-         */
-        ;
-
-    _proto.slug = function slug(value, options) {
-        if (options === void 0) {
-            options = {};
-        }
-
-        var slug = this.serialize(value);
-        return this.getNextSafeSlug(slug, options.dryrun);
-    };
-
-    return Slugger;
-}();
 
 //tocの読み込み時実行
 //init_toc(easyMDE.codemirror);
