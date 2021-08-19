@@ -4,12 +4,12 @@ function init_toc_for_preview(cm) {
     /**
      * Slugger generates header id
      */
-    var Slugger_1 = /*#__PURE__*/function () {
+    let Slugger_1 = /*#__PURE__*/function () {
         function Slugger() {
             this.seen = {};
         }
 
-        var _proto = Slugger.prototype;
+        let _proto = Slugger.prototype;
 
         _proto.serialize = function serialize(value) {
             return value.toLowerCase().trim() // remove html tags
@@ -22,8 +22,8 @@ function init_toc_for_preview(cm) {
             ;
 
         _proto.getNextSafeSlug = function getNextSafeSlug(originalSlug, isDryRun) {
-            var slug = originalSlug;
-            var occurenceAccumulator = 0;
+            let slug = originalSlug;
+            let occurenceAccumulator = 0;
 
             if (this.seen.hasOwnProperty(slug)) {
                 occurenceAccumulator = this.seen[originalSlug];
@@ -53,7 +53,7 @@ function init_toc_for_preview(cm) {
                 options = {};
             }
 
-            var slug = this.serialize(value);
+            let slug = this.serialize(value);
             return this.getNextSafeSlug(slug, options.dryrun);
         };
 
@@ -69,19 +69,19 @@ function init_toc_for_preview(cm) {
 
 
 
-    var $toc = document.getElementById('toc')
-    var lastTOC = ""
+    let $toc = document.getElementById('toc')
+    let lastTOC = ""
 
-    //var update = function ()
-    var newTOC = ""
+    //let update = function ()
+    let newTOC = ""
     cm.eachLine(function (line) {
-        var tmp = /^(#+)\s+(.+)(?:\s+\1)?$/.exec(line.text);
+        let tmp = /^(#+)\s+(.+)(?:\s+\1)?$/.exec(line.text);
         if (!tmp) return
-        //var lineNo = line.lineNo();
+        //let lineNo = line.lineNo();
         //if (!cm.getStateAfter(lineNo).header) return // double check but is not header
-        var level = tmp[1].length
+        let level = tmp[1].length
 
-        var title = tmp[2]
+        let title = tmp[2]
         title = title.replace(/([*_]{1,2}|~~|`+)(.+?)\1/g, '$2') // em / bold / del / code
         title = title.replace(/\\(?=.)|\[\^.+?\]|\!\[((?:[^\\\]]+|\\.)+)\](\(.+?\)| ?\[.+?\])?/g, '') // images / escaping slashes / footref
         title = title.replace(/\[((?:[^\\\]]+|\\.)+)\](\(.+?\)| ?\[.+?\])/g, '$1') // links

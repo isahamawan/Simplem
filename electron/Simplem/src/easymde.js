@@ -18017,6 +18017,15 @@
         }
         preview.innerHTML = editor.options.previewRender(editor.value(), preview);
 
+        //simplem toc_for_previewへの切替え用
+        window.flg_toc_preview_on = !window.flg_toc_preview_on;
+        //tocとtoc_for_previewの切替え
+        if (flg_toc_preview_on == true) {
+          init_toc_for_preview(easyMDE.codemirror);
+        } else {
+          update_for_toggle_preview(easyMDE.codemirror);
+        }
+        //simplem 以上
       }
 
       function _replaceSelection(cm, active, startEnd, url) {
