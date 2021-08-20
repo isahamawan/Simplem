@@ -17950,9 +17950,11 @@
           if (newValue != null) {
             preview.innerHTML = newValue;
           }
-          cm.on('update', cm.sideBySideRenderingFunction);
+          //simplem cm.on('update', cm.sideBySideRenderingFunction);
+          cm.on('change', debounce(cm.sideBySideRenderingFunction, 100));
         } else {
-          cm.off('update', cm.sideBySideRenderingFunction);
+          //simplem cm.off('update', cm.sideBySideRenderingFunction);
+          cm.off('change', debounce(cm.sideBySideRenderingFunction, 100));
         }
 
         // Refresh to fix selection being off (#309)
