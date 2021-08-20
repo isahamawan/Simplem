@@ -17957,6 +17957,16 @@
 
         // Refresh to fix selection being off (#309)
         cm.refresh();
+
+        //simplem <<< tocを編集画面用に更新
+
+        //toc_for_previewへの切替え用
+        if (flg_toc_preview_on == true) {
+          window.flg_toc_preview_on = false;
+        }
+
+        update_toc_for_edit(easyMDE.codemirror);
+        //simplem >>>
       }
 
 
@@ -18017,15 +18027,16 @@
         }
         preview.innerHTML = editor.options.previewRender(editor.value(), preview);
 
-        //simplem toc_for_previewへの切替え用
+        //simplem <<< toc_for_previewへの切替え用
+
         window.flg_toc_preview_on = !window.flg_toc_preview_on;
         //tocとtoc_for_previewの切替え
         if (flg_toc_preview_on == true) {
           init_toc_for_preview(easyMDE.codemirror);
         } else {
-          update_for_toggle_preview(easyMDE.codemirror);
+          update_toc_for_edit(easyMDE.codemirror);
         }
-        //simplem 以上
+        //simplem >>>
       }
 
       function _replaceSelection(cm, active, startEnd, url) {

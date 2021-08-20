@@ -58,8 +58,8 @@ editor_toolbar_ele.insertBefore(toc_button_ele, editor_toolbar_ele.firstChild);
 
 
 
-//ボタンtoggle preview時用に別途init_toc内のupdateを定義
-let update_for_toggle_preview = function (cm) {
+//ボタンtoggle preview時用に別途init_toc内のupdateを抜き出して定義
+let update_toc_for_edit = function (cm) {
     let $toc = document.getElementById('toc')
     let newTOC = ""
     cm.eachLine(function (line) {
@@ -102,8 +102,6 @@ document.getElementById("toc_button").addEventListener('click', function (e) {
 
         document.getElementById("toc_wrapper").setAttribute("style", "display:none;");
     }
-
-
 
     flg_toc_on = !flg_toc_on;
 
