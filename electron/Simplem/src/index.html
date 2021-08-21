@@ -103,8 +103,8 @@
         //},
         previewImagesInEditor: false,
         //lineNumbers: true,
-        autofocus: true,
-        forceSync: true,
+        autofocus: false,
+        forceSync: false,
         hideIcons: ["fullscreen", "heading", "italic", "image"],
         //initialValue: "# Hello world!",
         //parsingConfig: { allowAtxHeaderWithoutSpace: true },
@@ -537,19 +537,6 @@
 
 </script>
 
-<script>
-    function debounce(fn, interval) {
-        let timerId;
-        return () => {
-            clearTimeout(timerId);
-            const context = this;
-            const args = arguments;
-            console.log(context);
-            timerId = setTimeout(() => {
-                fn.apply(context, args);
-            }, interval);
-        }
-    }
-</script>
+<script src="js/misc.js"></script>
 
 </html>
