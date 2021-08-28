@@ -185,6 +185,23 @@ ipcMain.handle('add_asterisk_to_filename', async (event) => {
 
 });
 
+//メニューの有効化
+ipcMain.handle('menu_enable', async (event) => {
+
+    //メニューバー設置
+    const menu = Menu.buildFromTemplate(template);
+    Menu.setApplicationMenu(menu);
+});
+
+//メニューの無効化
+ipcMain.handle('menu_disable', async (event) => {
+
+    //メニューバー設置
+    const menu = Menu.buildFromTemplate(template_disable);
+    Menu.setApplicationMenu(menu);
+
+});
+
 //ipc経由の機能------------------------------------------------------------------>
 
 
@@ -592,6 +609,51 @@ let template = [{
 }
 ]
 
+let template_disable = [
+    {
+        label: 'Simplem',
+        submenu: [{
+            label: 'Simplemについて',
+            click: function () {
+                openAboutWindow({
+                    icon_path: path_tool.join(__dirname, "../assets/s_icon.png"),
+                    package_json_dir: "../",
+                    description: "Minimal notepad-like markdown editor.\nTo write down your amazing ideas immediately.",
+                    homepage: "https://github.com/isahamawan/Simplem",
+                    copyright: 'Copyright (c) 2021 isahamawan',
+                });
+            }
+        }, {
+            label: 'Simplemを終了',
+            accelerator: 'CmdOrCtrl+Q',
+            click: function () {
+                app.quit();
+            }
+        }]
+    },
+    {
+        label: "編集",
+        submenu: [
+            { role: 'undo', label: '元に戻す' },
+            { role: 'redo', label: 'やり直す' },
+            { type: 'separator' },
+            { role: 'cut', label: '切り取り' },
+            { role: 'copy', label: 'コピー' },
+            { role: 'paste', label: '貼り付け' },
+            { type: 'separator' },
+            {
+                label: '全て選択',
+                enabled: false,
+                accelerator: 'CmdOrCtrl+A',
+                acceleratorWorksWhenHidden: false, //mac easymde側のバインドキー押下と被らないようにmainプロセス側はキーバインディング無効化
+                registerAccelerator: false, //win,linux
+                click: function () {
+                    mainWindow.webContents.send('selectall_from_main');
+                }
+            },
+        ]
+    }
+]
 
 // Electronの初期化完了後に実行
 app.on('ready', function () {

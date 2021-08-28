@@ -967,7 +967,7 @@
     /*code-blockの行末の半角スペースが表示されないバグの修正*/
         .cm-s-easymde .cm-comment {
         /*white-space: nowrap;*//* これを入れると行末の半角スペースが表示されなくなる */
-        white-space: unset;
+        white-space: pre-wrap;
     }
 
 
@@ -1056,8 +1056,11 @@
         transition:none;
         width: 26px;
         height: 26px;
-        position: relative;
+        line-height: 26px;
+        display:block;
+        position: absolute;
         margin-top: -15px;
+        text-align: center;
     }
 
     .editor-statusbar {
@@ -1066,6 +1069,7 @@
         color: #959694;
         text-align: right;
 
+        height:26px;
         /* toc用
         height:26px;
         position:relative;
@@ -1101,4 +1105,10 @@
         transition: none;
         mix-blend-mode: unset;
         display:none;
+    }
+
+    /*ラインナンバーの調整*/
+    .CodeMirror-gutter-elt {
+        position: fixed;
+
     }
