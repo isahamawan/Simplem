@@ -71,28 +71,7 @@
     <textarea id="my-text-area"></textarea>
 
 
-    <!-- darkmode.js （適用のためにcssで色々修正済み）-->
-    <script src="js/darkmode.js"></script>
-    <script>
-        function addDarkmodeWidget() {
-            const options = {
-                bottom: '4px', // default: '32px'
-                right: 'unset', // default: '32px'
-                left: '5px', // default: 'unset'
-                time: '0s', // default: '0.3s' cssでnoneに設定中
-                mixColor: '#fff', // default: '#fff'
-                backgroundColor: '#fff',  // default: '#fff'
-                buttonColorDark: '#fff',  // default: '#100f2c'
-                buttonColorLight: '#100f2c', // default: '#fff'
-                saveInCookies: true, // default: true,
-                label: '🌓', // default: ''
-                autoMatchOsTheme: false // default: true
-            }
-            const darkmode = new Darkmode(options);
-            darkmode.showWidget();
-        }
-        window.addEventListener('load', addDarkmodeWidget);
-    </script>
+
 </body>
 
 <script>
@@ -105,6 +84,7 @@
         //    delay: 1000,
         //    uniqueId: 'mde-autosave'
         //},
+        //styleActiveLine: true,//easymde.js修正要
         previewImagesInEditor: false,
         //lineNumbers: true,
         autofocus: false,
@@ -553,9 +533,52 @@
 
 </script>
 
+<!-- darkmode.js （適用のためにcssで色々修正済み）-->
+<script src="js/darkmode.js"></script>
+<script>
+    function addDarkmodeWidget() {
+        const options = {
+            bottom: '4px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '5px', // default: 'unset'
+            time: '0s', // default: '0.3s' cssでnoneに設定中
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: '#fff',  // default: '#fff'
+            buttonColorDark: '#fff',  // default: '#100f2c'
+            buttonColorLight: '#100f2c', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: false // default: true
+        }
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+    }
+    addDarkmodeWidget();
+    //window.addEventListener('load', addDarkmodeWidget);
+</script>
+
 <script src="js/misc.js"></script>
 
 <!-- merge_handle js -->
 <script src="js/merge_handle.js"></script>
+
+<!-- mermaid js css -->
+<script src="js/mermaid.js"></script>
+<!--<link rel="stylesheet" href="css/mermaid.css">-->
+<!--
+        MEMO: レンダリングを読み込み時にしない
+        任意のタイミングで行うため
+        -->
+<script>
+    mermaid.initialize({
+        startOnLoad: false,
+        "theme": "default",
+        //"theme": "neutral",
+        flowchart: {
+            //useMaxWidth: true
+            //htmlLabels: true
+        }
+    });
+</script>
 
 </html>

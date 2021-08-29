@@ -24,6 +24,8 @@ function merge_view_on() {
         mode: "text/html",
         //singleCursorHeightPerLine: false, //カーソルサイズをスパンに合わせるためにfalse
 
+        //styleActiveLine: true,
+        //lineWrapping: true,
     });
 
     let easymdes_cm_scroll_ele = document.getElementsByClassName("CodeMirror-scroll")[0];

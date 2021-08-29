@@ -16305,22 +16305,36 @@
           _proto.code = function code(_code, infostring, escaped) {
             var lang = (infostring || '').match(/\S*/)[0];
 
-            if (this.options.highlight) {
-              var out = this.options.highlight(_code, lang);
+            //simplem mermaid js <<<
+            // mermaidはcode部分の冒頭がこの２つの文言になるので、それで判断している
+            if (_code.match(/^sequenceDiagram/) || _code.match(/^graph/) || _code.match(/^classDiagram/) || _code.match(/^stateDiagram/) || _code.match(/^gantt/) || _code.match(/^pie/)) {
+              // mermaid classを持つdivタグを加えることで、mermaidが認識する
+              return '<div class="mermaid">' + _code + '</div>';
+            }
+            else {
 
-              if (out != null && out !== _code) {
-                escaped = true;
-                _code = out;
+              //simplem >>>
+
+
+              if (this.options.highlight) {
+                var out = this.options.highlight(_code, lang);
+
+                if (out != null && out !== _code) {
+                  escaped = true;
+                  _code = out;
+                }
               }
+
+              _code = _code.replace(/\n$/, '') + '\n';
+
+              if (!lang) {
+                return '<pre><code>' + (escaped ? _code : escape$1(_code, true)) + '</code></pre>\n';
+              }
+
+              return '<pre><code class="' + this.options.langPrefix + escape$1(lang, true) + '">' + (escaped ? _code : escape$1(_code, true)) + '</code></pre>\n';
+              //simplem mermaid js <<<
             }
-
-            _code = _code.replace(/\n$/, '') + '\n';
-
-            if (!lang) {
-              return '<pre><code>' + (escaped ? _code : escape$1(_code, true)) + '</code></pre>\n';
-            }
-
-            return '<pre><code class="' + this.options.langPrefix + escape$1(lang, true) + '">' + (escaped ? _code : escape$1(_code, true)) + '</code></pre>\n';
+            //simplem >>>
           };
 
           _proto.blockquote = function blockquote(quote) {
@@ -19228,6 +19242,8 @@
               }
             }
             preview.className += ' editor-preview-active-side';
+            //simplem mermaid
+            mermaid.init();
           }, 1);
           if (toolbarButton) toolbarButton.className += ' active';
           wrapper.className += ' CodeMirror-sided';
@@ -19250,6 +19266,8 @@
           var newValue = editor.options.previewRender(editor.value(), preview);
           if (newValue != null) {
             preview.innerHTML = newValue;
+            //simplem mermaid
+            mermaid.init();
           }
         };
 
@@ -19281,6 +19299,7 @@
 
         update_toc_for_edit(easyMDE.codemirror);
         //simplem >>>
+
       }
 
 
@@ -19333,6 +19352,8 @@
           // instead of just appearing.
           setTimeout(function () {
             preview.className += ' editor-preview-active';
+            //simplem mermaid
+            mermaid.init()
           }, 1);
           if (toolbar) {
             toolbar.className += ' active';
@@ -19340,6 +19361,7 @@
           }
         }
         preview.innerHTML = editor.options.previewRender(editor.value(), preview);
+
 
         //simplem <<< toc_for_previewへの切替え用
 
@@ -19351,6 +19373,7 @@
           update_toc_for_edit(easyMDE.codemirror);
         }
         //simplem >>>
+
       }
 
       function _replaceSelection(cm, active, startEnd, url) {

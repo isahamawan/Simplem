@@ -136,9 +136,16 @@
 }
 
 .CodeMirror-merge pre.CodeMirror-line, .CodeMirror-merge pre.CodeMirror-line-like {
+    /*改行なし用*/
     word-wrap: normal;
     white-space: pre;/*preで行末の半角が表示されない問題解決済み*/
     word-break: normal;
+
+    /*改行あり用
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: break-all;
+    */
 }
 
 .CodeMirror-merge-gap {
@@ -220,3 +227,44 @@ body .diff:after {
   color: black;
   z-index: 3;
 }
+
+
+    /* 検索結果 */
+    .CodeMirror-merge span .cm-searching {
+        background-color: yellow;
+        color:black;
+        /*background-color: rgba(255, 255, 0, .4)*/
+    }
+
+    /* 選択範囲の色 */
+
+    .CodeMirror-merge .CodeMirror-code {
+      position: inherit;
+      z-index: -3;
+    }
+
+    .CodeMirror-merge span .cm-searching[class~="CodeMirror-selectedtext"] {
+        /*display:inline;*/
+        color: #fff;
+        background-color:gray;
+        opacity: 0.5;
+    }
+
+    .CodeMirror-merge .CodeMirror-focused .CodeMirror-selected {
+        color: #fff;
+        background-color:gray;
+        opacity: 0.5;
+    }
+
+    .CodeMirror-merge .CodeMirror-line span .CodeMirror-selectedtext {
+        color: #fff;
+        background-color:gray;
+        background:gray;
+        opacity: 0.5;
+    }
+
+    .CodeMirror-merge div .CodeMirror-selected{
+        color: #fff;
+        background-color:gray;
+        opacity: 0.5;
+    }
