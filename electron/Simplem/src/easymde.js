@@ -16309,6 +16309,9 @@
             // mermaidはcode部分の冒頭がこの２つの文言になるので、それで判断している
             if (_code.match(/^sequenceDiagram/) || _code.match(/^graph/) || _code.match(/^classDiagram/) || _code.match(/^stateDiagram/) || _code.match(/^gantt/) || _code.match(/^pie/)) {
               // mermaid classを持つdivタグを加えることで、mermaidが認識する
+
+              window.flg_mermaid_exist = true;
+
               return '<div class="mermaid">' + _code + '</div>';
             }
             else {
@@ -19243,6 +19246,7 @@
             }
             preview.className += ' editor-preview-active-side';
             //simplem mermaid
+            window.flg_mermaid_exist = false;
             mermaid.init();
           }, 1);
           if (toolbarButton) toolbarButton.className += ' active';
@@ -19265,9 +19269,23 @@
         var sideBySideRenderingFunction = function () {
           var newValue = editor.options.previewRender(editor.value(), preview);
           if (newValue != null) {
-            preview.innerHTML = newValue;
-            //simplem mermaid
-            mermaid.init();
+
+            //simplem mermaid <<<
+            if (flg_mermaid_exist) {
+              let pos_mermaid_bfore_init = document.getElementsByClassName("editor-preview-side")[0].scrollTop;
+
+              preview.innerHTML = newValue;
+
+
+              mermaid.init();
+              document.getElementsByClassName("editor-preview-side")[0].scrollTo(0, pos_mermaid_bfore_init);
+            } else {
+              //simplem >>>
+
+              preview.innerHTML = newValue;
+
+            } ///simplem
+
           }
         };
 
