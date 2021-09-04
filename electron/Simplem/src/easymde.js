@@ -16307,7 +16307,7 @@
 
             //simplem mermaid js <<<
             // mermaidはcode部分の冒頭がこの２つの文言になるので、それで判断している
-            if (_code.match(/^sequenceDiagram/) || _code.match(/^graph/) || _code.match(/^classDiagram/) || _code.match(/^stateDiagram/) || _code.match(/^gantt/) || _code.match(/^pie/)) {
+            if (_code.match(/^sequenceDiagram/) || _code.match(/^graph/) || _code.match(/^classDiagram/) || _code.match(/^stateDiagram/) || _code.match(/^gantt/) || _code.match(/^pie/) || _code.match(/^erDiagram/) || _code.match(/^flowchart/) || _code.match(/^journey/) || _code.match(/^requirementDiagram/) || _code.match(/^pie/) || _code.match(/^pie/) || _code.match(/^pie/)) {
               // mermaid classを持つdivタグを加えることで、mermaidが認識する
 
               window.flg_mermaid_exist = true;
