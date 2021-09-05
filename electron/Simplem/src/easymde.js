@@ -15593,7 +15593,7 @@
         block$1.listItemStart = edit(/^( *)(bull) */).replace('bull', block$1.bullet).getRegex();
         block$1.list = edit(block$1.list).replace(/bull/g, block$1.bullet).replace('hr', '\\n+(?=\\1?(?:(?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n+|$))').replace('def', '\\n+(?=' + block$1.def.source + ')').getRegex();
         block$1._tag = 'address|article|aside|base|basefont|blockquote|body|caption' + '|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption' + '|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe' + '|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option' + '|p|param|section|source|summary|table|tbody|td|tfoot|th|thead|title|tr' + '|track|ul';
-        //simplem block$1._comment = /<!--(?!-?>)[\s\S]*?(?:-->|$)/;
+        //simplem toggleMemo block$1._comment = /<!--(?!-?>)[\s\S]*?(?:-->|$)/;
         block$1._comment = /<!--(?!-?>)[\s\S]*?(?:-->|$)/;
         block$1.html = edit(block$1.html, 'i').replace('comment', block$1._comment).replace('tag', block$1._tag).replace('attribute', / +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=<>`]+)?/).getRegex();
         block$1.paragraph = edit(block$1._paragraph).replace('hr', block$1.hr).replace('heading', ' {0,3}#{1,6} ').replace('|lheading', '') // setex headings don't interrupt commonmark paragraphs
@@ -20086,6 +20086,10 @@
         if (!options.previewRender) {
           //simplem options.previewRender = function (plainText) {
           options.previewRender = function (plainText) {
+
+            //simplem <!-- -->コメントの削除 toggleMemo
+            plainText = plainText.replace(/<!--(?!-?>)[\s\S]*?(?:-->)/g, "");
+
             // Note: "this" refers to the options object
             //simplem return this.parent.markdown(plainText);
             let op_baseurl = undefined;
