@@ -33,6 +33,28 @@ Author: (c) Taufik Nurrohman <hi@taufik-nurrohman.com>
          border-radius: 3px;
       }
 
+      /* エディタ側のブロックコードの設定 */
+      span.cm-comment:before {
+         content: "";
+         height: 24px;
+         position: absolute;
+         width: -webkit-fill-available;
+         background-color: #36454A;
+         left: -2px;
+         z-index: -3;
+      }
+
+      span.cm-formatting-code ~ span.cm-comment::before {
+         content: "";
+         height: 24px;
+         position: absolute;
+         width: -webkit-fill-available;
+         background-color: #fff;
+         left: -2px;
+         z-index: -2;
+      }
+
+
       /* インラインコードの設定 */
       .editor-preview code {
          background: #364549;

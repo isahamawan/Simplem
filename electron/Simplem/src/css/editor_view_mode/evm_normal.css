@@ -267,6 +267,7 @@
     /* 選択行のボールドのトークンの表示 */
     .cm-s-easymde .cm-formatting-strong {
         font-size:0;
+        line-height: 0;
     }
 
     .cm-s-easymde  .active-line[class~="cm-strong"] {
@@ -276,6 +277,7 @@
     /* 選択行の取消し線のトークンの表示 */
     .cm-s-easymde .cm-formatting-strikethrough {
         font-size:0;
+        line-height: 0;
     }
 
     .cm-s-easymde  .active-line[class~="cm-strikethrough"] {
@@ -285,6 +287,7 @@
     /* 選択行のcodeのトークンの表示 */
     .cm-s-easymde .cm-formatting-code {
         font-size:0;
+        line-height: 0;
         /*padding: 0;
         margin: 0;*/
     }
