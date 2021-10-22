@@ -111,6 +111,9 @@ document.getElementById("diff_button").addEventListener('click', function (e) {
 
         document.getElementById("diff_button").setAttribute("class", "diff active");
 
+        //slidesボタンの移動
+        document.getElementById("slides_button").setAttribute("style", "");
+
     } else {
 
         merge_view_off();

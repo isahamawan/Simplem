@@ -98,16 +98,18 @@ document.getElementById("toc_button").addEventListener('click', function (e) {
 
         document.getElementById("toc_wrapper").setAttribute("style", "display:block;");
 
-        //diffとdarkボタンの移動
+        //diffとdarkとslidesボタンの移動
         document.getElementById("diff_button").setAttribute("style", "left :350px;");
+        document.getElementById("slides_button").setAttribute("style", "left :395px;");
         document.getElementsByClassName("darkmode-toggle")[0].setAttribute("style", "left :315px;");
 
     } else {
 
         document.getElementById("toc_wrapper").setAttribute("style", "display:none;");
 
-        //diffとdarkボタンの移動
+        //diffとdarkとslidesボタンの移動
         document.getElementById("diff_button").setAttribute("style", "");
+        document.getElementById("slides_button").setAttribute("style", "");
         document.getElementsByClassName("darkmode-toggle")[0].setAttribute("style", "");
     }
 

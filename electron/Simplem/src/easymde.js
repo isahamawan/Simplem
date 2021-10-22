@@ -19280,7 +19280,23 @@
         }
 
         var sideBySideRenderingFunction = function () {
-          var newValue = editor.options.previewRender(editor.value(), preview);
+          //var newValue = editor.options.previewRender(editor.value(), preview); //original
+
+          //simplem marp <<<
+          if (window.flg_slides_on == false) {
+            var newValue = editor.options.previewRender(editor.value(), preview);
+          } else {
+            let { html } = marp.render(editor.value());
+            var newValue = html;
+
+            //let { html, css, comments } = marp.render(editor.value()); //simplem
+            //var newValue = "<style>" + css + "</style>" + html; //simplem
+          }
+
+          //simplem marp >>>
+
+
+
           if (newValue != null) {
 
             //simplem mermaid <<<
@@ -19307,10 +19323,25 @@
         }
 
         if (useSideBySideListener) {
-          var newValue = editor.options.previewRender(editor.value(), preview);
+          //var newValue = editor.options.previewRender(editor.value(), preview); //original
+
+          //simplem marp <<<
+          if (window.flg_slides_on == false) {
+            var newValue = editor.options.previewRender(editor.value(), preview);
+          } else {
+            let { html } = marp.render(editor.value());
+            var newValue = html;
+
+            //let { html, css, comments } = marp.render(editor.value()); //simplem
+            //var newValue = "<style>" + css + "</style>" + html; //simplem
+          }
+
+          //simplem marp >>>
+
           if (newValue != null) {
             preview.innerHTML = newValue;
           }
+
           //simplem cm.on('update', cm.sideBySideRenderingFunction);
           cm.on('change', debounce(cm.sideBySideRenderingFunction, 100));
         } else {
@@ -19391,8 +19422,21 @@
             toolbar_div.className += ' disabled-for-preview';
           }
         }
-        preview.innerHTML = editor.options.previewRender(editor.value(), preview);
 
+        //preview.innerHTML = editor.options.previewRender(editor.value(), preview); //original
+
+        //simplem marp <<<
+        if (window.flg_slides_on == false) {
+          preview.innerHTML = editor.options.previewRender(editor.value(), preview);
+        } else {
+          let { html } = marp.render(editor.value());
+          preview.innerHTML = html;
+
+          //let { html, css, comments } = marp.render(editor.value()); //simplem
+          //preview.innerHTML = "<style>" + css + "</style>" + html; //simplem
+        }
+
+        //simplem marp >>>
 
         //simplem <<< toc_for_previewへの切替え用
 
