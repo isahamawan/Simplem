@@ -1,9 +1,18 @@
 
 /* スライドの影とマージン設定 */
+
+.marpit {
+    text-align:center;
+}
+
 .marpit>svg {
     box-shadow: grey 1px 1px 5px 1px;
     margin: 10px;
+    max-height: 80vh;
+    max-width: 142.2vh;
+    text-align:initial;
 }
+
 
 /* slidesボタンの設定 */
 body .slides {

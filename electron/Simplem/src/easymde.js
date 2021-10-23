@@ -19431,6 +19431,7 @@
         } else {
           let { html } = marp.render(editor.value());
           preview.innerHTML = html;
+          init_toc_for_marp();
 
           //let { html, css, comments } = marp.render(editor.value()); //simplem
           //preview.innerHTML = "<style>" + css + "</style>" + html; //simplem

@@ -12,6 +12,7 @@ function toggle_slides_for_full_preview() {
     } else {
         let { html } = marp.render(easyMDE.value());
         preview.innerHTML = html;
+        init_toc_for_marp();
 
         //let { html, css, comments } = marp.render(editor.value()); //simplem
         //preview.innerHTML = "<style>" + css + "</style>" + html; //simplem
