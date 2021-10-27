@@ -1,0 +1,66 @@
+@media print {
+
+
+
+
+
+    .CodeMirror-wrap, .editor-preview-active {
+        overflow: visible !important;
+        -webkit-print-color-adjust:exact !important; /* 背景色の表示 */
+        position: relative; /* 改ページ設定に必要 */
+        padding-top: 0 !important; /* 各ページのtopからの距離を揃えるのに必要 */
+        padding-bottom: 0 !important;
+    }
+
+
+    .CodeMirror-wrap {
+        border:0 !important; /* 改ページ設定にも必要 */
+        padding:0 !important;
+    }
+
+    .editor-toolbar, .editor-statusbar, .CodeMirror-code, .CodeMirror-sizer,  .CodeMirror-scroll, .CodeMirror-vscrollbar, .CodeMirror-hscrollbar, textarea, .editor-preview-side, .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler, .darkmode-toggle, #toc_wrapper {
+        display: none !important;
+    }
+
+
+    /* for marp */
+        body,
+        html {
+            background-color: #fff;
+            margin: 0;
+            page-break-inside: avoid;
+            break-inside: avoid-page
+        }
+
+        div.marpit>svg>foreignObject>section {
+            page-break-before: always;
+            break-before: page
+        }
+
+        div.marpit>svg>foreignObject>section,
+        div.marpit>svg>foreignObject>section * {
+            -webkit-print-color-adjust: exact !important;
+            animation-delay: 0s !important;
+            animation-duration: 0s !important;
+            color-adjust: exact !important;
+            transition: none !important
+        }
+
+        div.marpit>svg[data-marpit-svg] {
+            display: block;
+            height: 720px;
+            width: 1280px;
+            box-shadow: grey 1px 1px 5px 1px;
+            margin: 0;
+            max-height: 720px;
+            max-width: 1280px;
+        }
+
+}
+
+@page {
+    size: 1280px 720px landscape;
+    margin: 0;
+}
+
+

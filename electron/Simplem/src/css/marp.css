@@ -1,65 +1,7 @@
 
-/* スライドの影とマージン設定 */
-
-.marpit {
-    text-align:center;
-}
-
-.marpit>svg {
-    box-shadow: grey 1px 1px 5px 1px;
-    margin: 10px;
-    max-height: 80vh;
-    max-width: 142.2vh;
-    text-align:initial;
-}
 
 
-/* slidesボタンの設定 */
-body .slides {
-  position: absolute;
-  /*width: 26px;*/
-  height: 26px;
-  /*line-height:26px;*/
-  left: 85px;
-  bottom: 4px;
-
-  background: 0 0;
-  display: inline-block;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  cursor: pointer
-}
-
-
-
-body .slides:hover {
-  background: #fcfcfc;
-  border-color: transparent;
-}
-
-body .slides.active {
-  background-color: #100f2c;
-  color: #fff;
-}
-
-body .slides:after {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 65%;
-  vertical-align: text-bottom;
-  position: relative;
-  top: 2px;
-
-  content: "Slides";
-}
-
-
-
-/*.marpit>svg>foreignObject>section foreignObject {
-    overflow:visible;
-}*/
-
-
-/*test*/
+/* original */
     div.marpit>svg>foreignObject>section {
         width: 1280px;
         height: 720px;
@@ -92,41 +34,9 @@ body .slides:after {
         will-change: transform
     }
 
-    @page {
-        size: 1280px 720px;
-        margin: 0
-    }
+    /* @page @media print の元の位置 simplem */
 
-    @media print {
 
-        body,
-        html {
-            background-color: #fff;
-            margin: 0;
-            page-break-inside: avoid;
-            break-inside: avoid-page
-        }
-
-        div.marpit>svg>foreignObject>section {
-            page-break-before: always;
-            break-before: page
-        }
-
-        div.marpit>svg>foreignObject>section,
-        div.marpit>svg>foreignObject>section * {
-            -webkit-print-color-adjust: exact !important;
-            animation-delay: 0s !important;
-            animation-duration: 0s !important;
-            color-adjust: exact !important;
-            transition: none !important
-        }
-
-        div.marpit>svg[data-marpit-svg] {
-            display: block;
-            height: 100vh;
-            width: 100vw
-        }
-    }
 
     div.marpit>svg>foreignObject>section svg[data-marp-fitting=svg] {
         display: block;
@@ -944,7 +854,7 @@ body .slides:after {
     }
 
     div.marpit>svg>foreignObject>section pre {
-        /* background-color: #f6f8fa; simplem*/
+        background-color: #f6f8fa;
         border-radius: 3px;
         font-size: 85%;
         line-height: 1.45;
@@ -1133,7 +1043,7 @@ body .slides:after {
         vertical-align: middle
     }
 
-    /* simplem
+    /* simplem　marpのハイライト設定の削除（simplem側にて設定するため）
     div.marpit>svg>foreignObject>section .hljs {
         background: #fff;
         color: #333;
@@ -1293,8 +1203,7 @@ body .slides:after {
         flex-wrap: nowrap;
         font-size: 29px;
         height: 720px;
-        /*justify-content: center; original simplem*/
-        justify-content: unset;
+        justify-content: center;
         padding: 78.5px;
         width: 1280px
     }
@@ -1478,3 +1387,130 @@ body .slides:after {
         width: 100%;
         height: 100%
     }
+
+
+/* ================================以下、追加と上書き==================================== */
+
+
+/* スライドの影とマージン設定 */
+
+.marpit {
+    text-align:center;
+}
+
+.marpit>svg {
+    box-shadow: grey 1px 1px 5px 1px;
+    margin: 10px;
+    max-height: 80vh;
+    max-width: 142.2vh;
+    text-align:initial;
+}
+
+
+/* slidesボタンの設定 */
+body .slides {
+  position: absolute;
+  /*width: 26px;*/
+  height: 26px;
+  /*line-height:26px;*/
+  left: 85px;
+  bottom: 4px;
+
+  background: 0 0;
+  display: inline-block;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  cursor: pointer
+}
+
+body .slides:hover {
+  background: #fcfcfc;
+  border-color: transparent;
+}
+
+body .slides.active {
+  background-color: #100f2c;
+  color: #fff;
+}
+
+body .slides:after {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 65%;
+  vertical-align: text-bottom;
+  position: relative;
+  top: 2px;
+
+  content: "Slides";
+}
+
+/*.marpit>svg>foreignObject>section foreignObject {
+    overflow:visible;
+}*/
+
+/* ===============以下、上書き===================================== */
+
+    /* コードブロックの書式 */
+    div.marpit>svg>foreignObject>section pre {
+        /* background-color: #f6f8fa; simplem*/
+        background-color: #364549;
+        border-radius: 6px;
+        font-size: 85%;
+        line-height: 1.45;
+        overflow: auto;
+        padding: 16px
+    }
+
+    /* 文章の上下方向の中央寄せ解除 */
+    div.marpit>svg>foreignObject>section {
+        align-items: stretch;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        font-size: 29px;
+        height: 720px;
+        /*justify-content: center; original simplem*/
+        justify-content: unset;
+        padding: 78.5px;
+        width: 1280px
+    }
+
+
+/* ==================以下、抜き出しして改変分================================= */
+/* print_for_marp css へ移行済み
+    @page {
+        size: 1280px 720px landscape;
+        margin: 0;
+    }
+
+    @media print {
+
+        body,
+        html {
+            background-color: #fff;
+            margin: 0;
+            page-break-inside: avoid;
+            break-inside: avoid-page
+        }
+
+        div.marpit>svg>foreignObject>section {
+            page-break-before: always;
+            break-before: page
+        }
+
+        div.marpit>svg>foreignObject>section,
+        div.marpit>svg>foreignObject>section * {
+            -webkit-print-color-adjust: exact !important;
+            animation-delay: 0s !important;
+            animation-duration: 0s !important;
+            color-adjust: exact !important;
+            transition: none !important
+        }
+
+        div.marpit>svg[data-marpit-svg] {
+            display: block;
+            height: 100vh;
+            width: 100vw
+        }
+    }
+*/

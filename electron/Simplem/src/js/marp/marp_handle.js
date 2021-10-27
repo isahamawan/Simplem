@@ -19,6 +19,18 @@ function toggle_slides_for_full_preview() {
     }
 }
 
+function toggle_print_for_marp_css() {
+    // id属性からHTML要素（リンク要素）を取得
+    let print_css_link = document.getElementById("print_css");
+
+    //リンク要素のhref書き換え
+    if (window.flg_slides_on == false) {
+        print_css_link.href = "css/print.css";
+    } else {
+        print_css_link.href = "css/print_for_marp.css";
+    }
+}
+
 
 //slidesボタン要素の作成
 let slides_button_ele = document.createElement("button");
@@ -53,8 +65,12 @@ document.getElementById("slides_button").addEventListener('click', function (e) 
     }
 
 
+
+
     flg_slides_on = !flg_slides_on;
 
+    //marp用cssと通常cssの切替え
+    toggle_print_for_marp_css();
 
     //full_previewビューの更新
     if (easyMDE.isPreviewActive() == true) {
