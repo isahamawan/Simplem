@@ -252,9 +252,14 @@
 
         if (easyMDE.isPreviewActive() == false) {
             await easyMDE.togglePreview();
+
+            //10ms待機
+            const _sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+            await _sleep(10);
         }
 
         ipcRenderer.invoke('print');
+
     });
 
     //mainからのPDF出力命令を処理
@@ -262,6 +267,10 @@
 
         if (easyMDE.isPreviewActive() == false) {
             await easyMDE.togglePreview();
+
+            //10ms待機
+            const _sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+            await _sleep(10);
         }
 
         ipcRenderer.invoke('print_to_pdf');

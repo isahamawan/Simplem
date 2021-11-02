@@ -154,7 +154,7 @@
         -webkit-text-size-adjust: 100%;
         word-wrap: break-word;
         color: #24292e;
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+        /*font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji; simplem*/
         font-size: 16px;
         line-height: 1.5
     }
@@ -196,7 +196,7 @@
     div.marpit>svg>foreignObject>section code,
     div.marpit>svg>foreignObject>section kbd,
     div.marpit>svg>foreignObject>section pre {
-        font-family: monospace, monospace;
+        /* font-family: monospace, monospace; simplem*/
         font-size: 1em
     }
 
@@ -354,7 +354,7 @@
 
     div.marpit>svg>foreignObject>section code,
     div.marpit>svg>foreignObject>section pre {
-        font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+        /* font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace; simplem*/
         font-size: 12px
     }
 
@@ -877,7 +877,7 @@
     div.marpit>svg>foreignObject>section .commit-tease-sha {
         color: #444d56;
         display: inline-block;
-        font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+        /* font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace; simplem*/
         font-size: 90%
     }
 
@@ -903,7 +903,7 @@
     div.marpit>svg>foreignObject>section .blob-num {
         color: rgba(27, 31, 35, .3);
         cursor: pointer;
-        font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+        /* font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace; simplem*/
         font-size: 12px;
         line-height: 20px;
         min-width: 50px;
@@ -942,7 +942,7 @@
     div.marpit>svg>foreignObject>section .blob-code-inner {
         word-wrap: normal;
         color: #24292e;
-        font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+        /* font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace; simplem*/
         font-size: 12px;
         overflow: visible;
         white-space: pre
@@ -1434,7 +1434,7 @@ body .slides.active {
 }
 
 body .slides:after {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  /* font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; simplem*/
   font-size: 65%;
   vertical-align: text-bottom;
   position: relative;
@@ -1475,42 +1475,17 @@ body .slides:after {
         width: 1280px
     }
 
+/* h1などのスタイル ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss */
 
-/* ==================以下、抜き出しして改変分================================= */
-/* print_for_marp css へ移行済み
-    @page {
-        size: 1280px 720px landscape;
-        margin: 0;
+    div.marpit>svg>foreignObject>section h1 {
+        color: #246;
+        font-size: 1.6em
     }
 
-    @media print {
+/* eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee */
 
-        body,
-        html {
-            background-color: #fff;
-            margin: 0;
-            page-break-inside: avoid;
-            break-inside: avoid-page
-        }
 
-        div.marpit>svg>foreignObject>section {
-            page-break-before: always;
-            break-before: page
-        }
 
-        div.marpit>svg>foreignObject>section,
-        div.marpit>svg>foreignObject>section * {
-            -webkit-print-color-adjust: exact !important;
-            animation-delay: 0s !important;
-            animation-duration: 0s !important;
-            color-adjust: exact !important;
-            transition: none !important
-        }
 
-        div.marpit>svg[data-marpit-svg] {
-            display: block;
-            height: 100vh;
-            width: 100vw
-        }
-    }
-*/
+/* ==================以下、カット&ペーストして改変分================================= */
+/* @page @media printは print_for_marp css へ移行済み */
