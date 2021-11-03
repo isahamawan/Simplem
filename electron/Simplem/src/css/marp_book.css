@@ -80,7 +80,7 @@
         width: 1em
     }
 
-/*!
+    /*!
  * Marp default theme.
  *
  * @theme default
@@ -1402,7 +1402,7 @@
     box-shadow: grey 1px 1px 5px 1px;
     margin: 10px;
     max-height: 80vh;
-    max-width: 142.2vh;
+    max-width: 56.6vh;
     text-align:initial;
 }
 
@@ -1444,6 +1444,8 @@ body .slides:after {
 }
 
 
+
+
 /* ===============以下、上書き===================================== */
 
     /* コードブロックの書式 */
@@ -1465,11 +1467,11 @@ body .slides:after {
         flex-direction: column;
         flex-wrap: nowrap;
         font-size: 29px;
-        height: 720px;
+        height: 1395px;
         /*justify-content: center; original simplem*/
         justify-content: unset;
         padding: 78.5px;
-        width: 1280px
+        width:  986px;
     }
 
 /* h1などのスタイル（編集画面のスタイルはprint_for_marp.cssにあり） sssssssssssssssssssssssssssssssssss */

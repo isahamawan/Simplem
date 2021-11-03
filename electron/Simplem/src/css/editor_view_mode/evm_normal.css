@@ -15,21 +15,29 @@
         content:"●";
         font-size:xx-small;
         color:#000;
+
+        vertical-align: middle;
     }
 
     .CodeMirror-line span .cm-formatting-list-ul:nth-of-type(2):before {
         content:"⇒";
         color:#000;
+
+        vertical-align: middle;
     }
 
     .CodeMirror-line span .cm-formatting-list-ul:nth-of-type(3):before {
         content:"・";
         color:#000;
+
+        vertical-align: middle;
     }
 
     .CodeMirror-line span .cm-formatting-list-ul:nth-of-type(4):before {
         content:"・";
         color:#000;
+
+        vertical-align: middle;
     }
 
     .cm-formatting-list-ol {
@@ -134,6 +142,12 @@
         color: transparent;
         border-top: 1px dashed #999;
         display: block;
+
+        /* line幅を一行に保つため */
+        height: 23px;
+        box-sizing: border-box;
+        position: absolute;
+        width: -webkit-fill-available;
     }
 
 

@@ -522,6 +522,8 @@ ul li:before {
 	content: '●　'; /* ←ここにリストマーカーにしたい文字列を設定 */
     font-size:xx-small;
 	margin-left:-20px; /* 1文字分、左に寄せる */
+
+    vertical-align: middle;
 }
 
 ul ul li {
@@ -531,6 +533,8 @@ ul ul li:before {
 	content: '⇒　'; /* ←ここにリストマーカーにしたい文字列を設定 */
     font-size:medium;
 	margin-left:-30.66px; /* 1文字分、左に寄せる */
+
+    vertical-align: middle;
 }
 
 ul ul ul {
@@ -539,6 +543,8 @@ ul ul ul {
 ul ul ul li:before {
 	content: '・　'; /* ←ここにリストマーカーにしたい文字列を設定 */
 	margin-left:-32px; /* 1文字分、左に寄せる */
+
+    vertical-align: middle;
 }
 
 ul ul ul ul li {
@@ -547,6 +553,8 @@ ul ul ul ul li {
 ul ul ul ul li:before {
 	content: '・　'; /* ←ここにリストマーカーにしたい文字列を設定 */
 	margin-left:-14px; /* 1文字分、左に寄せる */
+
+    vertical-align: middle;
 }
 /*  */
 

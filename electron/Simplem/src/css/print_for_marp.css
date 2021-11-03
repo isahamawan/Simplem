@@ -1,32 +1,28 @@
 @media print {
 
+        .CodeMirror-wrap, .editor-preview-active {
+            overflow: visible !important;
+            -webkit-print-color-adjust:exact !important; /* 背景色の表示 */
+            position: relative; /* 改ページ設定に必要 */
+            padding-top: 0% !important; /* 各ページのtopからの距離を揃えるのに必要 */
+            padding-bottom: 0% !important;
+
+        }
 
 
+        .CodeMirror-wrap {
+            border:none !important;
+            padding: 0% !important;
 
 
-    .CodeMirror-wrap, .editor-preview-active {
-        overflow: visible !important;
-        -webkit-print-color-adjust:exact !important; /* 背景色の表示 */
-        position: relative; /* 改ページ設定に必要 */
-        padding-top: 0% !important; /* 各ページのtopからの距離を揃えるのに必要 */
-        padding-bottom: 0% !important;
+        }
 
-    }
+        .editor-toolbar, .editor-statusbar, .CodeMirror-code, .CodeMirror-sizer,  .CodeMirror-scroll, .CodeMirror-vscrollbar, .CodeMirror-hscrollbar, textarea, .editor-preview-side, .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler, .darkmode-toggle, #toc_wrapper {
+            display: none !important;
+        }
 
 
-    .CodeMirror-wrap {
-        border:none !important;
-        padding: 0% !important;
-
-
-    }
-
-    .editor-toolbar, .editor-statusbar, .CodeMirror-code, .CodeMirror-sizer,  .CodeMirror-scroll, .CodeMirror-vscrollbar, .CodeMirror-hscrollbar, textarea, .editor-preview-side, .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler, .darkmode-toggle, #toc_wrapper {
-        display: none !important;
-    }
-
-
-    /* for marp */
+        /* for marp */
         body,
         html {
             /*background-color: #fff !important;*/
@@ -86,5 +82,17 @@
     margin: 0% !important;
 }
 
+
+/* 編集画面の水平線の太字化 */
+.cm-hr {
+    color: transparent;
+    border-top: 23px dashed #999;
+    display: block;
+    height: 23px;
+    box-sizing: border-box;
+
+    position: absolute;
+    width: -webkit-fill-available;
+}
 
 

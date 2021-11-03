@@ -598,7 +598,9 @@
 <!-- marp helper js レンダーが自動生成するスクリプトを抜き出して固定埋め込みしたもの（コードsvgを正常動作させるため） -->
 <script src="./js/marp/helper.js"></script>
 <script src="js/marp/marp_handle.js"></script>
-<link rel="stylesheet" href="css/marp.css">
+<link id="marp_css" rel="stylesheet" href="css/marp.css">
+<!-- marp_book js -->
+<script src="js/marp/marp_book_handle.js"></script>
 <script>
     // Convert Markdown slide deck into HTML and CSS
     //const marp = new Marp(); //bundle内にあるので不要
