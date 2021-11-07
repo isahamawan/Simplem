@@ -1,13 +1,13 @@
 
 
-function toggle_slides_for_full_preview() {
+function toggle_marp_for_full_preview() {
 
     let wrapper = easyMDE.codemirror.getWrapperElement();
     let preview = wrapper.lastChild;
 
 
 
-    if (window.flg_slides_on == false) {
+    if ((flg_slides_on == false) && (flg_book_on == false)) {
         preview.innerHTML = easyMDE.options.previewRender(easyMDE.value(), preview);
     } else {
         let { html } = marp.render(easyMDE.value());
@@ -50,9 +50,10 @@ slides_button_ele.appendChild(slides_i_ele);
 editor_statusbar_ele.insertBefore(slides_button_ele, editor_statusbar_ele.firstChild);
 
 
-//slidesボタンのクリックイベントにslidesのオンオフを追加
+
+//ボタンのイベントリスナー用のslidesモードへの切替え関数
 window.flg_slides_on = false;
-document.getElementById("slides_button").addEventListener('click', function (e) {
+function toggle_slides_for_button() {
 
     if (flg_slides_on == false) {
 
@@ -64,9 +65,6 @@ document.getElementById("slides_button").addEventListener('click', function (e) 
 
     }
 
-
-
-
     flg_slides_on = !flg_slides_on;
 
     //marp用cssと通常cssの切替え
@@ -74,12 +72,31 @@ document.getElementById("slides_button").addEventListener('click', function (e) 
 
     //full_previewビューの更新
     if (easyMDE.isPreviewActive() == true) {
-        toggle_slides_for_full_preview();
+        toggle_marp_for_full_preview();
     }
 
     //sideBySideビューの更新
     if (easyMDE.isSideBySideActive() == true) {
         easyMDE.codemirror.sideBySideRenderingFunction()
     }
+}
+
+function toggle_off_slides_for_button() {
+
+    document.getElementById("slides_button").setAttribute("class", "slides");
+
+    flg_slides_on = false;
+
+}
+
+//slidesボタンのクリックイベントにslidesのオンオフを追加
+document.getElementById("slides_button").addEventListener('click', function (e) {
+
+
+    if (flg_book_on == true) {
+        toggle_off_book_for_button();
+    }
+
+    toggle_slides_for_button();
 
 });

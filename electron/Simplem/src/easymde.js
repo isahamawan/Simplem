@@ -19283,7 +19283,7 @@
           //var newValue = editor.options.previewRender(editor.value(), preview); //original
 
           //simplem marp <<<
-          if (window.flg_slides_on == false) {
+          if ((window.flg_slides_on == false) && (window.flg_book_on == false)) {
             var newValue = editor.options.previewRender(editor.value(), preview);
           } else {
             let { html } = marp.render(editor.value());
@@ -19326,7 +19326,7 @@
           //var newValue = editor.options.previewRender(editor.value(), preview); //original
 
           //simplem marp <<<
-          if (window.flg_slides_on == false) {
+          if ((window.flg_slides_on == false) && (window.flg_book_on == false)) {
             var newValue = editor.options.previewRender(editor.value(), preview);
           } else {
             let { html } = marp.render(editor.value());
@@ -19426,7 +19426,7 @@
         //preview.innerHTML = editor.options.previewRender(editor.value(), preview); //original
 
         //simplem marp <<<
-        if (window.flg_slides_on == false) {
+        if ((window.flg_slides_on == false) && (window.flg_book_on == false)) {
           preview.innerHTML = editor.options.previewRender(editor.value(), preview);
         } else {
           let { html } = marp.render(editor.value());

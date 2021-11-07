@@ -111,8 +111,9 @@ document.getElementById("diff_button").addEventListener('click', function (e) {
 
         document.getElementById("diff_button").setAttribute("class", "diff active");
 
-        //slidesボタンの移動
+        //slidesとbookボタンの移動
         document.getElementById("slides_button").setAttribute("style", "");
+        document.getElementById("book_button").setAttribute("style", "");
 
     } else {
 
