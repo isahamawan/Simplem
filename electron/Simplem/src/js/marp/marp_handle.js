@@ -93,9 +93,11 @@ function toggle_off_slides_for_button() {
 document.getElementById("slides_button").addEventListener('click', function (e) {
 
 
+    /* bookは無効化中
     if (flg_book_on == true) {
         toggle_off_book_for_button();
     }
+    */
 
     toggle_slides_for_button();
 

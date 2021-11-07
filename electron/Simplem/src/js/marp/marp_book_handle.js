@@ -34,7 +34,7 @@ function toggle_print_for_marp_book_css() {
     }
 }
 
-
+/* 無効化中
 //bookボタン要素の作成
 let book_button_ele = document.createElement("button");
 book_button_ele.setAttribute("class", "book");
@@ -55,7 +55,9 @@ editor_statusbar_ele.insertBefore(book_button_ele, editor_statusbar_ele.firstChi
 
 
 //ボタンのイベントリスナー用のbookモードへの切替え関数
+*/
 window.flg_book_on = false;
+/*
 function toggle_book_for_button() {
 
     if (flg_book_on == false) {
@@ -112,7 +114,9 @@ function toggle_off_book_for_button() {
 
 }
 
+*/
 
+/* 無効化中
 //bookボタンのクリックイベントにbookのオンオフを追加
 document.getElementById("book_button").addEventListener('click', function (e) {
 
@@ -126,3 +130,4 @@ document.getElementById("book_button").addEventListener('click', function (e) {
     toggle_book_for_button();
 
 });
+*/
