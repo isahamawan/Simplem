@@ -1,0 +1,68 @@
+
+        .CodeMirror-wrap, .editor-preview-active {
+            overflow: visible !important;
+            -webkit-print-color-adjust:exact !important; /* 背景色の表示 */
+            position: relative; /* 改ページ設定に必要 */
+            padding-top: 0% !important; /* 各ページのtopからの距離を揃えるのに必要 */
+            padding-bottom: 0% !important;
+
+        }
+
+
+        .CodeMirror-wrap {
+            border:none !important;
+            padding: 0% !important;
+
+
+        }
+
+        .editor-toolbar, .editor-statusbar, .CodeMirror-code, .CodeMirror-sizer,  .CodeMirror-scroll, .CodeMirror-vscrollbar, .CodeMirror-hscrollbar, textarea, .editor-preview-side, .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler, .darkmode-toggle, #toc_wrapper {
+            display: none !important;
+        }
+
+        /* for marp */
+        body,
+        html {
+            background-color: black !important;
+            margin: 0% !important;
+        }
+
+        div.marpit>svg>foreignObject>section {
+            height: 720px !important;
+            width: 1280px !important;
+            box-sizing:border-box !important;
+        }
+
+        div.marpit>svg[data-marpit-svg] {
+            display: none !important;
+
+            height: 100vh !important;
+            width: 100vw !important;
+            box-shadow:none !important;
+            margin: 0% !important;
+            padding: 0% !important;
+            max-height: 100vh !important;
+            max-width: 100vw !important;
+
+            box-sizing:border-box !important;
+
+        }
+
+        .CodeMirror-wrap, .editor-preview-active {
+            padding: 0% !important;
+            margin: 0% !important;
+        }
+
+        /* 背景黒でのカード表示用（未完成）
+        .marpit {
+            text-align: center;
+            height: 100vh !important;
+            background-color: black;
+        }
+        div.marpit>svg[data-marpit-svg] {
+            height: unset !important;
+            width: 100vw !important;
+            max-height: 100vh !important;
+            max-width: 100vw !important;
+        }
+        */
