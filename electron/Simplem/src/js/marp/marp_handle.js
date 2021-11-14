@@ -59,9 +59,13 @@ function toggle_slides_for_button() {
 
         document.getElementById("slides_button").setAttribute("class", "slides active");
 
+        slide_show_button_create();
+
     } else {
 
         document.getElementById("slides_button").setAttribute("class", "slides");
+
+        slide_show_button_remove();
 
     }
 

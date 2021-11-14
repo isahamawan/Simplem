@@ -1187,3 +1187,42 @@
 
         content: "Book";
     }
+
+
+    /* slide_showボタンの設定 */
+    body .slide_show {
+        position: absolute;
+        /*width: 26px;*/
+        height: 26px;
+        /*line-height:26px;*/
+        left: 142px;
+        bottom: 4px;
+
+        padding-left:3px;
+
+        background: 0 0;
+        display: inline-block;
+        border: 1px solid transparent;
+        border-radius: 2px;
+        cursor: pointer
+    }
+
+    body .slide_show:hover {
+        background: #fcfcfc;
+        border-color: transparent;
+    }
+
+    body .slide_show.active {
+        background-color: #100f2c;
+        color: #fff;
+    }
+
+    body .slide_show:after {
+        /* font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; simplem*/
+        font-size: 65%;
+        vertical-align: text-bottom;
+        position: relative;
+        top: 2px;
+
+        content: "Slide show";
+    }

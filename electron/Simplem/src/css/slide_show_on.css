@@ -46,23 +46,10 @@
 
             box-sizing:border-box !important;
 
+            /* background-color: black !important; 背景黒でのカード表示用 */
         }
 
         .CodeMirror-wrap, .editor-preview-active {
             padding: 0% !important;
             margin: 0% !important;
         }
-
-        /* 背景黒でのカード表示用（未完成）
-        .marpit {
-            text-align: center;
-            height: 100vh !important;
-            background-color: black;
-        }
-        div.marpit>svg[data-marpit-svg] {
-            height: unset !important;
-            width: 100vw !important;
-            max-height: 100vh !important;
-            max-width: 100vw !important;
-        }
-        */

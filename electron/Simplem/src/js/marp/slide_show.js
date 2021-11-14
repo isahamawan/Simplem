@@ -34,6 +34,9 @@ function slide_show_end() {
 
     //イベントリスナーの解除
     window.removeEventListener('keydown', slide_show_handle, false);
+
+    //end of slides　要素の削除　
+    document.getElementById("end_of_slides_ele").remove();
 }
 
 
@@ -75,6 +78,18 @@ function slide_show_start() {
 
     //イベントリスナーの追加（スライド操作）
     window.addEventListener('keydown', slide_show_handle, false);
+
+    //end of slides 要素の追加
+    let end_of_slides_div_ele = document.createElement("div");
+    end_of_slides_div_ele.setAttribute("id", "end_of_slides_ele");
+    end_of_slides_div_ele.setAttribute("style", "display:none !important;");
+
+    let end_of_slides_p_ele = document.createElement("p");
+    end_of_slides_p_ele.innerHTML = "end of slides.";
+
+    end_of_slides_div_ele.appendChild(end_of_slides_p_ele);
+
+    document.getElementsByClassName('marpit')[0].appendChild(end_of_slides_div_ele);
 }
 
 
@@ -86,14 +101,13 @@ function slide_show_start() {
 
 function slide_show_previous() {
 
-
-
-
     //もし最初のページの時は、処理なし。
-    if (pageNo >= 2) {
-        //表示中のスライドのstyle="display:block;"を削除。
-        let slide_index_now = window.pageNo - 1;
-        window.slide_svg_collection[slide_index_now].setAttribute("style", "");
+    if (2 <= pageNo) {
+        if (pageNo <= pageNo_all) {
+            //表示中のスライドのstyle="display:block;"を削除。
+            let slide_index_now = window.pageNo - 1;
+            window.slide_svg_collection[slide_index_now].setAttribute("style", "");
+        }
 
         //現在ページ数を減少;
         pageNo--;
@@ -111,7 +125,6 @@ function slide_show_previous() {
 
 function slide_show_next() {
 
-
     if (pageNo <= pageNo_all - 1) {
         //表示中のスライドのstyle="display:block;"を削除。
         let slide_index_now = window.pageNo - 1;
@@ -123,9 +136,22 @@ function slide_show_next() {
         //現在ページ数で、表示するsvgを指定、取得して、display:block
         let slide_index_next = window.pageNo - 1;
         window.slide_svg_collection[slide_index_next].setAttribute("style", "display:block !important;");
+    } else if (pageNo == pageNo_all) {
+
+        //表示中のスライドのstyle="display:block;"を削除。
+        let slide_index_now = window.pageNo - 1;
+        window.slide_svg_collection[slide_index_now].setAttribute("style", "");
+
+        //end of slidesを表示
+        document.getElementById("end_of_slides_ele").setAttribute("style", "display:block !important; margin: 0; padding: 1em; background-color: black; color: #fff; height: 100vh; width: 100vw;");
+
+        pageNo++
+    } else {
+        //さらに右等を押すと、スライドショーを終了。
+        slide_show_end();
     }
 
-    //もし最後のページの時は、end of slidesを表示。さらに右等を押すと、スライドショーを終了。
+
 }
 
 
@@ -137,6 +163,131 @@ function slide_show_handle(e) {
     } else if (['ArrowRight', 'ArrowDown', 'n', ' ', 'PageDown', 'Enter'].indexOf(e.key) >= 0) {
 
         slide_show_next();
+    } else if (['Escape'].indexOf(e.key) >= 0) {
+
+        slide_show_end();
     }
 }
 
+
+//slide_showボタン要素を作成する関数　⇨ slides(marp)ボタン押下時に実行
+function slide_show_button_create() {
+    let slide_show_button_ele = document.createElement("button");
+    slide_show_button_ele.setAttribute("class", "slide_show");
+    slide_show_button_ele.setAttribute("type", "button");
+    slide_show_button_ele.setAttribute("title", "Slide show");
+    slide_show_button_ele.setAttribute("tabindex", "-1");
+    slide_show_button_ele.setAttribute("id", "slide_show_button");
+
+    let slide_show_i_ele = document.createElement("i");
+    slide_show_i_ele.setAttribute("class", "fa fa-book-open");
+
+    slide_show_button_ele.appendChild(slide_show_i_ele);
+
+    //editor-statusbarへのslide_showボタン要素の追加
+    //let editor_statusbar_ele = document.getElementsByClassName("editor-statusbar")[0];
+    editor_statusbar_ele.insertBefore(slide_show_button_ele, editor_statusbar_ele.firstChild);
+
+    //イベントリスナー追加
+    document.getElementById("slide_show_button").addEventListener('click', slide_show_start, false);
+}
+
+
+//slide_showボタン要素を削除する関数　⇨ slides(marp)ボタン押下時に実行
+function slide_show_button_remove() {
+    document.getElementById("slide_show_button").remove();
+
+    //イベントリスナー解除
+    document.removeEventListener('click', slide_show_start, false);
+}
+
+
+
+
+
+
+
+
+
+/* 無効化中
+//ボタンのイベントリスナー用のbookモードへの切替え関数
+*/
+
+
+//window.flg_slide_show_on = false;
+
+
+/*
+function toggle_book_for_button() {
+
+    if (flg_book_on == false) {
+
+
+
+        marp_themeset_book();
+
+        document.getElementById("book_button").setAttribute("class", "book active");
+
+    } else {
+
+
+
+        marp_themeset_slides();
+
+        document.getElementById("book_button").setAttribute("class", "book");
+
+    }
+
+
+
+
+    flg_book_on = !flg_book_on;
+
+
+    toggle_print_for_marp_book_css();
+
+
+    //full_previewビューの更新
+    if (easyMDE.isPreviewActive() == true) {
+        toggle_marp_for_full_preview();
+    }
+
+    //sideBySideビューの更新
+    if (easyMDE.isSideBySideActive() == true) {
+
+        //setTimeout(function () {
+        easyMDE.codemirror.sideBySideRenderingFunction();
+        //}, 10);
+
+    }
+
+
+}
+
+function toggle_off_book_for_button() {
+
+    marp_themeset_slides();
+
+    document.getElementById("book_button").setAttribute("class", "book");
+
+    flg_book_on = false;
+
+}
+
+*/
+
+/* 無効化中
+//bookボタンのクリックイベントにbookのオンオフを追加
+document.getElementById("book_button").addEventListener('click', function (e) {
+
+
+    if (flg_slides_on == true) {
+        toggle_off_slides_for_button();
+    }
+
+
+
+    toggle_book_for_button();
+
+});
+*/
