@@ -1208,8 +1208,8 @@
     }
 
     body .slide_show:hover {
-        background: #fcfcfc;
-        border-color: transparent;
+        background-color: #100f2c;
+        color: #fff;
     }
 
     body .slide_show.active {

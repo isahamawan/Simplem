@@ -43,6 +43,14 @@ function slide_show_end() {
 /* スライドショーを開始する関数 */
 function slide_show_start() {
 
+    //diffモードの解除
+    if (flg_diff_on == true) {
+
+        merge_view_off();
+        document.getElementById("diff_button").setAttribute("class", "diff");
+        flg_diff_on = false;
+    }
+
     //プレビューモードに切替
     if (easyMDE.isPreviewActive() == false) {
         easyMDE.togglePreview();
@@ -51,6 +59,8 @@ function slide_show_start() {
         //const _sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
         //_sleep(10);
     }
+
+
 
     //フルスクリーンモードに切替 ※後で、リモート会議用にフルスクリーン化無しも設定できるようにする。
     document.body.requestFullscreen();
@@ -180,7 +190,7 @@ function slide_show_button_create() {
     slide_show_button_ele.setAttribute("id", "slide_show_button");
 
     let slide_show_i_ele = document.createElement("i");
-    slide_show_i_ele.setAttribute("class", "fa fa-book-open");
+    slide_show_i_ele.setAttribute("class", "fa fa-chalkboard-teacher");//fa-object-group
 
     slide_show_button_ele.appendChild(slide_show_i_ele);
 
