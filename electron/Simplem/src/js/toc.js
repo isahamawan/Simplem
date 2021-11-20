@@ -101,7 +101,9 @@ document.getElementById("toc_button").addEventListener('click', function (e) {
         //diffとdarkとslidesとbookボタンの移動
         document.getElementById("diff_button").setAttribute("style", "left :350px;");
         document.getElementById("slides_button").setAttribute("style", "left :395px;");
-        document.getElementById("slide_show_button").setAttribute("style", "left :452px;");
+        if (document.getElementById("slide_show_button")) {
+            document.getElementById("slide_show_button").setAttribute("style", "left :452px;");
+        }
         //document.getElementById("book_button").setAttribute("style", "left :452px;");
         document.getElementsByClassName("darkmode-toggle")[0].setAttribute("style", "left :315px;");
 
@@ -112,7 +114,9 @@ document.getElementById("toc_button").addEventListener('click', function (e) {
         //diffとdarkとslidesとbookボタンの移動
         document.getElementById("diff_button").setAttribute("style", "");
         document.getElementById("slides_button").setAttribute("style", "");
-        document.getElementById("slide_show_button").setAttribute("style", "");
+        if (document.getElementById("slide_show_button")) {
+            document.getElementById("slide_show_button").setAttribute("style", "");
+        }
         //document.getElementById("book_button").setAttribute("style", "");
         document.getElementsByClassName("darkmode-toggle")[0].setAttribute("style", "");
     }

@@ -6,6 +6,10 @@
         page-break-inside: avoid !important;/* 無くてもいいが、念の為記述 */
     }
 
+    /* オプションでのh1改ページ解除用 */
+    .no_page_break_h1 h1 {
+        page-break-before: initial !important;
+    }
 
 
     .CodeMirror-wrap, .editor-preview-active {

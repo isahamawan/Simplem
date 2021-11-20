@@ -20,7 +20,9 @@
 function slide_show_end() {
 
     //フルスクリーンモードを終了
-    document.exitFullscreen();
+    if (flg_slideshow_fullscreen == true) {
+        document.exitFullscreen();
+    }
 
     //ツールバーなどその他の要素のdisplay:noneを削除
     //全てのスライドのdisplay:noneを削除
@@ -41,6 +43,7 @@ function slide_show_end() {
 
 
 /* スライドショーを開始する関数 */
+window.flg_slideshow_fullscreen = true;
 function slide_show_start() {
 
     //diffモードの解除
@@ -63,7 +66,12 @@ function slide_show_start() {
 
 
     //フルスクリーンモードに切替 ※後で、リモート会議用にフルスクリーン化無しも設定できるようにする。
-    document.body.requestFullscreen();
+    if (flg_slideshow_fullscreen == true) {
+        document.body.requestFullscreen();
+    }
+
+
+
 
     //ツールバーなどその他の要素をdisplay:none
     //全てのスライドをdisplay:none
@@ -95,6 +103,7 @@ function slide_show_start() {
     end_of_slides_div_ele.setAttribute("style", "display:none !important;");
 
     let end_of_slides_p_ele = document.createElement("p");
+    end_of_slides_p_ele.setAttribute("style", "margin:0 !important; padding:1em !important;");
     end_of_slides_p_ele.innerHTML = "end of slides.";
 
     end_of_slides_div_ele.appendChild(end_of_slides_p_ele);
@@ -121,6 +130,12 @@ function slide_show_previous() {
 
         //現在ページ数を減少;
         pageNo--;
+
+        //end of slidesの非表示
+        if (pageNo == pageNo_all) {
+
+            document.getElementById("end_of_slides_ele").setAttribute("style", "display:none !important;");
+        }
 
         //現在ページ数で、表示するsvgを指定、取得して、display:block
         let slide_index_previous = window.pageNo - 1;
@@ -153,7 +168,7 @@ function slide_show_next() {
         window.slide_svg_collection[slide_index_now].setAttribute("style", "");
 
         //end of slidesを表示
-        document.getElementById("end_of_slides_ele").setAttribute("style", "display:block !important; margin: 0; padding: 1em; background-color: black; color: #fff; height: 100vh; width: 100vw;");
+        document.getElementById("end_of_slides_ele").setAttribute("style", "display:block !important; margin: 0; padding: 0; background-color: black; color: #fff; height: 100vh; width: 100vw;");
 
         pageNo++
     } else {

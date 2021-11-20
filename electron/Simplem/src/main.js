@@ -606,6 +606,51 @@ let template = [{
             }
         },
     ]
+}, {
+    label: "オプション",
+    submenu: [
+        {
+            label: "文書モード",
+            submenu: [
+                {
+                    label: "印刷時にh1で改ページ", type: "checkbox", checked: true,
+                    click: function () {
+
+                        mainWindow.webContents.send("toggle_no_page_break_h1_in_note");
+
+                    }
+                },
+                {
+                    label: "印刷時に---で改ページ", type: "checkbox",
+                    click: function () {
+
+                        //    mainWindow.webContents.send("toggle_h1_pagebreak_from_main");
+
+                    }
+                },
+                {
+                    label: "行間を広くする", type: "checkbox",
+                    click: function () {
+
+                        //    mainWindow.webContents.send("toggle_h1_pagebreak_from_main");
+
+                    }
+                },
+            ]
+        }, {
+            label: "スライドモード",
+            submenu: [
+                {
+                    label: "ウィンドウモードでスライドショー（リモート会議用）", type: "checkbox",
+                    click: function () {
+
+                        mainWindow.webContents.send("toggle_flg_slideshow_fullscreen_from_main");
+
+                    }
+                },
+            ]
+        },
+    ]
 }
 ]
 

@@ -113,7 +113,9 @@ document.getElementById("diff_button").addEventListener('click', function (e) {
 
         //slidesとbookボタンの移動
         document.getElementById("slides_button").setAttribute("style", "");
-        document.getElementById("slide_show_button").setAttribute("style", "");
+        if (document.getElementById("slide_show_button")) {
+            document.getElementById("slide_show_button").setAttribute("style", "");
+        }
         //document.getElementById("book_button").setAttribute("style", "");
 
     } else {

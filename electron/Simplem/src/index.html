@@ -412,7 +412,26 @@
     });
 
 
+    //mainからのtoggle_flg_slideshow_fullscreen命令を処理
+    ipcRenderer.on('toggle_flg_slideshow_fullscreen_from_main', async (event) => {
 
+        flg_slideshow_fullscreen = !flg_slideshow_fullscreen
+
+    });
+
+    //mainからのtoggle_no_page_break_h1_in_note命令を処理
+    window.flg_no_page_break_h1_in_note = false;
+    ipcRenderer.on('toggle_no_page_break_h1_in_note', async (event) => {
+
+        flg_no_page_break_h1_in_note = !flg_no_page_break_h1_in_note
+
+        if (flg_no_page_break_h1_in_note == true) {
+            document.getElementsByClassName("editor-preview-full")[0].classList.add("no_page_break_h1");
+        } else {
+            document.getElementsByClassName("editor-preview-full")[0].classList.remove("no_page_break_h1");
+        }
+
+    });
 
 
     //ファイルの読み込みをmainから呼び出し（ボタン用）
