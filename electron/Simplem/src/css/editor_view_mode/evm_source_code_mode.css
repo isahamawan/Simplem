@@ -41,9 +41,20 @@
         border-radius: 0;
     }
 
+    span.cm-comment:before {
+        display: none;
+    }
+
     /* hrの設定 */
     .cm-hr {
-        color:darkorange;
+        color:darkorange !important;
+
+        border-top: initial !important;
+        display: initial !important;
+        height: initial !important;
+        box-sizing: initial !important;
+        position: initial !important;
+        width: initial !important;
     }
 
 

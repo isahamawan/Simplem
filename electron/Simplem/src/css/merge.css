@@ -226,7 +226,12 @@ body .diff:after {
   cursor: pointer;
   color: black;
   z-index: 3;
+
+  /* ↩︎ボタン用に追加 */
+  left: 5px !important;
+  padding-top: 5px;
 }
+
 
 
     /* 検索結果 */

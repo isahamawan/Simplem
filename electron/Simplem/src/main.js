@@ -6,6 +6,7 @@ const { app, BrowserWindow, Menu, ipcMain, dialog, clipboard } = require("electr
 const path_tool = require('path');
 const openAboutWindow = require("about-window").default;
 const log_tool = require('electron-log');
+const { normalize } = require('path');
 
 //const searchInPage = require('electron-in-page-search').default;
 
@@ -189,16 +190,22 @@ ipcMain.handle('add_asterisk_to_filename', async (event) => {
 ipcMain.handle('menu_enable', async (event) => {
 
     //メニューバー設置
-    const menu = Menu.buildFromTemplate(template);
-    Menu.setApplicationMenu(menu);
+    //const menu = Menu.buildFromTemplate(template);
+    Menu.setApplicationMenu(menu_temp); //無効化時に一時保存したメニューを再代入
+
 });
 
 //メニューの無効化
+let menu_temp
 ipcMain.handle('menu_disable', async (event) => {
+
+
+    menu_temp = Menu.getApplicationMenu();
 
     //メニューバー設置
     const menu = Menu.buildFromTemplate(template_disable);
     Menu.setApplicationMenu(menu);
+
 
 });
 
@@ -239,6 +246,8 @@ global.flg_minor_languages_support = false;
 global.flg_half_opacity_mode = false;
 //メニューバー内容
 let template = [{
+    id: 'simplem', // ←←← idを設定
+    enabled: true,
     label: 'Simplem',
     submenu: [{
         label: 'Simplemについて',
@@ -259,20 +268,28 @@ let template = [{
         }
     }]
 }, {
+    id: 'file', // ←←← idを設定
+    enabled: true,
     label: 'ファイル',
     submenu: [{
+        id: 'file-open', // ←←← idを設定
+        enabled: true,
         label: 'ファイルを開く',
         accelerator: 'CmdOrCtrl+O',
         click: function () {
             mainWindow.webContents.send('open_from_main'); //レンダラ（index.html）へ'open_from_main'を命令
         }
     }, {
+        id: 'save', // ←←← idを設定
+        enabled: true,
         label: '上書き保存',
         accelerator: 'CmdOrCtrl+S',
         click: function () {
             mainWindow.webContents.send('save_from_main');
         }
     }, {
+        id: 'save-as', // ←←← idを設定
+        enabled: true,
         label: '名前を付けて保存',
         accelerator: 'CmdOrCtrl+Shift+S',
         click: function () {
@@ -281,6 +298,9 @@ let template = [{
     },
     { type: 'separator' },
     {
+
+        id: 'print', // ←←← idを設定
+        enabled: true,
         label: '印刷',
         //accelerator: 'CmdOrCtrl+Shift+K',
         click: function () {
@@ -290,6 +310,9 @@ let template = [{
         }
     },
     {
+
+        id: 'pdf-export', // ←←← idを設定
+        enabled: true,
         label: 'PDFとして出力',
         //accelerator: 'CmdOrCtrl+Shift+K',
         click: function () {
@@ -299,6 +322,9 @@ let template = [{
         }
     },
     {
+
+        id: 'copy-as-html', // ←←← idを設定
+        enabled: true,
         label: 'htmlとしてクリップボードへコピー',
         //accelerator: 'CmdOrCtrl+Shift+K',
         click: function () {
@@ -316,6 +342,8 @@ let template = [{
         }
     }]
 }, {
+    id: 'edit', // ←←← idを設定
+    enabled: true,
     label: "編集",
     submenu: [
         { role: 'undo', label: '元に戻す' },
@@ -374,6 +402,8 @@ let template = [{
         ] : []),
     ]
 }, {
+    id: 'view', // ←←← idを設定
+    enabled: true,
     label: "表示",
     submenu: [
         { role: 'togglefullscreen', label: 'フルスクリーン表示切替え' },
@@ -505,6 +535,8 @@ let template = [{
         { role: 'forceReload' },
     ]
 }, {
+    id: 'window', // ←←← idを設定
+    enabled: true,
     label: "ウィンドウ",
     submenu: [
         { role: 'zoom', label: '最大化' },
@@ -512,6 +544,8 @@ let template = [{
         //{ role: 'windowMenu' },
     ]
 }, {
+    id: 'font', // ←←← idを設定
+    enabled: true,
     label: "フォント",
     submenu: [
         {
@@ -607,6 +641,8 @@ let template = [{
         },
     ]
 }, {
+    id: 'option', // ←←← idを設定
+    enabled: true,
     label: "オプション",
     submenu: [
         {
@@ -624,7 +660,7 @@ let template = [{
                     label: "印刷時に---で改ページ", type: "checkbox",
                     click: function () {
 
-                        //    mainWindow.webContents.send("toggle_h1_pagebreak_from_main");
+                        mainWindow.webContents.send("toggle_page_break_hr_in_note");
 
                     }
                 },
@@ -632,7 +668,7 @@ let template = [{
                     label: "行間を広くする", type: "checkbox",
                     click: function () {
 
-                        //    mainWindow.webContents.send("toggle_h1_pagebreak_from_main");
+                        mainWindow.webContents.send("toggle_line_height_wide_from_main");
 
                     }
                 },
@@ -649,10 +685,24 @@ let template = [{
                     }
                 },
             ]
+        }, {
+            label: "編集画面",
+            submenu: [
+                {
+                    label: "文字サイズを統一", type: "checkbox", checked: false,
+                    click: function () {
+
+                        mainWindow.webContents.send("toggle_same_font_size_from_main");
+
+                    }
+                },
+            ]
         },
     ]
 }
-]
+];
+
+
 
 let template_disable = [
     {
@@ -698,7 +748,7 @@ let template_disable = [
             },
         ]
     }
-]
+];
 
 // Electronの初期化完了後に実行
 app.on('ready', function () {

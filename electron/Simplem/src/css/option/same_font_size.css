@@ -1,0 +1,276 @@
+
+    /* オプション用（文字サイズを統一設定 ベース設定）*/
+    .same_font_size .CodeMirror pre.CodeMirror-line,
+    .same_font_size .CodeMirror pre.CodeMirror-line-like {
+
+        line-height:23px;
+        height: 23px !important;
+        /*font-size:16px;*/
+
+    }
+
+    /* ヘッダー設定 */
+
+    .same_font_size .CodeMirror .cm-header-1 {
+        font-size: 16px;
+        line-height: 23px;
+        /*line-height:42px;*/
+        margin: initial;
+        display:inline; /* inline-blockにすることでマージンは効くが、折り返し時に#と分離してしまう。 */
+        position: relative;
+        font-weight: bold;
+        -webkit-font-smoothing: antialiased;
+        color: black;
+        background-color:#fff; /* #非表示用 */
+        border-bottom: 1px solid #345255;
+    }
+
+    .same_font_size .CodeMirror  .cm-header-2 {
+        font-size: 16px;
+        line-height: 23px;
+        /*line-height:36px;*/
+        margin: initial;
+        display:inline;
+        position: relative;
+        font-weight: bold;
+        -webkit-font-smoothing: antialiased;
+        border-bottom: 1px solid #cccccc;
+        color: black;
+        background-color:#fff; /* #非表示用 */
+    }
+
+    .same_font_size .CodeMirror  .cm-header-3 {
+        font-size: 16px;
+        line-height: 23px;
+        /*line-height:27px;*/
+        margin: initial;
+        display:inline;
+        position: relative;
+        font-weight: bold;
+        -webkit-font-smoothing: antialiased;
+        background-color:#fff; /* #非表示用 */
+        border-bottom: 1px solid #fff;
+    }
+
+    .same_font_size .CodeMirror  .cm-header-4 {
+        font-size: 16px;
+        line-height: 23px;
+        /*line-height:24px;*/
+        margin: initial;
+        display:inline;
+        position: relative;
+        font-weight: bold;
+        -webkit-font-smoothing: antialiased;
+        background-color:#fff; /* #非表示用 */
+        border-bottom: 1px solid #fff;
+    }
+
+    .same_font_size .CodeMirror  .cm-header-5 {
+        font-size: 16px;
+        line-height: 23px;
+        /*line-height:24px;*/
+        margin: initial;
+        display:inline;
+        position: relative;
+        font-weight: bold;
+        -webkit-font-smoothing: antialiased;
+        background-color:#fff; /* #非表示用 */
+        border-bottom: 1px solid #fff;
+    }
+
+    .same_font_size .CodeMirror .cm-header-6 {
+        color: #777777;
+        font-size: 16px;
+        line-height: 23px;
+        /*line-height:24px;*/
+        margin: initial;
+        display:inline;
+        position: relative;
+        font-weight: bold;
+        -webkit-font-smoothing: antialiased;
+        background-color:#fff; /* #非表示用 */
+        border-bottom: 1px solid #fff;
+    }
+
+
+
+    /* #の非表示設定 */
+    .same_font_size .CodeMirror .cm-header-1::after {
+        content:"";
+        background-color: #fff;
+        position: absolute;
+        height: 23px;
+        z-index:-1;
+        /* 以下、ボーダー全幅テスト */
+        border-bottom:1px solid #345255;
+        width:2000px;
+        left:0px;
+        bottom:-1px;
+    }
+
+    .same_font_size .CodeMirror .cm-formatting-header-1 {
+        color:gray;
+        border-bottom: 1px dashed #999;
+        /*margin-right:-1em;*/
+        font-size:0;
+        line-height:23px;
+        position:relative;
+        z-index:-2;
+    }
+
+    .same_font_size .CodeMirror .cm-header-2::after {
+        content:"";
+        background-color: #fff;
+        position: absolute;
+        height: 23px;
+        z-index:-1;
+        /* 以下、ボーダー全幅テスト */
+        border-bottom:1px solid #cccccc;
+        width:2000px;
+        left:0px;
+        bottom:-1px;
+    }
+
+    .same_font_size .CodeMirror .cm-formatting-header-2 {
+        color:gray;
+        border-bottom: 1px dashed #999;
+        /*margin-right:-1.5em;*/
+        font-size:0;
+        position:relative;
+        z-index:-2;
+    }
+
+    .same_font_size .CodeMirror .cm-header-3::after {
+        content:"";
+        background-color: #fff;
+        position: absolute;
+        height: 23px;
+        z-index:-1;
+    }
+
+    .same_font_size .CodeMirror .cm-formatting-header-3 {
+        color:gray;
+        border-bottom: 1px dashed #999;
+        /*margin-right:-2em;*/
+        font-size: 0;
+        position:relative;
+        z-index:-2;
+    }
+
+    .same_font_size .CodeMirror .cm-header-4::after {
+        content:"";
+        background-color: #fff;
+        position: absolute;
+        height: 23px;
+        z-index:-1;
+    }
+
+    .same_font_size .CodeMirror .cm-formatting-header-4 {
+        color:gray;
+        border-bottom: 1px dashed #999;
+        /*margin-right:-2.5em;*/
+        font-size:0;
+        position:relative;
+        z-index:-2;
+    }
+
+    .same_font_size .CodeMirror .cm-header-5::after {
+        content:"";
+        background-color: #fff;
+        position: absolute;
+        height: 23px;
+        z-index:-1;
+    }
+
+    .same_font_size .CodeMirror .cm-formatting-header-5 {
+        color:gray;
+        border-bottom: 1px dashed #999;
+        /*margin-right:-3em;*/
+        font-size:0;
+        position:relative;
+        z-index:-2;
+    }
+
+    .same_font_size .CodeMirror .cm-header-6::after {
+        content:"";
+        background-color: #fff;
+        position: absolute;
+        height: 23px;
+        z-index:-1;
+    }
+
+    .same_font_size .CodeMirror .cm-formatting-header-6 {
+        color:gray;
+        border-bottom: 1px dashed #999;
+        /*margin-right:-3.5em;*/
+        font-size:0;
+        position:relative;
+        z-index:-2;
+    }
+
+
+
+    /* 選択行のボールドのトークンの表示 */
+    .same_font_size .CodeMirror .cm-formatting-strong {
+        font-size:0;
+        line-height: 0;
+    }
+
+    .same_font_size .CodeMirror  .active-line[class~="cm-strong"] {
+        font-size:inherit;
+    }
+
+    /* 選択行の取消し線のトークンの表示 */
+    .same_font_size .CodeMirror .cm-formatting-strikethrough {
+        font-size:0;
+        line-height: 0;
+    }
+
+    .same_font_size .CodeMirror  .active-line[class~="cm-strikethrough"] {
+        font-size:inherit;
+    }
+
+    /* 選択行のcodeのトークンの表示 */
+    .same_font_size .CodeMirror .cm-formatting-code {
+        font-size:0;
+        line-height: 0;
+        /*padding: 0;
+        margin: 0;*/
+    }
+
+    .same_font_size .CodeMirror  .active-line[class~="cm-comment"] {
+        font-size:13px;
+        /*padding: 0px;
+        margin: 0px;*/
+    }
+
+    /* 選択行の#を表示 */
+    .same_font_size .CodeMirror  .active-line[class~="cm-header-1"] {
+        /*display:inline;*/
+        font-size:16px;
+    }
+
+    .same_font_size .CodeMirror  .active-line[class~="cm-header-2"] {
+        /*display:inline;*/
+        font-size:16px;
+    }
+
+    .same_font_size .CodeMirror  .active-line[class~="cm-header-3"] {
+        /*display:inline;*/
+        font-size:16px;
+    }
+
+    .same_font_size .CodeMirror  .active-line[class~="cm-header-4"] {
+        /*display:inline;*/
+        font-size:16px;
+    }
+
+    .same_font_size .CodeMirror  .active-line[class~="cm-header-5"] {
+        /*display:inline;*/
+        font-size:16px;
+    }
+
+    .same_font_size .CodeMirror  .active-line[class~="cm-header-6"] {
+        /*display:inline;*/
+        font-size:16px;
+    }

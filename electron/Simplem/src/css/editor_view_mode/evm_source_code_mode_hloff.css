@@ -50,13 +50,24 @@
         border-radius: 0;
       }
 
+    span.cm-comment:before {
+        display: none;
+    }
+
     .cm-s-easymde span .cm-formatting-code[class~=active-line]{
         border:none;
     }
 
     /* hrの設定 */
     .cm-hr {
-        color:black;
+        color:black !important;
+
+        border-top: initial !important;
+        display: initial !important;
+        height: initial !important;
+        box-sizing: initial !important;
+        position: initial !important;
+        width: initial !important;
     }
 
 

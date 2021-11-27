@@ -50,6 +50,8 @@
     <link rel="stylesheet" href="css/merge.css">
     <script src="js/diff_match_patch.js"></script>
 
+    <!-- option css -->
+    <link rel="stylesheet" href="css/option/same_font_size.css">
 </head>
 
 
@@ -155,6 +157,11 @@
         if (canceled) return
         let file_text_data = '';
         file_text_data = data[0] || '';
+
+        if (easyMDE.isPreviewActive() == true) {
+            await easyMDE.togglePreview();
+        }
+
         await easyMDE.value(file_text_data);
 
         //diffのオリジナル用として保存
@@ -304,10 +311,10 @@
         }
 
         //カーソルのサイズをリセット
-        //await easyMDE.codemirror.execCommand('selectAll');
-        //await setTimeout(function () {
-        //    easyMDE.codemirror.setCursor({ line: 0, ch: 0 });
-        //}, 10);
+        await easyMDE.codemirror.execCommand('selectAll');
+        await setTimeout(function () {
+            easyMDE.codemirror.setCursor({ line: 0, ch: 0 });
+        }, 10);
 
         //await document.activeElement.blur();
         //await easyMDE.codemirror.setCursor({ line: 0, ch: 0 });
@@ -426,13 +433,68 @@
         flg_no_page_break_h1_in_note = !flg_no_page_break_h1_in_note
 
         if (flg_no_page_break_h1_in_note == true) {
-            document.getElementsByClassName("editor-preview-full")[0].classList.add("no_page_break_h1");
+            document.getElementsByClassName("CodeMirror-wrap")[0].classList.add("no_page_break_h1");
         } else {
-            document.getElementsByClassName("editor-preview-full")[0].classList.remove("no_page_break_h1");
+            document.getElementsByClassName("CodeMirror-wrap")[0].classList.remove("no_page_break_h1");
         }
 
     });
 
+    //mainからのtoggle_page_break_hr_in_note命令を処理
+    window.flg_page_break_hr_in_note = false;
+    ipcRenderer.on('toggle_page_break_hr_in_note', async (event) => {
+
+        flg_page_break_hr_in_note = !flg_page_break_hr_in_note
+
+        if (flg_page_break_hr_in_note == true) {
+            document.getElementsByClassName("EasyMDEContainer")[0].classList.add("page_break_hr");
+        } else {
+            document.getElementsByClassName("EasyMDEContainer")[0].classList.remove("page_break_hr");
+        }
+
+    });
+
+    //mainからのtoggle_line_height_wide_from_main命令を処理
+    window.flg_line_height_wide = false;
+    ipcRenderer.on('toggle_line_height_wide_from_main', async (event) => {
+
+        flg_line_height_wide = !flg_line_height_wide
+
+        if (flg_line_height_wide == true) {
+            await document.getElementsByClassName("EasyMDEContainer")[0].classList.add("line_height_wide");
+        } else {
+            await document.getElementsByClassName("EasyMDEContainer")[0].classList.remove("line_height_wide");
+        }
+
+
+        //カーソルのサイズをリセット
+        await easyMDE.codemirror.execCommand('selectAll');
+        await setTimeout(function () {
+            easyMDE.codemirror.setCursor({ line: 0, ch: 0 });
+        }, 10);
+
+    });
+
+    //mainからのtoggle_same_font_size_from_main命令を処理
+    window.flg_same_font_size = false;
+    ipcRenderer.on('toggle_same_font_size_from_main', async (event) => {
+
+        flg_same_font_size = !flg_same_font_size
+
+        if (flg_same_font_size == true) {
+            await document.getElementsByClassName("EasyMDEContainer")[0].classList.add("same_font_size");
+        } else {
+            await document.getElementsByClassName("EasyMDEContainer")[0].classList.remove("same_font_size");
+        }
+
+
+        //カーソルのサイズをリセット
+        await easyMDE.codemirror.execCommand('selectAll');
+        await setTimeout(function () {
+            easyMDE.codemirror.setCursor({ line: 0, ch: 0 });
+        }, 10);
+
+    });
 
     //ファイルの読み込みをmainから呼び出し（ボタン用）
     //document.querySelector('#open').addEventListener('click', async () => {

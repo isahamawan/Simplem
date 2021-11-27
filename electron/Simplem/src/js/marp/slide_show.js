@@ -19,6 +19,8 @@
 /* スライドショーを終了する関数 */
 function slide_show_end() {
 
+    ipcRenderer.invoke('menu_enable');
+
     //フルスクリーンモードを終了
     if (flg_slideshow_fullscreen == true) {
         document.exitFullscreen();
@@ -45,6 +47,8 @@ function slide_show_end() {
 /* スライドショーを開始する関数 */
 window.flg_slideshow_fullscreen = true;
 function slide_show_start() {
+
+    ipcRenderer.invoke('menu_disable');
 
     //diffモードの解除
     if (flg_diff_on == true) {
