@@ -979,13 +979,6 @@
         /*padding:5px 0;*//*行間調整*/
     }
 
-    /* オプション用（ベースの行高さを広く設定） */
-    .line_height_wide .CodeMirror pre.CodeMirror-line,
-    .line_height_wide .CodeMirror pre.CodeMirror-line-like {
-
-        line-height:39px;
-        /*padding:5px 0;*//*行間調整*/
-    }
 
 
     /* ヘッダーのベースの行高さ設定 */

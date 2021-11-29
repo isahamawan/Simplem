@@ -99,7 +99,7 @@
         content:"";
         background-color: #fff;
         position: absolute;
-        height: 23px;
+        height: 19px;
         z-index:-1;
         /* 以下、ボーダー全幅テスト */
         border-bottom:1px solid #345255;
@@ -113,7 +113,6 @@
         border-bottom: 1px dashed #999;
         /*margin-right:-1em;*/
         font-size:0;
-        line-height:23px;
         position:relative;
         z-index:-2;
     }
@@ -122,7 +121,7 @@
         content:"";
         background-color: #fff;
         position: absolute;
-        height: 23px;
+        height: 19px;
         z-index:-1;
         /* 以下、ボーダー全幅テスト */
         border-bottom:1px solid #cccccc;
@@ -144,7 +143,7 @@
         content:"";
         background-color: #fff;
         position: absolute;
-        height: 23px;
+        height: 19px;
         z-index:-1;
     }
 
@@ -161,7 +160,7 @@
         content:"";
         background-color: #fff;
         position: absolute;
-        height: 23px;
+        height: 19px;
         z-index:-1;
     }
 
@@ -178,7 +177,7 @@
         content:"";
         background-color: #fff;
         position: absolute;
-        height: 23px;
+        height: 19px;
         z-index:-1;
     }
 
@@ -195,7 +194,7 @@
         content:"";
         background-color: #fff;
         position: absolute;
-        height: 23px;
+        height: 19px;
         z-index:-1;
     }
 
