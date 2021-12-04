@@ -187,6 +187,20 @@
         bottom:-1px;
     }
 
+    /* 見出し内のボールドに、マーク非表示時に下線がついてしまうバグのキャンセル */
+    .cm-s-easymde .cm-strong::after {
+        content:"";
+        background-color: transparent;
+        position: absolute;
+        height: 25px;
+        z-index:-1;
+        /* 以下、ボーダー全幅テスト */
+        border-bottom: none;
+        width:2000px;
+        left:0px;
+        bottom:-1px;
+    }
+
     .cm-s-easymde .cm-formatting-header-2 {
         color:gray;
         border-bottom: 1px dashed #999;

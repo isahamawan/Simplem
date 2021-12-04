@@ -854,7 +854,7 @@
     }
 
     div.marpit>svg>foreignObject>section pre {
-        background-color: #f6f8fa;
+        /* background-color: #f6f8fa; simplem*/
         border-radius: 3px;
         font-size: 85%;
         line-height: 1.45;
@@ -1413,7 +1413,7 @@
     /* コードブロックの書式 */
     div.marpit>svg>foreignObject>section pre {
         /* background-color: #f6f8fa; simplem*/
-        background-color: #364549;
+        /* background-color: #364549; */
         border-radius: 6px;
         font-size: 85%;
         line-height: 1.45;
