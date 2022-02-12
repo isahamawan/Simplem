@@ -429,21 +429,33 @@ let template = [{
         },
         { type: 'separator' },
         {
-            label: 'ソースコードモード',
+            label: '表示モード',
             submenu: [
                 {
-                    label: 'ハイライト有り',
+                    label: 'マークをライブ表示',
                     //accelerator: 'CmdOrCtrl+T',
                     type: 'radio',
+                    checked: true,
                     click: function () {
 
-                        flg_source_code_mode = 'on_hl_on';
+                        flg_source_code_mode = 'off_hl';
                         mainWindow.webContents.send("toggle_source_code_mode_from_main", flg_source_code_mode);
 
                     }
                 },
                 {
-                    label: 'ハイライト無し',
+                    label: 'マークを常に表示',
+                    //accelerator: 'CmdOrCtrl+T',
+                    type: 'radio',
+                    click: function () {
+
+                        flg_source_code_mode = 'mark_view';
+                        mainWindow.webContents.send("toggle_source_code_mode_from_main", flg_source_code_mode);
+
+                    }
+                },
+                {
+                    label: 'ソースコード',
                     //accelerator: 'CmdOrCtrl+T',
                     type: 'radio',
                     click: function () {
@@ -454,13 +466,12 @@ let template = [{
                     }
                 },
                 {
-                    label: 'OFF',
+                    label: 'ソースコード（ハイライト有り）',
                     //accelerator: 'CmdOrCtrl+T',
                     type: 'radio',
-                    checked: true,
                     click: function () {
 
-                        flg_source_code_mode = 'off_hl';
+                        flg_source_code_mode = 'on_hl_on';
                         mainWindow.webContents.send("toggle_source_code_mode_from_main", flg_source_code_mode);
 
                     }

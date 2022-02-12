@@ -339,6 +339,14 @@
             editor_view_mode_css_link.href = "css/editor_view_mode/evm_source_code_mode.css";
         } else if (flg_source_code_mode == "on_hl_off") {
             editor_view_mode_css_link.href = "css/editor_view_mode/evm_source_code_mode_hloff.css";
+        } else if (flg_source_code_mode == "mark_view") {
+
+            //文字サイズ統一オプションの設定
+            if (window.flg_same_font_size == true) {
+                document.getElementsByClassName("EasyMDEContainer")[0].classList.add("same_font_size");
+            }
+
+            editor_view_mode_css_link.href = "css/editor_view_mode/evm_mark_view.css";
         } else {
 
             //文字サイズ統一オプションの設定
