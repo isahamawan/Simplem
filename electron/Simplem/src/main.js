@@ -413,28 +413,6 @@ let template = [{
     enabled: true,
     label: "表示",
     submenu: [
-        { role: 'togglefullscreen', label: 'フルスクリーン表示切替え' },
-        { type: 'separator' },
-        { role: 'zoomIn', label: 'ズームイン' },
-        { role: 'zoomOut', label: 'ズームアウト' },
-        { role: 'resetZoom', label: 'リセット' },
-        { type: 'separator' },
-        //{ role: 'toggleSpellChecker', label: 'スペルチェッカー切替え' },
-        //{ type: 'separator' },
-        {
-            label: '常に最前面に表示',
-            accelerator: 'CmdOrCtrl+T',
-            type: 'checkbox',
-            click: function () {
-                mainWindow.setAlwaysOnTop(global.switch_t);
-                if (global.switch_t == true) {
-                    global.switch_t = false;
-                } else {
-                    global.switch_t = true;
-                };
-            }
-        },
-        { type: 'separator' },
         {
             label: '表示モード',
             submenu: [
@@ -484,6 +462,20 @@ let template = [{
                     }
                 },
             ]
+        },
+        { type: 'separator' },
+        {
+            label: '常に最前面に表示',
+            accelerator: 'CmdOrCtrl+T',
+            type: 'checkbox',
+            click: function () {
+                mainWindow.setAlwaysOnTop(global.switch_t);
+                if (global.switch_t == true) {
+                    global.switch_t = false;
+                } else {
+                    global.switch_t = true;
+                };
+            }
         },
         { type: 'separator' },
         {
@@ -549,6 +541,14 @@ let template = [{
             ]
         },
         { type: 'separator' },
+        { role: 'togglefullscreen', label: 'フルスクリーン表示切替え' },
+        { type: 'separator' },
+        { role: 'zoomIn', label: 'ズームイン' },
+        { role: 'zoomOut', label: 'ズームアウト' },
+        { role: 'resetZoom', label: 'リセット' },
+        { type: 'separator' },
+        //{ role: 'toggleSpellChecker', label: 'スペルチェッカー切替え' },
+        //{ type: 'separator' },
         { role: 'toggleDevTools' },
         { role: 'forceReload' },
     ]

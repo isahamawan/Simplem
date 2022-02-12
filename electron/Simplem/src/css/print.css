@@ -1,7 +1,7 @@
 /* 編集画面の水平線の太字化（hr改ページのオプション有効時） */
 .page_break_hr .cm-hr {
     color: transparent;
-    border-top: 23px dashed #999;
+    border-top: 23px solid lightgray;
     display: block;
     height: 23px;
     box-sizing: border-box;
@@ -12,7 +12,7 @@
 
 /* プレビュー画面の水平線の太字化（hr改ページのオプション有効時） */
 .page_break_hr hr {
-    border-top: 23px dashed #999;
+    border-top: 23px solid lightgray;
     box-sizing: border-box;
     margin: 24px 0 24px 0;
 }

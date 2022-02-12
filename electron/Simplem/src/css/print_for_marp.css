@@ -86,7 +86,7 @@
 /* 編集画面の水平線の太字化 */
 .cm-hr {
     color: transparent;
-    border-top: 23px dashed #999;
+    border-top: 23px solid lightgray;
     display: block;
     height: 23px;
     box-sizing: border-box;
