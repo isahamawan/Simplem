@@ -707,7 +707,7 @@ let template = [{
             label: "編集画面",
             submenu: [
                 {
-                    label: "文字サイズを統一", type: "checkbox", checked: false,
+                    label: "文字サイズを統一", type: "checkbox", checked: true,
                     click: function () {
 
                         mainWindow.webContents.send("toggle_same_font_size_from_main");

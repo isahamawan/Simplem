@@ -517,7 +517,9 @@
     });
 
     //mainからのtoggle_same_font_size_from_main命令を処理
-    window.flg_same_font_size = false;
+    window.flg_same_font_size = true;
+    document.getElementsByClassName("EasyMDEContainer")[0].classList.add("same_font_size");
+
     ipcRenderer.on('toggle_same_font_size_from_main', async (event) => {
 
         flg_same_font_size = !flg_same_font_size
