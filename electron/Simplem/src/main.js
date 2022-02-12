@@ -76,8 +76,8 @@ ipcMain.handle('open_asterisk_del', async (event) => {
 ipcMain.handle('save_as', async (event, text_data) => {
     const { canceled, filePath } = await dialog.showSaveDialog({
         filters: [
-            { name: 'テキストファイル', extensions: ['txt'] },
             { name: 'マークダウンファイル', extensions: ['md'] },
+            { name: 'テキストファイル', extensions: ['txt'] },
             { name: 'htmlファイル', extensions: ['html'] },
         ]
     })
