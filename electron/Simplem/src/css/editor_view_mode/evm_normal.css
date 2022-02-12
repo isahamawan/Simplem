@@ -40,14 +40,17 @@
         vertical-align: middle;
     }
 
+
     .cm-formatting-list-ol {
         margin-left:1em;
     }
 
+    /*
     .cm-formatting-list-ol:after {
         content:"s";
         color:transparent;
     }
+    */
 
     /* ヘッダー設定 */
 

@@ -2,6 +2,6 @@
     .line_height_wide .CodeMirror pre.CodeMirror-line,
     .line_height_wide .CodeMirror pre.CodeMirror-line-like {
 
-        line-height:39px;
-        height: 39px !important;
+        line-height:200%;
+        height: 200% !important;
     }

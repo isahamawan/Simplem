@@ -1,5 +1,8 @@
     /* 以下編集画面のノーマル（ライブビューあり）なマーク設定 */
-
+    body .same_font_size .cm-formatting-list-ul {
+        margin-left:1em;
+        color:gray;
+    }
     .cm-formatting-list-ul {
         margin-left:1em;
         color:gray;
@@ -44,10 +47,15 @@
         margin-left:1em;
     }
 
-    .cm-formatting-list-ol:after {
-        content:"s";
+    /*body .same_font_size .cm-formatting-list-ol:after {
+        content:"o";
         color:gray;
     }
+
+    .cm-formatting-list-ol:after {
+        content:"o";
+        color:gray;
+    }*/
 
     /* ヘッダー設定 */
 
@@ -138,6 +146,18 @@
     }
 
 
+    body .same_font_size .cm-hr {
+        color: gray;
+        border-top: 1px dashed #999;
+        display: block;
+
+        /* line幅を一行に保つため */
+        height: 23px;
+        box-sizing: border-box;
+        position: absolute;
+        width: -webkit-fill-available;
+    }
+
     .cm-hr {
         color: gray;
         border-top: 1px dashed #999;
@@ -163,6 +183,16 @@
         width:2000px;
         left:0px;
         bottom:-1px;
+    }
+
+    body .same_font_size .cm-s-easymde .cm-formatting-header-1 {
+        color:gray;
+        border-bottom: 1px dashed #999;
+        /*margin-right:-1em;*/
+        /*font-size:0;*/
+        font-size: unset;
+        position:relative;
+        z-index:-2;
     }
 
     .cm-s-easymde .cm-formatting-header-1 {
@@ -201,6 +231,16 @@
         bottom:-1px;
     }
 
+    body .same_font_size .cm-s-easymde .cm-formatting-header-2 {
+        color:gray;
+        border-bottom: 1px dashed #999;
+        /*margin-right:-1.5em;*/
+        /*font-size:0;*/
+        font-size: unset;
+        position:relative;
+        z-index:-2;
+    }
+
     .cm-s-easymde .cm-formatting-header-2 {
         color:gray;
         border-bottom: 1px dashed #999;
@@ -218,11 +258,20 @@
         z-index:-1;
     }
 
+    body .same_font_size .cm-s-easymde .cm-formatting-header-3 {
+        color:gray;
+        border-bottom: 1px dashed #999;
+        /*margin-right:-2em;*/
+        font-size: unset;
+        position:relative;
+        z-index:-2;
+    }
+
     .cm-s-easymde .cm-formatting-header-3 {
         color:gray;
         border-bottom: 1px dashed #999;
         /*margin-right:-2em;*/
-        font-size: 0;
+        font-size:0;
         position:relative;
         z-index:-2;
     }
@@ -233,6 +282,16 @@
         position: absolute;
         height: 25px;
         z-index:-1;
+    }
+
+    body .same_font_size .cm-s-easymde .cm-formatting-header-4 {
+        color:gray;
+        border-bottom: 1px dashed #999;
+        /*margin-right:-2.5em;*/
+        /*font-size:0;*/
+        font-size: unset;
+        position:relative;
+        z-index:-2;
     }
 
     .cm-s-easymde .cm-formatting-header-4 {
@@ -252,6 +311,16 @@
         z-index:-1;
     }
 
+    body .same_font_size .cm-s-easymde .cm-formatting-header-5 {
+        color:gray;
+        border-bottom: 1px dashed #999;
+        /*margin-right:-3em;*/
+        /*font-size:0;*/
+        font-size: unset;
+        position:relative;
+        z-index:-2;
+    }
+
     .cm-s-easymde .cm-formatting-header-5 {
         color:gray;
         border-bottom: 1px dashed #999;
@@ -267,6 +336,16 @@
         position: absolute;
         height: 25px;
         z-index:-1;
+    }
+
+    body .same_font_size .cm-s-easymde .cm-formatting-header-6 {
+        color:gray;
+        border-bottom: 1px dashed #999;
+        /*margin-right:-3.5em;*/
+        /*font-size:0;*/
+        font-size: unset;
+        position:relative;
+        z-index:-2;
     }
 
     .cm-s-easymde .cm-formatting-header-6 {
@@ -293,6 +372,14 @@
     }
 
     /* 選択行のボールドのトークンの表示 */
+    body .same_font_size .cm-s-easymde .cm-formatting-strong {
+        /*font-size:0;
+        line-height: 0;*/
+        font-size: unset;
+        line-height: unset;
+        color: gray;
+    }
+
     .cm-s-easymde .cm-formatting-strong {
         /*font-size:0;
         line-height: 0;*/
@@ -304,6 +391,16 @@
     }
 
     /* 選択行の取消し線のトークンの表示 */
+
+
+    body .same_font_size .cm-s-easymde .cm-formatting-strikethrough {
+        /*font-size:0;
+        line-height: 0;*/
+        font-size: unset;
+        line-height: unset;
+        color: gray
+    }
+
     .cm-s-easymde .cm-formatting-strikethrough {
         /*font-size:0;
         line-height: 0;*/
@@ -315,6 +412,16 @@
     }
 
     /* 選択行のcodeのトークンの表示 */
+
+    body .same_font_size .cm-s-easymde .cm-formatting-code {
+        /*font-size:0;
+        line-height: 0;*/
+        font-size: unset;
+        line-height: unset;
+        color: gray;
+
+    }
+
     .cm-s-easymde .cm-formatting-code {
         /*font-size:0;
         line-height: 0;*/

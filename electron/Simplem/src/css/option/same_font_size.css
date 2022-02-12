@@ -4,7 +4,7 @@
     .same_font_size .CodeMirror pre.CodeMirror-line-like {
 
         line-height:23px;
-        height: 23px !important;
+        /*height: 23px !important;*/
         /*font-size:16px;*/
 
     }
@@ -92,6 +92,30 @@
         border-bottom: 1px solid #fff;
     }
 
+    /* ヘッダーのベースの行高さ設定 */
+    .same_font_size .cm-s-easymde .cm-header-1 {
+        line-height: 100%;
+    }
+
+    .same_font_size .cm-s-easymde .cm-header-2 {
+        line-height: 100%;
+    }
+
+    .same_font_size .cm-s-easymde .cm-header-3 {
+        line-height: 100%;
+    }
+
+    .same_font_size .cm-s-easymde .cm-header-4 {
+        line-height: 100%
+    }
+
+    .same_font_size .cm-s-easymde .cm-header-5 {
+        line-height: 100%
+    }
+
+    .same_font_size .cm-s-easymde .cm-header-6 {
+        line-height: 100%
+    }
 
 
     /* #の非表示設定 */
