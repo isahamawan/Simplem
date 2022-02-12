@@ -41,6 +41,15 @@ function slide_show_end() {
 
     //end of slides　要素の削除　
     document.getElementById("end_of_slides_ele").remove();
+
+    //編集モードに切替
+    if (easyMDE.isPreviewActive() == true) {
+        easyMDE.togglePreview();
+
+        //10ms待機
+        //const _sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+        //_sleep(10);
+    }
 }
 
 

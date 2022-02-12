@@ -157,9 +157,10 @@ ipcMain.handle('html_to_clipboard', async (event, parsered_preview_html_plaintex
 //印刷
 ipcMain.handle('print', async (event) => {
 
-    mainWindow.webContents.executeJavaScript("window.print()");
+    await mainWindow.webContents.executeJavaScript("window.print()");
     //mainWindow.webContents.print();//winではこれでも動く macはgetprinterでプリンターが無しなら動かない？
 
+    await mainWindow.webContents.send("preview_off_from_main");
 });
 
 //PDF出力
@@ -173,9 +174,15 @@ ipcMain.handle('print_to_pdf', async (event) => {
         ]
     })
 
-    if (canceled) return
+    if (canceled) {
+        await mainWindow.webContents.send("preview_off_from_main");
+        return
+    }
 
     await fs.promises.writeFile(filePath, buffer_pdf);
+
+    await mainWindow.webContents.send("preview_off_from_main");
+
 
 });
 

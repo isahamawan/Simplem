@@ -282,7 +282,22 @@
         }
 
         ipcRenderer.invoke('print_to_pdf');
+
     });
+
+    //mainからのプレビュー切替命令を処理
+    ipcRenderer.on('preview_off_from_main', async () => {
+        //編集モードに切替
+        if (easyMDE.isPreviewActive() == true) {
+            await easyMDE.togglePreview();
+
+            //10ms待機
+            //const _sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+            //_sleep(10);
+        }
+
+    });
+
 
     //mainからのfont変更命令の処理
     ipcRenderer.on('change_font_from_main', async (event, font_kind) => {
