@@ -22,85 +22,86 @@
 # Simplem
 Minimal notepad-like markdown editor. To write down your amazing ideas immediately.
 
-[日本語表示](https://)
+[日本語表示](https://github.com/isahamawan/Simplem/blob/master/README_JA.md)
 
-## アイデアを思いついたときに重要なことは？
-あるとき私は晩ご飯を食べながらテレビを見ていて、ふと良いアイデアを思いつきました。
+## What is important when you come up with an idea?
+One time I was eating dinner and watching TV when I suddenly had a good idea.
 
-しかし、残念なことにアイデアを書き留めるための紙とペンを探しているうちに、大事なアイデアを忘れてしまいました。
+Unfortunately, while I was looking for a pen and paper to write it down, I forgot the important idea.
 
-アイデアを思いついたときに重要なことは、紙とペンですぐに書き留めることです。
+When you have an idea, it's important to write it down immediately with a pen and paper.
 
-**”Simplemは、アイデアを思いついたときにすぐ起動できて、気兼ねなく書き留められる紙とペンのようなアプリです。”**
+**"Simplem is a paper-and-pen-like app that you can launch as soon as you have an idea and write it down without worrying about it." **
 
-### どうやって？
-- 起動すればすぐに立ち上がり、様式やページの設定は必要ありません
-- フォントの数を絞りました。ユニークなフォントから楽しく選べます
-- デフォルトのメモ帳のようなシンプルな書き味に仕上げています
-- 修正したところのdiff表示もできるよ
+### How?
+- Launch it and you're up and running, no need for style or page setup!
+- We've narrowed down the number of fonts. You can have fun choosing from a  unique fonts.
+- We've made it simple to write in, just like the default notepad.
+- You can also view diffs of your revisions.
 
 
-## アイデアを練るときに重要なことは？
-私は仕事のアイデア練ろうと思って、よくあるワードソフトを使ってああでもないこうでもないと、文章を書きながら考えていました。
+## What's important when you're working on an idea?
+When I was trying to come up with ideas for my work, I used to use a common word processor and think about this and that while writing.
 
-しかし、時間が経つうちに見出しの大きさや、文字の揃い方が気になりだし、綺麗にしようという意識がでてきてしまいました。
+However, as time went by, I began to worry about the size of the headings and the alignment of the text, and I became conscious of the need to make it neat.
 
-そうなるともう手遅れで、綺麗にした見出しや文字の揃いを崩したくなくて、自由な発想での文章の修正ができなくなってしまいました。
+Then it was too late, and I couldn't revise the text freely because I didn't want to ruin the clean headings and text alignment.
 
-こうなってしまうと例え「綺麗さを崩しても良いから自由に書こう」という意識をしても、綺麗さを維持したいという自分の心が邪魔をして、思うように書けません。
+In this situation, even if I make a conscious effort to "write freely even if it destroys the neatness," my mind that wants to maintain the neatness gets in the way, and I can't write as I want.
 
-**”Simplemは、「綺麗さ」を考えずにアイデアを練ることだけに集中するための「頭の中のメモ帳」のようなアプリです。”**
+**"Simplem is an app like a 'notepad in your head' that allows you to focus only on formulating ideas without thinking about 'neatness'." **
 
-### どうやって？
-- マークダウン記法が使えるため、文章の修飾への拘りに時間を取られません
-- 修飾にあまり時間を取られない割に、見出しや太字が程よく綺麗に表示され、アイデアの整理に役立ちます
-- マークダウンのマークが編集時以外は表示されない（ライブプレビュー）ため、文章を読むことの邪魔しません
-- 他のライブプレビューのマークダウンエディタと違い、編集画面の文字のサイズが統一されているため、自由な発想で気兼ねなく文章を書けます
-	- 嘘だと思う人は、騙されたと思って、あなたの明日の予定を、Simplemと他のマークダウンエディタで書き比べてみてください
-- 見出しをもとに、自動で目次とリンクが作成されるため、簡単に文書の中を行ったり来たりできます
-- その他にも「頭の中のメモ帳」をコンピュータ上に実現するための工夫を日々追加しています
+### How?
+- You can use markdown notation, so you don't spend too much time obsessing over text modifiers
+- While not spending too much time on modifiers, the headings and bolding are nice and neat, and help you organize your ideas.
+- Markdown marks are not visible except when editing (live preview), so they do not interfere with reading.
+- Unlike other markdown editors with live preview, the size of the text on the editing screen is consistent, so you can write freely and without worry.
+	- If you think I'm lying, consider yourself fooled and compare your schedule for tomorrow with Simplem and other markdown editors.
+- Table of contents and links are automatically created based on headings, so you can easily move back and forth in your document.
+- Other innovations are being added daily to bring the "notepad in your head" to your computer!
 
-## まとめたアイデアを清書しなおすのは大変！
-メモ帳にまとめたアイデアを、人に見せるためにワードソフトで清書するのに２時間かかった。
+## It's hard to rewrite the ideas you've put together!
+It took me two hours to re-write the ideas that I had put together in my notepad in word software to show them to others.
 
-もっと多くの人に発表するために、清書からスライドを作るのにさらに２時間かかった。
+It took me two hours to re-write the ideas I had in my notepad in Word to show them to others. It took me another two hours to create slides from the re-write to present to more people.
 
-あなたも経験ありますか？私の環境ではよくあります😂
+Have you ever experienced this? It happens a lot in my environment😂.
 
-**”Simplemは、一つのアイデアメモから、清書、スライドを作成できるアプリです。”**
+**"Simplem is an app that allows you to create a clarification and slides from a single idea note." **
 
-### どうやって？
-- マークダウン記法でほどよく綺麗に整う
-	- 印刷やPDF出力時は、見出しランクに合わせて見出しが大きく表示
-- 出力時は、見出し１（h1）で自動改ページ　（⇦オプションでオンオフできます）
-- 出力時は、水平線（hr）で改ページ　　　　（⇦オプションでオンオフできます）
-- 「Slides」ボタンを押せば、スライドとして編集できる
-	- 水平線（hr）で改ページ。スライドショーもできるよ
-- htmlのコメント表記で、編集画面に自分の気づきやアイデアをメモできる
-	- 例えば次のようなコメントは出力時に消えます
-		- `<! -- あとで文章に書き上げる素晴らしいアイデア！ -->`
+### How?
+- Markdown notation makes it moderately neat and tidy.
+	- When printing or outputting PDFs, headings appear larger according to heading rank.
+- Automatic page break at heading 1 (h1) when outputting (can be turned on/off in options)
+- Page break at horizontal line (hr) when outputting (can be turned on/off in options)
+- Click "Slides" button to edit as slides.
+	- Page break with horizontal line (hr). You can also create a slide show.
+- You can use html comment notation to write down your thoughts and ideas on the editing screen.
+	- For example, the following comments will disappear in the output
+		- `<! -- Great idea to write up in text later! -->`
 
-# 機能一覧
+# List of features
 
-- diff表示
-- 目次の自動生成(見出しベース：gitbook的な)
-- スライド編集・表示(marp)
-- <！-- -->で印刷されないコメント機能(アイデア、メモと清書を共存・一括管理できる)
-- book編集・表示(marp)　（⇦文書モードとかぶるため無効化中）
-- 半透明表示
-- 常に最前面表示
-- コードハイライト機能
-- ツールバー
-- 出力機能(pdf,html)
-- htmlタグが有効
-- ソースコードモード
-- フォント切り替え(ユニークなフォントを用意)
-- 印刷時はh1での改ページ
-- 印刷時の---での改ページ
-- マーメイドjs（スライド表示への対応はニーズがあれば）
-- ダークモード
-- ショートカットキー
-- 音声入力（macのみ）
-- 読み上げ（macのみ）
+- diff display
+- Automatic generation of table of contents (heading-based: gitbook-like)
+- Slide editing and display (marp)
+- <! -- --> non-printable comment function (ideas, memos and clear writing can coexist and be managed in one place)
+- Book editing/viewing (marp) (currently disabled because it conflicts with Document mode)
+- Semi-transparent display
+- Always at the front
+- Code highlighting
+- Toolbar
+- Output function(pdf,html)
+- html tags are enabled
+- Source code mode
+- Font switching (unique fonts available)
+- Page break at h1 when printing
+- Page break at --- when printing
+- Mermaid js (support for slide display if there is a need)
+- Dark mode
+- Shortcut keys
+- Voice input (mac only)
+- Text-To-Speech (mac only)
+
 <!-- - 編集画面の余分な余白を表示しない仕様 -->
 <!-- - 目次も印刷-->

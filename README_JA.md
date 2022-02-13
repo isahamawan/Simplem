@@ -20,9 +20,9 @@
 
 
 # Simplem
-Minimal notepad-like markdown editor. To write down your amazing ideas immediately.
+メモ帳のようなミニマルなマークダウンエディタ。素晴らしいアイデアをすぐに書き留めるために。
 
-[日本語表示](https://)
+[English](https://github.com/isahamawan/Simplem/blob/master/README.md)
 
 ## アイデアを思いついたときに重要なことは？
 あるとき私は晩ご飯を食べながらテレビを見ていて、ふと良いアイデアを思いつきました。
