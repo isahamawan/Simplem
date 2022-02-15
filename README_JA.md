@@ -22,9 +22,13 @@
 # Simplem
 メモ帳のようなミニマルなマークダウンエディタ。素晴らしいアイデアをすぐに書き留めるために。
 
+[English](https://github.com/isahamawan/Simplem/blob/master/README.md)
+
+![logo](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/simplem_logo.png)
+
 ![view](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/simplem.png)
 
-[English](https://github.com/isahamawan/Simplem/blob/master/README.md)
+
 
 ## アイデアを思いついたときに重要なことは？
 あるとき私は晩ご飯を食べながらテレビを見ていて、ふと良いアイデアを思いつきました。
@@ -33,7 +37,7 @@
 
 アイデアを思いついたときに重要なことは、紙とペンですぐに書き留めることです。
 
-![idea](https://)
+![idea](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/idea.png)
 
 **”Simplemは、アイデアを思いついたときにすぐ起動できて、気兼ねなく書き留められる紙とペンのようなアプリです。”**
 
@@ -51,13 +55,13 @@
 
 そうなるともう手遅れで、綺麗にした見出しや文字の揃いを崩したくなくて、自由な発想での文章の修正ができなくなってしまいました。
 
-![worry](https://)
+![worry](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/fast.png)
 
 こうなってしまうと例え「綺麗さを崩しても良いから自由に書こう」という意識をしても、綺麗さを維持したいという自分の心が邪魔をして、思うように書けません。
 
 **”Simplemは、「綺麗さ」を考えずにアイデアを練ることだけに集中するための「頭の中のメモ帳」のようなアプリです。”**
 
-![consentration](https://)
+![consentration](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/meditation.png)
 
 ### どうやって？
 - マークダウン記法が使えるため、文章の修飾への拘りに時間を取られません
@@ -77,7 +81,7 @@
 
 **”Simplemは、一つのアイデアメモから、清書、スライドを作成できるアプリです。”**
 
-![all-purpose](https://)
+![all-purpose](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/all.png)
 
 ### どうやって？
 - マークダウン記法でほどよく綺麗に整う
@@ -93,8 +97,11 @@
 # 機能一覧
 
 - diff表示
+![diff](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/diff.png)
 - 目次の自動生成(見出しベース：gitbook的な)
+![toc](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/toc.png)
 - スライド編集・表示(marp)
+![slides](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/slides.png)
 - <！-- -->で印刷されないコメント機能(アイデア、メモと清書を共存・一括管理できる)
 - book編集・表示(marp)　（⇦文書モードとかぶるため無効化中）
 - 半透明表示
