@@ -22,7 +22,7 @@
 # Simplem
 メモ帳のようなミニマルなマークダウンエディタ。素晴らしいアイデアをすぐに書き留めるために。
 
-![view](https://)
+![view](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/simplem.png)
 
 [English](https://github.com/isahamawan/Simplem/blob/master/README.md)
 
