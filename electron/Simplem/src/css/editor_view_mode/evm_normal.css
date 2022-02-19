@@ -143,6 +143,7 @@
 
     .cm-hr {
         color: transparent;
+        /*color:gray;*/
         border-top: 1px dashed #999;
         display: block;
 
