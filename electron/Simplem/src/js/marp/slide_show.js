@@ -222,9 +222,16 @@ function slide_show_button_create() {
 
     slide_show_button_ele.appendChild(slide_show_i_ele);
 
+
+
     //editor-statusbarへのslide_showボタン要素の追加
     //let editor_statusbar_ele = document.getElementsByClassName("editor-statusbar")[0];
     editor_statusbar_ele.insertBefore(slide_show_button_ele, editor_statusbar_ele.firstChild);
+
+    //tocのon offに合わせてアイコン表示位置を調整
+    if (flg_toc_on == false) {
+        document.getElementById("slide_show_button").setAttribute("style", "left :452px;");
+    }
 
     //イベントリスナー追加
     document.getElementById("slide_show_button").addEventListener('click', slide_show_start, false);

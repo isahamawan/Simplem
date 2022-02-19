@@ -106,3 +106,6 @@ document.getElementById("slides_button").addEventListener('click', function (e) 
     toggle_slides_for_button();
 
 });
+
+//marp book handle jsとの依存関係解消用（marp book handle有効化時は削除要）
+window.flg_book_on = false;
