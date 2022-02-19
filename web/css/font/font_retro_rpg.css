@@ -1,0 +1,12 @@
+    @font-face {
+      font-family: "Retro_rpg";
+      src: url("../../webfonts/PixelMplus12-Regular.ttf") format("truetype");
+      font-display: block;
+    }
+
+    body,
+    title,
+    code {
+      font-family: "Retro_rpg";
+      /*font-weight: 500;*/
+    }

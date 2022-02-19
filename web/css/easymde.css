@@ -827,8 +827,8 @@
     }
 
     .cm-s-easymde .cm-quote {
-        color: #7f8c8d;
-        font-style: italic
+        color: gray;
+        /*font-style: italic*/
     }
 
     .editor-toolbar .easymde-dropdown {
@@ -877,21 +877,33 @@
 
 
 
-/* 以下、上書きcss。オリジナルはそのまま上方に残置。 ================================================================== */
+/* 以下、上書きcssの各モード共通部分。 オリジナルはそのまま上方に残置。 ================================================================== */
 
     body {
         margin:0;
     }
 
+    /* サイドプレビューエリアの調整 */
+    .EasyMDEContainer.sided--no-fullscreen .editor-preview-active-side {
+        flex: 1 1 auto;
+        height: calc(100vh - 33px - 28px - 6px + 0px);
+        /*margin-bottom: -28px;
+        padding-bottom: -3px;*/
+        position: static
+    }
+
+    /* 編集エリアの調整 */
     .CodeMirror-scroll {
         overflow: scroll !important;
-        margin-bottom: -45px;
+        margin-bottom: -28px;
         margin-right: -50px;
-        padding-bottom: 34px;
-        height: calc(100vh - 49px - 34px);
+        padding-bottom: 28px;
+        height: calc(100vh - 33px - 28px - 6px - 6px);
         outline: 0;
         position: relative
     }
+
+
 
     .editor-toolbar {
         position: relative;
@@ -934,298 +946,285 @@
 
     .editor-preview {
         /* オリジナル padding: 10px 14px; */
-        padding: 2px 2px;
+        /* カスタム padding: 2px 2px; */
+        padding: 2px 14px;
         background: #ffffff
     }
 
-    .cm-formatting-list-ul {
-        margin-left:1em;
-        color:transparent;
+    /* ツールバーの表示調整 */
+    .editor-toolbar {
+        padding: 1px 1px;
+        /* ツールの折り返しなし設定 */
+        white-space: nowrap;
+        overflow:hidden;
+        border-top: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+
     }
 
-    .cm-formatting-list-ul:before {
-        content:"・";
-        color:#000;
+
+    /*code-blockの行末の半角スペースが表示されないバグの修正*/
+        .cm-s-easymde .cm-comment {
+        /*white-space: nowrap;*//* これを入れると行末の半角スペースが表示されなくなる */
+        white-space: pre-wrap;
     }
 
-    /* ul段階ごとのマーク */
-    .CodeMirror-line span .cm-formatting-list-ul:nth-of-type(1):before {
-        content:"●";
-        font-size:xx-small;
-        color:#000;
+
+    /* ベースの行高さを設定 */
+    .CodeMirror pre.CodeMirror-line,
+    .CodeMirror pre.CodeMirror-line-like {
+
+        line-height:23px;
+        /*padding:5px 0;*//*行間調整*/
     }
 
-    .CodeMirror-line span .cm-formatting-list-ul:nth-of-type(2):before {
-        content:"⇒";
-        color:#000;
-    }
 
-    .CodeMirror-line span .cm-formatting-list-ul:nth-of-type(3):before {
-        content:"・";
-        color:#000;
-    }
 
-    .CodeMirror-line span .cm-formatting-list-ul:nth-of-type(4):before {
-        content:"・";
-        color:#000;
-    }
-
-    .cm-formatting-list-ol {
-        margin-left:1em;
-    }
-
-    .cm-formatting-list-ol:after {
-        content:"s";
-        color:transparent;
-    }
-
-    /* ヘッダー設定 */
-
+    /* ヘッダーのベースの行高さ設定 */
     .cm-s-easymde .cm-header-1 {
-        font-size: 28px;
-        line-height:42px;
-        margin: 20px 0 10px;
-        display:inline; /* inline-blockにすることでマージンは効くが、折り返し時に#と分離してしまう。 */
-        position: relative;
-        font-weight: bold;
-        -webkit-font-smoothing: antialiased;
-        color: black;
-        background-color:#fff; /* #非表示用 */
-        border-bottom: 1px solid #345255;
+        line-height: 200%;
     }
 
-    .cm-s-easymde  .cm-header-2 {
-        font-size: 24px;
-        line-height:36px;
-        margin: 20px 0 10px;
-        display:inline;
-        position: relative;
-        font-weight: bold;
-        -webkit-font-smoothing: antialiased;
-        border-bottom: 1px solid #cccccc;
-        color: black;
-        background-color:#fff; /* #非表示用 */
+    .cm-s-easymde .cm-header-2 {
+        line-height: 200%;
     }
 
-    .cm-s-easymde  .cm-header-3 {
-        font-size: 18px;
-        line-height:27px;
-        margin: 20px 0 10px;
-        display:inline;
-        position: relative;
-        font-weight: bold;
-        -webkit-font-smoothing: antialiased;
-        background-color:#fff; /* #非表示用 */
-        border-bottom: 1px solid #fff;
+    .cm-s-easymde .cm-header-3 {
+        line-height: 200%;
     }
 
-    .cm-s-easymde  .cm-header-4 {
-        font-size: 16px;
-        line-height:24px;
-        margin: 20px 0 10px;
-        display:inline;
-        position: relative;
-        font-weight: bold;
-        -webkit-font-smoothing: antialiased;
-        background-color:#fff; /* #非表示用 */
-        border-bottom: 1px solid #fff;
+    .cm-s-easymde .cm-header-4 {
+        line-height: 200%
     }
 
-    .cm-s-easymde  .cm-header-5 {
-        font-size: 14px;
-        line-height:21px;
-        margin: 20px 0 10px;
-        display:inline;
-        position: relative;
-        font-weight: bold;
-        -webkit-font-smoothing: antialiased;
-        background-color:#fff; /* #非表示用 */
-        border-bottom: 1px solid #fff;
+    .cm-s-easymde .cm-header-5 {
+        line-height: 200%
     }
 
     .cm-s-easymde .cm-header-6 {
-        color: #777777;
-        font-size: 14px;
-        line-height:21px;
-        margin: 20px 0 10px;
-        display:inline;
-        position: relative;
-        font-weight: bold;
-        -webkit-font-smoothing: antialiased;
-        background-color:#fff; /* #非表示用 */
-        border-bottom: 1px solid #fff;
+        line-height: 200%
     }
 
-    .cm-s-easymde .cm-comment {
-        font-size: 13px;
-        white-space: nowrap;
-        border: 1px solid #eaeaea;
-        background-color: #f8f8f8;
-        border-radius: 3px;
+    /* カーソル幅の設定（日本語用に少し太めの2px） */
+    .CodeMirror-cursor {
+        border-left: 2px solid #000;
     }
 
-    .cm-hr {
-        color: transparent;
-        border-top: 1px dashed #999;
-        display: block;
+    /* 検索結果 */
+    .cm-s-easymde span .cm-searching {
+        background-color: yellow;
+        color:black;
+        /*background-color: rgba(255, 255, 0, .4)*/
+    }
+
+    /* 選択範囲の色 */
+    .cm-s-easymde span .cm-searching[class~="CodeMirror-selectedtext"] {
+        /*display:inline;*/
+        color: #fff;
+        background-color:black;
+    }
+
+    .EasyMDEContainer .CodeMirror-focused .CodeMirror-selected {
+        color: #fff;
+        background-color:black;
+    }
+
+    .cm-s-easymde .CodeMirror-line span .CodeMirror-selectedtext {
+        color: #fff;
+        background-color:black;
+        background:black;
+    }
+
+    .cm-s-easymde div .CodeMirror-selected{
+        color: #fff;
+        background-color:black;
     }
 
 
-    /* #の非表示設定 */
-    .cm-s-easymde .cm-header-1::after {
-        content:"       ";
-        background-color: #fff;
+
+    /* 以下、darkmode.jsの設定*/
+
+    .darkmode--activated .EasyMDEContainer .CodeMirror-wrap {
+        mix-blend-mode: difference;
+    }
+
+    .darkmode--activated .EasyMDEContainer .editor-preview-side {
+        mix-blend-mode: difference;
+        z-index: -1;
+    }
+
+    body .darkmode-toggle {
+        transition:none;
+        width: 26px;
+        height: 26px;
+        line-height: 26px;
+        display:block;
         position: absolute;
-        height: 29px;
-        z-index:-1;
-        /* 以下、ボーダー全幅テスト */
-        border-bottom:1px solid #345255;
-        width:2000px;
-        left:0px;
-        bottom:-1px;
+        margin-top: -15px;
+        text-align: center;
     }
 
-    .cm-s-easymde .cm-formatting-header-1 {
-        color:gray;
-        border-bottom: 1px dashed #999;
-        margin-right:-1em;
+    .editor-statusbar {
+        padding: 8px 10px 0px 0px;
+        font-size: 12px;
+        color: #959694;
+        text-align: right;
+
+        height:26px;
+        /* toc用
+        height:26px;
         position:relative;
-        z-index:-2;
+        display:flex;
+        border-left:1px solid #ddd;
+        border-right:1px solid #ddd; */
+        overflow-x: hidden;
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
     }
 
-    .cm-s-easymde .cm-header-2::after {
-        content:"       ";
-        background-color: #fff;
-        position: absolute;
-        height: 25px;
-        z-index:-1;
-        /* 以下、ボーダー全幅テスト */
-        border-bottom:1px solid #cccccc;
-        width:2000px;
-        left:0px;
-        bottom:-1px;
-    }
-
-    .cm-s-easymde .cm-formatting-header-2 {
-        color:gray;
-        border-bottom: 1px dashed #999;
-        margin-right:-1.5em;
-        position:relative;
-        z-index:-2;
-    }
-
-    .cm-s-easymde .cm-header-3::after {
-        content:"       ";
-        background-color: #fff;
-        position: absolute;
-        height: 28px;
-        z-index:-1;
-    }
-
-    .cm-s-easymde .cm-formatting-header-3 {
-        color:gray;
-        border-bottom: 1px dashed #999;
-        margin-right:-2em;
-        position:relative;
-        z-index:-2;
-    }
-
-    .cm-s-easymde .cm-header-4::after {
-        content:"        ";
-        background-color: #fff;
-        position: absolute;
-        height: 25px;
-        z-index:-1;
-    }
-
-    .cm-s-easymde .cm-formatting-header-4 {
-        color:gray;
-        border-bottom: 1px dashed #999;
-        margin-right:-2.5em;
-        position:relative;
-        z-index:-2;
-    }
-
-    .cm-s-easymde .cm-header-5::after {
-        content:"          ";
-        background-color: #fff;
-        position: absolute;
-        height: 22px;
-        z-index:-1;
-    }
-
-    .cm-s-easymde .cm-formatting-header-5 {
-        color:gray;
-        border-bottom: 1px dashed #999;
-        margin-right:-3em;
-        position:relative;
-        z-index:-2;
-    }
-
-    .cm-s-easymde .cm-header-6::after {
-        content:"             ";
-        background-color: #fff;
-        position: absolute;
-        height: 22px;
-        z-index:-1;
-    }
-
-    .cm-s-easymde .cm-formatting-header-6 {
-        color:gray;
-        border-bottom: 1px dashed #999;
-        margin-right:-3.5em;
-        position:relative;
-        z-index:-2;
+    .darkmode--activated .EasyMDEContainer img {
+        isolation:isolate;
+        mix-blend-mode:difference;
     }
 
 
-    .cm-s-easymde span.CodeMirror-selectedtext {
-        background: #d9d9d9;
-    }
-
-    @font-face {
-      font-family: "GenShinML";
-      src: url("../webfonts/GenShinGothic-Monospace-Light.ttf") format("truetype");
-      font-display: block;
-    }
-
-    @font-face {
-      font-family: "InconsolataR";
-      src: url("../webfonts/Inconsolata-Regular.ttf") format("truetype");
-      font-display: block;
-    }
-
-    body,
-    title {
-      font-family: "InconsolataR","GenShinML";
-      /*font-weight: 500;*/
-    }
-
-    /* はみ出した全体下線をhidden */
-    .CodeMirror-sizer {
-        overflow:hidden;
-    }
-
-    /* ストロングの背景黄色設定 */
-    .cm-strong {
-        /*font-weight: 700;*/
-        background: linear-gradient(transparent 80%,#fff070 50%);
-        font-weight: 700;
-        color: #000;
-    }
-
-
-    /* 見たままプレビューモード用（作成中）
-    .cm-formatting-strong, .cm-s-easymde .cm-formatting-header-1 {
+    /* darkmode.jsのボタン背景無効化 */
+    body .darkmode-layer--button {
+        width: unset;
+        height: unset;
+        border-radius: unset;
+        right: unset;
+        bottom: unset;
+        left: unset;
         display:none;
     }
 
-    .cm-s-easymde .cm-formatting-header-1 + .cm-header-1 {
-        display:block;
+    body .darkmode-layer {
+        position: fixed;
+        pointer-events: unset;
+        background: unset;
+        transition: none;
+        mix-blend-mode: unset;
+        display:none;
+    }
+
+    /*ラインナンバーの調整*/
+    .CodeMirror-gutter-elt {
+        position: fixed;
 
     }
 
-    .CodeMirror-composing {
-        display:block;
+
+    /* slidesボタンの設定 */
+    body .slides {
+        position: absolute;
+        /*width: 26px;*/
+        height: 26px;
+        /*line-height:26px;*/
+        left: 85px;
+        bottom: 4px;
+
+        background: 0 0;
+        display: inline-block;
+        border: 1px solid transparent;
+        border-radius: 3px;
+        cursor: pointer
     }
-    */
+
+    body .slides:hover {
+        background: #fcfcfc;
+        border-color: transparent;
+    }
+
+    body .slides.active {
+        background-color: #100f2c;
+        color: #fff;
+    }
+
+    body .slides:after {
+        /* font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; simplem*/
+        font-size: 65%;
+        vertical-align: text-bottom;
+        position: relative;
+        top: 2px;
+
+        content: "Slides";
+    }
+
+    /* bookボタンの設定 */
+    body .book {
+        position: absolute;
+        /*width: 26px;*/
+        height: 26px;
+        /*line-height:26px;*/
+        left: 142px;
+        bottom: 4px;
+
+        padding-left:3px;
+
+        background: 0 0;
+        display: inline-block;
+        border: 1px solid transparent;
+        border-radius: 2px;
+        cursor: pointer
+    }
+
+    body .book:hover {
+        background: #fcfcfc;
+        border-color: transparent;
+    }
+
+    body .book.active {
+        background-color: #100f2c;
+        color: #fff;
+    }
+
+    body .book:after {
+        /* font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; simplem*/
+        font-size: 65%;
+        vertical-align: text-bottom;
+        position: relative;
+        top: 2px;
+
+        content: "Book";
+    }
+
+
+    /* slide_showボタンの設定 */
+    body .slide_show {
+        position: absolute;
+        /*width: 26px;*/
+        height: 26px;
+        /*line-height:26px;*/
+        left: 142px;
+        bottom: 4px;
+
+        padding-left:3px;
+
+        background: 0 0;
+        display: inline-block;
+        border: 1px solid transparent;
+        border-radius: 2px;
+        cursor: pointer
+    }
+
+    body .slide_show:hover {
+        background-color: #100f2c;
+        color: #fff;
+    }
+
+    body .slide_show.active {
+        background-color: #100f2c;
+        color: #fff;
+    }
+
+    body .slide_show:after {
+        /* font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; simplem*/
+        font-size: 65%;
+        vertical-align: text-bottom;
+        position: relative;
+        top: 2px;
+
+        content: "Slide show";
+    }

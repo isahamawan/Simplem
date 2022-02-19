@@ -5,13 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- CSP設定（セキュリティ対策の一部）。scriptやeval()やcss,画像の読み込みなどでエラーが出る場合はここを調整要。 -->
+    <!-- CSP設定（セキュリティ対策の一部）。scriptやeval()やcss,画像の読み込みなどでエラーが出る場合はここを調整要。-->
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
 
-    <!-- main.js側で設定する場合は、コメントアウトが必要　-->
-    <!-- document.getElementsByTagName("title")[0].text = "*sample.text - Simplem" のような形でファイル名を反映させる？ -->
-    <title>Simplem</title>
-
+    <!-- main側で設定する場合は、コメントアウトが必要-->
+    <!--<title>Simplem</title>-->
     <!-- short hand, igniter, skillet, overwhelm, catalyst, gale, Simple Glint, SimpleGlint, Glint -->
 
     <!-- Bootstrap core CSS
@@ -22,17 +20,6 @@
     <!-- font awesome CSS -->
     <link rel="stylesheet" href="css/all.min.css">
 
-</head>
-
-<body>
-    <!--開く、保存、名前を付けて保存ボタン
-        <div>
-        <button id="open" type="button">Open</button>
-        <button id="save" type="button">Save</button>
-        <button id="save_as" type="button">Save as</button>
-        </div>
-    -->
-
     <!-- preview CSS -->
     <link rel="stylesheet" href="css/preview.css">
 
@@ -40,7 +27,52 @@
     <link rel="stylesheet" href="css/easymde.css">
     <script src="easymde.js"></script>
 
+    <!-- editor view mode CSS -->
+    <link id="editor_view_mode_css" rel="stylesheet" href="css/editor_view_mode/evm_normal.css">
+
+    <!-- print CSS -->
+    <link id="print_css" rel="stylesheet" href="css/print.css">
+
+    <!-- font CSS -->
+    <link id="font_css" rel="stylesheet" href="css/font/font_modern_os.css">
+
+    <!-- highlight.js -->
+    <script id="hl_js" src="js/highlight/highlight.min.js"></script>
+    <link id="code_hl_mode_css" rel="stylesheet" href="css/highlight_code/hljs_modern.min.css">
+    <!--script>hljs.initHighlightingOnLoad();</script-->
+
+    <!-- cm search addon css -->
+    <link rel="stylesheet" href="cm_search_addon/dialog.css">
+    <link rel="stylesheet" href="cm_search_addon/matchesonscrollbar.css">
+
+    <!-- cm merge addon css depend js -->
+    <link rel="stylesheet" href="css/merge.css">
+    <script src="js/diff_match_patch.js"></script>
+
+    <!-- option css -->
+    <link rel="stylesheet" href="css/option/same_font_size.css">
+    <link rel="stylesheet" href="css/option/line_height_wide.css">
+</head>
+
+
+
+<body>
+    <div id="toc_wrapper" style="display:none;">
+        <div class="toc_title">目次</div>
+        <div id="toc">
+        </div>
+    </div>
+    <!--開く、保存、名前を付けて保存ボタン
+    <div>
+        <button id="open" type="button">Open</button>
+        <button id="save" type="button">Save</button>
+        <button id="save_as" type="button">Save as</button>
+        <button id="some-button" type="button">Search</button>
+    </div>
+    -->
     <textarea id="my-text-area"></textarea>
+
+
 
 </body>
 
@@ -48,31 +80,33 @@
     let easyMDE = new EasyMDE({
         element: document.getElementById('my-text-area'),
         autoDownloadFontAwesome: false,
-        minHeight: "100px",
+        minHeight: "1px",
         //autosave: {
         //    enabled: true,
         //    delay: 1000,
         //    uniqueId: 'mde-autosave'
         //},
+        //styleActiveLine: true,//easymde.js修正要
         previewImagesInEditor: false,
         //lineNumbers: true,
-        autofocus: true,
-        forceSync: true,
-        hideIcons: ["fullscreen", "heading", "italic"],
+        autofocus: false,
+        forceSync: false,
+        hideIcons: ["fullscreen", "heading", "italic", "image"],
         //initialValue: "# Hello world!",
         //parsingConfig: { allowAtxHeaderWithoutSpace: true },
         renderingConfig: {
             singleLineBreaks: true,
-            //codeSyntaxHighlighting: true,
+            codeSyntaxHighlighting: true,
         },
-        //テーブル機能はオプションとして登録予定。
-        showIcons: ['strikethrough', 'code', 'redo', 'table', 'undo', 'heading-1', 'heading-2', 'heading-3', 'horizontal-rule'],
+        //テーブル機能はオプションとして登録予定。'table',
+        showIcons: ['strikethrough', 'code', 'redo', 'undo', 'heading-1', 'heading-2', 'heading-3', 'horizontal-rule', 'memo'],
         spellChecker: false,
         status: ["lines"],
         //toolbar: false,
         toolbarTip: true,
         tabSize: 4,
         sideBySideFullscreen: false,
+        syncSideBySidePreviewScroll: true,
 
 
     });
@@ -94,66 +128,66 @@
 
 </script>
 
-
-<!-- 以下、electronのレンダラー用script -->
-<script>
-    //以下index.jsで使用
-    //nodeIntegrationをfalseにしたことで、以下は使えなくなった
-    //const {ipcRenderer, app} = require('electron');
-    //
-    //preload.jsで定義したことで、代わりに以下が使用可能
-    let ipcRenderer = window.ipcRenderer;
-    const app = window.app;
-
-    //ipc経由の機能------------------------------------------------------------------<
-    //main.jsからのファイル読み込み命令を処理
-    ipcRenderer.on('open_from_main.js', async () => {
-        const { canceled, data } = await ipcRenderer.invoke('open') //main.jsのopenを呼び出し（data取得）
-        if (canceled) return
-        let file_text_data = '';
-        file_text_data = data[0] || '';
-        easyMDE.value(file_text_data);
-    });
-
-    //main.jsからの上書き保存命令を処理
-    ipcRenderer.on('save_from_main.js', async () => {
-        const text_data = easyMDE.value();
-        await ipcRenderer.invoke('save', text_data); //main.jsのsaveを呼び出し(text_data受渡)
-    });
-
-    //main.jsからの名前を付けて保存命令を処理
-    ipcRenderer.on('save_as_from_main.js', async () => {
-        const text_data = easyMDE.value();
-        await ipcRenderer.invoke('save_as', text_data);
-    });
+<!-- toc js -->
+<script src="js/toc.js"></script>
+<link rel="stylesheet" href="css/toc.css">
+<!-- toc_for_preview js -->
+<script src="js/toc_for_preview.js"></script>
+<!-- toc_for_marp js -->
+<script src="js/toc_for_marp.js"></script>
 
 
 
 
-    //ファイルの読み込みをmain.jsから呼び出し（ボタン用）
-    //document.querySelector('#open').addEventListener('click', async () => {
-    //    const { canceled, data } = await ipcRenderer.invoke('open')
-    //    if (canceled) return
-    //    let file_text_data = '';
-    //    file_text_data = data[0] || '';
-    //    easyMDE.value(file_text_data);
-    //});
-
-    //ファイルの上書き保存をmain.jsから呼び出し（ボタン用）
-    //document.querySelector('#save').addEventListener('click', async () => {
-    //    const text_data = easyMDE.value();
-    //    await ipcRenderer.invoke('save', text_data);
-    //});
-
-    //ファイルの名前を付けて保存をmain.jsから呼び出し（ボタン用）
-    //document.querySelector('#save_as').addEventListener('click', async () => {
-    //    const text_data = easyMDE.value();
-    //    await ipcRenderer.invoke('save_as', text_data);
-    //});
-
-    //ipc経由の機能------------------------------------------------------------------>
 
 
-</script>
+
+
+
+<!-- electronのレンダラー用script (via ipc) ====================================important==================================== -->
+<script src="renderer.js"></script>
+
+<!-- mark live preview js ======================================================important==================================== -->
+<script src="mark_live_preview.js"></script>
+
+
+
+
+
+
+
+
+
+<!-- darkmode.js （適用のためにcssで色々修正済み）-->
+<script src="js/darkmode.js"></script>
+<script src="js/darkmode_handle.js"></script>
+
+<!-- misc js -->
+<script src="js/misc.js"></script>
+
+<!-- merge_handle js -->
+<script src="js/merge_handle.js"></script>
+
+<!-- mermaid js -->
+<script defer src="js/mermaid/mermaid.js"></script>
+<!--<link rel="stylesheet" href="css/mermaid.css">-->
+<!-- レンダリングを読み込み時にしない -->
+<script defer src="js/mermaid/mermaid_init.js"></script>
+
+
+<!-- marp js css -->
+<script defer src="./js/marp/bundle.js"></script>
+<!-- marp helper js レンダーが自動生成するスクリプトを抜き出して固定埋め込みしたもの（コードsvgを正常動作させるため） -->
+<script defer src="./js/marp/helper.js"></script>
+<script defer src="js/marp/marp_handle.js"></script>
+<link id="marp_css" rel="stylesheet" href="css/marp.css">
+<!-- marp_book js （有効化するときはmarp_handle js内のwindow.flg_book_on = false;を削除）
+<script defer src="js/marp/marp_book_handle.js"></script>
+-->
+
+<!-- slide_show js css -->
+<script defer src="js/marp/slide_show.js"></script>
+<link id="slide_show_css" rel="stylesheet" href="css/slide_show_off.css">
+
 
 </html>

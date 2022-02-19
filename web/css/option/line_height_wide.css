@@ -1,0 +1,7 @@
+    /* オプション用（ベースの行高さを広く設定） */
+    .line_height_wide .CodeMirror pre.CodeMirror-line,
+    .line_height_wide .CodeMirror pre.CodeMirror-line-like {
+
+        line-height:200%;
+        height: 200% !important;
+    }

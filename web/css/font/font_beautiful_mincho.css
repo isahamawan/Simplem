@@ -1,0 +1,12 @@
+    @font-face {
+      font-family: "Beautiful_mincho";
+      src: url("../../webfonts/ShipporiMincho-Regular.ttf") format("truetype");
+      font-display: block;
+    }
+
+    body,
+    title,
+    code {
+      font-family: "Beautiful_mincho";
+      /*font-weight: 500;*/
+    }

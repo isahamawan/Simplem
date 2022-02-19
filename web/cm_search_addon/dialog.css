@@ -1,0 +1,54 @@
+.CodeMirror-dialog {
+  /*simplem position: absolute; */
+  position:fixed;
+  left: 0; right: 0;
+  background: inherit;
+  z-index: 15;
+  padding: .1em .8em;
+  overflow: hidden;
+  color: inherit;
+}
+
+.CodeMirror-dialog-top {
+  /*simplem border-bottom: 1px solid #eee; */
+  border-bottom: 1px solid #bbb;
+  top: 0;
+  /* simplem以下、追加 */
+  height: 30px;
+  line-height: 30px;
+  white-space: nowrap;
+}
+
+.CodeMirror-dialog-bottom {
+  border-top: 1px solid #eee;
+  bottom: 0;
+}
+
+.CodeMirror-dialog input {
+  border: 1px solid #bbb;/*none;*/
+  border-radius: 3px;
+  outline: none;
+  background: transparent;
+  width: 20em;
+  color: inherit;
+  /*simple, font-family: monospace;*/
+  /* simplem以下、追加 */
+  font-size: 16px;
+  line-height:20px;
+  font-family: inherit;
+}
+
+.CodeMirror-dialog button {
+  font-size: 80%;
+  /* simplem以下、追加 */
+  background-color: #fff;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  font-family: inherit;
+}
+
+.CodeMirror-dialog button:hover {
+  /* simplem以下、追加*/
+  background-color: rgb(228, 228, 228);
+  border: 1px solid #bbb;
+}

@@ -1,0 +1,5 @@
+      /* インラインコードの設定 */
+      .editor-preview code {
+        font-size:13px;
+        white-space:pre-wrap;
+      }

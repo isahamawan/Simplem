@@ -1,0 +1,120 @@
+pre code.hljs{display:block;overflow-x:auto;padding:1em}
+code.hljs{padding:3px 5px}
+
+
+      /* ブロックコードの設定 */
+      .editor-preview pre {
+         /*background: #364549;
+         color: #fff;
+         border: 1px solid #364549;*/
+         border-radius: 3px;
+      }
+
+      /* インラインコードの設定 */
+      .editor-preview code {
+         /*background: #364549;
+         color: #fff;
+         border:none;*/
+         background: #eee;
+         border-color:#cccccc;
+         border-radius: 3px;
+         font-size:13px;
+         padding-top:0px;
+         padding-bottom:0px;
+        white-space:pre-wrap;
+      }
+
+      /* エディタ側のインラインコードの設定 */
+      .cm-s-easymde .cm-comment {
+        /*background: #364549;
+         color: #fff;
+         border:none;*/
+         background: #eee;
+         border-color:#cccccc;
+         padding-left: 2px;
+         padding-right: 2px;
+         border-radius: 3px;
+      }
+
+      .cm-s-easymde .cm-comment[class~=cm-formatting-code] {
+         padding:0;
+         border:none;
+      }
+
+    .cm-s-easymde .cm-formatting-code[class~=active-line] {
+         padding:0;
+         border: 1px solid #cccccc;
+         border-radius: 3px;
+      }
+
+/* simplem 上記が追加css */
+
+
+    .hljs {
+        display: block;
+        overflow-x: auto;
+        padding: .5em;
+        background: white;
+        color: black
+    }
+
+    .hljs-comment,
+    .hljs-quote,
+    .hljs-variable {
+        color: #008000
+    }
+
+    .hljs-keyword,
+    .hljs-selector-tag,
+    .hljs-built_in,
+    .hljs-name,
+    .hljs-tag {
+        color: #00f
+    }
+
+    .hljs-string,
+    .hljs-title,
+    .hljs-section,
+    .hljs-attribute,
+    .hljs-literal,
+    .hljs-template-tag,
+    .hljs-template-variable,
+    .hljs-type,
+    .hljs-addition {
+        color: #a31515
+    }
+
+    .hljs-deletion,
+    .hljs-selector-attr,
+    .hljs-selector-pseudo,
+    .hljs-meta {
+        color: #2b91af
+    }
+
+    .hljs-doctag {
+        color: #808080
+    }
+
+    .hljs-attr {
+        color: #f00
+    }
+
+    .hljs-symbol,
+    .hljs-bullet,
+    .hljs-link {
+        color: #00b0e8
+    }
+
+    .hljs-emphasis {
+        font-style: italic
+    }
+
+    .hljs-strong {
+        font-weight: bold
+    }
+
+    /* marp用のバックグラウンド */
+    div.marpit>svg>foreignObject>section pre {
+        background: #eee;
+        border-color:#cccccc;
+    }

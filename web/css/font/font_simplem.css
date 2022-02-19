@@ -1,0 +1,18 @@
+    @font-face {
+      font-family: "GenShinML";
+      src: url("../../webfonts/GenShinGothic-Monospace-Light.ttf") format("truetype");
+      font-display: block;
+    }
+
+    @font-face {
+      font-family: "InconsolataR";
+      src: url("../../webfonts/Inconsolata-Regular.ttf") format("truetype");
+      font-display: block;
+    }
+
+    body,
+    title,
+    code {
+      font-family: "InconsolataR","GenShinML";
+      /*font-weight: 500;*/
+    }

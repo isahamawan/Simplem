@@ -1,0 +1,61 @@
+/* 編集画面の水平線の太字化（hr改ページのオプション有効時） */
+.page_break_hr .cm-hr {
+    color: transparent;
+    border-top: 23px solid lightgray;
+    display: block;
+    height: 23px;
+    box-sizing: border-box;
+
+    position: absolute;
+    width: -webkit-fill-available;
+}
+
+/* プレビュー画面の水平線の太字化（hr改ページのオプション有効時） */
+.page_break_hr hr {
+    border-top: 23px solid lightgray;
+    box-sizing: border-box;
+    margin: 24px 0 24px 0;
+}
+
+@media print {
+
+    /*h1で改ページ*/
+    h1 {
+        page-break-before: always !important;
+        page-break-inside: avoid !important;/* 無くてもいいが、念の為記述 */
+    }
+
+    /* オプションでのh1改ページ解除用 */
+    .no_page_break_h1 h1 {
+        page-break-before: initial !important;
+    }
+
+    /* オプションでのhr改ページ用 */
+    .page_break_hr hr {
+        page-break-before: always !important;
+        page-break-inside: avoid !important;/* 無くてもいいが、念の為記述 */
+
+        border-color: transparent;
+        margin: 0;
+        padding: 0;
+    }
+
+    .CodeMirror-wrap, .editor-preview-active {
+        overflow: visible !important;
+        -webkit-print-color-adjust:exact !important; /* 背景色の表示 */
+        position: relative; /* 改ページ設定に必要 */
+        padding-top: 0 !important; /* 各ページのtopからの距離を揃えるのに必要 */
+        padding-bottom: 0 !important;
+    }
+
+
+    .CodeMirror-wrap {
+        border:0 !important; /* 改ページ設定にも必要 */
+        padding:0 !important;
+    }
+
+    .editor-toolbar, .editor-statusbar, .CodeMirror-code, .CodeMirror-sizer,  .CodeMirror-scroll, .CodeMirror-vscrollbar, .CodeMirror-hscrollbar, textarea, .editor-preview-side, .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler, .darkmode-toggle, #toc_wrapper {
+        display: none !important;
+    }
+
+}
