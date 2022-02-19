@@ -886,7 +886,8 @@
     /* サイドプレビューエリアの調整 */
     .EasyMDEContainer.sided--no-fullscreen .editor-preview-active-side {
         flex: 1 1 auto;
-        height: calc(100vh - 33px - 28px - 6px + 0px);
+        /*height: calc(100vh - 33px - 28px - 6px + 0px);*/
+        height: calc(100vh - 33px - 28px - 6px - 26px);
         /*margin-bottom: -28px;
         padding-bottom: -3px;*/
         position: static
