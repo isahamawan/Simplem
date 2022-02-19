@@ -34,7 +34,7 @@ function merge_view_on() {
     let easymdes_editor_toolbar_ele = document.getElementsByClassName("editor-toolbar")[0];
     easymdes_editor_toolbar_ele.setAttribute("style", "opacity: .6; pointer-events: none;");
 
-    ipcRenderer.invoke('menu_disable');
+    //ipcRenderer.invoke('menu_disable');
 
 
     //tocの非表示
@@ -78,7 +78,7 @@ function merge_view_off() {
     let easymdes_editor_toolbar_ele = document.getElementsByClassName("editor-toolbar")[0];
     easymdes_editor_toolbar_ele.setAttribute("style", "");
 
-    ipcRenderer.invoke('menu_enable');
+    //ipcRenderer.invoke('menu_enable');
 
 }
 

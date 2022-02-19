@@ -126,7 +126,7 @@
 
 .CodeMirror-merge, .CodeMirror-merge .CodeMirror {
   /*height: 350px;*/
-  height:calc(100vh - 33px - 28px - 6px - 2px);
+  height:calc(100vh - 33px - 28px - 6px - 28px);
   border:none;
 }
 

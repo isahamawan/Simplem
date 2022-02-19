@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
 
     <!-- main側で設定する場合は、コメントアウトが必要-->
-    <!--<title>Simplem</title>-->
+    <title>Simplem</title>
     <!-- short hand, igniter, skillet, overwhelm, catalyst, gale, Simple Glint, SimpleGlint, Glint -->
 
     <!-- Bootstrap core CSS
@@ -57,6 +57,37 @@
 
 
 <body>
+    <form name="file_menu">
+
+        <input type="file" id="file_select" accept=".txt, .html, .md" style="width:110px;">
+        <input type="text" id="file_name" value="Simplem.txt"></input>
+
+        <button id="save_as">名前を付けて保存</button>
+
+        <label for="view_mode">表示モード</label>
+        <select id="view_mode">
+            <option>ライブプレビュー</option>
+            <option>マークを常に表示</option>
+            <option>ソースコード</option>
+            <option>ソースコード（ハイライト有り）</option>
+        </select>
+        <label for="font">フォント</label>
+        <select id="font">
+            <option>ライブプレビュー</option>
+            <option>マークを常に表示</option>
+            <option>ソースコード</option>
+            <option>ソースコード（ハイライト有り）</option>
+        </select>
+        <label for="option">オプション</label>
+        <select id="option">
+            <option>ライブプレビュー</option>
+            <option>マークを常に表示</option>
+            <option>ソースコード</option>
+            <option>ソースコード（ハイライト有り）</option>
+        </select>
+    </form>
+
+
     <div id="toc_wrapper" style="display:none;">
         <div class="toc_title">目次</div>
         <div id="toc">
@@ -144,8 +175,13 @@
 
 
 
-<!-- electronのレンダラー用script (via ipc) ====================================important==================================== -->
+<!-- electronのレンダラー用script (via ipc) ====================================important====================================
 <script src="renderer.js"></script>
+-->
+
+<!-- web版用のファイルメニュー用スクリプト======================================important==================================== -->
+<script src="js_for_web/file_menu.js"></script>
+
 
 <!-- mark live preview js ======================================================important==================================== -->
 <script src="mark_live_preview.js"></script>
@@ -170,8 +206,6 @@
 
 <!-- mermaid js -->
 <script defer src="js/mermaid/mermaid.js"></script>
-<!--<link rel="stylesheet" href="css/mermaid.css">-->
-<!-- レンダリングを読み込み時にしない -->
 <script defer src="js/mermaid/mermaid_init.js"></script>
 
 
