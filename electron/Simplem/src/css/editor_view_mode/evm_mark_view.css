@@ -45,6 +45,12 @@
 
     .cm-formatting-list-ol {
         margin-left:1em;
+        color:gray
+    }
+
+    /* イタリックのグレーの表示 */
+    .cm-s-easymde .cm-formatting-em {
+        color:gray;
     }
 
     /*body .same_font_size .cm-formatting-list-ol:after {

@@ -300,8 +300,25 @@
         font-size:0;
         line-height: 0;
     }
+    .cm-s-easymde  .active-line[class~="cm-formatting-strong"] {
+        color:gray;
+    }
 
     .cm-s-easymde  .active-line[class~="cm-strong"] {
+        font-size:inherit;
+    }
+
+    /* 選択行のイタリックのトークンの表示 */
+    .cm-s-easymde .cm-formatting-em {
+        font-size:0;
+        line-height: 0;
+    }
+
+    .cm-s-easymde  .active-line[class~="cm-formatting-em"] {
+        color:gray;
+    }
+
+    .cm-s-easymde  .active-line[class~="cm-em"] {
         font-size:inherit;
     }
 
@@ -327,6 +344,21 @@
         padding: 0;
         margin: 0;
     }*/
+
+    /* 選択行のオーダードリストのトークンの表示 */
+    .cm-s-easymde  .active-line[class~="cm-formatting-list-ol"] {
+        color:gray;
+    }
+
+    /* 選択行のアンオーダードリストのトークンの表示 */
+    .cm-s-easymde  .active-line[class~="cm-formatting-list-ul"] {
+        color:gray;
+    }
+
+
+
+
+
 
     .cm-s-easymde  .active-line[class~="cm-comment"] {
         font-size:13px;

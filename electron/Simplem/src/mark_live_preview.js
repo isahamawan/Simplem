@@ -1,6 +1,5 @@
 
 
-//マークのライブプレビュー---------------------------------------------------------------------<
 
 //一つまえのカーソルがアクティブだった場所をグローバル保存（シャープ表示テスト用）
 let arr_cur_pos = [{ init: null }];
@@ -42,8 +41,8 @@ easyMDE.codemirror.on('cursorActivity', function () {
 
 
 
-    //カーソル位置がヘッダーとボールドと取消し線の時に、テキストマーク(active-lineクラス)追加。
-    if ((mark_state.bold || mark_state.heading || mark_state.strikethrough || mark_state.code) && (native_cm_mark_state != "active-line")) {
+    //カーソル位置がマークの時に、ライブプレビュー(active-lineクラス追加)。
+    if ((mark_state.bold || mark_state.heading || mark_state.strikethrough || mark_state.code || mark_state["unordered-list"] || mark_state["ordered-list"] || mark_state.quote || mark_state.italic) && (native_cm_mark_state != "active-line")) {
         //easyMDE.codemirror.markText({ line: cur_pos.line, ch: 0 }, { line: cur_pos.line + 1, ch: 0 }, { className: "active-line", clearOnEnter: true });//フラグ無しでやるならこっち
         easyMDE.codemirror.markText({ line: cur_pos.line, ch: 0 }, { line: cur_pos.line, ch: null }, { className: "active-line", inclusiveRight: true, inclusiveLeft: false });//chの0 to null　で行指定
     }
@@ -63,10 +62,10 @@ easyMDE.codemirror.on('cursorActivity', function () {
 
 
     //マークのクリア（直前のカーソル位置がマークの場合に実行）
-    if (mark_state_previous.heading || mark_state_previous.bold || mark_state_previous.strikethrough || mark_state_previous.code) {
+    if (mark_state_previous.heading || mark_state_previous.bold || mark_state_previous.strikethrough || mark_state_previous.code || mark_state_previous["unordered-list"] || mark_state_previous["ordered-list"] || mark_state_previous.quote || mark_state_previous.italic) {
 
-        //ヘッダーとボールドと取消し線のマークのクリア（現在のカーソル位置がマーク無しの場合に実行）
-        if ((((!mark_state.heading) && (!mark_state.bold) && (!mark_state.strikethrough) && (!mark_state.code)) || (cur_pos.line != cur_pos_previous.line)) && (native_cm_mark_state_previous == "active-line")) {
+        //マークのクリア（現在のカーソル位置がマーク無しの場合に実行）
+        if ((((!mark_state.heading) && (!mark_state.bold) && (!mark_state.strikethrough) && (!mark_state.code) && (!mark_state["unordered-list"]) && (!mark_state["ordered-list"]) && (!mark_state.quote) && (!mark_state.italic)) || (cur_pos.line != cur_pos_previous.line)) && (native_cm_mark_state_previous == "active-line")) {
             try {
                 easyMDE.codemirror.findMarksAt({ line: cur_pos_previous.line, ch: cur_pos_previous.ch })[0].clear();
             } catch (er) {
@@ -97,4 +96,3 @@ easyMDE.codemirror.on('cursorActivity', function () {
 
 
 });
-    //--------------------------------------------------------------------->

@@ -827,8 +827,8 @@
     }
 
     .cm-s-easymde .cm-quote {
-        color: #7f8c8d;
-        font-style: italic
+        color: gray;
+        /*font-style: italic*/
     }
 
     .editor-toolbar .easymde-dropdown {
