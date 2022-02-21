@@ -52,41 +52,71 @@
     <!-- option css -->
     <link rel="stylesheet" href="css/option/same_font_size.css">
     <link rel="stylesheet" href="css/option/line_height_wide.css">
+
+    <!-- modal css -->
+    <link rel="stylesheet" href="css/modal.css">
+
 </head>
 
 
 
 <body>
-    <form id="file_menu" style="overflow: scroll; white-space: nowrap;">
+    <div style="white-space: nowrap; overflow: hidden;">
+        <form id="file_menu" style="display: inline;">
 
-        <input type="file" id="file_select" accept=".txt, .html, .md" style="width:110px;">
-        <input type="text" id="file_name" value="Simplem.txt"></input>
+            <input type="file" id="file_select" accept=".txt, .html, .md" style="width:110px;">
+            <input type="text" id="file_name" value="Simplem.txt">
 
-        <button id="save_as">名前を付けて保存</button>
+            <button id="save_as">名前を付けて保存</button>
 
-        <label for="view_mode">表示モード</label>
-        <select id="view_mode">
-            <option>ライブプレビュー</option>
-            <option>マークを常に表示</option>
-            <option>ソースコード</option>
-            <option>ソースコード（ハイライト有り）</option>
-        </select>
-        <label for="font">フォント</label>
-        <select id="font">
-            <option>ライブプレビュー</option>
-            <option>マークを常に表示</option>
-            <option>ソースコード</option>
-            <option>ソースコード（ハイライト有り）</option>
-        </select>
-        <label for="option">オプション</label>
-        <select id="option">
-            <option>ライブプレビュー</option>
-            <option>マークを常に表示</option>
-            <option>ソースコード</option>
-            <option>ソースコード（ハイライト有り）</option>
-        </select>
-    </form>
+            <label for="view_mode">表示モード</label>
+            <select id="view_mode">
+                <option>ライブプレビュー</option>
+                <option>マークを常に表示</option>
+                <option>ソースコード</option>
+                <option>ソースコード（ハイライト有り）</option>
+            </select>
+            <label for="font">フォント</label>
+            <select id="font">
+                <option>モダンOS</option>
+                <option>モダンBrowser</option>
+                <option>Simplem</option>
+                <option>ビューティフルコード</option>
+                <option>ビューティフルドット</option>
+                <option>美しい明朝体</option>
+                <option>UDゴシック</option>
+                <option>UD明朝</option>
+            </select>
+        </form>
 
+
+        <!-- モーダルここから modal.cssで設定 -->
+        <a href="#modal-01" id="modal_button" style="break-inside: avoid;"><button>オプション</button></a>
+        <div class="modal-wrapper" id="modal-01">
+            <a href="#!" class="modal-overlay"></a>
+            <div class="modal-window">
+                <div class="modal-content">
+                    <h2>オプション</h2>
+                    <h3>文書モード</h3>
+                    <input type="checkbox" checked="true" id="h1_page_break">
+                    <label for="h1_page_break">印刷時にh1で改ページ</label><br>
+                    <input type="checkbox" id="hr_page_break">
+                    <label for="hr_page_break">印刷時に---で改ページ</label><br>
+                    <input type="checkbox" id="wide_row">
+                    <label for="wide_row">行間を広くする</label>
+                    <h3>スライドモード</h3>
+                    <input type="checkbox" id="window_slide_show">
+                    <label for="window_slide_show">ウィンドウモードでスライドショー（リモート会議用）</label>
+                    <h3>編集画面</h3>
+                    <input type="checkbox" checked="true" id="same_font_size">
+                    <label for="same_font_size">文字サイズを統一</label>
+                    <br><br><br>
+                </div>
+                <a href="#!" class="modal-close">×</a>
+            </div>
+        </div>
+        <!-- モーダルここまで -->
+    </div>
 
     <div id="toc_wrapper" style="display:none;">
         <div class="toc_title">目次</div>

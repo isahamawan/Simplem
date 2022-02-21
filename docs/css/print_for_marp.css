@@ -17,7 +17,7 @@
 
         }
 
-        .editor-toolbar, .editor-statusbar, .CodeMirror-code, .CodeMirror-sizer,  .CodeMirror-scroll, .CodeMirror-vscrollbar, .CodeMirror-hscrollbar, textarea, .editor-preview-side, .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler, .darkmode-toggle, #toc_wrapper, #file_menu {
+        .editor-toolbar, .editor-statusbar, .CodeMirror-code, .CodeMirror-sizer,  .CodeMirror-scroll, .CodeMirror-vscrollbar, .CodeMirror-hscrollbar, textarea, .editor-preview-side, .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler, .darkmode-toggle, #toc_wrapper, #file_menu, #modal_button  {
             display: none !important;
         }
 
