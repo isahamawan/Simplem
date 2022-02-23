@@ -90,6 +90,68 @@ function save_as(evt) {
 
 
 // 表示モードの変更------------------------------------------------------------------------------
+function view_mode_select() {
+
+    //文字サイズ統一オプションの解除
+    if (window.flg_same_font_size == true) {
+        document.getElementsByClassName("EasyMDEContainer")[0].classList.remove("same_font_size");
+    }
+
+    // id属性からHTML要素（リンク要素）を取得
+    let editor_view_mode_css_link = document.getElementById("editor_view_mode_css");
+
+    let view_kind = view_mode_ele.selectedIndex;
+
+    //flg_source_code_modeの設定
+    if (view_kind == 0) {
+        flg_source_code_mode = "off_hl";
+    } else if (view_kind == 1) {
+        flg_source_code_mode = "mark_view";
+    } else if (view_kind == 2) {
+        flg_source_code_mode = "on_hl_off";
+    } else {
+        flg_source_code_mode = "on_hl_on";
+    }
+
+
+    //リンク要素のhref書き換え
+    if (flg_source_code_mode == "on_hl_on") {
+        editor_view_mode_css_link.href = "css/editor_view_mode/evm_source_code_mode.css";
+    } else if (flg_source_code_mode == "on_hl_off") {
+        editor_view_mode_css_link.href = "css/editor_view_mode/evm_source_code_mode_hloff.css";
+    } else if (flg_source_code_mode == "mark_view") {
+
+        //文字サイズ統一オプションの設定
+        if (window.flg_same_font_size == true) {
+            document.getElementsByClassName("EasyMDEContainer")[0].classList.add("same_font_size");
+        }
+
+        editor_view_mode_css_link.href = "css/editor_view_mode/evm_mark_view.css";
+    } else {
+
+        //文字サイズ統一オプションの設定
+        if (window.flg_same_font_size == true) {
+            document.getElementsByClassName("EasyMDEContainer")[0].classList.add("same_font_size");
+        }
+
+        editor_view_mode_css_link.href = "css/editor_view_mode/evm_normal.css";
+    }
+
+    //カーソルのサイズをリセット
+    easyMDE.codemirror.execCommand('selectAll');
+    setTimeout(function () {
+        easyMDE.codemirror.setCursor({ line: 0, ch: 0 });
+    }, 10);
+
+}
+
+let view_mode_ele = document.getElementById('view_mode');
+view_mode_ele.addEventListener('change', view_mode_select);
+
+
+
+
+
 
 // フォントの変更------------------------------------------------------------------------------
 function font_select() {
