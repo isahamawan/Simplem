@@ -154,7 +154,9 @@
                             button.innerHTML = label;
                             layer.classList.add('darkmode-layer');
                             background.classList.add('darkmode-background');
-                            var darkmodeActivated = window.localStorage.getItem('darkmode') === 'true';
+                            //simplem var darkmodeActivated = window.localStorage.getItem('darkmode') === 'true';
+                            var darkmodeActivated = false; //simplem
+
 
                             if (darkmodeActivated === true && saveInCookies) {
                                 layer.classList.add('darkmode-layer--expanded', 'darkmode-layer--simple', 'darkmode-layer--no-transition');
@@ -211,7 +213,8 @@
 
                                     button.classList.toggle('darkmode-toggle--white');
                                     document.body.classList.toggle('darkmode--activated');
-                                    window.localStorage.setItem('darkmode', !isDarkmode);
+                                    //simplem window.localStorage.setItem('darkmode', !isDarkmode);
+                                    darkmodeActivated = !darkmodeActivated; //simplem
                                 });
                             }
                         }, {
@@ -221,7 +224,8 @@
                                 var isDarkmode = this.isActivated();
                                 layer.classList.toggle('darkmode-layer--simple');
                                 document.body.classList.toggle('darkmode--activated');
-                                window.localStorage.setItem('darkmode', !isDarkmode);
+                                //simplem window.localStorage.setItem('darkmode', !isDarkmode);
+                                darkmodeActivated = !darkmodeActivated //simplem
                             }
                         }, {
                             key: "isActivated",
