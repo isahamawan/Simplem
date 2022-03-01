@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- CSP設定（セキュリティ対策の一部）。scriptやeval()やcss,画像の読み込みなどでエラーが出る場合はここを調整要。-->
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <!-- CSP設定（セキュリティ対策の一部）。scriptやeval()やcss,画像の読み込みなどでエラーが出る場合はここを調整要。
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />-->
 
     <!-- main側で設定する場合は、コメントアウトが必要-->
     <title>Simplem</title>
@@ -60,10 +60,10 @@
 </head>
 
 
-
 <body>
     <div style="white-space: nowrap; overflow: hidden;">
-        <form id="file_menu" style="display: inline;">
+        <form id="file_menu" style="display: inline-block;">
+
 
             <input type="file" id="file_select" accept=".txt, .html, .md" style="width:110px;">
             <input type="text" id="file_name" value="Simplem.txt">
@@ -253,6 +253,11 @@
 <!-- slide_show js css -->
 <script defer src="js/marp/slide_show.js"></script>
 <link id="slide_show_css" rel="stylesheet" href="css/slide_show_off.css">
+
+
+<script defer src="js/gdrive-fs.js"></script>
+
+
 
 
 </html>
