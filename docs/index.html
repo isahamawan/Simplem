@@ -256,26 +256,8 @@
 
 <!-- gdrive api キーはリファラーで制限 -->
 <script src="js_for_web/key_config.js"></script>
-<script src="js/gdrive-fs.js">
-
-    Gdfs.loadApi(key_config.api_account, key_config.api_key);
-    let gdrive_instance = new Gdfs();
-
-    /*
-        gdrive_instance.mkdir(markdown_simplem);
-        gdrive_instance.writeFile("simplem/test.md", "text/plain", easyMDE.value());
-
-
-        gdrive_instance.readFile("simplem/tesw.md").then(
-            function (value) {
-
-                // ここでプロミスオブジェクトの中身をああだこうだする。
-                //console.log(value);
-                easyMDE.value(value);
-            });
-    */
-
-</script>
+<script src="js/gdrive-fs.js"></script>
+<script src="js/gdrive_hundle.js"></script>
 
 
 
