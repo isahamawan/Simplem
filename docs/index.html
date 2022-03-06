@@ -254,8 +254,29 @@
 <script defer src="js/marp/slide_show.js"></script>
 <link id="slide_show_css" rel="stylesheet" href="css/slide_show_off.css">
 
+<!-- gdrive api キーはリファラーで制限 -->
+<script src="js_for_web/key_config.js"></script>
+<script defer src="js/gdrive-fs.js">
 
-<script defer src="js/gdrive-fs.js"></script>
+    Gdfs.loadApi(key_config.api_account, key_config.api_key);
+    gdrive_instance = new Gdfs();
+
+    /*
+        gdrive_instance.mkdir(markdown_simplem);
+        gdrive_instance.writeFile("simplem/test.md", "text/plain", easyMDE.value());
+
+
+        gdrive_instance.readFile("simplem/tesw.md").then(
+            function (value) {
+
+                // ここでプロミスオブジェクトの中身をああだこうだする。
+                //console.log(value);
+                easyMDE.value(value);
+            });
+    */
+
+</script>
+
 
 
 
