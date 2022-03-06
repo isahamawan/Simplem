@@ -256,10 +256,10 @@
 
 <!-- gdrive api キーはリファラーで制限 -->
 <script src="js_for_web/key_config.js"></script>
-<script defer src="js/gdrive-fs.js">
+<script src="js/gdrive-fs.js">
 
     Gdfs.loadApi(key_config.api_account, key_config.api_key);
-    gdrive_instance = new Gdfs();
+    let gdrive_instance = new Gdfs();
 
     /*
         gdrive_instance.mkdir(markdown_simplem);
