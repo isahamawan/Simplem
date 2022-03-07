@@ -1,0 +1,163 @@
+#div-menu-nav{
+  position: relative; /* 子要素においてabsoluteを用いるため指定する */
+  font-size:14px;
+  z-index:9; /* 最上位に表示する 一部の見出しがプルダウンの上に表示されてしまうことの対策 */
+  padding: 4px 3px;
+
+  background-color: rgb(37,37,37);
+}
+
+
+#div-menu-nav .menu-tab{
+  display: inline-block; /* メニュータブを横並びにする */
+  width:100px
+
+}
+#div-menu-nav .menu-tab a{
+  width:88px
+
+}
+
+
+#div-menu-nav a{
+  cursor:default;
+
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  background-color: rgb(37,37,37);;
+  /*border-bottom: solid 1px #67b44a;*/
+
+  /* macメニュー風のメニュー */
+  padding: 0px 6px;
+  width: 100%;
+  line-height: 25px;
+  border-radius:3px;
+}
+#div-menu-nav a:hover{
+  background-color:rgb(47, 118, 224);
+  /*border-bottom: solid 1px #dd5656;*/
+}
+
+
+
+
+
+#div-menu-nav .box1{
+  position: absolute;
+  display: none;
+  left:10px; /* 左から10pxで表示 */
+
+
+  background-color: rgb(37,37,37);
+  border: solid 1px darkgray;
+  border-radius: 6px;
+  width:300px;
+  padding: 3px;
+}
+
+
+#div-menu-nav .box2{
+  position: absolute;
+  left:114px; /*左から 10+4+100=114pxで表示 */
+  display: none;
+
+
+  background-color: rgb(37,37,37);
+  border: solid 1px darkgray;
+  border-radius: 6px;
+  width:300px;
+  padding: 3px;
+}
+
+#div-menu-nav .box3{
+  position: absolute;
+  left:218px; /*左から 10+4+4+100+100=218pxで表示 */
+  display: none;
+
+
+  background-color: rgb(37,37,37);
+  border: solid 1px darkgray;
+  border-radius: 6px;
+  width:300px;
+  padding: 3px;
+}
+
+
+#div-menu-nav .box4{
+  position: absolute;
+  left:322px; /*左から 10+4+4+4+100+100+100=322pxで表示 */
+  display: none;
+
+
+  background-color: rgb(37,37,37);
+  border: solid 1px darkgray;
+  border-radius: 6px;
+  width:300px;
+  padding: 3px;
+}
+
+
+
+
+
+
+#div-menu-nav .menu-hover1:hover ~ .box1{ /* メニューをhoverすれば box1を表示 */
+  display: block;
+}
+#div-menu-nav .box1:hover{  /* 表示されたbox1をhoverすればそのままbox1を表示し続ける */
+  display: block;           /* これがなければbox1が消えてしまう */
+}
+#div-menu-nav .box1 div{ /*各アイテムについて */
+  /*background-color: #ffffff;*/
+  width:288px;
+
+}
+
+
+#div-menu-nav .menu-hover2:hover ~ .box2{ /* box2についても同様 */
+  display: block;
+}
+#div-menu-nav .box2:hover{
+  display: block;
+}
+#div-menu-nav .box2 div{
+  /*background-color: #ffffff;*/
+  width:288px;
+}
+
+
+#div-menu-nav .menu-hover3:hover ~ .box3{ /* box2についても同様 */
+  display: block;
+}
+#div-menu-nav .box3:hover{
+  display: block;
+}
+#div-menu-nav .box3 div{
+  /*background-color: #ffffff;*/
+  width:288px;
+}
+
+
+#div-menu-nav .menu-hover4:hover ~ .box4{ /* box2についても同様 */
+  display: block;
+}
+#div-menu-nav .box4:hover{
+  display: block;
+}
+#div-menu-nav .box4 div{
+  /*background-color: #ffffff;*/
+  width:288px;
+}
+
+
+
+
+.sepa_menu {
+    padding: 0px 0px;
+    margin: 3px 3px !important;
+    height: 0px;
+    border-top: 1px solid darkgray;
+    margin: unset;
+    background-color: rgb(37,37,37);
+}
