@@ -32,7 +32,7 @@ function merge_view_on() {
     easymdes_cm_scroll_ele.setAttribute("style", "display:none;");
 
     let easymdes_editor_toolbar_ele = document.getElementsByClassName("editor-toolbar")[0];
-    easymdes_editor_toolbar_ele.setAttribute("style", "opacity: .6; pointer-events: none;");
+    easymdes_editor_toolbar_ele.setAttribute("style", "opacity: .1; pointer-events: none;");
 
     ipcRenderer.invoke('menu_disable');
 

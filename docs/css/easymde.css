@@ -887,7 +887,7 @@
     .EasyMDEContainer.sided--no-fullscreen .editor-preview-active-side {
         flex: 1 1 auto;
         /*height: calc(100vh - 33px - 28px - 6px + 0px);*/
-        height: calc(100vh - 33px - 28px - 6px - 26px);
+        height: calc(100vh - 33px - 28px - 6px - 33px);
         /*margin-bottom: -28px;
         padding-bottom: -3px;*/
         position: static
@@ -899,7 +899,7 @@
         margin-bottom: -53px;
         margin-right: -50px;
         padding-bottom: 28px;
-        height: calc(100vh - 33px - 28px - 6px - 7px);
+        height: calc(100vh - 33px - 28px - 6px - 14px);
         outline: 0;
         position: relative
     }
