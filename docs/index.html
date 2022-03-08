@@ -70,7 +70,7 @@
     <nav id="div-menu-nav">
         <div class="menu-tab menu-hover1"><a>ファイル</a></div>
         <div class="menu-tab menu-hover2"><a>編集</a></div>
-        <div class="menu-tab menu-hover3"><a>表示</a></div>
+        <div class="menu-tab menu-hover3"><a>表示モード</a></div>
         <div class="menu-tab menu-hover4"><a>フォント</a></div>
         <div class="menu-tab menu-hover5"><a href="#modal-01" id="modal_button" style="break-inside: avoid;">オプション</a>
         </div>
@@ -86,11 +86,16 @@
             </div>
             <hr class="sepa_menu">
             <div><a>Google Driveからファイルを開く</a></div>
+            <div><a>Google Driveに上書き保存</a></div>
             <div><a>Google Driveに名前を付けて保存</a></div>
             <hr class="sepa_menu">
             <div><a href="https://drive.google.com" target="blank">Google Driveを開く</a></div>
             <hr class="sepa_menu">
-            <div><a>印刷</a></div>
+            <div><a id="simple_window_open">シンプルウィンドウを開く</a></div>
+            <hr class="sepa_menu">
+            <div><a id="ctc">htmlとしてクリップボードへコピー</a></div>
+            <hr class="sepa_menu">
+            <div><a id="print">印刷</a></div>
         </div>
         <div class="box2">
             <div><a>元に戻す</a></div>
@@ -111,14 +116,12 @@
         </div>
         <div class="box3">
             <div>
-                <a>表示モード
-                    <select id="view_mode">
-                        <option>ライブプレビュー</option>
-                        <option>マークを常に表示</option>
-                        <option>ソースコード</option>
-                        <option>ソースコード（ハイライト有り）</option>
-                    </select>
-                </a>
+                <form id="view_mode">
+                    <a><label><input type="radio" name="trigger" value="0" checked="true">ライブプレビュー</label></a>
+                    <a><label><input type="radio" name="trigger" value="1">マークを常に表示</label></a>
+                    <a><label><input type="radio" name="trigger" value="2">ソースコード</label></a>
+                    <a><label><input type="radio" name="trigger" value="3">ソースコード（ハイライト有り）</label></a>
+                </form>
             </div>
             <!--
             <div><a>アイテム2-2</a></div>
@@ -127,18 +130,16 @@
         </div>
         <div class="box4">
             <div>
-                <a>フォント
-                    <select id="font">
-                        <option>モダンOS</option>
-                        <option>モダンBrowser</option>
-                        <option>Simplem</option>
-                        <option>ビューティフルコード</option>
-                        <option>ビューティフルドット</option>
-                        <option>美しい明朝体</option>
-                        <option>UDゴシック</option>
-                        <option>UD明朝</option>
-                    </select>
-                </a>
+                <form id="font">
+                    <a><label><input type="radio" name="trigger" value="0" checked="true">モダンOS</label></a>
+                    <a><label><input type="radio" name="trigger" value="1">モダンBrowser</label></a>
+                    <a><label><input type="radio" name="trigger" value="2">Simplem</label></a>
+                    <a><label><input type="radio" name="trigger" value="3">ビューティフルコード</label></a>
+                    <a><label><input type="radio" name="trigger" value="4">ビューティフルドット</label></a>
+                    <a><label><input type="radio" name="trigger" value="5">美しい明朝体</label></a>
+                    <a><label><input type="radio" name="trigger" value="6">UDゴシック</label></a>
+                    <a><label><input type="radio" name="trigger" value="7">UD明朝</label></a>
+                </form>
             </div>
         </div>
     </nav>
@@ -172,33 +173,6 @@
     </div>
     <!-- モーダルここまで -->
 
-
-
-    <div style="white-space: nowrap; overflow: hidden; display: none">
-        <form id="file_menu" style="display: inline-block;">
-            <input type="file" id="file_select" accept=".txt, .html, .md" style="width:110px;">
-            <input type="text" id="file_name" value="Simplem.txt"><button id="save_as">名前を付けて保存</button>
-
-            <label for="view_mode">表示モード</label>
-            <select id="view_mode">
-                <option>ライブプレビュー</option>
-                <option>マークを常に表示</option>
-                <option>ソースコード</option>
-                <option>ソースコード（ハイライト有り）</option>
-            </select>
-            <label for="font">フォント</label>
-            <select id="font">
-                <option>モダンOS</option>
-                <option>モダンBrowser</option>
-                <option>Simplem</option>
-                <option>ビューティフルコード</option>
-                <option>ビューティフルドット</option>
-                <option>美しい明朝体</option>
-                <option>UDゴシック</option>
-                <option>UD明朝</option>
-            </select>
-        </form>
-    </div>
 
 
 

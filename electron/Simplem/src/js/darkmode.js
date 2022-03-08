@@ -155,7 +155,7 @@
                             layer.classList.add('darkmode-layer');
                             background.classList.add('darkmode-background');
                             //simplem var darkmodeActivated = window.localStorage.getItem('darkmode') === 'true';
-                            var darkmodeActivated = false; //simplem
+                            window.darkmodeActivated = false; //simplem
 
 
                             if (darkmodeActivated === true && saveInCookies) {

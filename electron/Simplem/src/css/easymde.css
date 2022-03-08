@@ -682,7 +682,7 @@
     }
 
     .editor-toolbar.disabled-for-preview button:not(.no-disable) {
-        opacity: .6;
+        opacity: .1;
         pointer-events: none
     }
 
