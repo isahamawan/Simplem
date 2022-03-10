@@ -1,9 +1,9 @@
 // The Browser API key obtained from the Google API Console.
 // Replace with your own Browser API key, or your own key.
-var developerKey = 'AIzaSyD4XpLgC8sY1Smwj9ulhwBXeXgrO6N3B4g';
+var developerKey = key_confi.api_key;
 
 // The Client ID obtained from the Google API Console. Replace with your own Client ID.
-var clientId = "328742933346-pu9h5s5iuutmjf0jbt4o68qjvavbpli1.apps.googleusercontent.com"
+var clientId = key_config.api_account;
 
 // Replace with your own project number from console.developers.google.com.
 // See "Project number" under "IAM & Admin" > "Settings"
