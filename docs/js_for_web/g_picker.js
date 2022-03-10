@@ -54,8 +54,8 @@ function createPicker() {
             .setAppId(appId)
             .setOAuthToken(oauthToken)
             .addView(view)
-            .addView(new google.picker.DocsUploadView())
-            .setDeveloperKey(developerKey)
+            //.addView(new google.picker.DocsUploadView())
+            //.setDeveloperKey(developerKey)
             .setCallback(pickerCallback)
             .build();
         picker.setVisible(true);
