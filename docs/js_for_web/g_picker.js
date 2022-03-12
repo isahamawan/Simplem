@@ -60,7 +60,7 @@ function createPicker() {
 
         var recentView = new google.picker.DocsView();
         recentView.xd = '最近使用したファイル';
-        recentView.mc.sortKey = 15;
+        //recentView.mc.sortKey = 15;//err
 
         var picker = new google.picker.PickerBuilder()
             //.enableFeature(google.picker.Feature.NAV_HIDDEN)
