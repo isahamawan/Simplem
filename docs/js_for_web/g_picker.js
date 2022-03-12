@@ -53,6 +53,7 @@ function createPicker() {
             //.setIncludeFolders(true)
             .setMode(google.picker.DocsViewMode.LIST);//list形式で表示
 
+        /*
         var docsshare = new google.picker.DocsView()
             .setOwnedByMe(false)
             .setIncludeFolders(true)
@@ -60,19 +61,19 @@ function createPicker() {
 
         var recentView = new google.picker.DocsView();
         recentView.xd = '最近使用したファイル';
-        //recentView.mc.sortKey = 15;//err
+        */
 
         var picker = new google.picker.PickerBuilder()
             //.enableFeature(google.picker.Feature.NAV_HIDDEN)
             //.enableFeature(google.picker.Feature.MULTISELECT_ENABLED)
             //.setOrigin (google.script.host.origin)
             .setTitle("ファイル選択 from simplem folder")//
-            .setLocale("ja")//
+            .setLocale("ja")//日本語設定
             .setAppId(appId)
             .setOAuthToken(oauthToken)
             .addView(docs_view)
-            .addView(docsshare)//共有ファイルビュー
-            .addView(recentView)//最近使用したファイルビュー
+            //.addView(docsshare)//共有ファイルビュー
+            //.addView(recentView)//最近使用したファイルビュー
             //.addView(new google.picker.DocsUploadView())//
             //.setDeveloperKey(developerKey)//
             .setCallback(pickerCallback)

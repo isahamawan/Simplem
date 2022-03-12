@@ -5,6 +5,10 @@ let gdrive_instance = new Gdfs();
 
 /*
     gdrive_instance.mkdir(markdown_simplem);
+    gdrive_instance.chdir("simplem");
+    window.simplem_folder_id = gdrive_instance.getCurrentFolderId();
+
+
     gdrive_instance.writeFile("simplem/test.md", "text/plain", easyMDE.value());
 
 
