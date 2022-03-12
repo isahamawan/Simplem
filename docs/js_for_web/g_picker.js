@@ -85,15 +85,18 @@ function createPicker() {
 // A simple callback implementation.
 function pickerCallback(data) {
     if (data.action == google.picker.Action.PICKED) {
-        var picked_fileId = data.docs[0].id;
-        //alert('The user selected: ' + picked_fileId);
 
+        //pickしたファイルのid
+        var picked_fileId = data.docs[0].id;
+
+        //ファイルのgetとエディタへの読み込み
         gapi.client.drive.files.get({
             fileId: picked_fileId,
-            alt: "media"
+            alt: "media"//bodyを含める
         }).then(
             function (res) {
-                console.log(res.body);
+                //console.log(res.body);
+                easyMDE.value(res.body);
             }
         );
     }
