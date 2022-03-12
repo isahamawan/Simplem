@@ -10,6 +10,8 @@ async function gdrive_init_for_simplem() {
     window.simplem_folder_id = gdrive_instance.getCurrentFolderId();
 }
 
+gdrive_init_for_simplem();
+
 /*
 gdrive_instance.mkdir("Simplem");
 gdrive_instance.chdir("Simplem");
