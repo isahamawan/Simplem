@@ -49,7 +49,7 @@ function createPicker() {
         var docs_view = new google.picker.DocsView(google.picker.ViewId.DOCS);
 
         docs_view.setMimeTypes("text/plain,application/vnd.google-apps.folder")
-            .setParent("1RnsJuJRpOHYNZDwEO3YU5O_4Wy6NCpu1")//simplem folder id
+            .setParent(window.simplem_folder_id)//simplem folder id
             //.setIncludeFolders(true)
             .setMode(google.picker.DocsViewMode.LIST);//list形式で表示
 
