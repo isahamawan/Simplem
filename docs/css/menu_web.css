@@ -98,6 +98,18 @@
   padding: 3px;
 }
 
+#div-menu-nav .box5{
+  position: absolute;
+  left:322px; /*左から 10+4+4+4+100+100+100=322pxで表示 */
+  display: none;
+
+
+  background-color: rgb(37,37,37);
+  border: solid 1px darkgray;
+  border-radius: 6px;
+  width:300px;
+  padding: 3px;
+}
 
 
 
@@ -147,6 +159,19 @@
   display: block;
 }
 #div-menu-nav .box4 div{
+  /*background-color: #ffffff;*/
+  width:288px;
+}
+
+
+
+#div-menu-nav .menu-hover5:hover ~ .box5{ /* box2についても同様 */
+  display: block;
+}
+#div-menu-nav .box5:hover{
+  display: block;
+}
+#div-menu-nav .box5 div{
   /*background-color: #ffffff;*/
   width:288px;
 }

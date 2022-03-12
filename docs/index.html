@@ -55,8 +55,9 @@
     <link rel="stylesheet" href="css/option/same_font_size.css">
     <link rel="stylesheet" href="css/option/line_height_wide.css">
 
-    <!-- modal css -->
+    <!-- modal css
     <link rel="stylesheet" href="css/modal.css">
+    -->
 
     <!-- menu_web css -->
     <link rel="stylesheet" href="css/menu_web.css">
@@ -73,8 +74,10 @@
         <div class="menu-tab menu-hover2"><a>編集</a></div>
         <div class="menu-tab menu-hover3"><a>表示モード</a></div>
         <div class="menu-tab menu-hover4"><a>フォント</a></div>
-        <div class="menu-tab menu-hover5"><a href="#modal-01" id="modal_button" style="break-inside: avoid;">オプション</a>
-        </div>
+        <!--
+        <div class="menu-tab menu-hover5"><a href="#modal-01" id="modal_button" style="break-inside: avoid;">オプション</a></div>
+        -->
+        <div class="menu-tab menu-hover5"><a>オプション</a></div>
         <div class="box1">
             <div>
                 <a href="Javascript:document.getElementById('file_select').click();">PCからファイルを開く
@@ -147,12 +150,25 @@
                 </form>
             </div>
         </div>
+        <div class="box5">
+            <div>
+                <form id="option">
+                    <a><label><input type="checkbox" checked="true" id="h1_page_break">印刷時にh1で改ページ</label></a>
+                    <a><label><input type="checkbox" id="hr_page_break">印刷時に---で改ページ</label></a>
+                    <a><label><input type="checkbox" id="wide_row">行間を広くする</label></a>
+                    <hr class="sepa_menu">
+                    <a><label><input type="checkbox" id="window_slide_show">ウィンドウモードでスライドショー（リモート会議用）</label></a>
+                    <hr class="sepa_menu">
+                    <a><label><input type="checkbox" checked="true" id="same_font_size">文字サイズを統一</label></a>
+                </form>
+            </div>
+        </div>
     </nav>
 
 
 
 
-    <!-- モーダルここから modal.cssで設定 -->
+    <!-- モーダルここから modal.cssで設定
     <div class="modal-wrapper" id="modal-01">
         <a href="#!" class="modal-overlay"></a>
         <div class="modal-window">
@@ -176,6 +192,7 @@
             <a href="#!" class="modal-close">×</a>
         </div>
     </div>
+    -->
     <!-- モーダルここまで -->
 
 
