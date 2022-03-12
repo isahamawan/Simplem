@@ -1303,7 +1303,8 @@ parcelRequire = (function (modules, cache, entry, globalName) {
                                 clientId,
                                 clientSecret,
                                 discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"],
-                                scope: ["https://www.googleapis.com/auth/drive", "https://www.googleapis.com/auth/drive.appdata", "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive.metadata", "https://www.googleapis.com/auth/drive.metadata.readonly", "https://www.googleapis.com/auth/drive.photos.readonly", "https://www.googleapis.com/auth/drive.readonly"].join(" ")
+                                //scope: ["https://www.googleapis.com/auth/drive", "https://www.googleapis.com/auth/drive.appdata", "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive.metadata", "https://www.googleapis.com/auth/drive.metadata.readonly", "https://www.googleapis.com/auth/drive.photos.readonly", "https://www.googleapis.com/auth/drive.readonly"].join(" ")
+                                scope: ["https://www.googleapis.com/auth/drive.file"].join(" ")
                             });
                         }
 
@@ -1358,9 +1359,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
 
         Gdfs.signIn = async () => {
-            return await gapi.auth2.getAuthInstance().signIn({
-                'scope': "https://www.googleapis.com/auth/drive.file"
-            });
+            return await gapi.auth2.getAuthInstance().signIn();
         };
         /**
          * Sign out from the Google Drive.
