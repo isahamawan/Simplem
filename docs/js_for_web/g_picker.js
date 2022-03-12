@@ -51,6 +51,8 @@ function createPicker() {
         var picker = new google.picker.PickerBuilder()
             .enableFeature(google.picker.Feature.NAV_HIDDEN)
             //.enableFeature(google.picker.Feature.MULTISELECT_ENABLED)
+            .setTitle("ファイル選択")//
+            .setLocale("ja")//
             .setAppId(appId)
             .setOAuthToken(oauthToken)
             .addView(view)
