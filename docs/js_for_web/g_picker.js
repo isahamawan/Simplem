@@ -3,7 +3,7 @@
 //var developerKey = key_config.api_key;
 
 // The Client ID obtained from the Google API Console. Replace with your own Client ID.
-//var clientId = key_config.api_account;
+var clientId = key_config.api_account;
 
 // Replace with your own project number from console.developers.google.com.
 // See "Project number" under "IAM & Admin" > "Settings"
