@@ -49,9 +49,9 @@ function createPicker() {
         var view = new google.picker.View(google.picker.ViewId.DOCS);
 
         view.setMimeTypes("text/plain,application/vnd.google-apps.folder")
-            .setParent("simplem")
-            //.setIncludeFolders(true)
-            .setMode(google.picker.DocsViewMode.LIST);
+            .setParent("simplem");
+        //.setIncludeFolders(true)
+        //.setMode(google.picker.DocsViewMode.LIST);
 
         var picker = new google.picker.PickerBuilder()
             //.enableFeature(google.picker.Feature.NAV_HIDDEN)
