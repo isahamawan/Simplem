@@ -41,6 +41,7 @@ file_select_ele.addEventListener("change", function (evt) {
             easyMDE.togglePreview();
         }
 
+        //file_nameテキストボックスの更新
         document.getElementById("file_name").value = file[0].name;
 
         //titleの変更

@@ -97,6 +97,10 @@ function pickerCallback(data) {
             function (res) {
                 //console.log(res);
 
+
+                //file_nameテキストボックスの更新
+                document.getElementById("file_name").value = data.docs[0].name;
+
                 //titleの変更
                 document.getElementsByTagName("title")[0].innerText = data.docs[0].name + " - Simplem";
 
