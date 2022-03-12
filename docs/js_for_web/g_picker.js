@@ -47,7 +47,7 @@ function handleAuthResult(authResult) {
 function createPicker() {
     if (pickerApiLoaded && oauthToken) {
         var view = new google.picker.View(google.picker.ViewId.DOCS)
-            .setIncludeFolders(true)
+            //.setIncludeFolders(true)
             .setMode(google.picker.DocsViewMode.LIST);
 
         view.setMimeTypes("text/plain,application/vnd.google-apps.folder")
