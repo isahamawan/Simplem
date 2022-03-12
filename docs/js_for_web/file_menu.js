@@ -114,6 +114,18 @@ function save_as(evt) {
 
 
 
+// google driveからファイルを開く--------------------------------------------------------------------
+function file_open_from_gdrive() {
+    loadPicker();
+}
+
+let file_open_gdrive_ele = document.getElementById("file_open_gdrive");
+file_open_gdrive_ele.addEventListener("click", file_open_from_gdrive);
+
+
+
+
+
 // 印刷-----------------------------------------------------------------------------------------
 
 const _sleep = (_ms) => new Promise((resolve) => setTimeout(resolve, _ms));
