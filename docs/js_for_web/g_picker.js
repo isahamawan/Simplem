@@ -46,11 +46,17 @@ function handleAuthResult(authResult) {
 // Create and render a Picker object for searching images.
 function createPicker() {
     if (pickerApiLoaded && oauthToken) {
-        var view = new google.picker.View(google.picker.ViewId.DOCS);
-        view.setMimeTypes("text/plain,application/vnd.google-apps.folder");
+        var view = new google.picker.View(google.picker.ViewId.DOCS)
+            .setIncludeFolders(true)
+            .setMode(google.picker.DocsViewMode.LIST);
+
+        view.setMimeTypes("text/plain,application/vnd.google-apps.folder")
+            .setParent("simplem");
+
         var picker = new google.picker.PickerBuilder()
-            .enableFeature(google.picker.Feature.NAV_HIDDEN)
+            //.enableFeature(google.picker.Feature.NAV_HIDDEN)
             //.enableFeature(google.picker.Feature.MULTISELECT_ENABLED)
+            //.setOrigin (google.script.host.origin)
             .setTitle("ファイル選択")//
             .setLocale("ja")//
             .setAppId(appId)
