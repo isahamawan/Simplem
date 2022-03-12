@@ -116,7 +116,10 @@ function save_as(evt) {
 
 // google driveからファイルを開く--------------------------------------------------------------------
 function file_open_from_gdrive() {
+
+    //g_picker.js内にて定義（コールバック関数内にいろいろ処理あり）
     loadPicker();
+
 }
 
 let file_open_gdrive_ele = document.getElementById("file_open_gdrive");

@@ -95,7 +95,14 @@ function pickerCallback(data) {
             alt: "media"//bodyを含める
         }).then(
             function (res) {
-                //console.log(res.body);
+                //console.log(res);
+
+                //titleの変更
+                document.getElementsByTagName("title")[0].innerText = data.docs[0].name + " - Simplem";
+
+                //diffのオリジナル用として保存
+                window.diff_origin_text_data = res.body;
+
                 easyMDE.value(res.body);
             }
         );
