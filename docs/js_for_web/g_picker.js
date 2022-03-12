@@ -46,12 +46,12 @@ function handleAuthResult(authResult) {
 // Create and render a Picker object for searching images.
 function createPicker() {
     if (pickerApiLoaded && oauthToken) {
-        var view = new google.picker.View(google.picker.ViewId.DOCS);
+        var docs_view = new google.picker.DocsView(google.picker.ViewId.DOCS);
 
-        view.setMimeTypes("text/plain,application/vnd.google-apps.folder")
-            .setParent("1RnsJuJRpOHYNZDwEO3YU5O_4Wy6NCpu1");//simplem folder id
-        //.setIncludeFolders(true)
-        //.setMode(google.picker.DocsViewMode.LIST);//err
+        docs_view.setMimeTypes("text/plain,application/vnd.google-apps.folder")
+            .setParent("1RnsJuJRpOHYNZDwEO3YU5O_4Wy6NCpu1")//simplem folder id
+            //.setIncludeFolders(true)
+            .setMode(google.picker.DocsViewMode.LIST);//err
 
         var picker = new google.picker.PickerBuilder()
             //.enableFeature(google.picker.Feature.NAV_HIDDEN)
@@ -61,7 +61,7 @@ function createPicker() {
             .setLocale("ja")//
             .setAppId(appId)
             .setOAuthToken(oauthToken)
-            .addView(view)
+            .addView(docs_view)
             //.addView(new google.picker.DocsUploadView())//
             //.setDeveloperKey(developerKey)//
             .setCallback(pickerCallback)
