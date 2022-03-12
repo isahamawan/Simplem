@@ -6,30 +6,32 @@ let gdrive_instance = new Gdfs();
 async function gdrive_init_for_simplem() {
 
     //gapiロード終わって、定義成功するまでリトライ処理
-    let execed = false;
+    let complete = false;
     let count = 0;
     const maxTries = 50;
-    while (execed === false) {
+    while (complete === false) {
         try {
-            execed = true;
             // リクエスト処理
 
             await sleep(1000);
             await gdrive_instance.mkdir("Simplem");
             await gdrive_instance.chdir("Simplem");
 
+            complete = true;
+
             console.log("gdrive_init_for_simplem : complete");
 
         } catch (err) {
-            count = count + 1;
-            execed = false;
-
-            console.log("gdrive_init_for_simplem : retry");
             // エラーハンドリング
+
+            count = count + 1;
+            console.log("gdrive_init_for_simplem : retry");
+
             if (count === maxTries) {
-                execed = true;
+                complete = true;
                 console.log("gdrive_init_for_simplem : time out (50 tried)");
             }
+
         }
     }
 
