@@ -3,10 +3,8 @@
 Gdfs.loadApi(key_config.api_account, key_config.api_key);
 let gdrive_instance = new Gdfs();
 
-sleep(1000);
-
-gdrive_instance.mkdir("Simplem");
-gdrive_instance.chdir("Simplem");
+//gdrive_instance.mkdir("Simplem");
+//gdrive_instance.chdir("Simplem");
 window.simplem_folder_id = gdrive_instance.getCurrentFolderId();
 
 
