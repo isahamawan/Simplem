@@ -44,6 +44,9 @@ file_select_ele.addEventListener("change", function (evt) {
         //file_nameテキストボックスの更新
         document.getElementById("file_name").value = file[0].name;
 
+        //file_name_gdriveテキストボックスの更新
+        document.getElementById("file_name_gdrive").value = file[0].name;
+
         //titleの変更
         document.getElementsByTagName("title")[0].innerText = file[0].name + " - Simplem";
 
@@ -90,6 +93,8 @@ function save_as(evt) {
 
 
     a.download = document.getElementById("file_name").value
+
+
     /*
     if (document.getElementById("file_name").files[0] != undefined) {
         a.download = document.getElementById("file_select").files[0].name;
@@ -100,6 +105,11 @@ function save_as(evt) {
 
     //titleの変更
     document.getElementsByTagName("title")[0].innerText = a.download + " - Simplem";
+
+
+    //file_name_gdriveテキストボックスの更新
+    document.getElementById("file_name_gdrive").value = a.download;
+
 
     document.body.appendChild(a);
 

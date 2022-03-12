@@ -91,7 +91,10 @@
             <hr class="sepa_menu">
             <div><a id="file_open_gdrive">Google Driveからファイルを開く</a></div>
             <div><a>Google Driveに上書き保存</a></div>
-            <div><a>Google Driveに名前を付けて保存</a></div>
+            <div>
+                <a>Google Driveに名前を付けて保存</a>
+                <input type="text" id="file_name_gdrive" style="margin-left: 6px;" value="Simplem.txt">
+            </div>
             <hr class="sepa_menu">
             <div><a href="https://drive.google.com" target="blank">Google Driveを開く</a></div>
             <hr class="sepa_menu">
@@ -153,12 +156,15 @@
         <div class="box5">
             <div>
                 <form id="option">
+                    文書モード
                     <a><label><input type="checkbox" checked="true" id="h1_page_break">印刷時にh1で改ページ</label></a>
                     <a><label><input type="checkbox" id="hr_page_break">印刷時に---で改ページ</label></a>
                     <a><label><input type="checkbox" id="wide_row">行間を広くする</label></a>
                     <hr class="sepa_menu">
+                    スライドモード
                     <a><label><input type="checkbox" id="window_slide_show">ウィンドウモードでスライドショー（リモート会議用）</label></a>
                     <hr class="sepa_menu">
+                    編集画面
                     <a><label><input type="checkbox" checked="true" id="same_font_size">文字サイズを統一</label></a>
                 </form>
             </div>
