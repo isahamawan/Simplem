@@ -46,7 +46,7 @@ function handleAuthResult(authResult) {
 // Create and render a Picker object for searching images.
 function createPicker() {
     if (pickerApiLoaded && oauthToken) {
-        var view = new google.picker.View(google.picker.ViewId.DOCS);
+        var view = new google.picker.View(google.picker.ViewId.FOLDERS);//DOCS);
         view.setMimeTypes("text/plain,application/vnd.google-apps.folder");
         var picker = new google.picker.PickerBuilder()
             //.enableFeature(google.picker.Feature.NAV_HIDDEN)
