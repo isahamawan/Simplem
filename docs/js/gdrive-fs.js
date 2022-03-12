@@ -1358,7 +1358,9 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
 
         Gdfs.signIn = async () => {
-            return await gapi.auth2.getAuthInstance().signIn();
+            return await gapi.auth2.getAuthInstance().signIn({
+                'scope': "https://www.googleapis.com/auth/drive.file"
+            });
         };
         /**
          * Sign out from the Google Drive.

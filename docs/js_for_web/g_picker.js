@@ -47,15 +47,15 @@ function handleAuthResult(authResult) {
 function createPicker() {
     if (pickerApiLoaded && oauthToken) {
         var view = new google.picker.View(google.picker.ViewId.DOCS);
-        view.setMimeTypes("image/png,image/jpeg,image/jpg");
+        view.setMimeTypes("text/plain");
         var picker = new google.picker.PickerBuilder()
             .enableFeature(google.picker.Feature.NAV_HIDDEN)
             .enableFeature(google.picker.Feature.MULTISELECT_ENABLED)
             .setAppId(appId)
             .setOAuthToken(oauthToken)
             .addView(view)
-            //.addView(new google.picker.DocsUploadView())
-            //.setDeveloperKey(developerKey)
+            .addView(new google.picker.DocsUploadView())//
+            .setDeveloperKey(developerKey)//
             .setCallback(pickerCallback)
             .build();
         picker.setVisible(true);
