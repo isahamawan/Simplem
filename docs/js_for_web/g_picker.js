@@ -67,7 +67,7 @@ function createPicker() {
             //.enableFeature(google.picker.Feature.NAV_HIDDEN)
             //.enableFeature(google.picker.Feature.MULTISELECT_ENABLED)
             //.setOrigin (google.script.host.origin)
-            .setTitle("ファイル選択 from simplem folder")//
+            .setTitle("ファイル選択 from Simplem folder")//
             .setLocale("ja")//日本語設定
             .setAppId(appId)
             .setOAuthToken(oauthToken)
