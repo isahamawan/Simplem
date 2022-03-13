@@ -43,6 +43,8 @@ gdrive_init_for_simplem();
 
 
 
+
+
 /*
 gdrive_instance.mkdir("Simplem");
 gdrive_instance.chdir("Simplem");
@@ -61,4 +63,41 @@ window.simplem_folder_id = gdrive_instance.getCurrentFolderId();
             //console.log(value);
             easyMDE.value(value);
         });
+*/
+
+/*
+
+/**
+         * Create a new file's resource.
+         * @param {string} folderId The folder id where the file is created.
+         * @param {string} filename The file name.
+         * @param {string} mimeType The mime type for the new file.
+         * @returns {Promise<object>} The response of the API.
+
+
+Gdfs.createFile = async (folderId, filename, mimeType) => {
+    const response = await requestWithAuth("POST", "https://www.googleapis.com/drive/v3/files", {}, {
+        "Content-Type": "application/json"
+    }, JSON.stringify({
+        name: filename,
+        mimeType: mimeType,
+        parents: [folderId]
+    }));
+    return JSON.parse(response);
+};
+
+
+Gdfs.updateFile = async (fileId, mimeType, data) => {
+    const response = await requestWithAuth("PATCH", "https://www.googleapis.com/upload/drive/v3/files/" + fileId, {
+        uploadType: "media"
+    }, {
+        "Content-Type": mimeType
+    }, data);
+    return JSON.parse(response);
+ };
+
+
+const file = await Gdfs.createFile(parentFolder.id, filename, mimeType);
+const result = await Gdfs.updateFile(file.id, mimeType, data);
+
 */
