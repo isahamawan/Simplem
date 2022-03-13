@@ -116,7 +116,10 @@ function save_as(evt) {
     //file_name_gdriveテキストボックスの更新
     document.getElementById("file_name_gdrive").value = a.download;
 
-    window.file_name_now = a.download;
+    //gdriveに保存した名前と違うときは、gdrive上書き判定の初期化
+    if (window.file_name_now != document.getElementById("file_name").value) {
+        window.fileId_now = null;
+    }
 
 
     document.body.appendChild(a);
