@@ -152,7 +152,7 @@ file_open_gdrive_ele.addEventListener("click", file_open_from_gdrive);
 // tttttttttttttttttttttttttttt google driveに上書き--------------------------------------------------------------------
 function save_to_gdrive() {
 
-    if (window.file_name_now) {
+    if (window.fileId_now) {
 
         //pick時、もしくは名前を付けて保存時のidのファイルへ保存
         Gdfs.updateFile(window.fileId_now, "text/plain", easyMDE.value());
