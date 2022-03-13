@@ -154,6 +154,8 @@ function save_to_gdrive() {
         //file_name_gdriveテキストボックスの更新
         document.getElementById("file_name_gdrive").value = window.file_name_now;
 
+        alert("上書き保存しました");
+
     } else {
         alert("まだ名前を付けて保存されていません");
     }
@@ -178,6 +180,8 @@ function save_as_to_gdrive() {
 
     //file_nameテキストボックスの更新
     document.getElementById("file_name").value = window.file_name_now;
+
+    alert("名前を付けて保存しました");
 
 }
 
