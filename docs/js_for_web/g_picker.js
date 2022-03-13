@@ -96,7 +96,7 @@ function pickerCallback(data) {
             fileId: window.picked_fileId,
             alt: "media"//bodyを含める
         }).then(
-            function (res) {
+            async function (res) {
                 //console.log(res);
 
 
