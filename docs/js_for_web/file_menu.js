@@ -143,8 +143,17 @@ file_open_gdrive_ele.addEventListener("click", file_open_from_gdrive);
 // tttttttttttttttttttttttttttt google driveに上書き--------------------------------------------------------------------
 function save_to_gdrive() {
 
-    if (window.picked_name) {
-        gdrive_instance.writeFile(window.picked_name, "text/plain", easyMDE.value());
+    if (window.file_name_now) {
+        gdrive_instance.writeFile(window.file_name_now, "text/plain", easyMDE.value());
+
+        //titleの変更
+        document.getElementsByTagName("title")[0].innerText = window.file_name_now + " - Simplem";
+
+        //file_nameテキストボックスの更新
+        document.getElementById("file_name").value = window.file_name_now;
+        //file_name_gdriveテキストボックスの更新
+        document.getElementById("file_name_gdrive").value = window.file_name_now;
+
     } else {
         alert("まだ名前を付けて保存されていません");
     }
@@ -160,8 +169,15 @@ save_to_gdrive_ele.addEventListener("click", save_to_gdrive);
 // tttttttttttttttttttttttttttt google driveに名前を付けて保存--------------------------------------------------------------------
 function save_as_to_gdrive() {
 
-    let file_name = document.getElementById("file_name_gdrive").value;
-    gdrive_instance.writeFile(file_name, "text/plain", easyMDE.value());
+    window.file_name_now = document.getElementById("file_name_gdrive").value;
+    gdrive_instance.writeFile(window.file_name_now, "text/plain", easyMDE.value());
+
+
+    //titleの変更
+    document.getElementsByTagName("title")[0].innerText = window.file_name_now + " - Simplem";
+
+    //file_nameテキストボックスの更新
+    document.getElementById("file_name").value = window.file_name_now;
 
 }
 

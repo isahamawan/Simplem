@@ -89,7 +89,7 @@ function pickerCallback(data) {
         //pickしたファイルのid等
         window.picked_fileId = data.docs[0].id;
         window.picked_parentId = data.docs[0].parentId;
-        window.picked_name = data.docs[0].name;
+        window.file_name_now = data.docs[0].name;
 
         //ファイルのgetとエディタへの読み込み
         gapi.client.drive.files.get({
