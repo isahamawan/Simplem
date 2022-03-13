@@ -149,7 +149,11 @@ file_open_gdrive_ele.addEventListener("click", file_open_from_gdrive);
 function save_to_gdrive() {
 
     if (window.file_name_now) {
-        gdrive_instance.writeFile(window.file_name_now, "text/plain", easyMDE.value());
+
+        //pick時、もしくは名前を付けて保存時のidのファイルへ保存
+        Gdfs.updateFile(window.fileId_now, "text/plain", easyMDE.value());
+
+        //gdrive_instance.writeFile(window.file_name_now, "text/plain", easyMDE.value());
 
         //titleの変更
         document.getElementsByTagName("title")[0].innerText = window.file_name_now + " - Simplem";
@@ -186,6 +190,9 @@ function save_as_to_gdrive() {
 
         function (re) {
             //console.log(re.id);
+
+            //名前を付けて保存したファイルのid（上書き保存用）
+            window.fileId_now = re.id;
 
             Gdfs.updateFile(re.id, "text/plain", easyMDE.value());
 

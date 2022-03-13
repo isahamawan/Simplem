@@ -86,14 +86,14 @@ function createPicker() {
 function pickerCallback(data) {
     if (data.action == google.picker.Action.PICKED) {
 
-        //pickしたファイルのid等
-        window.picked_fileId = data.docs[0].id;
+        //pickしたファイルのid等（_nowは上書き保存にも使用）
+        window.fileId_now = data.docs[0].id;
         window.picked_parentId = data.docs[0].parentId;
         window.file_name_now = data.docs[0].name;
 
         //ファイルのgetとエディタへの読み込み
         gapi.client.drive.files.get({
-            fileId: window.picked_fileId,
+            fileId: window.fileId_now,
             alt: "media"//bodyを含める
         }).then(
             async function (res) {
