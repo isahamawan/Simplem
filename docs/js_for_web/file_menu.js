@@ -56,6 +56,10 @@ file_select_ele.addEventListener("change", function (evt) {
         //diffのオリジナル用として保存
         window.diff_origin_text_data = reader.result;
 
+
+        //gdrive上書き保存判定の初期化用
+        window.fileId_now = null;
+
     }
 
 }, false);
