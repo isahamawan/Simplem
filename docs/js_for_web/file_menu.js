@@ -73,7 +73,7 @@ file_select_ele.addEventListener("change", function (evt) {
 
 
 
-// ファイルを名前を付けて保存------------------------------------------------------------------------------
+// ttttttttttttttttttttttファイルを名前を付けて保存------------------------------------------------------------------------------
 
 window.addEventListener("load", () => {
     let save_as_ele = document.getElementById("save_as");
@@ -158,7 +158,7 @@ file_open_gdrive_ele.addEventListener("click", file_open_from_gdrive);
 
 
 
-// tttttttttttttttttttttttttttt google driveに上書き--------------------------------------------------------------------
+// google driveに上書き--------------------------------------------------------------------
 function save_to_gdrive() {
 
     if (window.fileId_now) {
@@ -190,7 +190,7 @@ save_to_gdrive_ele.addEventListener("click", save_to_gdrive);
 
 
 
-// tttttttttttttttttttttttttttt google driveに名前を付けて保存--------------------------------------------------------------------
+// google driveに名前を付けて保存--------------------------------------------------------------------
 function save_as_to_gdrive() {
 
     window.file_name_now = document.getElementById("file_name_gdrive").value;
@@ -229,7 +229,15 @@ let save_as_to_gdrive_ele = document.getElementById("save_as_to_gdrive");
 save_as_to_gdrive_ele.addEventListener("click", save_as_to_gdrive);
 
 
+// google driveを開く--------------------------------------------------------------------
+function open_gdrive() {
 
+    window.open('https://drive.google.com/drive/folders/' + window.simplem_folder_id);
+
+}
+
+let open_gdrive_ele = document.getElementById("open_google_drive");
+open_gdrive_ele.addEventListener("click", open_gdrive);
 
 
 
