@@ -53,6 +53,8 @@ function createPicker() {
             //.setIncludeFolders(true)
             .setMode(google.picker.DocsViewMode.LIST);//list形式で表示
 
+        docs_view.xd = "Simplem";
+
         /*
         var docsshare = new google.picker.DocsView()
             .setOwnedByMe(false)
