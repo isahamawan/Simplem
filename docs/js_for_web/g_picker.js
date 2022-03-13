@@ -51,9 +51,9 @@ function createPicker() {
         docs_view.setMimeTypes("text/plain,application/vnd.google-apps.folder")
             .setParent(window.simplem_folder_id)//simplem folder id
             //.setIncludeFolders(true)
+            .setLabel('Simplem')
             .setMode(google.picker.DocsViewMode.LIST);//list形式で表示
 
-        console.log(docs_view);
 
         /*
         var docsshare = new google.picker.DocsView()
