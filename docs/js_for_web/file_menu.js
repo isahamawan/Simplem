@@ -121,6 +121,8 @@ function save_as(evt) {
         window.fileId_now = null;
     }
 
+    window.file_name_now = a.download;
+
 
     document.body.appendChild(a);
 
