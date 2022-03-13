@@ -143,8 +143,11 @@ file_open_gdrive_ele.addEventListener("click", file_open_from_gdrive);
 // tttttttttttttttttttttttttttt google driveに上書き--------------------------------------------------------------------
 function save_to_gdrive() {
 
-    //g_picker.js内にて定義（コールバック関数内にいろいろ処理あり）
-    loadPicker();
+    if (window.picked_name) {
+        gdrive_instance.writeFile(window.picked_name, "text/plain", easyMDE.value());
+    } else {
+        alert("まだ名前を付けて保存されていません");
+    }
 
 }
 
