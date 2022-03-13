@@ -60,6 +60,8 @@ file_select_ele.addEventListener("change", function (evt) {
         //gdrive上書き保存判定の初期化用
         window.fileId_now = null;
 
+        window.file_name_now = file[0].name;
+
     }
 
 }, false);
@@ -113,6 +115,8 @@ function save_as(evt) {
 
     //file_name_gdriveテキストボックスの更新
     document.getElementById("file_name_gdrive").value = a.download;
+
+    window.file_name_now = a.download;
 
 
     document.body.appendChild(a);
