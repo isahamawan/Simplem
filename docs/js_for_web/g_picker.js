@@ -51,7 +51,7 @@ function createPicker() {
         docs_view.setMimeTypes("text/plain,application/vnd.google-apps.folder")
             .setParent(window.simplem_folder_id)//simplem folder id
             //.setIncludeFolders(true)
-            .setLabel('Simplem')
+            .setLabel('Google Drive > Simplem')
             .setMode(google.picker.DocsViewMode.LIST);//list形式で表示
 
 
@@ -69,7 +69,7 @@ function createPicker() {
             //.enableFeature(google.picker.Feature.NAV_HIDDEN)
             //.enableFeature(google.picker.Feature.MULTISELECT_ENABLED)
             //.setOrigin (google.script.host.origin)
-            .setTitle("ファイル選択 from Google Drive")//
+            .setTitle("ファイルを開く")//
             .setLocale("ja")//日本語設定
             .setAppId(appId)
             .setOAuthToken(oauthToken)
