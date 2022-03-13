@@ -73,7 +73,7 @@ file_select_ele.addEventListener("change", function (evt) {
 
 
 
-// ttttttttttttttttttttttファイルを名前を付けて保存------------------------------------------------------------------------------
+// ファイルを名前を付けて保存------------------------------------------------------------------------------
 
 window.addEventListener("load", () => {
     let save_as_ele = document.getElementById("save_as");
@@ -166,6 +166,11 @@ function save_to_gdrive() {
         //pick時、もしくは名前を付けて保存時のidのファイルへ保存
         Gdfs.updateFile(window.fileId_now, "text/plain", easyMDE.value());
 
+
+        //diffのオリジナル用として保存
+        window.diff_origin_text_data = easyMDE.value();
+
+
         //gdrive_instance.writeFile(window.file_name_now, "text/plain", easyMDE.value());
 
         //titleの変更
@@ -175,6 +180,7 @@ function save_to_gdrive() {
         document.getElementById("file_name").value = window.file_name_now;
         //file_name_gdriveテキストボックスの更新
         document.getElementById("file_name_gdrive").value = window.file_name_now;
+
 
         alert("上書き保存しました");
 
@@ -213,6 +219,8 @@ function save_as_to_gdrive() {
 
     );
 
+    //diffのオリジナル用として保存
+    window.diff_origin_text_data = easyMDE.value();
 
 
     //titleの変更
