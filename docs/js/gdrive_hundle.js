@@ -3,6 +3,8 @@
 Gdfs.loadApi(key_config.api_account, key_config.api_key);
 let gdrive_instance = new Gdfs();
 
+
+
 async function gdrive_init_for_simplem() {
 
     //gapiロード終わって、定義成功するまでリトライ処理
@@ -99,5 +101,22 @@ Gdfs.updateFile = async (fileId, mimeType, data) => {
 
 const file = await Gdfs.createFile(parentFolder.id, filename, mimeType);
 const result = await Gdfs.updateFile(file.id, mimeType, data);
+
+
+Gdfs.createFile(window.simplem_folder_id,"createst.md","plain/text");
+Gdfs.updateFile("1JD09cISOHUl5AaXibvl-0xflHVt58Nr9", "text/plain", "testestes");
+
+
+//下書き 名前を付けて保存
+Gdfs.createFile(window.simplem_folder_id,"createst.md","plain/text").then(
+
+    function(re){
+        //console.log(re.id);
+
+        Gdfs.updateFile(re.id, "text/plain", easyMDE.value());
+
+    }
+
+    );
 
 */
