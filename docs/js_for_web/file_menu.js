@@ -160,8 +160,8 @@ save_to_gdrive_ele.addEventListener("click", save_to_gdrive);
 // tttttttttttttttttttttttttttt google driveに名前を付けて保存--------------------------------------------------------------------
 function save_as_to_gdrive() {
 
-    //g_picker.js内にて定義（コールバック関数内にいろいろ処理あり）
-    loadPicker();
+    let file_name = document.getElementById("file_name_gdrive").value;
+    gdrive_instance.writeFile(file_name, "text/plain", easyMDE.value());
 
 }
 
