@@ -217,7 +217,7 @@ function save_as_to_gdrive() {
 
     gapi.client.drive.files.list({ q: q_simplem }).then(
         function (re) {
-            //console.log(re.result.files);
+            tconsole.log(re.result.files);
 
 
             re.result.files.forEach(
