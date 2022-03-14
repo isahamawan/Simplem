@@ -78,3 +78,49 @@
 .modal-wrapper .modal-close:hover {
   color: #2b2e38 !important
 }
+
+
+
+
+/* 以下、名前を付けて保存modal用 */
+
+#save_as_to_gdrive_exec {
+  cursor:default;
+
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  background-color: rgb(37,37,37);;
+  /*border-bottom: solid 1px #67b44a;*/
+
+  /* macメニュー風のメニュー */
+  padding: 0px 6px;
+  width: 100%;
+  line-height: 25px;
+  border-radius:3px;
+}
+#save_as_to_gdrive_exec:hover {
+  background-color:rgb(47, 118, 224);
+  /*border-bottom: solid 1px #dd5656;*/
+}
+
+
+#save_as_to_gdrive_cancel {
+  cursor:default;
+
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  background-color: rgb(37,37,37);;
+  /*border-bottom: solid 1px #67b44a;*/
+
+  /* macメニュー風のメニュー */
+  padding: 0px 6px;
+  width: 100%;
+  line-height: 25px;
+  border-radius:3px;
+}
+#save_as_to_gdrive_cancel:hover {
+  background-color:rgb(47, 118, 224);
+  /*border-bottom: solid 1px #dd5656;*/
+}
