@@ -38,7 +38,7 @@ function onPickerApiLoad() {
 
 function handleAuthResult(authResult) {
 
-    console.log(authResult);//simplem test
+    //console.log(authResult);
 
     if (authResult && !authResult.error) {
         oauthToken = authResult.access_token;

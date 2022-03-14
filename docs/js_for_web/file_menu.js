@@ -143,7 +143,7 @@ function file_open_from_gdrive() {
 
     if (pickerApiLoaded) {
         //loadPickerが実行済みであればこちらを実行（pickerが２重になるのを回避）
-        createPicker();
+        onAuthApiLoad();
     } else {
         //g_picker.js内にて定義（コールバック関数内にいろいろ処理あり）
         loadPicker();
