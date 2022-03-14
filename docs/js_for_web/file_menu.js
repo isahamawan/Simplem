@@ -197,17 +197,37 @@ save_to_gdrive_ele.addEventListener("click", save_to_gdrive);
 
 
 // ttttttttttttttttttttttttt google driveに名前を付けて保存--------------------------------------------------------------------
+
+
+//textファイルをクリックした場合、そのtextファイルのidを取得し、保存ボタンを押したら、上書きモードで処理（input boxのテキストも更新）
 function get_file_id(e) {
     window.file_id_for_save_as = e.id;
+    window.over_write_in_modal = true;
+    window.folder_selected_in_modal = false;
     document.getElementById("file_name_gdrive_exec").value = e.innerText;
 }
 
+
+
+
+//フォルダをクリックした場合、そのフォルダ以下のフォルダとtextファイルを取得
 function get_folder_id(e) {
     window.folder_id_for_save_as = e.id;
-
+    window.over_write_in_modal = false;
+    window.folder_selected_in_modal = true;
     //ここに、クリックしたフォルダ以下を開く処理を追加
 }
 
+//戻るフォルダをクリックした場合、そのフォルダ以下のフォルダとtextファイルを取得
+function get_folder_id(e) {
+    window.folder_id_for_save_as = e.id;
+    window.over_write_in_modal = false;
+    window.folder_selected_in_modal = true;
+    //ここに、クリックしたフォルダ以下を開く処理を追加
+}
+
+//何もクリックしないで保存ボタンを押したら、現在のフォルダのidで新規作成モードで処理（input boxのテキストをファイル名とする）
+////新規作成保存の前にinput box内のファイル名で、現在フォルダのファイルを検索し、該当があればそのidで上書き保存処理。なければ新規作成保存処理。
 function save_as_to_gdrive_exec() {
     console.log("exec");
 }
@@ -232,6 +252,7 @@ function save_as_to_gdrive() {
     //simplemフォルダ以下のフォルダとtextファイルを取得
     let save_as_modal_div = document.getElementById("save_as_modal");
 
+    //simplemフォルダ直下かつ、フォルダとテキストファイルかつ、ゴミ箱に入っていないファイル、を検索するクエリ
     let q_simplem = "(mimeType ='text/plain' or mimeType ='application/vnd.google-apps.folder') and " + "'" + window.simplem_folder_id + "'" + " in parents and trashed = false";
 
     gapi.client.drive.files.list({ q: q_simplem }).then(
@@ -270,21 +291,16 @@ function save_as_to_gdrive() {
 
                 });
 
-            //document.getElementById("save_as_modal").innerText = re.result.files[0].name;
 
         });
-    //document.getElementById("save_as_modal").innerText = re.result.files[0].name;
+
 
     document.getElementById("modal_button").click();
 
 
 
-    //フォルダをクリックした場合、そのフォルダ以下のフォルダとtextファイルを取得
 
-    //textファイルをクリックした場合、そのtextファイルのidを取得し、保存ボタンを押したら、上書きモードで処理（input boxのテキストも更新）
 
-    //何もクリックしないで保存ボタンを押したら、現在のフォルダのidで新規作成モードで処理（input boxのテキストをファイル名とする）
-    ////新規作成保存の前にinput box内のファイル名で、現在フォルダのファイルを検索し、該当があればそのidで上書き保存処理。なければ新規作成保存処理。
 
 
 

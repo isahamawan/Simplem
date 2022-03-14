@@ -87,7 +87,7 @@
 #save_as_to_gdrive_exec {
   cursor:default;
 
-  display: block;
+  display: inline;
   color: #fff;
   text-decoration: none;
   background-color: rgb(37,37,37);;
@@ -108,7 +108,7 @@
 #save_as_to_gdrive_cancel {
   cursor:default;
 
-  display: block;
+  display: inline;
   color: #fff;
   text-decoration: none;
   background-color: rgb(37,37,37);;
