@@ -103,4 +103,38 @@ const file = await Gdfs.createFile(parentFolder.id, filename, mimeType);
 const result = await Gdfs.updateFile(file.id, mimeType, data);
 
 
+gapi.client.drive.files.list({q:"mimeType ='text/plain' and name contains 'ai'"}).then(
+    function(re){
+        console.log(re)
+    });
+
+gapi.client.drive.files.list({q:"mimeType ='text/plain' or mimeType ='application/vnd.google-apps.folder'"}).then(function(re){console.log(re)})
+gapi.client.drive.files.list({q:"mimeType ='text/plain' and window.simplem_folder_id in parents"}).then(function(re){console.log(re)})
+
+gapi.client.drive.files.list({q:"mimeType ='text/plain' and '1kKSL2hrL29k7DswP-Bf3Yx-1tnUEyQC4' in parents and trashed = false"}).then(function(re){console.log(re)})
 */
+
+
+
+
+
+/* ファイル階層を表示した上での 名前を付けて保存 下書き
+
+
+gapi.client.drive.files.list({q:"mimeType ='text/plain' and '1kKSL2hrL29k7DswP-Bf3Yx-1tnUEyQC4' in parents and trashed = false"}).then(function(re){console.log(re)})
+
+//事前にファイル名input boxを用意しておく
+
+
+//simplemフォルダ以下のフォルダとtextファイルを取得
+
+//フォルダをクリックした場合、そのフォルダ以下のフォルダとtextファイルを取得
+
+//textファイルをクリックした場合、そのtextファイルのidを取得し、保存ボタンを押したら、上書きモードで処理（input boxのテキストも更新）
+
+//何もクリックしないで保存ボタンを押したら、現在のフォルダのidで新規作成モードで処理（input boxのテキストをファイル名とする）
+////新規作成保存の前にinput box内のファイル名で、現在フォルダのファイルを検索し、該当があればそのidで上書き保存処理。なければ新規作成保存処理。
+
+*/
+
+

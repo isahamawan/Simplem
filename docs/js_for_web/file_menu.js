@@ -199,6 +199,37 @@ save_to_gdrive_ele.addEventListener("click", save_to_gdrive);
 // ttttttttttttttttttttttttt google driveに名前を付けて保存--------------------------------------------------------------------
 function save_as_to_gdrive() {
 
+
+
+
+    /* ファイル階層を表示した上での 名前を付けて保存 下書き */
+
+
+    //gapi.client.drive.files.list({q:"mimeType ='text/plain' and '1kKSL2hrL29k7DswP-Bf3Yx-1tnUEyQC4' in parents and trashed = false"}).then(function(re){console.log(re)})
+
+    //事前にファイル名input boxを用意しておく
+
+
+    //simplemフォルダ以下のフォルダとtextファイルを取得
+    let q_simplem = "(mimeType ='text/plain' or mimeType ='application/vnd.google-apps.folder') and " + "'" + window.simplem_folder_id + "'" + " in parents and trashed = false";
+    gapi.client.drive.files.list({ q: q_simplem }).then(function (re) { console.log(re.result.files) });
+
+
+    //フォルダをクリックした場合、そのフォルダ以下のフォルダとtextファイルを取得
+
+    //textファイルをクリックした場合、そのtextファイルのidを取得し、保存ボタンを押したら、上書きモードで処理（input boxのテキストも更新）
+
+    //何もクリックしないで保存ボタンを押したら、現在のフォルダのidで新規作成モードで処理（input boxのテキストをファイル名とする）
+    ////新規作成保存の前にinput box内のファイル名で、現在フォルダのファイルを検索し、該当があればそのidで上書き保存処理。なければ新規作成保存処理。
+
+
+
+
+
+
+
+
+
     window.file_name_now = document.getElementById("file_name_gdrive").value;
 
     //gdrive_instance.writeFile(window.file_name_now, "text/plain", easyMDE.value());
