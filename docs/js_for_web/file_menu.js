@@ -208,6 +208,14 @@ function get_folder_id(e) {
     //ここに、クリックしたフォルダ以下を開く処理を追加
 }
 
+function save_as_to_gdrive_exec() {
+    console.log("exec");
+}
+
+function save_as_to_gdrive_cancel() {
+    console.log("cancel");
+}
+
 function save_as_to_gdrive() {
 
 
