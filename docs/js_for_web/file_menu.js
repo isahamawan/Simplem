@@ -222,7 +222,23 @@ function save_as_to_gdrive() {
 
             re.result.files.forEach(
                 file => {
-                    save_as_modal_div.innerText = file.name + "\n";
+                    //file要素の作成
+                    file_div_ele = document.createElement("div");
+                    file_div_ele.setAttribute("class", "test");
+
+                    file_a_ele = document.createElement("a");
+                    file_a_ele.setAttribute("class", "test");
+
+                    file_div_ele.appendChild(file_a_ele);
+
+                    //file名の書き込み
+                    file_a_ele.innerText = file.name;
+
+
+                    //file要素のmodalへの追加
+                    save_as_modal_div.appendChild(file_div_ele);
+
+
                 });
 
             //document.getElementById("save_as_modal").innerText = re.result.files[0].name;
