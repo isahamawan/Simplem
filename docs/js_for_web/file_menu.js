@@ -199,7 +199,7 @@ save_to_gdrive_ele.addEventListener("click", save_to_gdrive);
 // ttttttttttttttttttttttttt google driveに名前を付けて保存--------------------------------------------------------------------
 function get_file_id(e) {
     window.file_id_for_save_as = e.id;
-    document.getElementById("file_name_gdrive_exec").innerText = e.innerText;
+    document.getElementById("file_name_gdrive_exec").value = e.innerText;
 }
 
 function get_folder_id(e) {
