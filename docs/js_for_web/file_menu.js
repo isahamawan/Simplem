@@ -212,8 +212,15 @@ function save_as_to_gdrive() {
 
     //simplemフォルダ以下のフォルダとtextファイルを取得
     let q_simplem = "(mimeType ='text/plain' or mimeType ='application/vnd.google-apps.folder') and " + "'" + window.simplem_folder_id + "'" + " in parents and trashed = false";
-    gapi.client.drive.files.list({ q: q_simplem }).then(function (re) { console.log(re.result.files); });
-    document.getElementById("save_as_modal").innerText = re.result.files[0];
+    gapi.client.drive.files.list({ q: q_simplem }).then(
+        function (re) {
+            //console.log(re.result.files);
+            let save_as_modal_div = document.getElementById("save_as_modal");
+            re.result.files.forEach(file => { save_as_modal_div.innerText = file.name + "\n" });
+            document.getElementById("save_as_modal").innerText = re.result.files[0].name;
+
+        });
+    //document.getElementById("save_as_modal").innerText = re.result.files[0].name;
 
     document.getElementById("modal_button").click();
 
@@ -232,6 +239,8 @@ function save_as_to_gdrive() {
 
 
 
+
+    /* 名前を付けて保存modal実装中のため一旦無効化
 
 
     window.file_name_now = document.getElementById("file_name_gdrive").value;
@@ -266,6 +275,7 @@ function save_as_to_gdrive() {
 
     alert("名前を付けて保存しました");
 
+    */
 }
 
 let save_as_to_gdrive_ele = document.getElementById("save_as_to_gdrive");
