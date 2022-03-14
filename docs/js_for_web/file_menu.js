@@ -224,10 +224,17 @@ function save_as_to_gdrive() {
                 file => {
                     //file要素の作成
                     let file_div_ele = document.createElement("div");
-                    file_div_ele.setAttribute("class", "test");
-
                     let file_a_ele = document.createElement("a");
-                    file_a_ele.setAttribute("class", "test");
+
+                    if (file.mimeType == "text/plain") {
+                        file_div_ele.setAttribute("class", "file_div_in_modal");
+                        file_a_ele.setAttribute("class", "file_a_in_modal");
+                    } else {
+                        file_div_ele.setAttribute("class", "folder_div_in_modal");
+                        file_a_ele.setAttribute("class", "folder_a_in_modal");
+                    }
+
+                    //ファイルidの書き込み
                     file_a_ele.setAttribute("id", file.id);
 
                     file_div_ele.appendChild(file_a_ele);
