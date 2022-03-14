@@ -199,10 +199,13 @@ save_to_gdrive_ele.addEventListener("click", save_to_gdrive);
 // ttttttttttttttttttttttttt google driveに名前を付けて保存--------------------------------------------------------------------
 function get_file_id(e) {
     window.file_id_for_save_as = e.id;
+    document.getElementById("file_name_gdrive_exec").innerText = e.innerText;
 }
 
 function get_folder_id(e) {
     window.folder_id_for_save_as = e.id;
+
+    //ここに、クリックしたフォルダ以下を開く処理を追加
 }
 
 function save_as_to_gdrive() {
@@ -282,7 +285,14 @@ function save_as_to_gdrive() {
 
 
 
-    /* 名前を付けて保存modal実装中のため一旦無効化
+
+
+
+
+
+
+
+    /* 名前を付けて保存modal実装中のため、以下を一旦無効化
 
 
     window.file_name_now = document.getElementById("file_name_gdrive").value;
