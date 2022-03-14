@@ -197,6 +197,14 @@ save_to_gdrive_ele.addEventListener("click", save_to_gdrive);
 
 
 // ttttttttttttttttttttttttt google driveに名前を付けて保存--------------------------------------------------------------------
+function get_file_id(e) {
+    window.file_id_for_save_as = e.id;
+}
+
+function get_folder_id(e) {
+    window.folder_id_for_save_as = e.id;
+}
+
 function save_as_to_gdrive() {
 
 
@@ -229,12 +237,14 @@ function save_as_to_gdrive() {
                     if (file.mimeType == "text/plain") {
                         file_div_ele.setAttribute("class", "file_div_in_modal");
                         file_a_ele.setAttribute("class", "file_a_in_modal");
+                        file_a_ele.setAttribute("onclick", "get_file_id(this);");
                     } else {
                         file_div_ele.setAttribute("class", "folder_div_in_modal");
                         file_a_ele.setAttribute("class", "folder_a_in_modal");
+                        file_a_ele.setAttribute("onclick", "get_folder_id(this);");
                     }
 
-                    //ファイルidの書き込み
+                    //ファイルid、フォルダidの書き込み
                     file_a_ele.setAttribute("id", file.id);
 
                     file_div_ele.appendChild(file_a_ele);
