@@ -222,7 +222,7 @@ function save_as_to_gdrive() {
 
             re.result.files.forEach(
                 file => {
-                    save_as_modal_div.innerText = file.name + "\n"; t
+                    save_as_modal_div.innerText = file.name + "\n";
                 });
 
             //document.getElementById("save_as_modal").innerText = re.result.files[0].name;
