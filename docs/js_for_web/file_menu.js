@@ -228,6 +228,7 @@ function save_as_to_gdrive() {
 
                     file_a_ele = document.createElement("a");
                     file_a_ele.setAttribute("class", "test");
+                    file_a_ele.setAttribute("id", file.id);
 
                     file_div_ele.appendChild(file_a_ele);
 
