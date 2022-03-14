@@ -223,10 +223,10 @@ function save_as_to_gdrive() {
             re.result.files.forEach(
                 file => {
                     //file要素の作成
-                    file_div_ele = document.createElement("div");
+                    let file_div_ele = document.createElement("div");
                     file_div_ele.setAttribute("class", "test");
 
-                    file_a_ele = document.createElement("a");
+                    let file_a_ele = document.createElement("a");
                     file_a_ele.setAttribute("class", "test");
                     file_a_ele.setAttribute("id", file.id);
 
