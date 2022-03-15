@@ -261,32 +261,34 @@ function save_as_to_gdrive() {
 
 
             re.result.files.forEach(
-                file => {
+                file, i => {
                     //file要素の作成
-                    let file_div_ele = document.createElement("div");
-                    let file_a_ele = document.createElement("a");
+                    let file_div_eles = [];
+                    let file_a_eles = [];
+                    file_div_eles[i] = document.createElement("div");
+                    file_a_eles[i] = document.createElement("a");
 
                     if (file.mimeType == "text/plain") {
-                        file_div_ele.setAttribute("class", "file_div_in_modal");
-                        file_a_ele.setAttribute("class", "file_a_in_modal");
-                        file_a_ele.setAttribute("onclick", "get_file_id(this);");
+                        file_div_eles[i].setAttribute("class", "file_div_in_modal");
+                        file_a_eles[i].setAttribute("class", "file_a_in_modal");
+                        file_a_eles[i].setAttribute("onclick", "get_file_id(this);");
                     } else {
-                        file_div_ele.setAttribute("class", "folder_div_in_modal");
-                        file_a_ele.setAttribute("class", "folder_a_in_modal");
-                        file_a_ele.setAttribute("onclick", "get_folder_id(this);");
+                        file_div_eles[i].setAttribute("class", "folder_div_in_modal");
+                        file_a_eles[i].setAttribute("class", "folder_a_in_modal");
+                        file_a_eles[i].setAttribute("onclick", "get_folder_id(this);");
                     }
 
                     //ファイルid、フォルダidの書き込み
-                    file_a_ele.setAttribute("id", file.id);
+                    file_a_eles[i].setAttribute("id", file.id);
 
-                    file_div_ele.appendChild(file_a_ele);
+                    file_div_eles[i].appendChild(file_a_eles[i]);
 
                     //file名の書き込み
-                    file_a_ele.innerText = file.name;
+                    file_a_eles[i].innerText = file.name;
 
 
                     //file要素のmodalへの追加
-                    save_as_modal_div.appendChild(file_div_ele);
+                    save_as_modal_div.appendChild(file_div_eles[i]);
 
 
                 });
