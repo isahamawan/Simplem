@@ -264,9 +264,9 @@ function save_as_to_gdrive() {
 
 
             re.result.files.forEach(
-                file, i => {
-                    //file要素の作成
+                (file, i) => {
 
+                    //file要素の作成
                     file_div_eles[i] = document.createElement("div");
                     file_a_eles[i] = document.createElement("a");
 
