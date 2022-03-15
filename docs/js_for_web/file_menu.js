@@ -252,6 +252,7 @@ function save_as_to_gdrive() {
     //事前にファイル名input boxを用意しておく
 
 
+
     //simplemフォルダ以下のフォルダとtextファイルを取得
     let save_as_modal_div = document.getElementById("save_as_modal");
 
@@ -262,6 +263,10 @@ function save_as_to_gdrive() {
         function (re) {
             console.log(re.result.files);
 
+            //modalコンテンツの初期化（全削除）
+            file_div_eles.forEach(e => { e.remove() });
+            file_div_eles = [];
+            file_a_eles = [];
 
             re.result.files.forEach(
                 (file, i) => {
