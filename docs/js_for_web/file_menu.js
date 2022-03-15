@@ -259,15 +259,17 @@ function save_as_to_gdrive() {
     //simplemフォルダ直下かつ、フォルダとテキストファイルかつ、ゴミ箱に入っていないファイル、を検索するクエリ
     let q_simplem = "(mimeType ='text/plain' or mimeType ='application/vnd.google-apps.folder') and " + "'" + window.simplem_folder_id + "'" + " in parents and trashed = false";
 
+    //ファイル一覧の取得
     gapi.client.drive.files.list({ q: q_simplem }).then(
         function (re) {
-            console.log(re.result.files);
+            //console.log(re.result.files);
 
             //modalコンテンツの初期化（全削除）
             file_div_eles.forEach(e => { e.remove() });
             file_div_eles = [];
             file_a_eles = [];
 
+            //ファイル一覧の表示とid等の設定
             re.result.files.forEach(
                 (file, i) => {
 
