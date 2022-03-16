@@ -238,9 +238,12 @@ function get_folder_back_id(e) {
 function save_as_to_gdrive_exec() {
     if (window.over_write_in_modal == true) {
 
+        //選択したファイルへ上書き処理
         save_to_gdrive(window.file_id_for_save_as, window.file_name_for_save_as);
 
         console.log("over write:" + window.file_name_for_save_as);
+
+        document.getElementsByClassName("modal-close")[0].click();
     } else {
 
 
