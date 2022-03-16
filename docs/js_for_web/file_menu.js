@@ -204,7 +204,7 @@ function save_to_gdrive(file_id, file_name) {
 
 
 // ttttttttttttttttttttttttt google driveに名前を付けて保存--------------------------------------------------------------------
-
+/* ファイル階層を表示した上での 名前を付けて保存*/
 
 //textファイルをクリックした場合、そのtextファイルのidを取得し、保存ボタンを押したら、上書きモードで処理（input boxのテキストも更新）
 function get_file_id(e) {
@@ -234,6 +234,7 @@ function get_folder_back_id(e) {
     //ここに、クリックしたフォルダ以下を開く処理を追加
 }
 
+//保存ボタンを押した時の動作
 //何もクリックしないで保存ボタンを押したら、現在のフォルダのidで新規作成モードで処理（input boxのテキストをファイル名とする）
 ////新規作成保存の前にinput box内のファイル名で、現在フォルダのファイルを検索し、該当があればそのidで上書き保存処理。なければ新規作成保存処理。
 function save_as_to_gdrive_exec() {
@@ -256,41 +257,85 @@ function save_as_to_gdrive_exec() {
         document.getElementsByClassName("modal-close")[0].click();
 
         window.file_name_for_save_as = document.getElementById("file_name_gdrive_exec").value;
+
+
+        /* 名前を付けて保存modal実装中のため、以下を一旦無効化
+
+        window.file_name_now = document.getElementById("file_name_gdrive").value;
+
+        //gdrive_instance.writeFile(window.file_name_now, "text/plain", easyMDE.value());
+
+
+        //名前を付けて保存
+        Gdfs.createFile(window.simplem_folder_id, window.file_name_now, "plain/text").then(
+
+            function (re) {
+                //console.log(re.id);
+
+                //名前を付けて保存したファイルのid（上書き保存用）
+                window.fileId_now = re.id;
+
+                Gdfs.updateFile(re.id, "text/plain", easyMDE.value());
+
+            }
+
+        );
+
+        //diffのオリジナル用として保存
+        window.diff_origin_text_data = easyMDE.value();
+
+
+        //titleの変更
+        document.getElementsByTagName("title")[0].innerText = window.file_name_now + " - Simplem";
+
+        //file_nameテキストボックスの更新
+        document.getElementById("file_name").value = window.file_name_now;
+
+        alert("名前を付けて保存しました");
+
+        */
+
         console.log("save as:" + window.file_name_for_save_as);
     }
 
 }
 
+
+//キャンセルボタンを押した時の動作
 function save_as_to_gdrive_cancel() {
     console.log("cancel");
     document.getElementsByClassName("modal-close")[0].click();
 }
 
 
-//googledribe名前を付けて保存をクリック時の動作
+//googledribe名前を付けて保存をクリック時の動作（モーダル内でフォルダをクリックした時の動作も含む）
 let file_div_eles = [];
 let file_a_eles = [];
-function save_as_to_gdrive() {
+function save_as_to_gdrive(folder_id) {
 
-    /* ファイル階層を表示した上での 名前を付けて保存 下書き */
+    let selected_folder_id = "";
+
+    if (folder_id != undefined) {
+        selected_folder_id = folder_id;
+    } else {
+        //simplemフォルダ以下を表示
+        selected_folder_id = window.simplem_folder_id;
+    }
 
 
     //gapi.client.drive.files.list({q:"mimeType ='text/plain' and '1kKSL2hrL29k7DswP-Bf3Yx-1tnUEyQC4' in parents and trashed = false"}).then(function(re){console.log(re)})
-
-
-
 
     //modalのDOM要素をget
     let save_as_modal_div = document.getElementById("save_as_modal");
 
 
-    //simplemフォルダ直下かつ、フォルダとテキストファイルかつ、ゴミ箱に入っていないファイル、を検索するクエリ（simplemフォルダを選択状態に初期設定）
+    //selected_folder_idフォルダ以下のフォルダとテキストファイルかつ、ゴミ箱に入っていないファイル、を検索するクエリ
     window.folder_selected_in_modal = true;
     window.over_write_in_modal = false;
     window.file_name_for_save_as = document.getElementById("file_name_gdrive_exec").value;
-    let q_simplem = "(mimeType ='text/plain' or mimeType ='application/vnd.google-apps.folder') and " + "'" + window.simplem_folder_id + "'" + " in parents and trashed = false";
+    let q_simplem = "(mimeType ='text/plain' or mimeType ='application/vnd.google-apps.folder') and " + "'" + selected_folder_id + "'" + " in parents and trashed = false";
 
-    //simplemフォルダ以下のフォルダとtextファイルを取得
+    //selected_folder_idフォルダ以下のフォルダとtextファイルを取得
     gapi.client.drive.files.list({ q: q_simplem }).then(
         function (re) {
             //console.log(re.result.files);
@@ -311,10 +356,12 @@ function save_as_to_gdrive() {
                     file_a_eles[i] = document.createElement("a");
 
                     if (file.mimeType == "text/plain") {
+                        //テキストファイルの時
                         file_div_eles[i].setAttribute("class", "file_div_in_modal");
                         file_a_eles[i].setAttribute("class", "file_a_in_modal");
                         file_a_eles[i].setAttribute("onclick", "get_file_id(this);");
                     } else {
+                        //フォルダの時
                         file_div_eles[i].setAttribute("class", "folder_div_in_modal");
                         file_a_eles[i].setAttribute("class", "folder_a_in_modal");
                         file_a_eles[i].setAttribute("onclick", "get_folder_id(this);");
@@ -341,65 +388,10 @@ function save_as_to_gdrive() {
 
     document.getElementById("modal_button").click();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /* 名前を付けて保存modal実装中のため、以下を一旦無効化
-
-
-    window.file_name_now = document.getElementById("file_name_gdrive").value;
-
-    //gdrive_instance.writeFile(window.file_name_now, "text/plain", easyMDE.value());
-
-
-    //名前を付けて保存
-    Gdfs.createFile(window.simplem_folder_id, window.file_name_now, "plain/text").then(
-
-        function (re) {
-            //console.log(re.id);
-
-            //名前を付けて保存したファイルのid（上書き保存用）
-            window.fileId_now = re.id;
-
-            Gdfs.updateFile(re.id, "text/plain", easyMDE.value());
-
-        }
-
-    );
-
-    //diffのオリジナル用として保存
-    window.diff_origin_text_data = easyMDE.value();
-
-
-    //titleの変更
-    document.getElementsByTagName("title")[0].innerText = window.file_name_now + " - Simplem";
-
-    //file_nameテキストボックスの更新
-    document.getElementById("file_name").value = window.file_name_now;
-
-    alert("名前を付けて保存しました");
-
-    */
 }
 
-let save_as_to_gdrive_ele = document.getElementById("save_as_to_gdrive");
-save_as_to_gdrive_ele.addEventListener("click", save_as_to_gdrive);
+//let save_as_to_gdrive_ele = document.getElementById("save_as_to_gdrive");
+//save_as_to_gdrive_ele.addEventListener("click", save_as_to_gdrive);
 
 
 
