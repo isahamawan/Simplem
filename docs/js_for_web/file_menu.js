@@ -335,7 +335,11 @@ function save_as_to_gdrive(folder_id) {
     //modalのDOM要素をget
     let save_as_modal_div = document.getElementById("save_as_modal");
 
-
+    //戻るボタンを初期化
+    if (back_div_ele) {
+        back_div_ele.remove();
+        back_div_ele = null;
+    }
 
     //戻るボタンの設置
     if (folder_id != undefined) {
