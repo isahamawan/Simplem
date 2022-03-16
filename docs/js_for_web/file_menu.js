@@ -159,7 +159,13 @@ file_open_gdrive_ele.addEventListener("click", file_open_from_gdrive);
 
 
 // google driveに上書き--------------------------------------------------------------------
-function save_to_gdrive() {
+function save_to_gdrive(file_id, file_name) {
+
+    //引数でidを与えられたら、そのidで上書き
+    if (file_id) {
+        window.fileId_now = file_id;
+        window.file_name_now = file_name;
+    }
 
     if (window.fileId_now) {
 
@@ -231,6 +237,8 @@ function get_folder_back_id(e) {
 ////新規作成保存の前にinput box内のファイル名で、現在フォルダのファイルを検索し、該当があればそのidで上書き保存処理。なければ新規作成保存処理。
 function save_as_to_gdrive_exec() {
     if (window.over_write_in_modal == true) {
+
+        save_to_gdrive(window.file_id_for_save_as, window.file_name_for_save_as);
 
         console.log("over write:" + window.file_name_for_save_as);
     } else {
