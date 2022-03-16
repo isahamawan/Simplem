@@ -243,7 +243,7 @@ function get_folder_back_id(e) {
 
     //別でファイル一覧getする関数を定義要？
     //クリックしたフォルダ以下を開く処理
-    save_as_to_gdrive(window.folder_id_for_save_as);
+    save_as_to_gdrive(window.folder_id_for_save_as, true);
 
     console.log("get_back_folder");
 }
@@ -328,7 +328,7 @@ let file_a_eles = [];
 let back_div_ele = null;
 let back_ids = [];
 window.back_ids_index = -1;
-function save_as_to_gdrive(folder_id) {
+function save_as_to_gdrive(folder_id, folder_back = false) {
 
 
     let selected_folder_id = "";
@@ -338,10 +338,12 @@ function save_as_to_gdrive(folder_id) {
         selected_folder_id = folder_id;
 
         //戻るボタンのid設定
+        if (folder_back == false) {
 
-        back_ids.push(folder_id);
+            back_ids.push(folder_id);
 
-        window.back_ids_index = window.back_ids_index + 1;
+            window.back_ids_index = window.back_ids_index + 1;
+        }
 
     } else {
         //simplemフォルダ以下を表示
@@ -369,7 +371,7 @@ function save_as_to_gdrive(folder_id) {
     }
 
     //戻るボタンの設置
-    if (folder_id != undefined) {
+    if ((folder_id != undefined) || (window.back_ids_index != -1)) {
         //file要素の作成
         back_div_ele = document.createElement("div");
         back_a_ele = document.createElement("a");
