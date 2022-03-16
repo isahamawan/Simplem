@@ -219,7 +219,7 @@ function get_folder_id(e) {
 }
 
 //戻るフォルダをクリックした場合、そのフォルダ以下のフォルダとtextファイルを取得
-function get_folder_id(e) {
+function get_folder_back_id(e) {
     window.folder_id_for_save_as = e.id;
     window.over_write_in_modal = false;
     window.folder_selected_in_modal = true;
