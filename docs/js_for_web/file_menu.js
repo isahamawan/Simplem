@@ -233,6 +233,7 @@ function get_folder_back_id(e) {
     window.over_write_in_modal = false;
     window.folder_selected_in_modal = true;
     //ここに、クリックしたフォルダ以下を開く処理を追加
+    console.log("get_back_folder");
 }
 
 //保存ボタンを押した時の動作
@@ -312,6 +313,7 @@ function save_as_to_gdrive_cancel() {
 //googledribe名前を付けて保存をクリック時の動作（モーダル内でフォルダをクリックした時の動作も含む）
 let file_div_eles = [];
 let file_a_eles = [];
+let back_div_ele = null;
 function save_as_to_gdrive(folder_id) {
 
 
@@ -332,6 +334,32 @@ function save_as_to_gdrive(folder_id) {
 
     //modalのDOM要素をget
     let save_as_modal_div = document.getElementById("save_as_modal");
+
+
+
+    //戻るボタンの設置
+    if (folder_id != undefined) {
+        //file要素の作成
+        back_div_ele = document.createElement("div");
+        back_a_ele = document.createElement("a");
+
+        //フォルダの時
+        back_div_ele.setAttribute("class", "folder_div_in_modal");
+        back_a_ele.setAttribute("class", "folder_a_in_modal");
+        back_a_ele.setAttribute("onclick", "get_folder_back_id(this);");
+
+        //ファイルid、フォルダidの書き込み
+        back_a_ele.setAttribute("id", "parent_folder_id");
+
+        back_div_ele.appendChild(back_a_ele);
+
+        //file名の書き込み
+        back_a_ele.innerText = "←";
+
+
+        //file要素のmodalへの追加
+        save_as_modal_div.appendChild(back_div_ele);
+    }
 
 
     //selected_folder_idフォルダ以下のフォルダとテキストファイルかつ、ゴミ箱に入っていないファイル、を検索するクエリ
