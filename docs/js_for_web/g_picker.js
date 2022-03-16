@@ -109,7 +109,7 @@ function pickerCallback(data) {
                 document.getElementById("file_name").value = data.docs[0].name;
 
                 //file_name_gdriveテキストボックスの更新
-                document.getElementById("file_name_gdrive").value = data.docs[0].name;
+                //document.getElementById("file_name_gdrive").value = data.docs[0].name;
 
                 //titleの変更
                 document.getElementsByTagName("title")[0].innerText = data.docs[0].name + " - Simplem";
