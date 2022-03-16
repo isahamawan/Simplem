@@ -241,6 +241,7 @@ function save_as_to_gdrive_exec() {
 
 function save_as_to_gdrive_cancel() {
     console.log("cancel");
+    document.getElementById("modal_close").click();
 }
 
 
