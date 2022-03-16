@@ -346,6 +346,9 @@ function save_as_to_gdrive(folder_id, folder_back = false) {
         }
 
     } else {
+
+        document.getElementById("file_name_gdrive_exec").value = document.getElementById("file_name").value;
+
         //simplemフォルダ以下を表示
         selected_folder_id = window.simplem_folder_id;
 
