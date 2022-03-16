@@ -45,7 +45,7 @@ file_select_ele.addEventListener("change", function (evt) {
         document.getElementById("file_name").value = file[0].name;
 
         //file_name_gdriveテキストボックスの更新
-        document.getElementById("file_name_gdrive").value = file[0].name;
+        //document.getElementById("file_name_gdrive").value = file[0].name;
 
         //titleの変更
         document.getElementsByTagName("title")[0].innerText = file[0].name + " - Simplem";
@@ -114,7 +114,7 @@ function save_as(evt) {
 
 
     //file_name_gdriveテキストボックスの更新
-    document.getElementById("file_name_gdrive").value = a.download;
+    //document.getElementById("file_name_gdrive").value = a.download;
 
     //gdriveに保存した名前と違うときは、gdrive上書き判定の初期化
     if (window.file_name_now != document.getElementById("file_name").value) {
@@ -186,7 +186,7 @@ function save_to_gdrive(file_id, file_name) {
         //file_nameテキストボックスの更新
         document.getElementById("file_name").value = window.file_name_now;
         //file_name_gdriveテキストボックスの更新
-        document.getElementById("file_name_gdrive").value = window.file_name_now;
+        //document.getElementById("file_name_gdrive").value = window.file_name_now;
 
 
         alert("上書き保存しました");
@@ -238,15 +238,22 @@ function get_folder_back_id(e) {
 ////新規作成保存の前にinput box内のファイル名で、現在フォルダのファイルを検索し、該当があればそのidで上書き保存処理。なければ新規作成保存処理。
 function save_as_to_gdrive_exec() {
     if (window.over_write_in_modal == true) {
+        //上書き処理
+
+        //save_to...がwait処理なので、先にモーダルを閉じる。
+        document.getElementsByClassName("modal-close")[0].click();
 
         //選択したファイルへ上書き処理
         save_to_gdrive(window.file_id_for_save_as, window.file_name_for_save_as);
 
         console.log("over write:" + window.file_name_for_save_as);
 
-        document.getElementsByClassName("modal-close")[0].click();
-    } else {
 
+    } else {
+        //新規作成処理
+
+        //save_to...がwait処理なので、先にモーダルを閉じる。
+        document.getElementsByClassName("modal-close")[0].click();
 
         window.file_name_for_save_as = document.getElementById("file_name_gdrive_exec").value;
         console.log("save as:" + window.file_name_for_save_as);
