@@ -283,6 +283,7 @@ function save_as_to_gdrive_exec() {
 
                 if (re.result.files.length == 0) {
                     //新規作成
+                    console.log("new_create");
                 } else {
                     //上書き
                     console.log(re.result.files[0].id);
