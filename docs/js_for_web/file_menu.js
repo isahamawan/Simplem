@@ -412,7 +412,7 @@ function save_as_to_gdrive(folder_id, folder_back = false) {
     //selected_folder_idフォルダ以下のフォルダとtextファイルを取得
     gapi.client.drive.files.list({ q: q_simplem }).then(
         function (re) {
-            console.log(re.result.files);
+            //console.log(re.result.files);
 
 
 
