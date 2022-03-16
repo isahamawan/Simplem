@@ -223,7 +223,8 @@ function get_folder_id(e) {
     window.over_write_in_modal = false;
     window.folder_selected_in_modal = true;
 
-    //ここに、クリックしたフォルダ以下を開く処理を追加
+    //クリックしたフォルダ以下を開く処理
+    save_as_to_gdrive(window.folder_id_for_save_as);
 }
 
 //戻るフォルダをクリックした場合、そのフォルダ以下のフォルダとtextファイルを取得
