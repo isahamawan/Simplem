@@ -280,7 +280,14 @@ function save_as_to_gdrive_exec() {
             function (re) {
                 console.log(re.result.files);
                 console.log(re.result.files.length);
-                re.result.files.length;
+
+                if (re.result.files.length == 0) {
+                    //新規作成
+                } else {
+                    //上書き
+                    console.log(re.result.files[0].id);
+                }
+
             });
 
 
