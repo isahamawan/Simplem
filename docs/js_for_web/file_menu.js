@@ -199,8 +199,8 @@ function save_to_gdrive(file_id, file_name) {
 
 }
 
-let save_to_gdrive_ele = document.getElementById("save_to_gdrive");
-save_to_gdrive_ele.addEventListener("click", save_to_gdrive);
+//let save_to_gdrive_ele = document.getElementById("save_to_gdrive");
+//save_to_gdrive_ele.addEventListener("click", save_to_gdrive);
 
 
 
