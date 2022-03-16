@@ -241,8 +241,7 @@ function get_folder_back_id(e) {
 
     window.back_ids_index = window.back_ids_index - 1;
 
-    //別でファイル一覧getする関数を定義要？
-    //クリックしたフォルダ以下を開く処理
+    //クリックしたフォルダ以下を開く処理（ただしfolder_back = true）
     save_as_to_gdrive(window.folder_id_for_save_as, true);
 
     console.log("get_back_folder");
@@ -250,7 +249,8 @@ function get_folder_back_id(e) {
 
 //保存ボタンを押した時の動作
 //何もクリックしないで保存ボタンを押したら、現在のフォルダのidで新規作成モードで処理（input boxのテキストをファイル名とする）
-////新規作成保存の前にinput box内のファイル名で、現在フォルダのファイルを検索し、該当があればそのidで上書き保存処理。なければ新規作成保存処理。
+//ファイルをクリックしたあと保存ボタンを押したら、上書き処理
+
 function save_as_to_gdrive_exec() {
     if (window.over_write_in_modal == true) {
         //上書き処理
@@ -273,21 +273,26 @@ function save_as_to_gdrive_exec() {
         window.file_name_for_save_as = document.getElementById("file_name_gdrive_exec").value;
 
 
-        /* 名前を付けて保存modal実装中のため、以下を一旦無効化
+        //新規作成保存の前にfile_name_gdrive_exec box内のファイル名で、現在フォルダのファイルを検索し、該当があればそのidで上書き保存処理。なければ新規作成保存処理。
+        let q_same_name = "mimeType ='text/plain' and " + "'" + window.folder_id_for_save_as + "'" + " in parents and trashed = false";
+        //selected_folder_idフォルダ以下のフォルダとtextファイルを取得
+        gapi.client.drive.files.list({ q: q_same_name }).then(
+            function (re) {
+                console.log(re.result.files);
+            });
 
-        window.file_name_now = document.getElementById("file_name_gdrive").value;
 
-        //gdrive_instance.writeFile(window.file_name_now, "text/plain", easyMDE.value());
-
+        /* 上が完成後、以下は有効化
 
         //名前を付けて保存
-        Gdfs.createFile(window.simplem_folder_id, window.file_name_now, "plain/text").then(
+        Gdfs.createFile(window.file_id_for_save_as, window.file_name_for_save_as, "plain/text").then(
 
             function (re) {
                 //console.log(re.id);
 
-                //名前を付けて保存したファイルのid（上書き保存用）
+                //名前を付けて保存したファイルのid（データ書き込み用）
                 window.fileId_now = re.id;
+                window.file_name_now = window.file_name_for_save_as;
 
                 Gdfs.updateFile(re.id, "text/plain", easyMDE.value());
 
@@ -309,7 +314,7 @@ function save_as_to_gdrive_exec() {
 
         */
 
-        console.log("save as:" + window.file_name_for_save_as);
+        console.log("save as:" + window.file_name_now);
     }
 
 }
