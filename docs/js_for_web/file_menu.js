@@ -232,7 +232,19 @@ function get_folder_back_id(e) {
     window.folder_id_for_save_as = e.id;
     window.over_write_in_modal = false;
     window.folder_selected_in_modal = true;
+
     //ここに、クリックしたフォルダ以下を開く処理を追加
+
+    //戻るボタンのid設定
+
+    back_ids.pop();
+
+    window.back_ids_index = window.back_ids_index - 1;
+
+    //別でファイル一覧getする関数を定義要？
+    //クリックしたフォルダ以下を開く処理
+    save_as_to_gdrive(window.folder_id_for_save_as);
+
     console.log("get_back_folder");
 }
 
@@ -314,6 +326,8 @@ function save_as_to_gdrive_cancel() {
 let file_div_eles = [];
 let file_a_eles = [];
 let back_div_ele = null;
+let back_ids = [];
+window.back_ids_index = -1;
 function save_as_to_gdrive(folder_id) {
 
 
@@ -323,9 +337,22 @@ function save_as_to_gdrive(folder_id) {
 
         selected_folder_id = folder_id;
 
+        //戻るボタンのid設定
+
+        back_ids.push(folder_id);
+
+        window.back_ids_index = window.back_ids_index + 1;
+
     } else {
         //simplemフォルダ以下を表示
         selected_folder_id = window.simplem_folder_id;
+
+        //戻るボタンの初期化
+        back_ids = [];
+
+        back_ids.push(window.simplem_folder_id);
+
+        window.back_ids_index = -1;
 
     }
 
@@ -353,7 +380,7 @@ function save_as_to_gdrive(folder_id) {
         back_a_ele.setAttribute("onclick", "get_folder_back_id(this);");
 
         //ファイルid、フォルダidの書き込み
-        back_a_ele.setAttribute("id", "parent_folder_id");
+        back_a_ele.setAttribute("id", back_ids[window.back_ids_index]);
 
         back_div_ele.appendChild(back_a_ele);
 
