@@ -161,10 +161,9 @@ file_open_gdrive_ele.addEventListener("click", file_open_from_gdrive);
 // google driveに上書き--------------------------------------------------------------------
 function save_to_gdrive(file_id, file_name) {
 
-
     console.log(file_id);
     //引数でidを与えられたら、そのidで上書き
-    if (file_id != false) {
+    if (file_id != undefined) {
         window.fileId_now = file_id;
         window.file_name_now = file_name;
     }
@@ -200,8 +199,8 @@ function save_to_gdrive(file_id, file_name) {
 
 }
 
-let save_to_gdrive_ele = document.getElementById("save_to_gdrive");
-save_to_gdrive_ele.addEventListener("click", save_to_gdrive(false, false));
+//let save_to_gdrive_ele = document.getElementById("save_to_gdrive");
+//save_to_gdrive_ele.addEventListener("click", save_to_gdrive);
 
 
 
