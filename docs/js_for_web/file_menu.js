@@ -233,10 +233,10 @@ function get_folder_back_id(e) {
 function save_as_to_gdrive_exec() {
     if (window.over_write_in_modal == true) {
 
-        console.log("over write" + window.file_name_for_save_as);
+        console.log("over write:" + window.file_name_for_save_as);
     } else {
 
-        console.log("save as:");
+        console.log("save as:" + window.file_name_for_save_as);
     }
 
 }

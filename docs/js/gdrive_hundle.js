@@ -8,10 +8,10 @@ let gdrive_instance = new Gdfs();
 async function gdrive_init_for_simplem() {
 
     //gapiロード終わって、定義成功するまでリトライ処理
-    let complete = false;
-    let count = 0;
+    let init_complete = false;
+    let err_count = 0;
     const maxTries = 50;
-    while (complete === false) {
+    while (init_complete === false) {
         try {
             // リクエスト処理
 
@@ -19,18 +19,18 @@ async function gdrive_init_for_simplem() {
             await gdrive_instance.mkdir("Simplem");
             await gdrive_instance.chdir("Simplem");
 
-            complete = true;
+            init_complete = true;
 
             console.log("gdrive_init_for_simplem : complete");
 
         } catch (err) {
             // エラーハンドリング
 
-            count = count + 1;
+            err_count = err_count + 1;
             console.log("gdrive_init_for_simplem : retry");
 
-            if (count === maxTries) {
-                complete = true;
+            if (err_count === maxTries) {
+                init_complete = true;
                 console.log("gdrive_init_for_simplem : time out (50 tried)");
             }
 
@@ -41,7 +41,7 @@ async function gdrive_init_for_simplem() {
     window.simplem_folder_id = gdrive_instance.getCurrentFolderId();
 }
 
-gdrive_init_for_simplem();
+gdrive_init_for_simplem();//あとで、google driveへの連携有効かボタン押したときに実行するようにする
 
 
 
