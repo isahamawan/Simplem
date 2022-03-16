@@ -357,6 +357,8 @@ function save_as_to_gdrive(folder_id, folder_back = false) {
         //simplemフォルダ以下を表示
         selected_folder_id = window.simplem_folder_id;
 
+        window.folder_id_for_save_as = window.simplem_folder_id;
+
         //戻るボタンの初期化
         back_ids = [];
 
