@@ -215,7 +215,6 @@ function get_folder_id(e) {
     window.folder_id_for_save_as = e.id;
     window.over_write_in_modal = false;
     window.folder_selected_in_modal = true;
-    window.file_name_for_save_as = document.getElementById("file_name_gdrive_exec").value;
 
     //ここに、クリックしたフォルダ以下を開く処理を追加
 }
@@ -236,6 +235,8 @@ function save_as_to_gdrive_exec() {
         console.log("over write:" + window.file_name_for_save_as);
     } else {
 
+
+        window.file_name_for_save_as = document.getElementById("file_name_gdrive_exec").value;
         console.log("save as:" + window.file_name_for_save_as);
     }
 
