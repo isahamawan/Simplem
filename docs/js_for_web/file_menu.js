@@ -263,6 +263,7 @@ function save_as_to_gdrive() {
 
     //simplemフォルダ直下かつ、フォルダとテキストファイルかつ、ゴミ箱に入っていないファイル、を検索するクエリ（simplemフォルダを選択状態に初期設定）
     window.folder_selected_in_modal = true;
+    window.over_write_in_modal = false;
     let q_simplem = "(mimeType ='text/plain' or mimeType ='application/vnd.google-apps.folder') and " + "'" + window.simplem_folder_id + "'" + " in parents and trashed = false";
 
     //simplemフォルダ以下のフォルダとtextファイルを取得
