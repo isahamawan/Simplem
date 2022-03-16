@@ -371,7 +371,7 @@ function save_as_to_gdrive(folder_id, folder_back = false) {
     }
 
     //戻るボタンの設置
-    if ((folder_id != undefined) || (window.back_ids_index != -1)) {
+    if ((folder_id != undefined) && (window.back_ids_index != -1)) {
         //file要素の作成
         back_div_ele = document.createElement("div");
         back_a_ele = document.createElement("a");
