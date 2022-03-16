@@ -314,13 +314,17 @@ let file_div_eles = [];
 let file_a_eles = [];
 function save_as_to_gdrive(folder_id) {
 
+
     let selected_folder_id = "";
 
     if (folder_id != undefined) {
+
         selected_folder_id = folder_id;
+
     } else {
         //simplemフォルダ以下を表示
         selected_folder_id = window.simplem_folder_id;
+
     }
 
 
