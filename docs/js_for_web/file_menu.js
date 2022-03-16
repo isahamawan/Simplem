@@ -215,6 +215,8 @@ function get_folder_id(e) {
     window.folder_id_for_save_as = e.id;
     window.over_write_in_modal = false;
     window.folder_selected_in_modal = true;
+    window.file_name_for_save_as = document.getElementById("file_name_gdrive_exec").value;
+
     //ここに、クリックしたフォルダ以下を開く処理を追加
 }
 
@@ -231,10 +233,10 @@ function get_folder_back_id(e) {
 function save_as_to_gdrive_exec() {
     if (window.over_write_in_modal == true) {
 
-        console.log("over write");
+        console.log("over write" + window.file_name_for_save_as);
     } else {
 
-        console.log("save as:" + window.file_name_for_save_as);
+        console.log("save as:");
     }
 
 }
@@ -265,6 +267,7 @@ function save_as_to_gdrive() {
     //simplemフォルダ直下かつ、フォルダとテキストファイルかつ、ゴミ箱に入っていないファイル、を検索するクエリ（simplemフォルダを選択状態に初期設定）
     window.folder_selected_in_modal = true;
     window.over_write_in_modal = false;
+    window.file_name_for_save_as = document.getElementById("file_name_gdrive_exec").value;
     let q_simplem = "(mimeType ='text/plain' or mimeType ='application/vnd.google-apps.folder') and " + "'" + window.simplem_folder_id + "'" + " in parents and trashed = false";
 
     //simplemフォルダ以下のフォルダとtextファイルを取得
