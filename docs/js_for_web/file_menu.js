@@ -274,7 +274,7 @@ function save_as_to_gdrive_exec() {
 
 
         //新規作成保存の前にfile_name_gdrive_exec box内のファイル名で、現在フォルダのファイルを検索し、該当があればそのidで上書き保存処理。なければ新規作成保存処理。
-        let q_same_name = "name = " + "'" + window.folder_id_for_save_as + "'" + " and mimeType = 'text/plain' and " + "'" + window.folder_id_for_save_as + "'" + " in parents and trashed = false";
+        let q_same_name = "name = " + "'" + window.file_name_for_save_as + "'" + " and mimeType = 'text/plain' and " + "'" + window.folder_id_for_save_as + "'" + " in parents and trashed = false";
         //selected_folder_idフォルダ以下のフォルダとtextファイルを取得
         gapi.client.drive.files.list({ q: q_same_name }).then(
             function (re) {
