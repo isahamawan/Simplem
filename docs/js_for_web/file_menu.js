@@ -204,7 +204,7 @@ function get_file_id(e) {
     window.file_id_for_save_as = e.id;
     window.over_write_in_modal = true;
     window.folder_selected_in_modal = false;
-    document.getElementById("file_name_gdrive_exec").value = e.innerText;
+    window.file_name_for_save_as = document.getElementById("file_name_gdrive_exec").value = e.innerText;
 }
 
 
@@ -229,7 +229,14 @@ function get_folder_id(e) {
 //何もクリックしないで保存ボタンを押したら、現在のフォルダのidで新規作成モードで処理（input boxのテキストをファイル名とする）
 ////新規作成保存の前にinput box内のファイル名で、現在フォルダのファイルを検索し、該当があればそのidで上書き保存処理。なければ新規作成保存処理。
 function save_as_to_gdrive_exec() {
-    console.log("exec");
+    if (window.over_write_in_modal == true) {
+
+        console.log("over write");
+    } else {
+
+        console.log("save as:" + window.file_name_for_save_as);
+    }
+
 }
 
 function save_as_to_gdrive_cancel() {
@@ -237,32 +244,33 @@ function save_as_to_gdrive_cancel() {
 }
 
 
+//googledribe名前を付けて保存をクリック時の動作
 let file_div_eles = [];
 let file_a_eles = [];
 function save_as_to_gdrive() {
-
-
-
 
     /* ファイル階層を表示した上での 名前を付けて保存 下書き */
 
 
     //gapi.client.drive.files.list({q:"mimeType ='text/plain' and '1kKSL2hrL29k7DswP-Bf3Yx-1tnUEyQC4' in parents and trashed = false"}).then(function(re){console.log(re)})
 
-    //事前にファイル名input boxを用意しておく
 
 
 
-    //simplemフォルダ以下のフォルダとtextファイルを取得
+    //modalのDOM要素をget
     let save_as_modal_div = document.getElementById("save_as_modal");
 
-    //simplemフォルダ直下かつ、フォルダとテキストファイルかつ、ゴミ箱に入っていないファイル、を検索するクエリ
+
+    //simplemフォルダ直下かつ、フォルダとテキストファイルかつ、ゴミ箱に入っていないファイル、を検索するクエリ（simplemフォルダを選択状態に初期設定）
+    window.folder_selected_in_modal = true;
     let q_simplem = "(mimeType ='text/plain' or mimeType ='application/vnd.google-apps.folder') and " + "'" + window.simplem_folder_id + "'" + " in parents and trashed = false";
 
-    //ファイル一覧の取得
+    //simplemフォルダ以下のフォルダとtextファイルを取得
     gapi.client.drive.files.list({ q: q_simplem }).then(
         function (re) {
             //console.log(re.result.files);
+
+
 
             //modalコンテンツの初期化（全削除）
             file_div_eles.forEach(e => { e.remove() });
