@@ -159,7 +159,7 @@ file_open_gdrive_ele.addEventListener("click", file_open_from_gdrive);
 
 
 // google driveに上書き--------------------------------------------------------------------
-function save_to_gdrive(file_id, file_name) {
+function save_to_gdrive(file_id = false, file_name = false) {
 
     //引数でidを与えられたら、そのidで上書き
     if (file_id) {
