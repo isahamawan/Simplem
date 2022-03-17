@@ -424,8 +424,17 @@ function save_as_to_gdrive(folder_id, folder_back = false) {
     //selected_folder_idフォルダ以下のフォルダとtextファイルを取得
     gapi.client.drive.files.list({ q: q_simplem }).then(
         function (re) {
-            //console.log(re.result.files);
+            console.log(re.result.files);
 
+            re.result.files.sort(function (a, b) {
+                if (a.name > b.name) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            });
+
+            console.log(re.result.files);
 
 
             //modalコンテンツの初期化（全削除）
