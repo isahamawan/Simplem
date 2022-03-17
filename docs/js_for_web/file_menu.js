@@ -297,13 +297,14 @@ function save_as_to_gdrive_exec() {
                         }
 
                     );
-                    console.log("new_create");
+                    console.log("new_create:" + window.file_name_now);
                 } else {
                     //上書き
                     //console.log(re.result.files[0].id);
-
+                    window.fileId_now = re.result.files[0].id;
+                    window.file_name_now = window.file_name_for_save_as;
                     Gdfs.updateFile(re.result.files[0].id, "text/plain", easyMDE.value());
-                    console.log("update");
+                    console.log("update:" + window.file_name_now);
                 }
 
             });
