@@ -300,7 +300,10 @@ function save_as_to_gdrive_exec() {
                     console.log("new_create");
                 } else {
                     //上書き
-                    console.log(re.result.files[0].id);
+                    //console.log(re.result.files[0].id);
+
+                    Gdfs.updateFile(re.result.files[0].id, "text/plain", easyMDE.value());
+                    console.log("update");
                 }
 
             });
