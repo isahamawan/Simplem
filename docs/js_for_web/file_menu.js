@@ -431,11 +431,16 @@ function save_as_to_gdrive(folder_id, folder_back = false) {
 
             //フォルダが上部にくるようにソート
             re.result.files.sort(function (a, b) {
-                if (a.mimeType > b.mimeType) {
-                    return 1;
-                } else {
-                    return -1;
-                }
+
+                //mimeTypeを降順
+                if (a.mimeType > b.mimeType) return 1;
+                if (a.mimeType < b.mimeType) return -1;
+
+                //mimeTypeが同じときは名前を降順
+                if (a.name > b.name) return 1;
+                if (a.name < b.name) return -1;
+                return 0;
+
             });
 
             console.log(re.result.files);
