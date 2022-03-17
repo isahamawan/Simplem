@@ -427,7 +427,7 @@ function save_as_to_gdrive(folder_id, folder_back = false) {
             console.log(re.result.files);
 
             re.result.files.sort(function (a, b) {
-                if (a.name > b.name) {
+                if (a.mimeType > b.mimeType) {
                     return 1;
                 } else {
                     return -1;
