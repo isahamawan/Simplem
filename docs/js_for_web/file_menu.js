@@ -278,8 +278,8 @@ function save_as_to_gdrive_exec() {
         //selected_folder_idフォルダ以下のフォルダとtextファイルを取得し、判定
         gapi.client.drive.files.list({ q: q_same_name }).then(
             function (re) {
-                console.log(re.result.files);
-                console.log(re.result.files.length);
+                //console.log(re.result.files);
+                //console.log(re.result.files.length);
 
                 if (re.result.files.length == 0) {
                     //新規作成
@@ -326,8 +326,6 @@ function save_as_to_gdrive_exec() {
         alert("名前を付けて保存しました");
 
         */
-
-        console.log("save as:" + window.file_name_now);
     }
 
 }
