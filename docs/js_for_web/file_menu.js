@@ -283,6 +283,20 @@ function save_as_to_gdrive_exec() {
 
                 if (re.result.files.length == 0) {
                     //新規作成
+                    Gdfs.createFile(window.folder_id_for_save_as, window.file_name_for_save_as, "plain/text").then(
+
+                        function (re) {
+                            //console.log(re.id);
+
+                            //新規作成下したファイルのid（データ書き込み用）
+                            window.fileId_now = re.id;
+                            window.file_name_now = window.file_name_for_save_as;
+
+                            Gdfs.updateFile(re.id, "text/plain", easyMDE.value());
+
+                        }
+
+                    );
                     console.log("new_create");
                 } else {
                     //上書き
@@ -294,21 +308,6 @@ function save_as_to_gdrive_exec() {
 
         /* 上が完成後、以下は有効化
 
-        //名前を付けて保存
-        Gdfs.createFile(window.file_id_for_save_as, window.file_name_for_save_as, "plain/text").then(
-
-            function (re) {
-                //console.log(re.id);
-
-                //名前を付けて保存したファイルのid（データ書き込み用）
-                window.fileId_now = re.id;
-                window.file_name_now = window.file_name_for_save_as;
-
-                Gdfs.updateFile(re.id, "text/plain", easyMDE.value());
-
-            }
-
-        );
 
         //diffのオリジナル用として保存
         window.diff_origin_text_data = easyMDE.value();
