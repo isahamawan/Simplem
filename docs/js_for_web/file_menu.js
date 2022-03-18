@@ -215,8 +215,6 @@ function get_file_id(e) {
 }
 
 
-
-
 //フォルダをクリックした場合、そのフォルダ以下のフォルダとtextファイルを取得
 function get_folder_id(e) {
     window.folder_id_for_save_as = e.id;
@@ -226,6 +224,7 @@ function get_folder_id(e) {
     //クリックしたフォルダ以下を開く処理
     save_as_to_gdrive(window.folder_id_for_save_as);
 }
+
 
 //戻るフォルダをクリックした場合、そのフォルダ以下のフォルダとtextファイルを取得
 function get_folder_back_id(e) {
