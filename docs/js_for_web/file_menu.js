@@ -279,7 +279,7 @@ function save_as_to_gdrive_exec() {
         gapi.client.drive.files.list({ q: q_same_name }).then(
             function (re) {
                 //console.log(re.result.files);
-                //console.log(re.result.files.length);
+                //console.log(re.result.files.length);//tes
 
                 if (re.result.files.length == 0) {
                     //新規作成
