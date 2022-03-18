@@ -282,9 +282,6 @@ function save_as_to_gdrive_exec() {
                 //console.log(re.result.files);
                 //console.log(re.result.files.length);
 
-
-
-
                 if (re.result.files.length == 0) {
                     //新規作成
                     Gdfs.createFile(window.folder_id_for_save_as, window.file_name_for_save_as, "plain/text").then(
@@ -343,7 +340,7 @@ function save_as_to_gdrive_cancel() {
 }
 
 
-//googledribe名前を付けて保存をクリック時の動作（モーダル内でフォルダをクリックした時の動作も含む）
+//googledrive名前を付けて保存をクリック時の動作（モーダル内でフォルダをクリックした時の動作も含む）
 let file_div_eles = [];
 let file_a_eles = [];
 let back_div_ele = null;
@@ -398,25 +395,24 @@ function save_as_to_gdrive(folder_id, folder_back = false) {
 
     //戻るボタンの設置
     if ((folder_id != undefined) && (window.back_ids_index != -1)) {
-        //file要素の作成
+        //要素の作成
         back_div_ele = document.createElement("div");
         back_a_ele = document.createElement("a");
 
-        //フォルダの時
+        //属性設定
         back_div_ele.setAttribute("class", "folder_div_in_modal");
         back_a_ele.setAttribute("class", "folder_a_in_modal");
         back_a_ele.setAttribute("onclick", "get_folder_back_id(this);");
 
-        //ファイルid、フォルダidの書き込み
+        //フォルダidの書き込み
         back_a_ele.setAttribute("id", back_ids[window.back_ids_index]);
 
         back_div_ele.appendChild(back_a_ele);
 
-        //file名の書き込み
+        //アイコンの書き込み
         back_a_ele.innerText = "←";
 
-
-        //file要素のmodalへの追加
+        //要素のmodalへの追加
         save_as_modal_div.appendChild(back_div_ele);
     }
 
