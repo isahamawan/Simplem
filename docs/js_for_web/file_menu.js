@@ -296,6 +296,7 @@ function save_as_to_gdrive_exec() {
                             console.log("new_create:" + window.file_name_now);
 
                             end_message = "名前を付けて保存しました";
+                            alert(end_message);
                         });
 
 
@@ -308,6 +309,7 @@ function save_as_to_gdrive_exec() {
                     Gdfs.updateFile(re.result.files[0].id, "text/plain", easyMDE.value());
 
                     end_message = "上書き保存しました";
+                    alert(end_message);
                 }
 
 
@@ -323,7 +325,6 @@ function save_as_to_gdrive_exec() {
                 //file_nameテキストボックスの更新
                 document.getElementById("file_name").value = window.file_name_now;
 
-                alert(end_message);
             });
     }
 
