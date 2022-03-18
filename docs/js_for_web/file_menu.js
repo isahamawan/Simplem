@@ -293,10 +293,11 @@ function save_as_to_gdrive_exec() {
 
                             Gdfs.updateFile(re.id, "text/plain", easyMDE.value());
 
-                        });
-                    console.log("new_create:" + window.file_name_now);
+                            console.log("new_create:" + window.file_name_now);
 
-                    end_message = "名前を付けて保存しました";
+                            end_message = "名前を付けて保存しました";
+                        });
+
 
                 } else {
                     //上書き
