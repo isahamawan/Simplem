@@ -309,24 +309,21 @@ function save_as_to_gdrive_exec() {
                     end_message = "上書き保存しました";
                 }
 
+
+
+
+                //diffのオリジナル用として保存
+                window.diff_origin_text_data = easyMDE.value();
+
+
+                //titleの変更
+                document.getElementsByTagName("title")[0].innerText = window.file_name_now + " - Simplem";
+
+                //file_nameテキストボックスの更新
+                document.getElementById("file_name").value = window.file_name_now;
+
+                alert(end_message);
             });
-
-
-
-
-        //diffのオリジナル用として保存
-        window.diff_origin_text_data = easyMDE.value();
-
-
-        //titleの変更
-        document.getElementsByTagName("title")[0].innerText = window.file_name_now + " - Simplem";
-
-        //file_nameテキストボックスの更新
-        document.getElementById("file_name").value = window.file_name_now;
-
-        alert(end_message);
-
-
     }
 
 }
