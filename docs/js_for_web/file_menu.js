@@ -427,7 +427,7 @@ function save_as_to_gdrive(folder_id, folder_back = false) {
         function (re) {
 
 
-            console.log(re.result.files);
+            //console.log(re.result.files);
 
 
             //フォルダが上部にくるようにソート
@@ -444,7 +444,7 @@ function save_as_to_gdrive(folder_id, folder_back = false) {
 
             });
 
-            console.log(re.result.files);
+            //console.log(re.result.files);
 
 
             //modalコンテンツの初期化（全削除）
