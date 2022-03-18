@@ -203,7 +203,7 @@ function save_to_gdrive(file_id, file_name) {
 
 
 
-// ttttttttttttttttttttttttt google driveに名前を付けて保存--------------------------------------------------------------------
+// google driveに名前を付けて保存--------------------------------------------------------------------
 /* ファイル階層を表示した上での 名前を付けて保存*/
 
 //textファイルをクリックした場合、そのtextファイルのidを取得し、保存ボタンを押したら、上書きモードで処理（input boxのテキストも更新）
@@ -417,13 +417,12 @@ function save_as_to_gdrive(folder_id, folder_back = false) {
     }
 
 
-    //selected_folder_idフォルダ以下のフォルダとテキストファイルかつ、ゴミ箱に入っていないファイル、を検索するクエリ
+    //selected_folder_idフォルダ以下のフォルダとtextファイルを取得
     window.folder_selected_in_modal = true;
     window.over_write_in_modal = false;
     window.file_name_for_save_as = document.getElementById("file_name_gdrive_exec").value;
+    //selected_folder_idフォルダ以下のフォルダとテキストファイルかつ、ゴミ箱に入っていないファイル、を検索するクエリ
     let q_simplem = "(mimeType ='text/plain' or mimeType ='application/vnd.google-apps.folder') and " + "'" + selected_folder_id + "'" + " in parents and trashed = false";
-
-    //selected_folder_idフォルダ以下のフォルダとtextファイルを取得
     gapi.client.drive.files.list({ q: q_simplem }).then(
         function (re) {
 
