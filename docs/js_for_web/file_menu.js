@@ -279,12 +279,15 @@ function save_as_to_gdrive_exec() {
         gapi.client.drive.files.list({ q: q_same_name }).then(
             function (re) {
                 //console.log(re.result.files);
-                //console.log(re.result.files.length);//tes
+                //console.log(re.result.files.length);
+
+                //実行結果メッセージ
+                let end_message = "";
+
 
                 if (re.result.files.length == 0) {
                     //新規作成
                     Gdfs.createFile(window.folder_id_for_save_as, window.file_name_for_save_as, "plain/text").then(
-
                         function (re) {
                             //console.log(re.id);
 
@@ -294,10 +297,11 @@ function save_as_to_gdrive_exec() {
 
                             Gdfs.updateFile(re.id, "text/plain", easyMDE.value());
 
-                        }
-
-                    );
+                        });
                     console.log("new_create:" + window.file_name_now);
+
+                    end_message = "名前を付けて保存しました";
+
                 } else {
                     //上書き
                     //console.log(re.result.files[0].id);
@@ -305,12 +309,13 @@ function save_as_to_gdrive_exec() {
                     window.file_name_now = window.file_name_for_save_as;
                     Gdfs.updateFile(re.result.files[0].id, "text/plain", easyMDE.value());
                     console.log("update:" + window.file_name_now);
+
+                    end_message = "上書き保存しました";
                 }
 
             });
 
 
-        /* 上が完成後、以下は有効化
 
 
         //diffのオリジナル用として保存
@@ -323,9 +328,9 @@ function save_as_to_gdrive_exec() {
         //file_nameテキストボックスの更新
         document.getElementById("file_name").value = window.file_name_now;
 
-        alert("名前を付けて保存しました");
+        alert(end_message);
 
-        */
+
     }
 
 }
