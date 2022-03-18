@@ -132,3 +132,7 @@
 .folder_div_in_modal {
   padding: 5px;
 }
+
+#file_name_gdrive_exec {
+  color:initial;
+}
