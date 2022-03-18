@@ -304,8 +304,8 @@ function save_as_to_gdrive_exec() {
                     //console.log(re.result.files[0].id);
                     window.fileId_now = re.result.files[0].id;
                     window.file_name_now = window.file_name_for_save_as;
-                    Gdfs.updateFile(re.result.files[0].id, "text/plain", easyMDE.value());
                     console.log("update:" + window.file_name_now);
+                    Gdfs.updateFile(re.result.files[0].id, "text/plain", easyMDE.value());
 
                     end_message = "上書き保存しました";
                 }
