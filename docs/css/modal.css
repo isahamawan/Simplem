@@ -124,3 +124,11 @@
   background-color:rgb(47, 118, 224);
   /*border-bottom: solid 1px #dd5656;*/
 }
+
+.file_div_in_modal {
+  padding: 5px;
+}
+
+.folder_div_in_modal {
+  padding: 5px;
+}
