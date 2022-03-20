@@ -575,6 +575,7 @@ function copy_to_clipboard() {
 
     copyToClickBoard(parsered_preview_html_plaintext);
 
+    alert("htmlとしてクリップボードへコピーしました");
 }
 
 let copy_to_html_ele = document.getElementById("ctc");
