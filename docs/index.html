@@ -374,4 +374,27 @@
 <script src="js_for_web/g_picker.js"></script>
 
 
+<script type="text/javascript"
+    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script>
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'ja',
+            layout: google.translate.TranslateElement.FloatPosition.TOP_LEFT
+        }, 'google_translate_element');
+    }
+
+    function lang_select(e) {
+        let lang = e.attr('data-lang');
+        window.location = e.attr('href');
+        location.reload();
+    };
+</script>
+
+<div class="text-center mb-3">
+    <a href="#googtrans(ja|en)" class="lang-select" data-lang="en" onclick="lang_select(this);">English</a>
+    <a href="#googtrans(ja|ja)" class="lang-select" data-lang="ja" onclick="lang_select(this);">日本語</a>
+</div>
+
+
 </html>
