@@ -385,8 +385,8 @@
     }
 
     function lang_select(e) {
-        let lang = e.attr('data-lang');
-        window.location = e.attr('href');
+        let lang = e.getAttribute('data-lang');
+        window.location = e.getAttribute('href');
         location.reload();
     };
 </script>
