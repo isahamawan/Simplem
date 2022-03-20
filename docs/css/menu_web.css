@@ -1,7 +1,7 @@
 #div-menu-nav{
   position: relative; /* 子要素においてabsoluteを用いるため指定する */
   font-size:14px;
-  z-index:9; /* 最上位に表示する 一部の見出しがプルダウンの上に表示されてしまうことの対策 */
+  z-index:10; /* 最上位に表示する 一部の見出しがプルダウンの上に表示されてしまうことの対策 */
   padding: 4px 3px;
 
   background-color: rgb(37,37,37);
