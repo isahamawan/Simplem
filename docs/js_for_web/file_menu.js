@@ -44,8 +44,6 @@ file_select_ele.addEventListener("change", function (evt) {
         //file_nameテキストボックスの更新
         document.getElementById("file_name").value = file[0].name;
 
-        //file_name_gdriveテキストボックスの更新
-        //document.getElementById("file_name_gdrive").value = file[0].name;
 
         //titleの変更
         document.getElementsByTagName("title")[0].innerText = file[0].name + " - Simplem";
@@ -86,9 +84,6 @@ function save_as(evt) {
 
     let text_data = easyMDE.value();
 
-    //diffのオリジナル用として保存
-    window.diff_origin_text_data = text_data;
-
     let blob = new Blob([text_data], { type: "text/plain" });
 
     let url = URL.createObjectURL(blob);
@@ -101,20 +96,14 @@ function save_as(evt) {
     a.download = document.getElementById("file_name").value
 
 
-    /*
-    if (document.getElementById("file_name").files[0] != undefined) {
-        a.download = document.getElementById("file_select").files[0].name;
-    } else {
-        a.download = "Simplem.txt"
-    }
-    */
+
+    //diffのオリジナル用として保存
+    window.diff_origin_text_data = text_data;
 
     //titleの変更
     document.getElementsByTagName("title")[0].innerText = a.download + " - Simplem";
 
 
-    //file_name_gdriveテキストボックスの更新
-    //document.getElementById("file_name_gdrive").value = a.download;
 
     //gdriveに保存した名前と違うときは、gdrive上書き判定の初期化
     if (window.file_name_now != document.getElementById("file_name").value) {
@@ -174,20 +163,7 @@ function save_to_gdrive(file_id, file_name) {
         Gdfs.updateFile(window.fileId_now, "text/plain", easyMDE.value());
 
 
-        //diffのオリジナル用として保存
-        window.diff_origin_text_data = easyMDE.value();
-
-
-        //gdrive_instance.writeFile(window.file_name_now, "text/plain", easyMDE.value());
-
-        //titleの変更
-        document.getElementsByTagName("title")[0].innerText = window.file_name_now + " - Simplem";
-
-        //file_nameテキストボックスの更新
-        document.getElementById("file_name").value = window.file_name_now;
-        //file_name_gdriveテキストボックスの更新
-        //document.getElementById("file_name_gdrive").value = window.file_name_now;
-
+        update_etc_at_save(window.file_name_now);
 
         alert("上書き保存しました");
 
