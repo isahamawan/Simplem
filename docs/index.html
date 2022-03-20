@@ -374,28 +374,45 @@
 <script src="js_for_web/g_picker.js"></script>
 
 
-<!-- 翻訳
-<script type="text/javascript"
-    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<!-- 音声入力-->
+<button id="start-btn">start</button>
+<button id="stop-btn">stop</button>
+<div id="result-div"></div>
 <script>
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'ja',
-            layout: google.translate.TranslateElement.FloatPosition.TOP_LEFT
-        }, 'google_translate_element');
+    const startBtn = document.querySelector('#start-btn');
+    const stopBtn = document.querySelector('#stop-btn');
+    const resultDiv = document.querySelector('#result-div');
+
+    SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+    let recognition = new SpeechRecognition();
+
+    recognition.lang = 'ja-JP';
+    recognition.interimResults = true;
+    recognition.continuous = true;
+
+    let finalTranscript = ''; // 確定した(黒の)認識結果
+
+    recognition.onresult = (event) => {
+        let interimTranscript = ''; // 暫定(灰色)の認識結果
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+            let transcript = event.results[i][0].transcript;
+            if (event.results[i].isFinal) {
+                finalTranscript += transcript;
+            } else {
+                interimTranscript = transcript;
+            }
+        }
+        resultDiv.innerHTML = finalTranscript + '<i style="color:#ddd;">' + interimTranscript + '</i>';
     }
 
-    function lang_select(e) {
-        let lang = e.getAttribute('data-lang');
-        window.location = e.getAttribute('href');
-        location.reload();
-    };
+    startBtn.onclick = () => {
+        recognition.start();
+    }
+    stopBtn.onclick = () => {
+        recognition.stop();
+    }
 </script>
 
-<div class="text-center mb-3">
-    <a href="#googtrans(ja|en)" class="lang-select" data-lang="en" onclick="lang_select(this);">English</a>
-    <a href="#googtrans(ja|ja)" class="lang-select" data-lang="ja" onclick="lang_select(this);">日本語</a>
-</div>
--->
+
 
 </html>
