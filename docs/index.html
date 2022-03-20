@@ -92,19 +92,24 @@
                 <input type="text" id="file_name" style="margin-left: 6px;" value="Simplem.md">
             </div>
             <hr class="sepa_menu">
-            <div><a id="file_open_gdrive">Google Driveからファイルを開く</a></div>
-            <div><a id="save_to_gdrive" onclick="save_to_gdrive();">Google Driveに上書き保存</a></div>
-            <div>
-                <a id="save_as_to_gdrive" onclick="save_as_to_gdrive();">Google Driveに名前を付けて保存</a>
-                <!--
+            <div id="gd_disabled">
+                <div><a id="gd_enable" onclick="gdrive_init_for_simplem();">Google Driveとの連携を有効化</a></div>
+            </div>
+            <div id="gd_enabled">
+                <div><a id="file_open_gdrive">Google Driveからファイルを開く</a></div>
+                <div><a id="save_to_gdrive" onclick="save_to_gdrive();">Google Driveに上書き保存</a></div>
+                <div>
+                    <a id="save_as_to_gdrive" onclick="save_as_to_gdrive();">Google Driveに名前を付けて保存</a>
+                    <!--
                 <input type="text" id="file_name_gdrive" style="margin-left: 6px;" value="Simplem.md">
                 -->
-            </div>
-            <hr class="sepa_menu">
-            <!--
+                </div>
+                <hr class="sepa_menu">
+                <!--
             <div><a href="https://drive.google.com" target="blank">Google Driveを開く</a></div>
             -->
-            <div><a id="open_google_drive">Google Driveを開く</a></div>
+                <div><a id="open_google_drive">Google Driveを開く</a></div>
+            </div>
             <hr class="sepa_menu">
             <div><a id="simple_window_open">シンプルウィンドウを開く</a></div>
             <hr class="sepa_menu">

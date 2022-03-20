@@ -23,6 +23,12 @@ async function gdrive_init_for_simplem() {
 
             console.log("gdrive_init_for_simplem : complete");
 
+            //gd関連ボタンの表示
+            document.getElementById("gd_disabled").setAttribute("style", "display:none;");
+            document.getElementById("gd_enabled").setAttribute("style", "display:block;");
+
+            alert("Google Driveと連携しました");
+
         } catch (err) {
             // エラーハンドリング
 
@@ -32,6 +38,7 @@ async function gdrive_init_for_simplem() {
             if (err_count === maxTries) {
                 init_complete = true;
                 console.log("gdrive_init_for_simplem : time out (50 tried)");
+                alert("Google Driveとの連携に失敗しました（タイムアウト）");
             }
 
         }
@@ -41,7 +48,7 @@ async function gdrive_init_for_simplem() {
     window.simplem_folder_id = gdrive_instance.getCurrentFolderId();
 }
 
-gdrive_init_for_simplem();//あとで、google driveへの連携有効かボタン押したときに実行するようにする
+//gdrive_init_for_simplem();//あとで、google driveへの連携有効かボタン押したときに実行するようにする
 
 
 
