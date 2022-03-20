@@ -11,6 +11,9 @@ async function gdrive_init_for_simplem() {
     let init_complete = false;
     let err_count = 0;
     const maxTries = 50;
+
+    alert("Google Driveとの連携を有効化します");
+
     while (init_complete === false) {
         try {
             // リクエスト処理
