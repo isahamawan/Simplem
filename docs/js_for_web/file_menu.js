@@ -246,6 +246,20 @@ function get_folder_back_id(e) {
     console.log("get_back_folder");
 }
 
+//保存時のいろいろ（diff,title,file_nameテキストボックス）の更新
+function update_etc_at_save(file_name_u) {
+
+    //diffのオリジナル用として保存
+    window.diff_origin_text_data = easyMDE.value();
+
+    //titleの変更
+    document.getElementsByTagName("title")[0].innerText = file_name_u + " - Simplem";
+
+    //file_nameテキストボックスの更新
+    document.getElementById("file_name").value = file_name_u;
+}
+
+
 //保存ボタンを押した時の動作
 //何もクリックしないで保存ボタンを押したら、現在のフォルダのidで新規作成モードで処理（input boxのテキストをファイル名とする）
 //ファイルをクリックしたあと保存ボタンを押したら、上書き処理
@@ -295,6 +309,8 @@ function save_as_to_gdrive_exec() {
 
                             console.log("new_create:" + window.file_name_now);
 
+                            update_etc_at_save(window.file_name_now);
+
                             end_message = "名前を付けて保存しました";
                             alert(end_message);
                         });
@@ -308,6 +324,8 @@ function save_as_to_gdrive_exec() {
                     console.log("update:" + window.file_name_now);
                     Gdfs.updateFile(re.result.files[0].id, "text/plain", easyMDE.value());
 
+                    update_etc_at_save(window.file_name_now);
+
                     end_message = "上書き保存しました";
                     alert(end_message);
                 }
@@ -316,14 +334,13 @@ function save_as_to_gdrive_exec() {
 
 
                 //diffのオリジナル用として保存
-                window.diff_origin_text_data = easyMDE.value();
-
+                //window.diff_origin_text_data = easyMDE.value();
 
                 //titleの変更
-                document.getElementsByTagName("title")[0].innerText = window.file_name_now + " - Simplem";
+                //document.getElementsByTagName("title")[0].innerText = window.file_name_now + " - Simplem";
 
                 //file_nameテキストボックスの更新
-                document.getElementById("file_name").value = window.file_name_now;
+                //document.getElementById("file_name").value = window.file_name_now;
 
             });
     }
