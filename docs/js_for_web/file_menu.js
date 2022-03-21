@@ -470,9 +470,9 @@ function save_as_to_gdrive(folder_id, folder_back = false) {
 
                     //file名の書き込み
                     if (file.mimeType == "text/plain") {
-                        file_a_eles[i].innerHTML = '<i class="fa fa-file"></i>' + file.name;
+                        file_a_eles[i].innerHTML = '<i class="fa fa-file"></i>' + " " + file.name;
                     } else {
-                        file_a_eles[i].innerHTML = '<i class="fa fa-folder"></i>' + file.name;
+                        file_a_eles[i].innerHTML = '<i class="fa fa-folder"></i>' + " " + file.name;
                     }
 
                     //file要素のmodalへの追加
