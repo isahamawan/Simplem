@@ -127,10 +127,12 @@
 
 .file_div_in_modal {
   padding: 5px;
+  color: gray;
 }
 
 .folder_div_in_modal {
   padding: 5px;
+  color: gray;
 }
 
 #file_name_gdrive_exec {
