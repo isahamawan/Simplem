@@ -401,7 +401,7 @@ function save_as_to_gdrive(folder_id, folder_back = false) {
         back_div_ele.appendChild(back_a_ele);
 
         //アイコンの書き込み
-        back_a_ele.innerText = '<i class="fa fa-arrow-left"></i>';
+        back_a_ele.innerHTML = '<i class="fa fa-arrow-left"></i>';
 
         //要素のmodalへの追加
         save_as_modal_div.appendChild(back_div_ele);
