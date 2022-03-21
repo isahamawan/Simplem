@@ -469,8 +469,11 @@ function save_as_to_gdrive(folder_id, folder_back = false) {
                     file_div_eles[i].appendChild(file_a_eles[i]);
 
                     //file名の書き込み
-                    file_a_eles[i].innerHTML = '<i class="fa fa-folder"></i>' + file.name;
-
+                    if (file.mimeType == "text/plain") {
+                        file_a_eles[i].innerHTML = '<i class="fa fa-file"></i>' + file.name;
+                    } else {
+                        file_a_eles[i].innerHTML = '<i class="fa fa-folder"></i>' + file.name;
+                    }
 
                     //file要素のmodalへの追加
                     save_as_modal_div.appendChild(file_div_eles[i]);
