@@ -1,6 +1,6 @@
 
 const startBtn = document.querySelector('#voice_input_start');
-const stopBtn = document.querySelector('#voice_input_stop');
+//const stopBtn = document.querySelector('#voice_input_stop');
 const completeBtn = document.querySelector('#voice_input_complete');
 const cancelBtn = document.querySelector('#voice_input_cancel');
 const statusBtn = document.querySelector('#voice_input_status');
@@ -47,13 +47,14 @@ recognition.onresult = (event) => {
 
 
 startBtn.onclick = () => {
-    alert("音声入力を開始します");
-    statusBtn.innerText = "●";
+    //alert("音声入力を開始します");
+    statusBtn.innerHTML = '<i class="fa fa-pause"></i>';
     rec_end = false;
     voiceWrapper.setAttribute("style", "")
     recognition.start();
 }
 
+/*
 stopBtn.onclick = () => {
     recognition.stop();
     voiceWrapper.setAttribute("style", "display:none;");
@@ -61,6 +62,7 @@ stopBtn.onclick = () => {
     resultDiv.innerHTML = "";
     finalTranscript = '';
 }
+*/
 
 completeBtn.onclick = () => {
     recognition.stop();
@@ -81,17 +83,17 @@ let rec_end = true;
 statusBtn.onclick = () => {
     if (rec_end == true) {
         recognition.start();
-        statusBtn.innerText = "●";
+        statusBtn.innerHTML = '<i class="fa fa-pause"></i>';
         rec_end = false;
     } else {
         recognition.stop();
-        statusBtn.innerText = "||";
+        statusBtn.innerHTML = '<i class="fa fa-microphone"></i>';
         rec_end = true;
     }
 }
 
 recognition.onend = () => {
-    statusBtn.innerText = "||";
+    statusBtn.innerHTML = '<i class="fa fa-microphone"></i>';
     rec_end = true;
     console.log("rec_end");
 }

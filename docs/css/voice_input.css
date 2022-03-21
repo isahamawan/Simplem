@@ -1,0 +1,70 @@
+#voice_input_wrapper {
+    background-color: lightgray;
+    padding: 3px;
+}
+
+#voice_input_wrapper #voice_input_result_div {
+    padding: 6px;
+    background-color:#fff;
+    margin-bottom: 3px;
+    border:1px solid gray;
+    border-radius:3px;
+}
+
+#voice_input_wrapper #voice_input_status {
+    padding: 6px;
+    color: black;
+}
+
+#voice_input_wrapper #voice_input_status:hover {
+  color:rgb(47, 118, 224);
+  /*border-bottom: solid 1px #dd5656;*/
+}
+
+#voice_input_wrapper #voice_input_complete {
+
+  cursor:default;
+
+  display: inline;
+  color: #fff;
+  text-decoration: none;
+  background-color: rgb(37,37,37);;
+  /*border-bottom: solid 1px #67b44a;*/
+
+  /* macメニュー風のメニュー */
+  padding: 0px 6px;
+  width: 100%;
+  line-height: 25px;
+  border-radius:3px;
+
+}
+
+#voice_input_wrapper #voice_input_complete:hover {
+  background-color:rgb(47, 118, 224);
+  /*border-bottom: solid 1px #dd5656;*/
+}
+
+
+#voice_input_wrapper #voice_input_cancel {
+
+  cursor:default;
+
+  display: inline;
+  color: #fff;
+  text-decoration: none;
+  background-color: rgb(37,37,37);;
+  /*border-bottom: solid 1px #67b44a;*/
+
+  /* macメニュー風のメニュー */
+  padding: 0px 6px;
+  width: 100%;
+  line-height: 25px;
+  border-radius:3px;
+
+}
+
+#voice_input_wrapper #voice_input_cancel:hover {
+  background-color:rgb(47, 118, 224);
+  /*border-bottom: solid 1px #dd5656;*/
+}
+

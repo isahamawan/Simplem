@@ -68,7 +68,9 @@
 <body>
     <div id="voice_input_wrapper" style="display:none;">
         <div contenteditable="true" id="voice_input_result_div"></div>
-        <a id="voice_input_status">●</a><a id="voice_input_complete">完了</a><a id="voice_input_cancel">キャンセル</a>
+        <a id="voice_input_status"><i class="fa fa-microphone"></i></a>
+        <a id="voice_input_complete">完了</a>
+        <a id="voice_input_cancel">キャンセル</a>
     </div>
 
     <!-- 名前を付けて保存モーダルトグル用 -->
@@ -140,8 +142,10 @@
             <hr class="sepa_menu">
             <div><a>読み上げ</a></div>
             <hr class="sepa_menu">
-            <div><a id="voice_input_start">音声入力開始</a></div>
+            <div><a id="voice_input_start">音声入力</a></div>
+            <!--
             <div><a id="voice_input_stop">音声入力停止</a></div>
+            -->
         </div>
         <div class="box3">
             <div>
@@ -382,6 +386,7 @@
 
 <!-- 音声入力-->
 <script src="js_for_web/voice_input.js"></script>
+<link rel="stylesheet" href="css/voice_input.css">
 
 
 
