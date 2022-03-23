@@ -812,4 +812,17 @@ function toggle_same_font_size() {
 let same_font_size_cbox = document.getElementById('same_font_size');
 same_font_size_cbox.addEventListener('change', toggle_same_font_size);
 
+// 読み上げの２倍速オプション------------------------------------------------------------------------------
+
+
+window.flg_speech_2x = false;
+function toggle_speech_2x() {
+
+    flg_speech_2x = !flg_speech_2x
+
+    speech_cancel();
+}
+
+let speech_2x_cbox = document.getElementById('speech_2x');
+speech_2x_cbox.addEventListener('change', toggle_speech_2x);
 
