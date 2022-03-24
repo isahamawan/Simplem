@@ -131,11 +131,17 @@
 .file_div_in_modal a {
   color: black;
 }
+.file_div_in_modal a .fa-file {
+  color: gray;
+}
 
 .folder_div_in_modal {
   padding: 5px;
 }
 .folder_div_in_modal a {
+  color: black;
+}
+.folder_div_in_modal a .fa-folder {
   color: black;
 }
 
