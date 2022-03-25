@@ -134,7 +134,7 @@
   display: inline-block;
   color: #fff;
   text-decoration: none;
-  background-color: rgb(37,37,37);;
+  background-color: rgb(37,37,37);
   /*border-bottom: solid 1px #67b44a;*/
 
   /* macメニュー風のメニュー */
@@ -183,5 +183,5 @@
 
 /* これを有効にするにはdivにtabindex="1" 〜 tabindex="n"属性をつける */
 .file_div_in_modal:focus {
-    background-color:dodgerblue !important;
+    background-color: rgb(47, 118, 224) !important;
 }
