@@ -4,18 +4,24 @@
 
 let css_text_all = "";
 function get_css_all() {
-    //長ったらしいので変数に代入
-    var css = window.document.styleSheets.item(0);
-    //論理演算子で存在する方を代入(参照)
-    var rules = css.cssRules || css.rules;
-    //CSSルールの数を調べる
-    var rules_length = rules.length;
-    //CSSルールの数だけループしてCSSの内容をコンソールに表示する
-    for (var i = 0; i < rules_length; i++) {
-        css_text_all = css_text_all + rules.item(i).cssText;
 
-        console.log(css_text_all);
-        //console.log(rules.item(i).cssText);
+    let sheets = document.styleSheets;
+    let sheets_length = sheets.length;
+    for (let i_s = 0; i_s < sheets_length; i_s++) {
+
+        //長ったらしいので変数に代入
+        let css = window.document.styleSheets.item(i_s);
+        //論理演算子で存在する方を代入(参照)
+        let rules = css.cssRules || css.rules;
+        //CSSルールの数を調べる
+        let rules_length = rules.length;
+        //CSSルールの数だけループしてCSSの内容をコンソールに表示する
+        for (let i_c = 0; i_c < rules_length; i_c++) {
+            css_text_all = css_text_all + rules.item(i_c).cssText;
+
+            console.log(css_text_all);
+            //console.log(rules.item(i).cssText);
+        }
     }
 }
 
