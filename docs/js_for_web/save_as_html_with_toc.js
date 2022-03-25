@@ -2,8 +2,10 @@
 //document.getElementById("toc_wrapper").outerHTML
 '.fa - file{ a } .fa - ddd{ a } '
 
-let css_text_all = "";
+//let css_text_all = "";
 function get_css_all() {
+
+    let css_text_all = "";
 
     let sheets = document.styleSheets;
     let sheets_length = sheets.length;
@@ -23,6 +25,8 @@ function get_css_all() {
             //console.log(rules.item(i).cssText);
         }
     }
+
+    return css_text_all;
 }
 
 
