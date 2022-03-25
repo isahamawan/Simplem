@@ -60,7 +60,7 @@ function save_as_html(evt) {
 
     let toc_contents = document.getElementById("toc_wrapper").innerHTML;
 
-    const under_toc_to_above_preview = '</div><div class="editor-preview-full editor-preview editor-preview-active" style="height: 100vh;overflow: scroll;position: relative;width: auto;">';
+    const under_toc_to_above_preview = '</div><div class="editor-preview-full editor-preview editor-preview-active" style="height: calc(100vh - 33px);;overflow: scroll;position: relative;width: auto;">';
 
     let preview_contents = document.getElementsByClassName("editor-preview-full")[0].innerHTML;
 
