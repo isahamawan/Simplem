@@ -21,7 +21,7 @@ function get_css_all() {
         for (let i_c = 0; i_c < rules_length; i_c++) {
             css_text_all = css_text_all + rules.item(i_c).cssText;
 
-            console.log(css_text_all);
+            //console.log(css_text_all);
             //console.log(rules.item(i).cssText);
         }
     }
