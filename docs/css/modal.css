@@ -180,6 +180,8 @@
 .file_div_in_modal:hover {
     background-color: lightgray;
 }
+
+/* これを有効にするにはdivにtabindex="1" 〜 tabindex="n"属性をつける */
 .file_div_in_modal:focus {
     background-color: blue !important;
 }
