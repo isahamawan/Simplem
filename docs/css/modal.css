@@ -180,6 +180,6 @@
 .file_div_in_modal:hover {
     background-color: lightgray;
 }
-.file_div_in_modal::selection {
+.file_div_in_modal:focus {
     background-color: blue !important;
 }
