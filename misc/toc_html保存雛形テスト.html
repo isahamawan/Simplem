@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSP設定（セキュリティ対策の一部）。scriptやeval()やcss,画像の読み込みなどでエラーが出る場合はここを調整要。
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    -->
+
+    <!-- main側で設定する場合は、コメントアウトが必要-->
+    <title>Simplem</title>
+    <link rel="icon" href="favicon.png">
+    <!-- short hand, igniter, skillet, overwhelm, catalyst, gale, Simple Glint, SimpleGlint, Glint -->
+
+    <!-- Bootstrap core CSS
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    -->
+    <meta name="theme-color" content="#707070">
+
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="css/all.min.css">
+
+    <!-- preview CSS -->
+    <link rel="stylesheet" href="css/preview.css">
+
+    <!-- easymde CSS and JS -->
+    <link rel="stylesheet" href="css/easymde.css">
+    <script src="easymde.js"></script>
+
+    <!-- editor view mode CSS -->
+    <link id="editor_view_mode_css" rel="stylesheet" href="css/editor_view_mode/evm_normal.css">
+
+    <!-- print CSS -->
+    <link id="print_css" rel="stylesheet" href="css/print.css">
+
+    <!-- font CSS -->
+    <link id="font_css" rel="stylesheet" href="css/font/font_modern_os.css">
+
+    <!-- highlight.js -->
+    <script id="hl_js" src="js/highlight/highlight.min.js"></script>
+    <link id="code_hl_mode_css" rel="stylesheet" href="css/highlight_code/hljs_modern.min.css">
+    <!--script>hljs.initHighlightingOnLoad();</script-->
+
+    <!-- cm search addon css -->
+    <link rel="stylesheet" href="cm_search_addon/dialog.css">
+    <link rel="stylesheet" href="cm_search_addon/matchesonscrollbar.css">
+
+    <!-- cm merge addon css depend js -->
+    <link rel="stylesheet" href="css/merge.css">
+    <script src="js/diff_match_patch.js"></script>
+
+    <!-- option css -->
+    <link rel="stylesheet" href="css/option/same_font_size.css">
+    <link rel="stylesheet" href="css/option/line_height_wide.css">
+
+    <!-- modal css -->
+    <link rel="stylesheet" href="css/modal.css">
+
+
+    <!-- menu_web css -->
+    <link rel="stylesheet" href="css/menu_web.css">
+
+</head>
+
+
+<body>
+    <div id="voice_input_wrapper" style="display:none;">
+        <div contenteditable="true" id="voice_input_result_div"></div>
+        <a id="voice_input_status"><i class="fa fa-microphone"></i></a>
+        <a id="voice_input_complete">完了</a>
+        <a id="voice_input_cancel">キャンセル</a>
+    </div>
+
+    <!-- 名前を付けて保存モーダルトグル用 -->
+    <div class="menu-tab menu-hover5" style="display: none;">
+        <a href="#modal-01" id="modal_button" style="break-inside: avoid;">名前を付けて保存モーダルa</a>
+    </div>
+
+    <nav id="div-menu-nav">
+        <div class="menu-tab menu-hover1"><a>ファイル</a></div>
+        <div class="menu-tab menu-hover2"><a>編集</a></div>
+        <div class="menu-tab menu-hover3"><a>表示モード</a></div>
+        <div class="menu-tab menu-hover4"><a>フォント</a></div>
+        <!--
+        <div class="menu-tab menu-hover5"><a href="#modal-01" id="modal_button" style="break-inside: avoid;">オプション</a></div>
+        -->
+        <div class="menu-tab menu-hover5"><a>オプション</a></div>
+        <div class="box1">
+            <div>
+                <a href="Javascript:document.getElementById('file_select').click();">PCからファイルを開く
+                    <input type="file" id="file_select" accept=".txt, .html, .md" style="display: none;">
+                </a>
+            </div>
+            <div>
+                <a id="save_as">PCに名前を付けて保存</a>
+                <input type="text" id="file_name" style="margin-left: 6px;width:280px;" value="Simplem.md">
+            </div>
+            <hr class="sepa_menu">
+            <div id="gd_disabled">
+                <div><a id="gd_enable" onclick="gdrive_init_for_simplem();">Google Driveとの連携を有効化</a></div>
+            </div>
+            <div id="gd_enabled" style="display: none;">
+                <div><a id="file_open_gdrive">Google Driveからファイルを開く</a></div>
+                <div><a id="save_to_gdrive" onclick="save_to_gdrive();">Google Driveに上書き保存</a></div>
+                <div>
+                    <a id="save_as_to_gdrive" onclick="save_as_to_gdrive();">Google Driveに名前を付けて保存</a>
+                    <!--
+                <input type="text" id="file_name_gdrive" style="margin-left: 6px;" value="Simplem.md">
+                -->
+                </div>
+                <hr class="sepa_menu">
+                <!--
+            <div><a href="https://drive.google.com" target="blank">Google Driveを開く</a></div>
+            -->
+                <div><a id="open_google_drive">Google Driveを開く</a></div>
+            </div>
+            <hr class="sepa_menu">
+            <div><a id="simple_window_open">別ウィンドウで開く</a></div>
+            <hr class="sepa_menu">
+            <div><a id="ctc">htmlとしてクリップボードへコピー</a></div>
+            <hr class="sepa_menu">
+            <div><a id="make_html_file">目次付きhtmlファイルとしてPCへ保存</a></div>
+            <hr class="sepa_menu">
+            <div><a id="print">印刷</a></div>
+        </div>
+        <div class="box2">
+            <div><a href="Javascript:easyMDE.codemirror.execCommand('undo');">元に戻す</a></div>
+            <div><a href="Javascript:easyMDE.codemirror.execCommand('redo');">やり直し</a></div>
+            <!--
+            <hr class="sepa_menu">
+            <div><a href="Javascript:document.execCommand('cut');">切り取り</a></div>
+            <div><a href="Javascript:document.execCommand('copy');">コピー</a></div>
+            <div><a href="Javascript:document.execCommand('paste');">貼り付け</a></div>
+            -->
+            <hr class="sepa_menu">
+            <div><a href="Javascript:easyMDE.codemirror.execCommand('selectAll');">全て選択</a></div>
+            <!--
+            <hr class="sepa_menu">
+            <div><a href="Javascript:easyMDE.codemirror.execCommand('find');">検索</a></div>
+            <div><a>置換</a></div>
+            -->
+            <hr class="sepa_menu">
+            <div><a id="text_to_speech" onclick="text_to_speech();">読み上げ</a></div>
+            <hr class="sepa_menu">
+            <div><a id="voice_input_start">音声入力</a></div>
+            <!--
+            <div><a id="voice_input_stop">音声入力停止</a></div>
+            -->
+        </div>
+        <div class="box3">
+            <div>
+                <form id="view_mode">
+                    <a><label><input type="radio" name="trigger" value="0" checked="true">ライブプレビュー</label></a>
+                    <a><label><input type="radio" name="trigger" value="1">マークを常に表示</label></a>
+                    <a><label><input type="radio" name="trigger" value="2">ソースコード</label></a>
+                    <a><label><input type="radio" name="trigger" value="3">ソースコード（ハイライト有り）</label></a>
+                </form>
+            </div>
+            <!--
+            <div><a>アイテム2-2</a></div>
+            <div><a>アイテム2-3</a></div>
+            -->
+        </div>
+        <div class="box4">
+            <div>
+                <form id="font">
+                    <a><label><input type="radio" name="trigger" value="0" checked="true">モダンOS</label></a>
+                    <a><label><input type="radio" name="trigger" value="1">モダンBrowser</label></a>
+                    <a><label><input type="radio" name="trigger" value="2">Simplem</label></a>
+                    <a><label><input type="radio" name="trigger" value="3">ビューティフルコード</label></a>
+                    <a><label><input type="radio" name="trigger" value="4">ビューティフルドット</label></a>
+                    <a><label><input type="radio" name="trigger" value="5">美しい明朝体</label></a>
+                    <a><label><input type="radio" name="trigger" value="6">UDゴシック</label></a>
+                    <a><label><input type="radio" name="trigger" value="7">UD明朝</label></a>
+                </form>
+            </div>
+        </div>
+        <div class="box5">
+            <div>
+                <form id="option" style="color:gray;">
+                    <span style="padding:6px;">文書モード</span>
+                    <a><label><input type="checkbox" checked="true" id="h1_page_break">印刷時にh1で改ページ</label></a>
+                    <a><label><input type="checkbox" id="hr_page_break">印刷時に---で改ページ</label></a>
+                    <a><label><input type="checkbox" id="wide_row">行間を広くする</label></a>
+                    <hr class="sepa_menu">
+                    <span style="padding:6px;">スライドモード</span>
+                    <a><label><input type="checkbox" id="window_slide_show">ウィンドウモードでスライドショー<br>　（リモート会議用）</label></a>
+                    <hr class="sepa_menu">
+                    <span style="padding:6px;">編集画面</span>
+                    <a><label><input type="checkbox" checked="true" id="same_font_size">文字サイズを統一</label></a>
+                    <hr class="sepa_menu">
+                    <span style="padding:6px;">読み上げ</span>
+                    <a><label><input type="checkbox" id="speech_2x">２倍速再生</label></a>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <!-- 名前を付けて保存用モーダルここから modal.cssで設定 -->
+    <div class="modal-wrapper" id="modal-01">
+        <a href="#!" class="modal-overlay"></a>
+        <div class="modal-window">
+            <div class="modal-content">
+                <!-- 名前を付けて保存モーダルテスト -->
+                <h2>Google Driveに名前を付けて保存</h2>
+                <div id="save_as_modal"></div>
+                <div id="save_as_form">
+                    <input type="text" id="file_name_gdrive_exec" value="Simplem.md">
+                    <a id="save_as_to_gdrive_exec" onclick="save_as_to_gdrive_exec();">保存</a>
+                    <a id="save_as_to_gdrive_cancel" onclick="save_as_to_gdrive_cancel();">キャンセル</a>
+                </div>
+                <!--
+                <h2>オプション</h2>
+                <h3>文書モード</h3>
+                <input type="checkbox" checked="true" id="h1_page_break">
+                <label for="h1_page_break">印刷時にh1で改ページ</label><br>
+                <input type="checkbox" id="hr_page_break">
+                <label for="hr_page_break">印刷時に---で改ページ</label><br>
+                <input type="checkbox" id="wide_row">
+                <label for="wide_row">行間を広くする</label>
+                <h3>スライドモード</h3>
+                <input type="checkbox" id="window_slide_show">
+                <label for="window_slide_show">ウィンドウモードでスライドショー（リモート会議用）</label>
+                <h3>編集画面</h3>
+                <input type="checkbox" checked="true" id="same_font_size">
+                <label for="same_font_size">文字サイズを統一</label>
+                <br><br><br>
+                -->
+            </div>
+            <a href="#!" class="modal-close">×</a>
+        </div>
+    </div>
+    <!-- モーダルここまで -->
+
+
+
+
+
+    <div id="toc_wrapper" style="display:none;">
+        <div class="toc_title">目次</div>
+        <div id="toc">
+        </div>
+    </div>
+    <!--開く、保存、名前を付けて保存ボタン
+    <div>
+        <button id="open" type="button">Open</button>
+        <button id="save" type="button">Save</button>
+        <button id="save_as" type="button">Save as</button>
+        <button id="some-button" type="button">Search</button>
+    </div>
+    -->
+    <textarea id="my-text-area"></textarea>
+
+
+
+</body>
+
+
+<!-- toc js -->
+<script id="toc_js">
+    //tocボタン要素の作成
+    let toc_button_ele = document.createElement("button");
+    toc_button_ele.setAttribute("class", "outline no-disable");
+    toc_button_ele.setAttribute("type", "button");
+    toc_button_ele.setAttribute("title", "Outline");
+    toc_button_ele.setAttribute("tabindex", "-1");
+    toc_button_ele.setAttribute("id", "toc_button");
+
+    let toc_i_ele = document.createElement("i");
+    toc_i_ele.setAttribute("class", "fa fa-align-justify");
+
+    toc_button_ele.appendChild(toc_i_ele);
+
+    //editor-toolbarへのtocボタン要素の追加
+    let editor_toolbar_ele = document.getElementsByClassName("editor-toolbar")[0];
+    editor_toolbar_ele.insertBefore(toc_button_ele, editor_toolbar_ele.firstChild);
+
+
+
+    //tocボタンのクリックイベントにtocのオンオフを追加
+    window.flg_toc_on = true;
+    document.getElementById("toc_button").addEventListener('click', function (e) {
+
+        if (flg_toc_on == true) {
+
+            document.getElementById("toc_wrapper").setAttribute("style", "display:block;");
+
+        } else {
+
+            document.getElementById("toc_wrapper").setAttribute("style", "display:none;");
+
+        }
+
+        flg_toc_on = !flg_toc_on;
+
+    });
+</script>
+
+<link rel="stylesheet" href="css/toc.css">
+<style id="toc_css">
+
+</style>
+
+
+</html>
