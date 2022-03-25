@@ -183,5 +183,5 @@
 
 /* これを有効にするにはdivにtabindex="1" 〜 tabindex="n"属性をつける */
 .file_div_in_modal:focus {
-    background-color: rgb(47, 118, 224) !important;
+    background-color: rgb(153, 189, 245) !important;
 }
