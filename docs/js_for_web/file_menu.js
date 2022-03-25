@@ -197,8 +197,14 @@ function get_folder_id(e) {
     window.over_write_in_modal = false;
     window.folder_selected_in_modal = true;
 
+
+    //ファイル更新時のチラつきを隠す
+    document.getElementById("save_as_modal").setAttribute("style", "display:none;");
+
     //クリックしたフォルダ以下を開く処理
     save_as_to_gdrive(window.folder_id_for_save_as);
+
+    document.getElementById("save_as_modal").setAttribute("style", "");
 }
 
 
@@ -210,6 +216,10 @@ function get_folder_back_id(e) {
 
     //ここに、クリックしたフォルダ以下を開く処理を追加
 
+    //ファイル更新時のチラつきを隠す
+    document.getElementById("save_as_modal").setAttribute("style", "display:none;");
+
+
     //戻るボタンのid設定
 
     back_ids.pop();
@@ -218,6 +228,8 @@ function get_folder_back_id(e) {
 
     //クリックしたフォルダ以下を開く処理（ただしfolder_back = true）
     save_as_to_gdrive(window.folder_id_for_save_as, true);
+
+    document.getElementById("save_as_modal").setAttribute("style", "");
 
     console.log("get_back_folder");
 }
