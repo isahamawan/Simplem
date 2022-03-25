@@ -43,7 +43,7 @@ function text_to_speech() {
         }
 
         // 高さを設定(0~2 df:1)
-        uttr.pitch = 0.6;
+        uttr.pitch = 0.8;
 
         // 音量を設定(0~1 df:1)
         uttr.volume = 1;
