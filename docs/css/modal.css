@@ -91,8 +91,12 @@
 
 
 #save_as_modal {
-    max-height: 50vh;
+    max-height: 62vh;
     overflow: scroll;
+}
+#save_as_form {
+  position: absolute;
+  bottom: 15px;
 }
 
 #file_name_gdrive_exec {
