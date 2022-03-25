@@ -45,7 +45,9 @@ function save_as_html(evt) {
 
     //以下、htmlの中身
 
-    const start_to_above_title = '<!doctype html>< html lang = "ja" ><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><!-- title --><title>';
+    const start_to_above_title = '<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><!-- title --><title>';
+
+    let title = document.title;
 
     const under_title_to_above_style = '</title>< !--< link rel = "icon" href = "favicon.png" >--><meta name="theme-color" content="#707070"><style>';
 
@@ -63,9 +65,9 @@ function save_as_html(evt) {
 
 
 
-    let text_data = start_to_above_title + under_title_to_above_style + css_text + under_style_to_above_toc + toc_contents + under_toc_to_above_preview + preview_contents + under_preview_to_end;
+    let text_data = start_to_above_title + title + under_title_to_above_style + css_text + under_style_to_above_toc + toc_contents + under_toc_to_above_preview + preview_contents + under_preview_to_end;
 
-    let blob = new Blob([text_data], { type: "text/html" });
+    let blob = new Blob([text_data], { type: "text/plain" });
 
     let url = URL.createObjectURL(blob);
 
