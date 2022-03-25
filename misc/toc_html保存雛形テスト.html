@@ -5,18 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- CSP設定（セキュリティ対策の一部）。scriptやeval()やcss,画像の読み込みなどでエラーが出る場合はここを調整要。
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-    -->
-
-    <!-- main側で設定する場合は、コメントアウトが必要-->
+    <!-- title -->
     <title>Simplem</title>
     <link rel="icon" href="favicon.png">
-    <!-- short hand, igniter, skillet, overwhelm, catalyst, gale, Simple Glint, SimpleGlint, Glint -->
 
-    <!-- Bootstrap core CSS
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    -->
     <meta name="theme-color" content="#707070">
 
     <!-- font awesome CSS -->
@@ -27,36 +19,21 @@
 
     <!-- easymde CSS and JS -->
     <link rel="stylesheet" href="css/easymde.css">
-    <script src="easymde.js"></script>
 
     <!-- editor view mode CSS -->
     <link id="editor_view_mode_css" rel="stylesheet" href="css/editor_view_mode/evm_normal.css">
 
+
     <!-- print CSS -->
     <link id="print_css" rel="stylesheet" href="css/print.css">
+
 
     <!-- font CSS -->
     <link id="font_css" rel="stylesheet" href="css/font/font_modern_os.css">
 
-    <!-- highlight.js -->
-    <script id="hl_js" src="js/highlight/highlight.min.js"></script>
+
+    <!-- highlight_css -->
     <link id="code_hl_mode_css" rel="stylesheet" href="css/highlight_code/hljs_modern.min.css">
-    <!--script>hljs.initHighlightingOnLoad();</script-->
-
-    <!-- cm search addon css -->
-    <link rel="stylesheet" href="cm_search_addon/dialog.css">
-    <link rel="stylesheet" href="cm_search_addon/matchesonscrollbar.css">
-
-    <!-- cm merge addon css depend js -->
-    <link rel="stylesheet" href="css/merge.css">
-    <script src="js/diff_match_patch.js"></script>
-
-    <!-- option css -->
-    <link rel="stylesheet" href="css/option/same_font_size.css">
-    <link rel="stylesheet" href="css/option/line_height_wide.css">
-
-    <!-- modal css -->
-    <link rel="stylesheet" href="css/modal.css">
 
 
     <!-- menu_web css -->
@@ -66,17 +43,7 @@
 
 
 <body>
-    <div id="voice_input_wrapper" style="display:none;">
-        <div contenteditable="true" id="voice_input_result_div"></div>
-        <a id="voice_input_status"><i class="fa fa-microphone"></i></a>
-        <a id="voice_input_complete">完了</a>
-        <a id="voice_input_cancel">キャンセル</a>
-    </div>
 
-    <!-- 名前を付けて保存モーダルトグル用 -->
-    <div class="menu-tab menu-hover5" style="display: none;">
-        <a href="#modal-01" id="modal_button" style="break-inside: avoid;">名前を付けて保存モーダルa</a>
-    </div>
 
     <nav id="div-menu-nav">
         <div class="menu-tab menu-hover1"><a>ファイル</a></div>
@@ -200,60 +167,11 @@
 
 
 
-
-    <!-- 名前を付けて保存用モーダルここから modal.cssで設定 -->
-    <div class="modal-wrapper" id="modal-01">
-        <a href="#!" class="modal-overlay"></a>
-        <div class="modal-window">
-            <div class="modal-content">
-                <!-- 名前を付けて保存モーダルテスト -->
-                <h2>Google Driveに名前を付けて保存</h2>
-                <div id="save_as_modal"></div>
-                <div id="save_as_form">
-                    <input type="text" id="file_name_gdrive_exec" value="Simplem.md">
-                    <a id="save_as_to_gdrive_exec" onclick="save_as_to_gdrive_exec();">保存</a>
-                    <a id="save_as_to_gdrive_cancel" onclick="save_as_to_gdrive_cancel();">キャンセル</a>
-                </div>
-                <!--
-                <h2>オプション</h2>
-                <h3>文書モード</h3>
-                <input type="checkbox" checked="true" id="h1_page_break">
-                <label for="h1_page_break">印刷時にh1で改ページ</label><br>
-                <input type="checkbox" id="hr_page_break">
-                <label for="hr_page_break">印刷時に---で改ページ</label><br>
-                <input type="checkbox" id="wide_row">
-                <label for="wide_row">行間を広くする</label>
-                <h3>スライドモード</h3>
-                <input type="checkbox" id="window_slide_show">
-                <label for="window_slide_show">ウィンドウモードでスライドショー（リモート会議用）</label>
-                <h3>編集画面</h3>
-                <input type="checkbox" checked="true" id="same_font_size">
-                <label for="same_font_size">文字サイズを統一</label>
-                <br><br><br>
-                -->
-            </div>
-            <a href="#!" class="modal-close">×</a>
-        </div>
-    </div>
-    <!-- モーダルここまで -->
-
-
-
-
-
     <div id="toc_wrapper" style="display:none;">
         <div class="toc_title">目次</div>
         <div id="toc">
         </div>
     </div>
-    <!--開く、保存、名前を付けて保存ボタン
-    <div>
-        <button id="open" type="button">Open</button>
-        <button id="save" type="button">Save</button>
-        <button id="save_as" type="button">Save as</button>
-        <button id="some-button" type="button">Search</button>
-    </div>
-    -->
     <textarea id="my-text-area"></textarea>
 
 
