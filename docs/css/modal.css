@@ -35,13 +35,14 @@
   display: inline-block;
   z-index: 20;
   position: relative;
-  width: 70%;
-  max-width: 600px;
+  width: 80vh;
+  max-width: 80vh;
   padding: 30px 30px 15px;
-  border-radius: 2px;
+  border-radius: 5px;
   background: #fff;
   box-shadow: 0 0 30px rgba(0, 0, 0, .6);
-  vertical-align: middle
+  vertical-align: middle;
+  max-height: 80%;
 }
 
 .modal-wrapper .modal-window .modal-content {
@@ -84,10 +85,26 @@
 
 /* 以下、名前を付けて保存modal用 */
 
+.modal-content h2{
+  margin:10px 0 10px;
+}
+
+
+#save_as_modal {
+    max-height: 50vh;
+    overflow: scroll;
+}
+
+#file_name_gdrive_exec {
+  width: 640px;
+  height: 20px;
+  margin-top: 5px;
+}
+
 #save_as_to_gdrive_exec {
   cursor:default;
 
-  display: inline;
+  display: inline-block;
   color: #fff;
   text-decoration: none;
   background-color: rgb(37,37,37);;
@@ -95,9 +112,10 @@
 
   /* macメニュー風のメニュー */
   padding: 0px 6px;
-  width: 100%;
-  line-height: 25px;
-  border-radius:3px;
+  line-height: 26px;
+  border-radius: 3px;
+  vertical-align: bottom;
+  height: 26px;
 }
 #save_as_to_gdrive_exec:hover {
   background-color:rgb(47, 118, 224);
@@ -108,7 +126,7 @@
 #save_as_to_gdrive_cancel {
   cursor:default;
 
-  display: inline;
+  display: inline-block;
   color: #fff;
   text-decoration: none;
   background-color: rgb(37,37,37);;
@@ -116,9 +134,10 @@
 
   /* macメニュー風のメニュー */
   padding: 0px 6px;
-  width: 100%;
-  line-height: 25px;
+  line-height: 26px;
   border-radius:3px;
+  vertical-align: bottom;
+  height: 26px;
 }
 #save_as_to_gdrive_cancel:hover {
   background-color:rgb(47, 118, 224);
@@ -130,6 +149,7 @@
 }
 .file_div_in_modal a {
   color: black;
+  cursor: pointer;
 }
 .file_div_in_modal a .fa-file {
   color: gray;
@@ -140,6 +160,7 @@
 }
 .folder_div_in_modal a {
   color: black;
+  cursor: pointer;
 }
 .folder_div_in_modal a .fa-folder {
   color: black;
