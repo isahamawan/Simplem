@@ -468,13 +468,13 @@ function save_as_to_gdrive(folder_id, folder_back = false) {
                         file_div_eles[i].setAttribute("class", "file_div_in_modal");
                         file_a_eles[i].setAttribute("class", "file_a_in_modal");
                         file_a_eles[i].setAttribute("onclick", "get_file_id(this);");
-                        //選択中の色変更用
-                        file_a_eles[i].setAttribute("onclick", "get_file_id(this);");
+                        //選択中divの色変更用
+                        file_div_eles[i].setAttribute("tabindex", String(i));
                     } else {
                         //フォルダの時
                         file_div_eles[i].setAttribute("class", "folder_div_in_modal");
                         file_a_eles[i].setAttribute("class", "folder_a_in_modal");
-                        file_a_eles[i].setAttribute("tabindex", String(i));
+                        file_a_eles[i].setAttribute("onclick", "get_folder_id(this);");
                     }
 
                     //ファイルid、フォルダidの書き込み
