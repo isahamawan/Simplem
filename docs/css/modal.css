@@ -174,3 +174,12 @@
 #file_name_gdrive_exec {
   color:initial;
 }
+
+/* 選択中の背景色 */
+
+.file_div_in_modal:hover {
+    background-color: lightgray;
+}
+.file_div_in_modal::selection {
+    background-color: blue !important;
+}
