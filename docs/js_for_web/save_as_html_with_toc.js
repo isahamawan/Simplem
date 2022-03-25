@@ -52,7 +52,7 @@ function save_as_html(evt) {
 
     let title = document.title;
 
-    const under_title_to_above_style = '</title>< !--< link rel = "icon" href = "favicon.png" >--><meta name="theme-color" content="#707070"><style>';
+    const under_title_to_above_style = '</title><meta name="theme-color" content="#707070"><style>';
 
     let css_text = get_css_all();
 
