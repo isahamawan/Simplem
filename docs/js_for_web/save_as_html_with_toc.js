@@ -79,7 +79,7 @@ function save_as_html(evt) {
     a.href = url;
 
 
-    a.download = document.getElementById("file_name").value + ".html";
+    a.download = document.getElementById("file_name_html").value; // + ".html";
 
 
 
