@@ -1,5 +1,6 @@
 //document.getElementsByClassName("editor-preview-full")[0].outerHTML
 //document.getElementById("toc_wrapper").outerHTML
+'.fa - file{ a } .fa - ddd{ a } '
 
 function get_css_all() {
     //長ったらしいので変数に代入
@@ -10,7 +11,10 @@ function get_css_all() {
     var rules_length = rules.length;
     //CSSルールの数だけループしてCSSの内容をコンソールに表示する
     for (var i = 0; i < rules_length; i++) {
-        console.log(rules.item(i).cssText);
+        css_text_all = css_text_all + rules.item(i).cssText;
+
+        console.log(css_text_all);
+        //console.log(rules.item(i).cssText);
     }
 }
 
