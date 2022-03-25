@@ -2,6 +2,7 @@
 //document.getElementById("toc_wrapper").outerHTML
 '.fa - file{ a } .fa - ddd{ a } '
 
+let css_text_all = "";
 function get_css_all() {
     //長ったらしいので変数に代入
     var css = window.document.styleSheets.item(0);
