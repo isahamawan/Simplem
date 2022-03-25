@@ -42,6 +42,9 @@ window.addEventListener("load", () => {
 function save_as_html(evt) {
     evt.preventDefault();
 
+    easyMDE.togglePreview();
+
+    sleep(100);
 
     //以下、htmlの中身
 
