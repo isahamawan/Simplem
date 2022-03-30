@@ -256,7 +256,7 @@ function update_etc_at_save(file_name_u) {
 //何もクリックしないで保存ボタンを押したら、現在のフォルダのidで新規作成モードで処理（input boxのテキストをファイル名とする）
 //ファイルをクリックしたあと保存ボタンを押したら、上書き処理
 
-function save_as_to_gdrive_exec() {
+async function save_as_to_gdrive_exec() {
     if (window.over_write_in_modal == true) {
         //上書き処理
 
@@ -264,9 +264,9 @@ function save_as_to_gdrive_exec() {
         document.getElementsByClassName("modal-close")[0].click();
 
         //選択したファイルへ上書き処理
-        save_to_gdrive(window.file_id_for_save_as, window.file_name_for_save_as);
+        await save_to_gdrive(window.file_id_for_save_as, window.file_name_for_save_as);
 
-        //console.log("over write:" + window.file_name_for_save_as);
+        console.log("over write:" + window.file_name_for_save_as);
 
 
     } else {
