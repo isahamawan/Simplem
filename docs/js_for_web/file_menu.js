@@ -349,10 +349,10 @@ let file_a_eles = [];
 let back_div_ele = null;
 let back_ids = [];
 window.back_ids_index = -1;
-function save_as_to_gdrive(folder_id, folder_back = false) {
+async function save_as_to_gdrive(folder_id, folder_back = false) {
 
     if (Gdfs.isSignedIn() == false) {
-        Gdfs.signIn();
+        await Gdfs.signIn();
     }
 
     let selected_folder_id = "";
