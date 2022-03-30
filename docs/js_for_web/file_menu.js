@@ -148,7 +148,11 @@ file_open_gdrive_ele.addEventListener("click", file_open_from_gdrive);
 
 
 // google driveに上書き--------------------------------------------------------------------
-function save_to_gdrive(file_id, file_name) {
+async function save_to_gdrive(file_id, file_name) {
+
+    if (Gdfs.isSignedIn() == false) {
+        await Gdfs.signIn();
+    }
 
     //引数でidを与えられたら、そのidで上書き
     if (file_id != undefined) {
@@ -262,7 +266,7 @@ function save_as_to_gdrive_exec() {
         //選択したファイルへ上書き処理
         save_to_gdrive(window.file_id_for_save_as, window.file_name_for_save_as);
 
-        console.log("over write:" + window.file_name_for_save_as);
+        //console.log("over write:" + window.file_name_for_save_as);
 
 
     } else {
