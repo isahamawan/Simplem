@@ -352,7 +352,7 @@ window.back_ids_index = -1;
 function save_as_to_gdrive(folder_id, folder_back = false) {
 
     if (Gdfs.isSignedIn() == false) {
-        await Gdfs.signIn();
+        Gdfs.signIn();
     }
 
     let selected_folder_id = "";
