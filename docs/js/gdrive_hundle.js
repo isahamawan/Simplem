@@ -18,11 +18,13 @@ async function gdrive_init_for_simplem() {
         try {
             // リクエスト処理
 
+            if (Gdfs.isSignedIn() == false) {
+                await Gdfs.signIn();
+            }
+
             await sleep(1000);
 
-            if (Gdfs.isSignedIn() == false) {
-                Gdfs.signIn();
-            }
+
 
             await gdrive_instance.mkdir("Simplem");
             await gdrive_instance.chdir("Simplem");
