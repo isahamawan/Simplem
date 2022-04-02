@@ -31,7 +31,7 @@ function get_css_all() {
 
 
 
-// ファイルを名前を付けて保存------------------------------------------------------------------------------
+// htmlファイルを名前を付けて保存------------------------------------------------------------------------------
 
 window.addEventListener("load", () => {
     let save_as_html_ele = document.getElementById("make_html_file");
@@ -79,7 +79,7 @@ function save_as_html(evt) {
     a.href = url;
 
 
-    a.download = document.getElementById("file_name_html").value; // + ".html";
+    a.download = document.getElementById("file_name").value + ".html";
 
 
 
