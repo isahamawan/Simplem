@@ -56,7 +56,7 @@ function save_as_html(evt) {
 
     let css_text = get_css_all();
 
-    const under_style_to_above_toc = '</style></head><body><nav id="div-menu-nav"><div class="menu-tab menu-hover1"><a>' + document.getElementById("file_name_html").value + '</a></div><div class="box1"><div><a id="about_simplem" href="https://github.com/isahamawan/Simplem/blob/master/README_JA.md" target="_blank" rel="noopener noreferrer">Simplemについて</a></div><hr class="sepa_menu"><div><a id="print">印刷</a></div></div></nav><div id="toc_wrapper" style="display:block;">';
+    const under_style_to_above_toc = '</style></head><body><nav id="div-menu-nav"><div class="menu-tab menu-hover1"><a>' + document.getElementById("file_name_html").value + '</a></div><div class="box1"><div><a id="about_simplem" href="https://github.com/isahamawan/Simplem/blob/master/README_JA.md" target="_blank" rel="noopener noreferrer">Simplemについて</a></div><hr class="sepa_menu"><div><a id="print" onclick="window.print();">印刷</a></div></div></nav><div id="toc_wrapper" style="display:block;">';
 
     let toc_contents = document.getElementById("toc_wrapper").innerHTML;
 
