@@ -12,6 +12,11 @@ async function gdrive_init_for_simplem() {
     let err_count = 0;
     const maxTries = 50;
 
+    let gd_enable_ele = document.getElementById("gd_enable");
+    gd_enable_ele.setAttribute("style", "pointer-events:none;color:gray;");
+    gd_enable_ele.innerText = "Google Driveとの連携を有効化中";
+
+
     alert("Google Driveとの連携を有効化します");
 
     while (init_complete === false) {
