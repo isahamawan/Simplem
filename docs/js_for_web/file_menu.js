@@ -578,10 +578,12 @@ function copyToClickBoard(content) {
 
     navigator.clipboard.writeText(content)
         .then(() => {
-            console.log("Text copied to clipboard...")
+            console.log("Text copied to clipboard...");
+            alert("htmlとしてクリップボードへコピーしました");
         })
         .catch(err => {
             console.log('Something went wrong', err);
+            alert("クリップボードへのコピーに失敗しました");
         })
 
 }
@@ -599,7 +601,6 @@ function copy_to_clipboard() {
 
     copyToClickBoard(parsered_preview_html_plaintext);
 
-    alert("htmlとしてクリップボードへコピーしました");
 }
 
 let copy_to_html_ele = document.getElementById("ctc");
