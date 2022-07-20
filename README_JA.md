@@ -22,6 +22,8 @@
 # Simplem
 メモ帳のようなミニマルなマークダウンエディタ。素晴らしいアイデアをすぐに書き留めるために。
 
+[デモ](https://isahamawan.github.io/Simplem)
+
 [English](https://github.com/isahamawan/Simplem/blob/master/README.md)
 
 ![logo](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/simplem_logo.png)
