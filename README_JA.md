@@ -24,9 +24,11 @@
 
 [English](https://github.com/isahamawan/Simplem/blob/master/README.md)
 
-![logo](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/simplem_logo.png)
+<!--![logo](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/simplem_logo.png)-->
+<img src="https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/simplem_logo.png" width="50%">
 
-![view](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/simplem.png)
+<!--![view](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/simplem.png)-->
+<img src="https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/simplem.png" width="50%">
 
 
 
