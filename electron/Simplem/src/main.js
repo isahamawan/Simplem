@@ -57,7 +57,7 @@ ipcMain.handle('open', async (event) => {
     global.fileDirPath = "file://" + path_tool.dirname(global.filePath_for_save) + "/";
 
 
-    return { canceled, data, fileDirPath }
+    return { canceled, data, fileDirPath, filename_for_title }
 });
 
 //ファイルの読込時の*追加スクリプトの追加用
@@ -101,7 +101,7 @@ ipcMain.handle('save_as', async (event, text_data) => {
     //ファイル名の頭の*を追加するためのスクリプトタグ追加命令
     mainWindow.webContents.send('add_asterisk_script_from_main');
 
-    return { fileDirPath }
+    return { fileDirPath, filename_for_title }
 
 });
 
@@ -143,7 +143,7 @@ ipcMain.handle('open_init', async (event) => {
     // 初期読み込み用グローバル変数を初期化
     global.filePath_for_init = null;
 
-    return { data, fileDirPath }
+    return { data, fileDirPath, filename_for_title }
 });
 
 
@@ -340,6 +340,20 @@ let template = [{
 
         }
     },
+    {
+
+        id: 'save-as-html-with-toc', // ←←← idを設定
+        enabled: true,
+        label: '目次付きhtmlとして保存',
+        //accelerator: 'CmdOrCtrl+Shift+K',
+        click: function () {
+
+            mainWindow.webContents.send("save_as_html_with_toc_from_main");
+
+            //await mainWindow.webContents.send("preview_off_from_main");
+
+        }
+    },
     { type: 'separator' },
     {
         label: 'Simplemを終了',
@@ -388,6 +402,7 @@ let template = [{
                 mainWindow.webContents.send('replace_from_main');
             }
         },
+        /*
         ...(isMac ? [
             { type: 'separator' },
             //{
@@ -407,6 +422,49 @@ let template = [{
                 ]
             }
         ] : []),
+        */
+        { type: 'separator' },
+        {
+            label: '読み上げ',
+            submenu: [
+                {
+
+                    id: 'speak-start', // ←←← idを設定
+                    enabled: true,
+                    label: '開始',
+                    //accelerator: 'CmdOrCtrl+Shift+K',
+                    click: function () {
+
+                        mainWindow.webContents.send("text_speak_start_from_main");
+
+                    }
+                },
+                {
+
+                    id: 'speak-end', // ←←← idを設定
+                    enabled: true,
+                    label: '終了',
+                    //accelerator: 'CmdOrCtrl+Shift+K',
+                    click: function () {
+
+                        mainWindow.webContents.send("text_speak_end_from_main");
+
+                    }
+                },
+                {
+
+                    id: '2x-speak', // ←←← idを設定
+                    type: 'checkbox',
+                    label: '2倍速再生',
+                    //accelerator: 'CmdOrCtrl+Shift+K',
+                    click: function () {
+
+                        mainWindow.webContents.send("text_speak_2x_from_main");
+
+                    }
+                }
+            ]
+        }
     ]
 }, {
     id: 'view', // ←←← idを設定

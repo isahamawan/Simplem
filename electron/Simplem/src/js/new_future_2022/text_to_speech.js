@@ -2,11 +2,21 @@
 // 発話インスタンスを設定
 const uttr = new SpeechSynthesisUtterance();
 
+
+// 読み上げの２倍速オプション用------------------------------------------------------------------------------
+window.flg_speech_2x = false;
+function toggle_speech_2x() {
+
+    flg_speech_2x = !flg_speech_2x
+
+    speech_cancel();
+}
+
 //読み上げボタン用
 function text_to_speech() {
 
-    document.getElementById("text_to_speech").setAttribute("onclick", "speech_cancel();");
-    document.getElementById("text_to_speech").innerText = "読み上げ停止";
+    //web   document.getElementById("text_to_speech").setAttribute("onclick", "speech_cancel();");
+    //web    document.getElementById("text_to_speech").innerText = "読み上げ停止";
 
     let selected_text = easyMDE.codemirror.doc.getSelection();
     let read_text = "";
@@ -20,8 +30,8 @@ function text_to_speech() {
 
     //read_textが空の時はボタンを「読み上げ」に戻して終了
     if (read_text == "") {
-        document.getElementById("text_to_speech").setAttribute("onclick", "text_to_speech();");
-        document.getElementById("text_to_speech").innerText = "読み上げ";
+        //web document.getElementById("text_to_speech").setAttribute("onclick", "text_to_speech();");
+        //web document.getElementById("text_to_speech").innerText = "読み上げ";
         return;
     }
 
@@ -53,8 +63,8 @@ function text_to_speech() {
 
     } else {
         alert('このブラウザは音声読み上げに対応していません。');
-        document.getElementById("text_to_speech").setAttribute("onclick", "text_to_speech();");
-        document.getElementById("text_to_speech").innerText = "読み上げ";
+        //web document.getElementById("text_to_speech").setAttribute("onclick", "text_to_speech();");
+        //web document.getElementById("text_to_speech").innerText = "読み上げ";
 
     }
 
@@ -64,22 +74,22 @@ function text_to_speech() {
 //読み上げ停止ボタン用
 function speech_cancel() {
     window.speechSynthesis.cancel();
-    document.getElementById("text_to_speech").setAttribute("onclick", "text_to_speech();");
-    document.getElementById("text_to_speech").innerText = "読み上げ";
+    //web document.getElementById("text_to_speech").setAttribute("onclick", "text_to_speech();");
+    //web document.getElementById("text_to_speech").innerText = "読み上げ";
 
 }
 
 
 //再生終了時に実行
 uttr.onend = function () {
-    document.getElementById("text_to_speech").setAttribute("onclick", "text_to_speech();");
-    document.getElementById("text_to_speech").innerText = "読み上げ";
+    //web document.getElementById("text_to_speech").setAttribute("onclick", "text_to_speech();");
+    //web document.getElementById("text_to_speech").innerText = "読み上げ";
 };
 
 //再生終了時に実行
 uttr.onerror = function () {
-    document.getElementById("text_to_speech").setAttribute("onclick", "text_to_speech();");
-    document.getElementById("text_to_speech").innerText = "読み上げ";
+    //web document.getElementById("text_to_speech").setAttribute("onclick", "text_to_speech();");
+    //web document.getElementById("text_to_speech").innerText = "読み上げ";
 };
 
 //ページを閉じるとき、およびリロード時に再生を停止

@@ -1,6 +1,5 @@
 
-const startBtn = document.querySelector('#voice_input_start');
-//const stopBtn = document.querySelector('#voice_input_stop');
+//web const startBtn = document.querySelector('#voice_input_start');
 const completeBtn = document.querySelector('#voice_input_complete');
 const cancelBtn = document.querySelector('#voice_input_cancel');
 const statusBtn = document.querySelector('#voice_input_status');
@@ -45,8 +44,17 @@ recognition.onresult = (event) => {
 }
 
 
-
+/*web
 startBtn.onclick = () => {
+    //alert("音声入力を開始します");
+    statusBtn.innerHTML = '<i class="fa fa-pause"></i>';
+    rec_end = false;
+    voiceWrapper.setAttribute("style", "")
+    recognition.start();
+}
+*/
+
+function voice_input_start() {
     //alert("音声入力を開始します");
     statusBtn.innerHTML = '<i class="fa fa-pause"></i>';
     rec_end = false;

@@ -33,18 +33,32 @@ function get_css_all() {
 
 // htmlファイルを名前を付けて保存------------------------------------------------------------------------------
 
+/* web verのボタン用
 window.addEventListener("load", () => {
     let save_as_html_ele = document.getElementById("make_html_file");
     save_as_html_ele.addEventListener("click", save_as_html)
 });
+*/
 
 //save_as_ele.addEventListener("click", function (evt) {
-function save_as_html(evt) {
-    evt.preventDefault();
 
+//web function save_as_html(evt) {
+//web evt.preventDefault();
+
+window.filename_for_title = "no_title";
+
+function save_as_html() {
     easyMDE.togglePreview();
 
-    sleep(100);
+    //web sleep(100);
+    // 例)0.1秒スリープさせる
+    const d1 = new Date();
+    while (true) {
+        const d2 = new Date();
+        if (d2 - d1 > 100) {
+            break;
+        }
+    }
 
     //以下、htmlの中身
 
@@ -54,9 +68,11 @@ function save_as_html(evt) {
 
     const under_title_to_above_style = '</title><meta name="theme-color" content="#707070"><style>';
 
-    let css_text = get_css_all();
+    let web_css = "#div-menu-nav{position:relative;font-size:14px;z-index:10;padding:4px 3px;background-color:rgb(37,37,37);white-space:nowrap}#div-menu-nav .menu-tab{display:inline-block;width:100px}#div-menu-nav .menu-tab a{width:88px}#div-menu-nav a{cursor:default;display:block;color:#fff;text-decoration:none;background-color:rgb(37,37,37);;padding:0 6px;width:100%;line-height:25px;border-radius:3px}#div-menu-nav a:hover{background-color:rgb(47,118,224)}#div-menu-nav .box1{position:absolute;display:none;left:10px;background-color:rgb(37,37,37);border:solid 1px darkgray;border-radius:6px;width:300px;padding:3px}#div-menu-nav .box2{position:absolute;left:114px;display:none;background-color:rgb(37,37,37);border:solid 1px darkgray;border-radius:6px;width:300px;padding:3px}#div-menu-nav .box3{position:absolute;left:218px;display:none;background-color:rgb(37,37,37);border:solid 1px darkgray;border-radius:6px;width:300px;padding:3px}#div-menu-nav .box4{position:absolute;left:322px;display:none;background-color:rgb(37,37,37);border:solid 1px darkgray;border-radius:6px;width:300px;padding:3px}#div-menu-nav .box5{position:absolute;left:322px;display:none;background-color:rgb(37,37,37);border:solid 1px darkgray;border-radius:6px;width:300px;padding:3px}#div-menu-nav .menu-hover1:hover~.box1{display:block}#div-menu-nav .box1:hover{display:block}#div-menu-nav .box1 div{width:288px}#div-menu-nav .menu-hover2:hover~.box2{display:block}#div-menu-nav .box2:hover{display:block}#div-menu-nav .box2 div{width:288px}#div-menu-nav .menu-hover3:hover~.box3{display:block}#div-menu-nav .box3:hover{display:block}#div-menu-nav .box3 div{width:288px}#div-menu-nav .menu-hover4:hover~.box4{display:block}#div-menu-nav .box4:hover{display:block}#div-menu-nav .box4 div{width:288px}#div-menu-nav .menu-hover5:hover~.box5{display:block}#div-menu-nav .box5:hover{display:block}#div-menu-nav .box5 div{width:288px}.sepa_menu{padding:0 0;margin:3px 3px!important;height:0;border-top:1px solid darkgray;margin:unset;background-color:rgb(37,37,37)}"
 
-    const under_style_to_above_toc = '</style></head><body><nav id="div-menu-nav"><div class="menu-tab menu-hover1"><a>' + document.getElementById("file_name").value + '</a></div><div class="box1"><div><a id="about_simplem" href="https://github.com/isahamawan/Simplem/blob/master/README.md" target="_blank" rel="noopener noreferrer">Simplemについて</a></div><hr class="sepa_menu"><div><a id="print" onclick="window.print();">印刷</a></div></div></nav><div id="toc_wrapper" style="display:block;">';
+    let css_text = get_css_all() + web_css;
+
+    const under_style_to_above_toc = '</style></head><body><nav id="div-menu-nav"><div class="menu-tab menu-hover1"><a>' + window.filename_for_title + '</a></div><div class="box1"><div><a id="about_simplem" href="https://github.com/isahamawan/Simplem/blob/master/README.md" target="_blank" rel="noopener noreferrer">Simplemについて</a></div><hr class="sepa_menu"><div><a id="print" onclick="window.print();">印刷</a></div></div></nav><div id="toc_wrapper" style="display:block;">';
 
     let toc_contents = document.getElementById("toc_wrapper").innerHTML;
 
@@ -79,7 +95,7 @@ function save_as_html(evt) {
     a.href = url;
 
 
-    a.download = document.getElementById("file_name").value + ".html";
+    a.download = window.filename_for_title + ".html";
 
 
 

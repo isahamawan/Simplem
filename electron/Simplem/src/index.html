@@ -57,6 +57,12 @@
 
 
 <body>
+    <div id="voice_input_wrapper" style="display:none;">
+        <div contenteditable="true" id="voice_input_result_div"></div>
+        <a id="voice_input_status"><i class="fa fa-microphone"></i></a>
+        <a id="voice_input_complete">完了</a>
+        <a id="voice_input_cancel">キャンセル</a>
+    </div>
     <div id="toc_wrapper" style="display:none;">
         <div class="toc_title">目次</div>
         <div id="toc">
@@ -189,5 +195,16 @@
 <script defer src="js/marp/slide_show.js"></script>
 <link id="slide_show_css" rel="stylesheet" href="css/slide_show_off.css">
 
+
+<!-- 音声入力 ※electronではapiに制限がかかってるので使用不可
+<script src="js/new_future_2022/voice_input.js"></script>
+<link rel="stylesheet" href="css/voice_input.css">
+-->
+
+<!-- 音声読み上げ-->
+<script src="js/new_future_2022/text_to_speech.js"></script>
+
+<!-- toc付きのhtmlとして保存-->
+<script src="js/new_future_2022/save_as_html_with_toc.js"></script>
 
 </html>

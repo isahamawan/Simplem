@@ -12,7 +12,7 @@ const app = window.app;
 
 //mainからのファイル読み込み命令を処理
 ipcRenderer.on('open_from_main', async () => {
-    const { canceled, data, fileDirPath } = await ipcRenderer.invoke('open') //mainのopenを呼び出し（data取得）
+    const { canceled, data, fileDirPath, filename_for_title } = await ipcRenderer.invoke('open') //mainのopenを呼び出し（data取得）
     if (canceled) return
     let file_text_data = '';
     file_text_data = data[0] || '';
@@ -28,6 +28,8 @@ ipcRenderer.on('open_from_main', async () => {
 
     //画像表示などのベースurlとして保存
     window.fileDirPath = fileDirPath;
+
+    window.filename_for_title = filename_for_title;
 
     //ファイル名の頭のアスタリスクを削除
     await ipcRenderer.invoke('open_asterisk_del');
@@ -50,18 +52,21 @@ ipcRenderer.on('save_from_main', async () => {
 ipcRenderer.on('save_as_from_main', async () => {
     const text_data = easyMDE.value();
 
-    const { fileDirPath } = await ipcRenderer.invoke('save_as', text_data);
+    const { fileDirPath, filename_for_title } = await ipcRenderer.invoke('save_as', text_data);
 
     //diffのオリジナル用として保存
     window.diff_origin_text_data = text_data;
 
     //画像表示などのベースurlとして保存
     window.fileDirPath = fileDirPath;
+
+    window.filename_for_title = filename_for_title;
+
 });
 
 //mainからの引数で渡されたファイル読み込み命令を処理
 ipcRenderer.on('open_init_from_main', async () => {
-    const { data, fileDirPath } = await ipcRenderer.invoke('open_init'); //mainのopen_initを呼び出し（data取得）
+    const { data, fileDirPath, filename_for_title } = await ipcRenderer.invoke('open_init'); //mainのopen_initを呼び出し（data取得）
     let file_text_data = '';
     file_text_data = data || '';
     await easyMDE.value(file_text_data);
@@ -71,6 +76,8 @@ ipcRenderer.on('open_init_from_main', async () => {
 
     //画像表示などのベースurlとして保存
     window.fileDirPath = fileDirPath;
+
+    window.filename_for_title = filename_for_title;
 
     //ファイル名の頭のアスタリスクを削除
     await ipcRenderer.invoke('open_asterisk_del');
@@ -112,6 +119,46 @@ ipcRenderer.on('html_to_clipboard_from_main', async () => {
     let parsered_preview_html_plaintext = preview_html_document.getElementsByTagName("body")[0].innerHTML;
     await ipcRenderer.invoke('html_to_clipboard', parsered_preview_html_plaintext);
 });
+
+
+//mainからの目次付きhtml保存命令を処理
+ipcRenderer.on('save_as_html_with_toc_from_main', async () => {
+
+    save_as_html();
+
+    //編集モードに切替
+    //if (easyMDE.isPreviewActive() == true) {
+    //    await easyMDE.togglePreview();
+
+    //10ms待機
+    //const _sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    //_sleep(10);
+    //}
+});
+
+
+//mainからの読み上げ開始命令を処理
+ipcRenderer.on('text_speak_start_from_main', async () => {
+
+    text_to_speech();
+
+});
+
+
+//mainからの読み上げ終了命令を処理
+ipcRenderer.on('text_speak_end_from_main', async () => {
+
+    speech_cancel();
+
+});
+
+//mainからの読み上げ２倍速命令を処理
+ipcRenderer.on('text_speak_2x_from_main', async () => {
+
+    toggle_speech_2x();
+
+});
+
 
 //mainからの印刷命令を処理
 ipcRenderer.on('print_from_main', async () => {
