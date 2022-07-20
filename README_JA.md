@@ -39,8 +39,10 @@
 
 アイデアを思いついたときに重要なことは、紙とペンですぐに書き留めることです。
 
+<div align="center">
 <!--![idea](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/idea.png)-->
 <img src="https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/idea.png" width="50%" alt="idea">
+</div>
 
 **”Simplemは、アイデアを思いついたときにすぐ起動できて、気兼ねなく書き留められる紙とペンのようなアプリです。”**
 
@@ -58,8 +60,10 @@
 
 そうなるともう手遅れで、綺麗にした見出しや文字の揃いを崩したくなくて、自由な発想での文章の修正ができなくなってしまいました。
 
+<div align="center">
 <!--![worry](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/fast.png)-->
 <img src="https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/fast.png" width="50%" alt="worry">
+</div>
 
 こうなってしまうと例え「綺麗さを崩しても良いから自由に書こう」という意識をしても、綺麗さを維持したいという自分の心が邪魔をして、思うように書けません。
 
