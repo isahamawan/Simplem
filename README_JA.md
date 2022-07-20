@@ -106,28 +106,19 @@
 - 出力時は、見出し１（h1）で自動改ページ　（⇦オプションでオンオフできます）
 - 出力時は、水平線（hr）で改ページ　　　　（⇦オプションでオンオフできます）
 - 「Slides」ボタンを押せば、スライドとして編集できる
-	- 水平線（hr）で改ページ。スライドショーもできるよ
+	- 水平線（hr）で改ページ。スライドショーもできるよ!
 - htmlのコメント表記で、編集画面に自分の気づきやアイデアをメモできる
-	- 例えば次のようなコメントは出力時に消えます
+	- 例えば次のようなコメントが残せるし、出力時には見えなくなります
 		- `<! -- あとで文章に書き上げる素晴らしいアイデア！ -->`
 
 # 機能一覧
 
 - diff表示
-<!--![diff](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/diff.png)-->
-<div align="center">
-<img src="https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/diff.png" width="50%" alt="diff">
-</div>
+![diff](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/diff.png)
 - 目次の自動生成(見出しベース)
-<!--![toc](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/toc.png)-->
-<div align="center">
-<img src="https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/toc.png" width="50%" alt="toc">
-</div>
+![toc](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/toc.png)
 - スライド編集・表示(marp)
-<!--![slides](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/slides.png)-->
-<div align="center">
-<img src="https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/slides.png" width="50%" alt="slides">
-</div>
+![slides](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/slides.png)
 - <！-- -->で印刷されないコメント機能(アイデア、メモと清書を共存・一括管理できる)
 <!--- book編集・表示(marp)　（⇦文書モードとかぶるため無効化中）-->
 - 半透明表示
