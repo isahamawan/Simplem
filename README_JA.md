@@ -24,11 +24,11 @@
 
 [English](https://github.com/isahamawan/Simplem/blob/master/README.md)
 
-<!--![logo](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/simplem_logo.png)-->
-<img src="https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/simplem_logo.png" width="50%">
+![logo](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/simplem_logo.png)
+<!--<img src="https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/simplem_logo.png" width="50%">-->
 
-<!--![view](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/simplem.png)-->
-<img src="https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/simplem.png" width="50%">
+![view](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/simplem.png)
+<!--<img src="https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/simplem.png" width="50%">-->
 
 
 
@@ -39,7 +39,8 @@
 
 アイデアを思いついたときに重要なことは、紙とペンですぐに書き留めることです。
 
-![idea](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/idea.png)
+<!--![idea](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/idea.png)-->
+<img src="https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/idea.png" width="70%" alt="idea">
 
 **”Simplemは、アイデアを思いついたときにすぐ起動できて、気兼ねなく書き留められる紙とペンのようなアプリです。”**
 
