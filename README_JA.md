@@ -33,18 +33,19 @@
 
 
 ## アイデアを思いついたときに重要なことは？
-あるとき私は晩ご飯を食べながらテレビを見ていて、ふと良いアイデアを思いつきました。
+あるとき私は、ふと良いアイデアを思いつきました。
 
 しかし、残念なことにアイデアを書き留めるための紙とペンを探しているうちに、大事なアイデアを忘れてしまいました。
 
 アイデアを思いついたときに重要なことは、紙とペンですぐに書き留めることです。
 
-<div align="center">
+
 <!--![idea](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/idea.png)-->
+<div align="center">
 <img src="https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/idea.png" width="50%" alt="idea">
 </div>
 
-**”Simplemは、アイデアを思いついたときにすぐ起動できて、気兼ねなく書き留められる紙とペンのようなアプリです。”**
+**”Simplemは、アイデアを思いついたときにすぐ起動できて、様式にこだわらず、気兼ねなく書き留められる紙とペンのようなアプリです。”**
 
 ### どうやって？
 - 起動すればすぐに立ち上がり、様式やページの設定は必要ありません
@@ -60,16 +61,21 @@
 
 そうなるともう手遅れで、綺麗にした見出しや文字の揃いを崩したくなくて、自由な発想での文章の修正ができなくなってしまいました。
 
-<div align="center">
+
 <!--![worry](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/fast.png)-->
+<div align="center">
 <img src="https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/fast.png" width="50%" alt="worry">
 </div>
+
 
 こうなってしまうと例え「綺麗さを崩しても良いから自由に書こう」という意識をしても、綺麗さを維持したいという自分の心が邪魔をして、思うように書けません。
 
 **”Simplemは、「綺麗さ」を考えずにアイデアを練ることだけに集中するための「頭の中のメモ帳」のようなアプリです。”**
 
-![consentration](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/meditation.png)
+<!--![consentration](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/meditation.png)-->
+<div align="center">
+<img src="https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/meditation.png" width="50%" alt="consentration">
+</div>
 
 ### どうやって？
 - マークダウン記法が使えるため、文章の修飾への拘りに時間を取られません
@@ -89,7 +95,10 @@
 
 **”Simplemは、一つのアイデアメモから、清書、スライドを作成できるアプリです。”**
 
-![all-purpose](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/all.png)
+<!--![all-purpose](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/all.png)-->
+<div align="center">
+<img src="https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/all.png" width="50%" alt="all-purpose">
+</div>
 
 ### どうやって？
 - マークダウン記法でほどよく綺麗に整う
@@ -105,18 +114,27 @@
 # 機能一覧
 
 - diff表示
-![diff](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/diff.png)
-- 目次の自動生成(見出しベース：gitbook的な)
-![toc](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/toc.png)
+<!--![diff](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/diff.png)-->
+<div align="center">
+<img src="https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/diff.png" width="50%" alt="diff">
+</div>
+- 目次の自動生成(見出しベース)
+<!--![toc](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/toc.png)-->
+<div align="center">
+<img src="https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/toc.png" width="50%" alt="toc">
+</div>
 - スライド編集・表示(marp)
-![slides](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/slides.png)
+<!--![slides](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/slides.png)-->
+<div align="center">
+<img src="https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/slides.png" width="50%" alt="slides">
+</div>
 - <！-- -->で印刷されないコメント機能(アイデア、メモと清書を共存・一括管理できる)
-- book編集・表示(marp)　（⇦文書モードとかぶるため無効化中）
+<!--- book編集・表示(marp)　（⇦文書モードとかぶるため無効化中）-->
 - 半透明表示
 - 常に最前面表示
 - コードハイライト機能
 - ツールバー
-- 出力機能(pdf,html)
+- 出力機能(pdf, html)
 - htmlタグが有効
 - ソースコードモード
 - フォント切り替え(ユニークなフォントを用意)
@@ -125,7 +143,7 @@
 - マーメイドjs（スライド表示への対応はニーズがあれば）
 - ダークモード
 - ショートカットキー
-- 音声入力（macのみ）
-- 読み上げ（macのみ）
+- 音声入力<!--（macのみ）-->
+- 読み上げ<!--（macのみ）-->
 <!-- - 編集画面の余分な余白を表示しない仕様 -->
 <!-- - 目次も印刷-->
