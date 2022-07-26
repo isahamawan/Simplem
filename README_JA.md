@@ -22,8 +22,7 @@
 # Simplem
 メモ帳のようなミニマルなマークダウンエディタ。素晴らしいアイデアをすぐに書き留めるために。
 
-[デモ](https://isahamawan.github.io/Simplem)
-
+[デモ](https://isahamawan.github.io/Simplem)  
 (Google Driveとの連携機能はテストユーザのみ使用可。興味がある人はご連絡ください。)
 
 [English](https://github.com/isahamawan/Simplem/blob/master/README.md)
