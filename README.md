@@ -1,107 +1,135 @@
-<!--
-いまコメントを読んでるあなた。恥ずかしいから見てはだめです。
-
-# 伝わるプレゼン from スティーブジョブス
-## 1. ストーリーを伝える
- 個人的なストーリーの方が伝わる
- 
-## 2. 意表をつくような統計データを提示する
-過去８０万年最高のガス濃度であるなど
-
-## 3. 比喩を作る
-越えることが出来ない経済の堀を持つ城
-
-## 4. サプライズを用意する
-新表品が三つ　電話、インターネット、ipod　→　iphone
-
-## 5. 画像や動画を見せる
-動画なら人は見る
---> 
 
 
 # Simplem
 Minimal notepad-like markdown editor. To write down your amazing ideas immediately.
 
+[Demo](https://isahamawan.github.io/Simplem)
+(The function of linking with Google Drive can only be used by test users. Please contact us if you are interested.)
+
 [日本語表示](https://github.com/isahamawan/Simplem/blob/master/README_JA.md)
 
+![logo](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/simplem_logo.png)
+
+![view](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/simplem.png)
+
+
+
 ## What is important when you come up with an idea?
-One time I was eating dinner and watching TV when I suddenly had a good idea.
+I came up with a good idea.
 
-Unfortunately, while I was looking for a pen and paper to write it down, I forgot the important idea.
+Unfortunately, while looking for a piece of paper and a pen to write down my ideas, I forgot my important idea.
 
-When you have an idea, it's important to write it down immediately with a pen and paper.
-
-**"Simplem is a paper-and-pen-like app that you can launch as soon as you have an idea and write it down without worrying about it." **
-
-### How?
-- Launch it and you're up and running, no need for style or page setup!
-- We've narrowed down the number of fonts. You can have fun choosing from a  unique fonts.
-- We've made it simple to write in, just like the default notepad.
-- You can also view diffs of your revisions.
+When you come up with an idea, it's important to write it down quickly with a piece of paper and a pen.
 
 
-## What's important when you're working on an idea?
-When I was trying to come up with ideas for my work, I used to use a common word processor and think about this and that while writing.
+<div align = "center">
+<img src = "https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/idea.png" width = "50%" alt = "idea">
+</div>
 
-However, as time went by, I began to worry about the size of the headings and the alignment of the text, and I became conscious of the need to make it neat.
+**”Simplem is a paper and pen-like app that you can launch as soon as you come up with an idea and write it down without hesitation, regardless of style.”**
 
-Then it was too late, and I couldn't revise the text freely because I didn't want to ruin the clean headings and text alignment.
+### how?
+- It will start up as soon as you start it, and you do not need to set the style or page.
+- Narrowed down the number of fonts. Enjoy choosing from unique fonts
+- Aiming for a simple writing taste like the default notepad
+- You can also display the modified diff!
 
-In this situation, even if I make a conscious effort to "write freely even if it destroys the neatness," my mind that wants to maintain the neatness gets in the way, and I can't write as I want.
 
-**"Simplem is an app like a 'notepad in your head' that allows you to focus only on formulating ideas without thinking about 'neatness'." **
+## What is important when formulating an idea?
+I wanted to come up with an idea for my work, and I was thinking while writing a sentence that it wasn't like that using common word software.
 
-### How?
-- You can use markdown notation, so you don't spend too much time obsessing over text modifiers
-- While not spending too much time on modifiers, the headings and bolding are nice and neat, and help you organize your ideas.
-- Markdown marks are not visible except when editing (live preview), so they do not interfere with reading.
-- Unlike other markdown editors with live preview, the size of the text on the editing screen is consistent, so you can write freely and without worry.
-	- If you think I'm lying, consider yourself fooled and compare your schedule for tomorrow with Simplem and other markdown editors.
-- Table of contents and links are automatically created based on headings, so you can easily move back and forth in your document.
-- Other innovations are being added daily to bring the "notepad in your head" to your computer!
+However, as time went by, I became worried about the size of the headings and how the letters were aligned, and I became conscious of trying to make them beautiful.
+
+When that happened, it was too late, and I didn't want to break the clean headlines and the alignment of the characters, so I couldn't modify the text freely.
+
+
+<div align = "center">
+<img src = "https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/fast.png" width = "50%" alt = "worry">
+</div>
+
+
+If this happens, even if I am conscious of "let's write freely because it's okay to break the beauty", my heart that wants to maintain the beauty gets in the way and I can't write as I want.
+
+**”Simplem is an app like“ Notepad in your head ”that allows you to concentrate on devising ideas without thinking about“ beauty ”. ”**
+
+<div align = "center">
+<img src = "https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/meditation.png" width = "50%" alt = "consentration">
+</div>
+
+### how?
+- Because you can use markdown notation, you can not spend time sticking to the "cleanliness" of sentences
+- Headings and bold letters are displayed reasonably well, which helps you organize your ideas, even though you don't have to spend much time maintaining "cleanliness".
+- The markdown mark is not displayed except when editing (live preview), so it does not interfere with reading the text.
+- Unlike other live preview markdown editors, the font size of the edit screen is unified, so you can write sentences freely and without hesitation.
+- If you think it's a lie, think you've been fooled and compare your tomorrow's schedule with Simplem and other Markdown editors.
+- The table of contents and links are automatically created based on the headings, so you can easily go back and forth in the document.
+- In addition, we are adding daily ideas to realize "Notepad in the head" on the computer.
 
 ## It's hard to rewrite the ideas you've put together!
-It took me two hours to re-write the ideas that I had put together in my notepad in word software to show them to others.
+It took me two hours to write down the ideas I put together in Notepad with Word software to show them to others.
 
-It took me two hours to re-write the ideas I had in my notepad in Word to show them to others. It took me another two hours to create slides from the re-write to present to more people.
+It took another two hours to make a slide from a clean copy for presentation to more people.
 
-Have you ever experienced this? It happens a lot in my environment😂.
+Do you have experience too? Common in my environment 😂
 
-**"Simplem is an app that allows you to create a clarification and slides from a single idea note." **
+**”Simplem is an application that allows you to create clear copies and slides from one idea memo.”**
 
-### How?
-- Markdown notation makes it moderately neat and tidy.
-	- When printing or outputting PDFs, headings appear larger according to heading rank.
-- Automatic page break at heading 1 (h1) when outputting (can be turned on/off in options)
-- Page break at horizontal line (hr) when outputting (can be turned on/off in options)
-- Click "Slides" button to edit as slides.
-	- Page break with horizontal line (hr). You can also create a slide show.
-- You can use html comment notation to write down your thoughts and ideas on the editing screen.
-	- For example, the following comments will disappear in the output
-		- `<! -- Great idea to write up in text later! -->`
 
-# List of features
+<div align = "center">
+<img src = "https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/all.png" width = "50%" alt = "all-purpose">
+</div>
+
+### how?
+- Markdown notation makes it nice and tidy
+- When printing or outputting PDF, the heading is displayed larger according to the heading rank.
+- At the time of output, heading 1 (h1) automatically breaks the page (can be turned on and off with the ⇦ option)
+- At the time of output, page break with horizontal line (hr) (can be turned on and off with ⇦ option)
+- You can edit it as a slide by pressing the "Slides" button.
+- Page break with horizontal line (hr). You can also do a slide show!
+- You can write down your own findings and ideas on the edit screen with html comment notation.
+- For example, you can leave the following comment in the sentence. It disappears at the time of output
+	- `<! --A great idea to write in a sentence later! -> `
+
+# Functions list
 
 - diff display
-- Automatic generation of table of contents (heading-based: gitbook-like)
-- Slide editing and display (marp)
-- <! -- --> non-printable comment function (ideas, memos and clear writing can coexist and be managed in one place)
-- Book editing/viewing (marp) (currently disabled because it conflicts with Document mode)
+! [diff] (https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/diff.png)
+- Automatic table of contents generation (heading-based)
+! [toc] (https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/toc.png)
+- Slide editing / display (marp)
+! [slides] (https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/slides.png)
+-<! Comment function that is not printed with ---> (ideas, memos and fair copy can coexist and be managed collectively) 
 - Semi-transparent display
-- Always at the front
-- Code highlighting
+- Always on top
+- Code highlight function
 - Toolbar
-- Output function(pdf,html)
-- html tags are enabled
+- Output function (pdf, html)
+- html tag is valid
 - Source code mode
-- Font switching (unique fonts available)
-- Page break at h1 when printing
-- Page break at --- when printing
-- Mermaid js (support for slide display if there is a need)
+- Font switching (unique font available)
+- Page break with h1 when printing
+- Page breaks at the time of printing ---
+- Mermaid js (If there is a need for slide display)
 - Dark mode
-- Shortcut keys
+- Shortcut key
 - Voice input (mac only)
-- Text-To-Speech (mac only)
+- Read aloud <!-(Mac only)->
 
-<!-- - 編集画面の余分な余白を表示しない仕様 -->
-<!-- - 目次も印刷-->
+
+# What Simplem is aiming for
+- Lightweight and comfortable markdown editor to replace the default notepad
+- Small is beautiful
+- Paper and pen-like apps
+- A simple flat text editor. The management of images, tables, and files is left to the software that is good at it.
+- Good "writing taste"
+- You can easily write what you have come up with like a notepad, and you can output the written material as a document, slide, or book in a beautiful format without any hassle.
+- Simple design, easy for anyone to modify or modify
+- Do not pollute the development environment (no installation required, make the software as portable as possible)
+	- It's hard to reinstall every time you use a new PC. In addition, newer PCs may not have administrator privileges.
+- No automatic update.
+	- To avoid annoying update prompts for users and unexpected function additions during use.
+	- When users want to try new features, have them download the new version on their own initiative.
+	- If you make the app a portable design, you can just delete the old version together with the folder.
+
+# License
+MIT
