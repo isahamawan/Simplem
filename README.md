@@ -50,7 +50,7 @@ When that happened, it was too late, and I didn't want to break the clean headli
 
 If this happens, even if I am conscious of "let's write freely because it's okay to break the beauty", my heart that wants to maintain the beauty gets in the way and I can't write as I want.
 
-**”Simplem is an app like“ Notepad in your head ”that allows you to concentrate on devising ideas without thinking about“ beauty ”. ”**
+**”Simplem is an app like “Notepad in your head” that allows you to concentrate on devising ideas without thinking about “beauty”. ”**
 
 <div align = "center">
 <img src = "https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/meditation.png" width = "50%" alt = "consentration">
