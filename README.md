@@ -3,7 +3,7 @@
 # Simplem
 Minimal notepad-like markdown editor. To write down your amazing ideas immediately.
 
-[Demo](https://isahamawan.github.io/Simplem)
+[Demo](https://isahamawan.github.io/Simplem)  
 (The function of linking with Google Drive can only be used by test users. Please contact us if you are interested.)
 
 [日本語表示](https://github.com/isahamawan/Simplem/blob/master/README_JA.md)
