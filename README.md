@@ -81,24 +81,24 @@ Do you have experience too? Common in my environment 😂
 
 ### how?
 - Markdown notation makes it nice and tidy
-- When printing or outputting PDF, the heading is displayed larger according to the heading rank.
+	- When printing or outputting PDF, the heading is displayed larger according to the heading rank.
 - At the time of output, heading 1 (h1) automatically breaks the page (can be turned on and off with the ⇦ option)
 - At the time of output, page break with horizontal line (hr) (can be turned on and off with ⇦ option)
 - You can edit it as a slide by pressing the "Slides" button.
-- Page break with horizontal line (hr). You can also do a slide show!
+	- Page break with horizontal line (hr). You can also do a slide show!
 - You can write down your own findings and ideas on the edit screen with html comment notation.
-- For example, you can leave the following comment in the sentence. It disappears at the time of output
-	- `<! --A great idea to write in a sentence later! -> `
+	- For example, you can leave the following comment in the sentence. It disappears at the time of output
+		- `<! --A great idea to write in a sentence later! -> `
 
 # Functions list
 
 - diff display
-! [diff] (https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/diff.png)
+![diff](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/diff.png)
 - Automatic table of contents generation (heading-based)
-! [toc] (https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/toc.png)
+![toc](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/toc.png)
 - Slide editing / display (marp)
-! [slides] (https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/slides.png)
--<! Comment function that is not printed with ---> (ideas, memos and fair copy can coexist and be managed collectively) 
+![slides](https://github.com/isahamawan/Simplem/blob/master/misc/readme_src/capture/slides.png)
+- <! Comment function that is not printed with ---> (ideas, memos and fair copy can coexist and be managed collectively) 
 - Semi-transparent display
 - Always on top
 - Code highlight function
