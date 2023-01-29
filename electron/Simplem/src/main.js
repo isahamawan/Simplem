@@ -846,11 +846,13 @@ app.on('ready', function () {
         if (process.platform != 'darwin') {
 
             //引数から初期読み込み用のファイルパスを取得(win用)
-            let args = process.argv
+            let args = process.argv;
+            let extname = "";
             args.forEach(function (arg) {
 
                 //引数の最後の.以降の文字（拡張子）がtxtとmdのときに初期読み込み用のファイルパスとして保管
-                if (path_tool.extname(arg) == (".txt" || ".md" || ".html")) {
+                extname = path_tool.extname(arg);
+                if (extname == ".md" || extname == ".txt" || extname == ".html") {
                     global.filePath_for_init = arg;
                 };
             });
