@@ -10011,7 +10011,8 @@
               var sels = cm.listSelections();
               for (var i = sels.length - 1; i >= 0; i--) { cm.replaceRange(cm.doc.lineSeparator(), sels[i].anchor, sels[i].head, "+input"); }
               sels = cm.listSelections();
-              for (var i$1 = 0; i$1 < sels.length; i$1++) { cm.indentLine(sels[i$1].from().line, null, true); }
+              //for (var i$1 = 0; i$1 < sels.length; i$1++) { cm.indentLine(sels[i$1].from().line, null, true); } //origin
+              for (var i$1 = 0; i$1 < sels.length; i$1++) { cm.indentLine(sels[i$1].from().line, 0, true); } //simplem 自動インデントの解除
               ensureCursorVisible(cm);
             });
           },
