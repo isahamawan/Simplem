@@ -843,49 +843,54 @@ app.on('ready', function () {
         //    console.log(i + ': ' + process.argv[i]);
         //};
 
+        if (process.platform != 'darwin') {
 
-        //引数から初期読み込み用のファイルパスを取得(win用)
-        let args = process.argv
-        args.forEach(function (arg) {
+            //引数から初期読み込み用のファイルパスを取得(win用)
+            let args = process.argv
+            args.forEach(function (arg) {
 
-            //引数の最後の.以降の文字（拡張子）がtxtとmdのときに初期読み込み用のファイルパスとして保管
-            if (path_tool.extname(arg) == (".txt" || ".md" || ".html")) {
-                global.filePath_for_init = arg;
+                //引数の最後の.以降の文字（拡張子）がtxtとmdのときに初期読み込み用のファイルパスとして保管
+                if (path_tool.extname(arg) == (".txt" || ".md" || ".html")) {
+                    global.filePath_for_init = arg;
+                };
+            });
+
+            if (global.filePath_for_init) {
+                mainWindow.webContents.send('open_init_from_main'); //レンダラ（index.html）へ'open_init_from_main'を命令
             };
-        });
 
-        if (global.filePath_for_init) {
-            mainWindow.webContents.send('open_init_from_main'); //レンダラ（index.html）へ'open_init_from_main'を命令
         };
 
 
+        if (process.platform === 'darwin') {
+            // 初期読み込み用のファイルパスを取得２／２（mac用）
+            if (global.filePath_for_init_mac) {
+                // ファイルパスを取得
+                global.filePath_for_init = global.filePath_for_init_mac;
 
-        // 初期読み込み用のファイルパスを取得２／２（mac用）
-        if (global.filePath_for_init_mac) {
-            // ファイルパスを取得
-            global.filePath_for_init = global.filePath_for_init_mac;
+
+                mainWindow.webContents.send('open_init_from_main'); //レンダラ（index.html）へ'open_init_from_main'を命令
+
+                // グローバル変数を初期化
+                global.filePath_for_init_mac = null;
+            };
 
 
-            mainWindow.webContents.send('open_init_from_main'); //レンダラ（index.html）へ'open_init_from_main'を命令
+            // mac用  ready イベント「以後」の 'open-file' イベントを拾ってファイルを読み込み
+            app.on('open-file', (e, argv) => {
+                e.preventDefault();
 
-            // グローバル変数を初期化
-            global.filePath_for_init_mac = null;
+                // ウィンドウが最小化されていたらレストアしてフォーカスを当てる
+                if (mainWindow.isMinimized()) mainWindow.restore();
+                mainWindow.focus();
+
+                global.filePath_for_init = argv;
+
+                mainWindow.webContents.send('open_init_from_main'); //レンダラ（index.html）へ'open_init_from_main'を命令
+
+            });
+
         };
-
-
-        // mac用  ready イベント「以後」の 'open-file' イベントを拾ってファイルを読み込み
-        app.on('open-file', (e, argv) => {
-            e.preventDefault();
-
-            // ウィンドウが最小化されていたらレストアしてフォーカスを当てる
-            if (mainWindow.isMinimized()) mainWindow.restore();
-            mainWindow.focus();
-
-            global.filePath_for_init = argv;
-
-            mainWindow.webContents.send('open_init_from_main'); //レンダラ（index.html）へ'open_init_from_main'を命令
-
-        });
 
         //mainWindow.show();//白い画面を表示しないように読み込み完了時に表示(UX検証要)
     });
